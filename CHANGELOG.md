@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.3.0 (8 Oct 2026)
+
+Real IA from Hugo's sitemap (replaces the stand-in built from Figma labels).
+
+- 137 pages, 10 top-level items, up to 5 levels deep.
+- The sitemap script now reads path-style rows (several levels on one row, repeated parents merged) as well as the indented style.
+- Levels skipped in the Strengths block ("Locate our research", "Protocols resources", "Nature science journals") are placed under "Indigenous research UWA", as agreed.
+- "Specific course pages" (under Architecture and Design and Undergraduate courses) use the course template. The other "Specific …" items are content pages.
+- Current students, News, Events, Library and Staff from the Figma menu are kept as top-level items after the five in the sitemap. Giving is not included.
+- Known placeholder content in the sitemap: the About block is a copy of Partners and Community.
+
+## 0.2.0 (8 Oct 2026)
+
+Page templates from Figma section *Page templates*.
+
+- Four templates: landing, content, course, co-branded site. Chosen per page with a new `template` column in `data/sitemap.csv` (blank = landing for L1, content for the rest).
+- Course pages take `eyebrow`, `intro` and `body` from optional CSV columns, falling back to the Figma example copy.
+- Header now has the grey band (#c0c0c0, 128px) shown in the templates.
+- New breadcrumbs (TT Norms Pro Medium 18, blue links, › separators) on content and co-branded pages.
+- Placeholder strokes now 4px, matching Figma.
+- Novel Pro (co-branded title) uses Crimson Pro as a free stand-in until a font file is supplied.
+- The stand-in sitemap has no course or co-branded pages yet; they'll appear when the IA tree assigns them.
+
 ## 0.1.0 (8 Oct 2026)
 
 First build: desktop menu system from Figma section *Core menu opens with submenu journey* (5 frames).

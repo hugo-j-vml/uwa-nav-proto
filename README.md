@@ -14,25 +14,54 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below) |
 | Header shortcut buttons (Study / Impact / Research) | `src/data/header.json` |
 | Password | `src/config.ts` (see below) |
-| Fonts | Put the files in `public/fonts/` (names in `src/styles/fonts.css`) |
-| Layout/structure of components | `src/styles/components.css` and `src/components/` |
+| Fonts | Put the files in `public/fonts/` (names in `src/styles/fonts.css`). Novel Pro falls back to Crimson Pro (free). |
+| Layout/structure of components and templates | `src/styles/components.css`, `src/components/` and `src/templates/` |
 | Menu behaviour | `src/scripts/menu.ts` |
 
 Every push to `main` rebuilds and republishes the site automatically (see the **Actions** tab). It usually takes 1–2 minutes.
 
 ### The sitemap CSV
 
-One column per level (`L1`, `L2`, `L3`, …). Each row has its label in exactly one column, and its parent is the nearest row above it one level up:
+One column per level (`L1`, `L2`, `L3`, …). Two layouts work, and can be mixed:
+
+- **Indented:** one label per row; its parent is the nearest item above it one level up.
+- **Paths:** a row lists a chain left to right. Repeating a parent (e.g. `Study` on several rows) merges into one item.
 
 ```
 L1,L2,L3
-Study,,
-,Explore courses,
-,,Find a course
+Study,Study areas,Architecture and Design
+,,Business and Commerce
+Study,Find a course,Undergraduate courses
 Life at UWA,,
 ```
 
-Page URLs come from the labels (e.g. `study/explore-courses/find-a-course/`). Items with children open a sub-menu; items without children link to their page. The build stops with a clear message if the CSV has problems (e.g. a row with two columns filled, or a level skipped).
+If a row skips a level (e.g. an L5 with no L4 on that row), the item goes under the most recent L4 above it, and the build log shows a warning.
+
+Page URLs come from the labels (e.g. `study/explore-courses/find-a-course/`). Items with children open a sub-menu; items without children link to their page. The build stops with a clear message if the CSV has problems (e.g. a row with two level columns filled, a level skipped, or an unknown template).
+
+Optional columns, in any order:
+
+| Column | Values | Notes |
+|---|---|---|
+| `template` | `landing`, `content`, `course`, `cobranded` | Blank = `landing` for L1, `content` for everything else |
+| `eyebrow` | text | Course pages: small heading above the title (e.g. Undergraduate) |
+| `intro` | text | Course pages: line under the title |
+| `body` | text | Course pages: paragraph under the in-page tabs |
+
+Blank course fields fall back to the Landscape Architecture Studies copy from Figma.
+
+```
+L1,L2,L3,L4,template,eyebrow,intro,body
+Oceans Institute,,,,cobranded,,,
+,,,Landscape Architecture Studies,course,Undergraduate,"Grow your creative...","In the Landscape..."
+```
+
+### Page templates (Figma section *Page templates*)
+
+- **Landing**: placeholder with the title over it. Also used for the homepage.
+- **Content**: breadcrumbs, title, then placeholders.
+- **Course**: hero with eyebrow, title, intro, Enquire/Apply; in-page tabs bar, body copy, 3-column cards.
+- **Co-branded site**: breadcrumbs, sage hero with the site name (Novel Pro), sage tiles.
 
 ### Changing the password
 

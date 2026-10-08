@@ -1,11 +1,16 @@
 {
-  "generated": "2026-10-08T07:21:10.595Z",
+  "generated": "2026-10-08T07:51:29.710Z",
   "source": "data/sitemap.csv",
   "columns": [
     "L1",
     "L2",
     "L3",
-    "L4"
+    "L4",
+    "L5",
+    "template",
+    "eyebrow",
+    "intro",
+    "body"
   ],
   "nodes": [
     {
@@ -14,200 +19,359 @@
       "slug": "study",
       "path": "study",
       "level": 1,
+      "template": "landing",
       "children": [
         {
-          "id": "study/explore-courses",
-          "label": "Explore courses",
-          "slug": "explore-courses",
-          "path": "study/explore-courses",
+          "id": "study/study-areas",
+          "label": "Study areas",
+          "slug": "study-areas",
+          "path": "study/study-areas",
           "level": 2,
+          "template": "content",
           "children": [
             {
-              "id": "study/explore-courses/explore-all-courses",
-              "label": "Explore all courses",
-              "slug": "explore-all-courses",
-              "path": "study/explore-courses/explore-all-courses",
+              "id": "study/study-areas/architecture-and-design",
+              "label": "Architecture and Design",
+              "slug": "architecture-and-design",
+              "path": "study/study-areas/architecture-and-design",
               "level": 3,
-              "children": []
-            },
-            {
-              "id": "study/explore-courses/find-a-course",
-              "label": "Find a course",
-              "slug": "find-a-course",
-              "path": "study/explore-courses/find-a-course",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "study/explore-courses/study-areas",
-              "label": "Study areas",
-              "slug": "study-areas",
-              "path": "study/explore-courses/study-areas",
-              "level": 3,
+              "template": "content",
               "children": [
                 {
-                  "id": "study/explore-courses/study-areas/architecture-and-design",
-                  "label": "Architecture and Design",
-                  "slug": "architecture-and-design",
-                  "path": "study/explore-courses/study-areas/architecture-and-design",
+                  "id": "study/study-areas/architecture-and-design/specific-course-pages",
+                  "label": "Specific course pages",
+                  "slug": "specific-course-pages",
+                  "path": "study/study-areas/architecture-and-design/specific-course-pages",
                   "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "study/explore-courses/study-areas/business-and-commerce",
-                  "label": "Business and Commerce",
-                  "slug": "business-and-commerce",
-                  "path": "study/explore-courses/study-areas/business-and-commerce",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "study/explore-courses/study-areas/data-and-computer-science",
-                  "label": "Data and Computer Science",
-                  "slug": "data-and-computer-science",
-                  "path": "study/explore-courses/study-areas/data-and-computer-science",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "study/explore-courses/study-areas/education",
-                  "label": "Education",
-                  "slug": "education",
-                  "path": "study/explore-courses/study-areas/education",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "study/explore-courses/study-areas/engineering",
-                  "label": "Engineering",
-                  "slug": "engineering",
-                  "path": "study/explore-courses/study-areas/engineering",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "study/explore-courses/study-areas/health-and-biomedical-sciences",
-                  "label": "Health and Biomedical Sciences",
-                  "slug": "health-and-biomedical-sciences",
-                  "path": "study/explore-courses/study-areas/health-and-biomedical-sciences",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "study/explore-courses/study-areas/humanities-and-social-sciences",
-                  "label": "Humanities and Social Sciences",
-                  "slug": "humanities-and-social-sciences",
-                  "path": "study/explore-courses/study-areas/humanities-and-social-sciences",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "study/explore-courses/study-areas/law",
-                  "label": "Law",
-                  "slug": "law",
-                  "path": "study/explore-courses/study-areas/law",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "study/explore-courses/study-areas/music-and-fine-arts",
-                  "label": "Music and Fine Arts",
-                  "slug": "music-and-fine-arts",
-                  "path": "study/explore-courses/study-areas/music-and-fine-arts",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "study/explore-courses/study-areas/natural-and-physical-sciences",
-                  "label": "Natural and Physical Sciences",
-                  "slug": "natural-and-physical-sciences",
-                  "path": "study/explore-courses/study-areas/natural-and-physical-sciences",
-                  "level": 4,
-                  "children": []
-                },
-                {
-                  "id": "study/explore-courses/study-areas/psychology",
-                  "label": "Psychology",
-                  "slug": "psychology",
-                  "path": "study/explore-courses/study-areas/psychology",
-                  "level": 4,
+                  "template": "course",
                   "children": []
                 }
               ]
             },
             {
-              "id": "study/explore-courses/undergraduate-courses",
-              "label": "Undergraduate courses",
-              "slug": "undergraduate-courses",
-              "path": "study/explore-courses/undergraduate-courses",
+              "id": "study/study-areas/business-and-commerce",
+              "label": "Business and Commerce",
+              "slug": "business-and-commerce",
+              "path": "study/study-areas/business-and-commerce",
               "level": 3,
+              "template": "content",
               "children": []
             },
             {
-              "id": "study/explore-courses/postgraduate-courses",
-              "label": "Postgraduate courses",
-              "slug": "postgraduate-courses",
-              "path": "study/explore-courses/postgraduate-courses",
+              "id": "study/study-areas/data-and-computer-science",
+              "label": "Data and Computer Science",
+              "slug": "data-and-computer-science",
+              "path": "study/study-areas/data-and-computer-science",
               "level": 3,
+              "template": "content",
               "children": []
             },
             {
-              "id": "study/explore-courses/higher-degree-by-research",
-              "label": "Higher Degree by Research",
-              "slug": "higher-degree-by-research",
-              "path": "study/explore-courses/higher-degree-by-research",
+              "id": "study/study-areas/education",
+              "label": "Education",
+              "slug": "education",
+              "path": "study/study-areas/education",
               "level": 3,
+              "template": "content",
               "children": []
             },
             {
-              "id": "study/explore-courses/assured-pathways",
-              "label": "Assured Pathways",
-              "slug": "assured-pathways",
-              "path": "study/explore-courses/assured-pathways",
+              "id": "study/study-areas/engineering",
+              "label": "Engineering",
+              "slug": "engineering",
+              "path": "study/study-areas/engineering",
               "level": 3,
-              "children": []
-            },
-            {
-              "id": "study/explore-courses/short-courses",
-              "label": "Short courses",
-              "slug": "short-courses",
-              "path": "study/explore-courses/short-courses",
-              "level": 3,
-              "children": []
-            },
-            {
-              "id": "study/explore-courses/our-courses-explained",
-              "label": "Our courses explained",
-              "slug": "our-courses-explained",
-              "path": "study/explore-courses/our-courses-explained",
-              "level": 3,
+              "template": "content",
               "children": []
             }
           ]
         },
         {
-          "id": "study/discover-uwa",
-          "label": "Discover UWA",
-          "slug": "discover-uwa",
-          "path": "study/discover-uwa",
+          "id": "study/find-a-course",
+          "label": "Find a course",
+          "slug": "find-a-course",
+          "path": "study/find-a-course",
           "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "study/find-a-course/undergraduate-courses",
+              "label": "Undergraduate courses",
+              "slug": "undergraduate-courses",
+              "path": "study/find-a-course/undergraduate-courses",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "study/find-a-course/undergraduate-courses/specific-course-pages",
+                  "label": "Specific course pages",
+                  "slug": "specific-course-pages",
+                  "path": "study/find-a-course/undergraduate-courses/specific-course-pages",
+                  "level": 4,
+                  "template": "course",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "study/find-a-course/postgraduate-courses",
+              "label": "Postgraduate courses",
+              "slug": "postgraduate-courses",
+              "path": "study/find-a-course/postgraduate-courses",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/find-a-course/hdr",
+              "label": "HDR",
+              "slug": "hdr",
+              "path": "study/find-a-course/hdr",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/find-a-course/assured-pathways",
+              "label": "Assured pathways",
+              "slug": "assured-pathways",
+              "path": "study/find-a-course/assured-pathways",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/find-a-course/short-courses",
+              "label": "Short courses",
+              "slug": "short-courses",
+              "path": "study/find-a-course/short-courses",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/find-a-course/our-courses-explained",
+              "label": "Our courses explained",
+              "slug": "our-courses-explained",
+              "path": "study/find-a-course/our-courses-explained",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "study/study-levels",
+          "label": "Study levels",
+          "slug": "study-levels",
+          "path": "study/study-levels",
+          "level": 2,
+          "template": "content",
           "children": []
+        },
+        {
+          "id": "study/pathways-and-eligibility",
+          "label": "Pathways and eligibility",
+          "slug": "pathways-and-eligibility",
+          "path": "study/pathways-and-eligibility",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "study/pathways-and-eligibility/atar",
+              "label": "ATAR",
+              "slug": "atar",
+              "path": "study/pathways-and-eligibility/atar",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "study/pathways-and-eligibility/atar/specific-pathway-pages",
+                  "label": "Specific pathway pages",
+                  "slug": "specific-pathway-pages",
+                  "path": "study/pathways-and-eligibility/atar/specific-pathway-pages",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "study/pathways-and-eligibility/entry-pathways",
+              "label": "Entry pathways",
+              "slug": "entry-pathways",
+              "path": "study/pathways-and-eligibility/entry-pathways",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/pathways-and-eligibility/entry-standards",
+              "label": "Entry standards",
+              "slug": "entry-standards",
+              "path": "study/pathways-and-eligibility/entry-standards",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/pathways-and-eligibility/in-school-programs",
+              "label": "In-school programs",
+              "slug": "in-school-programs",
+              "path": "study/pathways-and-eligibility/in-school-programs",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/pathways-and-eligibility/university-preparation-programs",
+              "label": "University preparation programs",
+              "slug": "university-preparation-programs",
+              "path": "study/pathways-and-eligibility/university-preparation-programs",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/pathways-and-eligibility/prerequisites-and-recommended-subjects",
+              "label": "Prerequisites and recommended subjects",
+              "slug": "prerequisites-and-recommended-subjects",
+              "path": "study/pathways-and-eligibility/prerequisites-and-recommended-subjects",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
         },
         {
           "id": "study/how-to-apply",
-          "label": "How to apply",
+          "label": "How to Apply",
           "slug": "how-to-apply",
           "path": "study/how-to-apply",
           "level": 2,
-          "children": []
+          "template": "content",
+          "children": [
+            {
+              "id": "study/how-to-apply/undergraduate-applicants",
+              "label": "Undergraduate applicants",
+              "slug": "undergraduate-applicants",
+              "path": "study/how-to-apply/undergraduate-applicants",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "study/how-to-apply/undergraduate-applicants/specific-how-to-apply",
+                  "label": "Specific how to apply",
+                  "slug": "specific-how-to-apply",
+                  "path": "study/how-to-apply/undergraduate-applicants/specific-how-to-apply",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "study/how-to-apply/postgraduate-applicants",
+              "label": "Postgraduate applicants",
+              "slug": "postgraduate-applicants",
+              "path": "study/how-to-apply/postgraduate-applicants",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/how-to-apply/research-applicants",
+              "label": "Research applicants",
+              "slug": "research-applicants",
+              "path": "study/how-to-apply/research-applicants",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/how-to-apply/international-applicants",
+              "label": "International applicants",
+              "slug": "international-applicants",
+              "path": "study/how-to-apply/international-applicants",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/how-to-apply/accept-your-offer",
+              "label": "Accept your offer",
+              "slug": "accept-your-offer",
+              "path": "study/how-to-apply/accept-your-offer",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/how-to-apply/defer-your-offer",
+              "label": "Defer your offer",
+              "slug": "defer-your-offer",
+              "path": "study/how-to-apply/defer-your-offer",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
         },
         {
           "id": "study/scholarships-and-fees",
-          "label": "Scholarships and fees",
+          "label": "Scholarships and Fees",
           "slug": "scholarships-and-fees",
           "path": "study/scholarships-and-fees",
           "level": 2,
-          "children": []
+          "template": "content",
+          "children": [
+            {
+              "id": "study/scholarships-and-fees/calculate-your-fees",
+              "label": "Calculate your fees",
+              "slug": "calculate-your-fees",
+              "path": "study/scholarships-and-fees/calculate-your-fees",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "study/scholarships-and-fees/calculate-your-fees/specific-scholarships",
+                  "label": "Specific scholarships",
+                  "slug": "specific-scholarships",
+                  "path": "study/scholarships-and-fees/calculate-your-fees/specific-scholarships",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "study/scholarships-and-fees/international-student-fees",
+              "label": "International student fees",
+              "slug": "international-student-fees",
+              "path": "study/scholarships-and-fees/international-student-fees",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/scholarships-and-fees/domestic-student-fees",
+              "label": "Domestic student fees",
+              "slug": "domestic-student-fees",
+              "path": "study/scholarships-and-fees/domestic-student-fees",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/scholarships-and-fees/scholarships",
+              "label": "Scholarships",
+              "slug": "scholarships",
+              "path": "study/scholarships-and-fees/scholarships",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
         },
         {
           "id": "study/support-information",
@@ -215,7 +379,73 @@
           "slug": "support-information",
           "path": "study/support-information",
           "level": 2,
-          "children": []
+          "template": "content",
+          "children": [
+            {
+              "id": "study/support-information/contacts-and-enquiries",
+              "label": "Contacts and enquiries",
+              "slug": "contacts-and-enquiries",
+              "path": "study/support-information/contacts-and-enquiries",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "study/support-information/contacts-and-enquiries/specific-support-pages",
+                  "label": "Specific support pages",
+                  "slug": "specific-support-pages",
+                  "path": "study/support-information/contacts-and-enquiries/specific-support-pages",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "study/support-information/international-students",
+              "label": "International students",
+              "slug": "international-students",
+              "path": "study/support-information/international-students",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/support-information/indigenous-students",
+              "label": "Indigenous students",
+              "slug": "indigenous-students",
+              "path": "study/support-information/indigenous-students",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/support-information/regional-students",
+              "label": "Regional students",
+              "slug": "regional-students",
+              "path": "study/support-information/regional-students",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/support-information/parents-and-guardians",
+              "label": "Parents and guardians",
+              "slug": "parents-and-guardians",
+              "path": "study/support-information/parents-and-guardians",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study/support-information/high-schools-and-career-advisors",
+              "label": "High schools and career advisors",
+              "slug": "high-schools-and-career-advisors",
+              "path": "study/support-information/high-schools-and-career-advisors",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
         }
       ]
     },
@@ -225,31 +455,797 @@
       "slug": "life-at-uwa",
       "path": "life-at-uwa",
       "level": 1,
-      "children": []
+      "template": "landing",
+      "children": [
+        {
+          "id": "life-at-uwa/accommodation",
+          "label": "Accommodation",
+          "slug": "accommodation",
+          "path": "life-at-uwa/accommodation",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "life-at-uwa/arts-and-culture",
+          "label": "Arts and Culture",
+          "slug": "arts-and-culture",
+          "path": "life-at-uwa/arts-and-culture",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "life-at-uwa/clubs-and-societies",
+          "label": "Clubs and Societies",
+          "slug": "clubs-and-societies",
+          "path": "life-at-uwa/clubs-and-societies",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "life-at-uwa/sport-and-fitness",
+          "label": "Sport and Fitness",
+          "slug": "sport-and-fitness",
+          "path": "life-at-uwa/sport-and-fitness",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "life-at-uwa/student-guild",
+          "label": "Student Guild",
+          "slug": "student-guild",
+          "path": "life-at-uwa/student-guild",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "life-at-uwa/study-abroad",
+          "label": "Study Abroad",
+          "slug": "study-abroad",
+          "path": "life-at-uwa/study-abroad",
+          "level": 2,
+          "template": "content",
+          "children": []
+        }
+      ]
     },
     {
       "id": "our-research",
-      "label": "Our research",
+      "label": "Our Research",
       "slug": "our-research",
       "path": "our-research",
       "level": 1,
-      "children": []
+      "template": "landing",
+      "children": [
+        {
+          "id": "our-research/strengths",
+          "label": "Strengths",
+          "slug": "strengths",
+          "path": "our-research/strengths",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "our-research/strengths/clean-energy-transition",
+              "label": "Clean energy transition",
+              "slug": "clean-energy-transition",
+              "path": "our-research/strengths/clean-energy-transition",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "our-research/strengths/clean-energy-transition/berndt-research-foundation",
+                  "label": "Berndt research foundation",
+                  "slug": "berndt-research-foundation",
+                  "path": "our-research/strengths/clean-energy-transition/berndt-research-foundation",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "our-research/strengths/clean-energy-transition/berndt-research-foundation/hdr-resources",
+                      "label": "HDR resources",
+                      "slug": "hdr-resources",
+                      "path": "our-research/strengths/clean-energy-transition/berndt-research-foundation/hdr-resources",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "our-research/strengths/health-and-biotechnology",
+              "label": "Health and biotechnology",
+              "slug": "health-and-biotechnology",
+              "path": "our-research/strengths/health-and-biotechnology",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa",
+                  "label": "Indigenous research UWA",
+                  "slug": "indigenous-research-uwa",
+                  "path": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/indigenous-researchers",
+                      "label": "Indigenous researchers",
+                      "slug": "indigenous-researchers",
+                      "path": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/indigenous-researchers",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/locate-our-research",
+                      "label": "Locate our research",
+                      "slug": "locate-our-research",
+                      "path": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/locate-our-research",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/protocols-resources",
+                      "label": "Protocols resources",
+                      "slug": "protocols-resources",
+                      "path": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/protocols-resources",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/nature-science-journals",
+                      "label": "Nature science journals",
+                      "slug": "nature-science-journals",
+                      "path": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/nature-science-journals",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "our-research/strengths/frontier-technologies",
+              "label": "Frontier technologies",
+              "slug": "frontier-technologies",
+              "path": "our-research/strengths/frontier-technologies",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/strengths/our-place-culture-and-heritage",
+              "label": "Our place - Culture and heritage",
+              "slug": "our-place-culture-and-heritage",
+              "path": "our-research/strengths/our-place-culture-and-heritage",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/strengths/resilient-environment-and-climate-change",
+              "label": "Resilient environment and climate change",
+              "slug": "resilient-environment-and-climate-change",
+              "path": "our-research/strengths/resilient-environment-and-climate-change",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "our-research/reputation-governance",
+          "label": "Reputation governance",
+          "slug": "reputation-governance",
+          "path": "our-research/reputation-governance",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "our-research/reputation-governance/prizes",
+              "label": "Prizes",
+              "slug": "prizes",
+              "path": "our-research/reputation-governance/prizes",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/reputation-governance/rankings",
+              "label": "Rankings",
+              "slug": "rankings",
+              "path": "our-research/reputation-governance/rankings",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/reputation-governance/foreign-interference",
+              "label": "Foreign interference",
+              "slug": "foreign-interference",
+              "path": "our-research/reputation-governance/foreign-interference",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/reputation-governance/ethics-and-integrity",
+              "label": "Ethics and integrity",
+              "slug": "ethics-and-integrity",
+              "path": "our-research/reputation-governance/ethics-and-integrity",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/reputation-governance/our-experts",
+              "label": "Our experts",
+              "slug": "our-experts",
+              "path": "our-research/reputation-governance/our-experts",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "our-research/institutes-centres",
+          "label": "Institutes-centres",
+          "slug": "institutes-centres",
+          "path": "our-research/institutes-centres",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "our-research/institutes-centres/entities",
+              "label": "Entities",
+              "slug": "entities",
+              "path": "our-research/institutes-centres/entities",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "our-research/infrastructure",
+          "label": "Infrastructure",
+          "slug": "infrastructure",
+          "path": "our-research/infrastructure",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "our-research/infrastructure/animal-care-services",
+              "label": "Animal care services",
+              "slug": "animal-care-services",
+              "path": "our-research/infrastructure/animal-care-services",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "our-research/infrastructure/animal-care-services/western-australian-zebrafish-experimental-research-centre",
+                  "label": "Western Australian Zebrafish experimental research centre",
+                  "slug": "western-australian-zebrafish-experimental-research-centre",
+                  "path": "our-research/infrastructure/animal-care-services/western-australian-zebrafish-experimental-research-centre",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "our-research/infrastructure/high-performance-computing",
+              "label": "High performance computing",
+              "slug": "high-performance-computing",
+              "path": "our-research/infrastructure/high-performance-computing",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/infrastructure/x-ray-diffraction",
+              "label": "X-ray diffraction",
+              "slug": "x-ray-diffraction",
+              "path": "our-research/infrastructure/x-ray-diffraction",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "our-research/connect",
+          "label": "Connect",
+          "slug": "connect",
+          "path": "our-research/connect",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "our-research/connect/consumer-community-involvement",
+              "label": "Consumer community involvement",
+              "slug": "consumer-community-involvement",
+              "path": "our-research/connect/consumer-community-involvement",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "our-research/connect/consumer-community-involvement/specific-events",
+                  "label": "Specific events",
+                  "slug": "specific-events",
+                  "path": "our-research/connect/consumer-community-involvement/specific-events",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "our-research/connect/events",
+              "label": "Events",
+              "slug": "events",
+              "path": "our-research/connect/events",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/connect/policies-guidelines",
+              "label": "Policies-guidelines",
+              "slug": "policies-guidelines",
+              "path": "our-research/connect/policies-guidelines",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "partners-and-community",
-      "label": "Partners and community",
+      "label": "Partners and Community",
       "slug": "partners-and-community",
       "path": "partners-and-community",
       "level": 1,
-      "children": []
+      "template": "landing",
+      "children": [
+        {
+          "id": "partners-and-community/partnerships",
+          "label": "Partnerships",
+          "slug": "partnerships",
+          "path": "partners-and-community/partnerships",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "partners-and-community/partnerships/research-partnerships",
+              "label": "Research partnerships",
+              "slug": "research-partnerships",
+              "path": "partners-and-community/partnerships/research-partnerships",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "partners-and-community/partnerships/research-partnerships/research-internships",
+                  "label": "Research internships",
+                  "slug": "research-internships",
+                  "path": "partners-and-community/partnerships/research-partnerships/research-internships",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "partners-and-community/partnerships/research-partnerships/research-internships/eoi-for-research-internships",
+                      "label": "EOI for research internships",
+                      "slug": "eoi-for-research-internships",
+                      "path": "partners-and-community/partnerships/research-partnerships/research-internships/eoi-for-research-internships",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "partners-and-community/partnerships/commercialisation",
+              "label": "Commercialisation",
+              "slug": "commercialisation",
+              "path": "partners-and-community/partnerships/commercialisation",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/partnerships/professional-development",
+              "label": "Professional development",
+              "slug": "professional-development",
+              "path": "partners-and-community/partnerships/professional-development",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/partnerships/consulting-services",
+              "label": "Consulting services",
+              "slug": "consulting-services",
+              "path": "partners-and-community/partnerships/consulting-services",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/partnerships/access-student-talent",
+              "label": "Access student talent",
+              "slug": "access-student-talent",
+              "path": "partners-and-community/partnerships/access-student-talent",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "partners-and-community/community-engagement",
+          "label": "Community engagement",
+          "slug": "community-engagement",
+          "path": "partners-and-community/community-engagement",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "partners-and-community/community-engagement/specific-community-partner-pages",
+              "label": "Specific community partner pages",
+              "slug": "specific-community-partner-pages",
+              "path": "partners-and-community/community-engagement/specific-community-partner-pages",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "partners-and-community/global-engagement",
+          "label": "Global engagement",
+          "slug": "global-engagement",
+          "path": "partners-and-community/global-engagement",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "partners-and-community/global-engagement/entities",
+              "label": "Entities",
+              "slug": "entities",
+              "path": "partners-and-community/global-engagement/entities",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "partners-and-community/convocation",
+          "label": "Convocation",
+          "slug": "convocation",
+          "path": "partners-and-community/convocation",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "partners-and-community/convocation/animal-care-services",
+              "label": "Animal care services",
+              "slug": "animal-care-services",
+              "path": "partners-and-community/convocation/animal-care-services",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "partners-and-community/convocation/animal-care-services/western-australian-zebrafish-experimental-research-centre",
+                  "label": "Western Australian Zebrafish experimental research centre",
+                  "slug": "western-australian-zebrafish-experimental-research-centre",
+                  "path": "partners-and-community/convocation/animal-care-services/western-australian-zebrafish-experimental-research-centre",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "partners-and-community/convocation/high-performance-computing",
+              "label": "High performance computing",
+              "slug": "high-performance-computing",
+              "path": "partners-and-community/convocation/high-performance-computing",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/convocation/x-ray-diffraction",
+              "label": "X-ray diffraction",
+              "slug": "x-ray-diffraction",
+              "path": "partners-and-community/convocation/x-ray-diffraction",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "partners-and-community/connect",
+          "label": "Connect",
+          "slug": "connect",
+          "path": "partners-and-community/connect",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "partners-and-community/connect/consumer-community-involvement",
+              "label": "Consumer community involvement",
+              "slug": "consumer-community-involvement",
+              "path": "partners-and-community/connect/consumer-community-involvement",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "partners-and-community/connect/consumer-community-involvement/specific-events",
+                  "label": "Specific events",
+                  "slug": "specific-events",
+                  "path": "partners-and-community/connect/consumer-community-involvement/specific-events",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "partners-and-community/connect/events",
+              "label": "Events",
+              "slug": "events",
+              "path": "partners-and-community/connect/events",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/connect/policies-guidelines",
+              "label": "Policies-guidelines",
+              "slug": "policies-guidelines",
+              "path": "partners-and-community/connect/policies-guidelines",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": "about-us",
-      "label": "About us",
-      "slug": "about-us",
-      "path": "about-us",
+      "id": "about",
+      "label": "About",
+      "slug": "about",
+      "path": "about",
       "level": 1,
-      "children": []
+      "template": "landing",
+      "children": [
+        {
+          "id": "about/partnerships",
+          "label": "Partnerships",
+          "slug": "partnerships",
+          "path": "about/partnerships",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about/partnerships/research-partnerships",
+              "label": "Research partnerships",
+              "slug": "research-partnerships",
+              "path": "about/partnerships/research-partnerships",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "about/partnerships/research-partnerships/research-internships",
+                  "label": "Research internships",
+                  "slug": "research-internships",
+                  "path": "about/partnerships/research-partnerships/research-internships",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "about/partnerships/research-partnerships/research-internships/eoi-for-research-internships",
+                      "label": "EOI for research internships",
+                      "slug": "eoi-for-research-internships",
+                      "path": "about/partnerships/research-partnerships/research-internships/eoi-for-research-internships",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "about/partnerships/commercialisation",
+              "label": "Commercialisation",
+              "slug": "commercialisation",
+              "path": "about/partnerships/commercialisation",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about/partnerships/professional-development",
+              "label": "Professional development",
+              "slug": "professional-development",
+              "path": "about/partnerships/professional-development",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about/partnerships/consulting-services",
+              "label": "Consulting services",
+              "slug": "consulting-services",
+              "path": "about/partnerships/consulting-services",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about/partnerships/access-student-talent",
+              "label": "Access student talent",
+              "slug": "access-student-talent",
+              "path": "about/partnerships/access-student-talent",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about/community-engagement",
+          "label": "Community engagement",
+          "slug": "community-engagement",
+          "path": "about/community-engagement",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about/community-engagement/specific-community-partner-pages",
+              "label": "Specific community partner pages",
+              "slug": "specific-community-partner-pages",
+              "path": "about/community-engagement/specific-community-partner-pages",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about/global-engagement",
+          "label": "Global engagement",
+          "slug": "global-engagement",
+          "path": "about/global-engagement",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about/global-engagement/entities",
+              "label": "Entities",
+              "slug": "entities",
+              "path": "about/global-engagement/entities",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about/convocation",
+          "label": "Convocation",
+          "slug": "convocation",
+          "path": "about/convocation",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about/convocation/animal-care-services",
+              "label": "Animal care services",
+              "slug": "animal-care-services",
+              "path": "about/convocation/animal-care-services",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "about/convocation/animal-care-services/western-australian-zebrafish-experimental-research-centre",
+                  "label": "Western Australian Zebrafish experimental research centre",
+                  "slug": "western-australian-zebrafish-experimental-research-centre",
+                  "path": "about/convocation/animal-care-services/western-australian-zebrafish-experimental-research-centre",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "about/convocation/high-performance-computing",
+              "label": "High performance computing",
+              "slug": "high-performance-computing",
+              "path": "about/convocation/high-performance-computing",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about/convocation/x-ray-diffraction",
+              "label": "X-ray diffraction",
+              "slug": "x-ray-diffraction",
+              "path": "about/convocation/x-ray-diffraction",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about/connect",
+          "label": "Connect",
+          "slug": "connect",
+          "path": "about/connect",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about/connect/consumer-community-involvement",
+              "label": "Consumer community involvement",
+              "slug": "consumer-community-involvement",
+              "path": "about/connect/consumer-community-involvement",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "about/connect/consumer-community-involvement/specific-events",
+                  "label": "Specific events",
+                  "slug": "specific-events",
+                  "path": "about/connect/consumer-community-involvement/specific-events",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "about/connect/events",
+              "label": "Events",
+              "slug": "events",
+              "path": "about/connect/events",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about/connect/policies-guidelines",
+              "label": "Policies-guidelines",
+              "slug": "policies-guidelines",
+              "path": "about/connect/policies-guidelines",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "current-students",
@@ -257,6 +1253,7 @@
       "slug": "current-students",
       "path": "current-students",
       "level": 1,
+      "template": "landing",
       "children": []
     },
     {
@@ -265,6 +1262,7 @@
       "slug": "news",
       "path": "news",
       "level": 1,
+      "template": "landing",
       "children": []
     },
     {
@@ -273,6 +1271,7 @@
       "slug": "events",
       "path": "events",
       "level": 1,
+      "template": "landing",
       "children": []
     },
     {
@@ -281,6 +1280,7 @@
       "slug": "library",
       "path": "library",
       "level": 1,
+      "template": "landing",
       "children": []
     },
     {
@@ -289,6 +1289,7 @@
       "slug": "staff",
       "path": "staff",
       "level": 1,
+      "template": "landing",
       "children": []
     }
   ]

@@ -29,10 +29,10 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0 0 auto 0;
   z-index: 10;
+  min-height: var(--header-height);
   padding: var(--header-padding-top) var(--header-padding-x) 0;
-  pointer-events: none;            /* header is transparent; only its controls take clicks */
+  background: var(--header-bg);
 }
-.primary-nav-header > * { pointer-events: auto; }
 
 .header-bar { display: flex; align-items: flex-start; }
 
@@ -151,36 +151,101 @@ a { color: inherit; text-decoration: none; }
   font-weight: var(--type-h3-weight);
 }
 
-/* ---------- Page content (wireframe) ---------- */
-.page { position: relative; display: flex; flex-direction: column; gap: var(--placeholder-gap); }
-.placeholder { display: block; width: 100%; aspect-ratio: var(--placeholder-ratio); }
-.placeholder line, .placeholder rect { stroke: var(--placeholder-stroke); stroke-width: var(--placeholder-stroke-width); vector-effect: non-scaling-stroke; fill: none; }
+/* ---------- Page templates (wireframe) ---------- */
+.page { position: relative; }
 
-.page-heading {
-  position: absolute;
-  left: var(--page-title-left);
-  top: var(--page-title-top);
-  width: var(--page-title-width);
-  max-width: calc(100% - 2 * var(--page-title-left));
-}
+/* Placeholder: box with a cross (Figma "Component" placeholders) */
+.placeholder { display: block; width: 100%; height: auto; }
+.placeholder rect { fill: var(--placeholder-fill); }
+.placeholder rect, .placeholder line { stroke: var(--placeholder-stroke); stroke-width: var(--placeholder-stroke-width); vector-effect: non-scaling-stroke; }
+.placeholder-stack { display: flex; flex-direction: column; gap: var(--placeholder-gap); }
+
+/* Breadcrumbs (TT Norms Pro Medium 18) */
 .breadcrumb {
-  font-family: var(--font-ui);
-  font-size: var(--type-ui-size);
-  margin: 0 0 12px;
-  display: flex; flex-wrap: wrap; gap: 6px;
-  list-style: none; padding: 0;
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: var(--breadcrumb-gap-y) var(--breadcrumb-gap-x);
+  font-family: var(--font-body);
+  font-size: var(--type-h5-size); line-height: var(--type-h5-line); font-weight: var(--type-h5-weight);
+  color: var(--breadcrumb-current);
 }
-.breadcrumb li + li::before { content: '/'; margin-right: 6px; }
-.breadcrumb a { text-decoration: underline; }
+.breadcrumb li { display: flex; gap: var(--breadcrumb-gap-x); }
+.breadcrumb li + li::before { content: '›'; color: var(--breadcrumb-current); }
+.breadcrumb a { color: var(--breadcrumb-link); }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* Display title (Melun Display UWA Bold 60, uppercase) */
 .page-title {
   margin: 0;
   font-family: var(--font-display);
-  font-size: var(--type-h1-size);
-  line-height: var(--type-h1-line);
-  font-weight: var(--type-h1-weight);
+  font-size: var(--type-h1-size); line-height: var(--type-h1-line); font-weight: var(--type-h1-weight);
   text-transform: uppercase;
 }
-.page-note { font-family: var(--font-ui); font-size: var(--type-ui-size); margin-top: 16px; max-width: 46ch; }
+.page-note { font-family: var(--font-ui); font-size: var(--type-ui-size); margin: 16px 0 0; max-width: 46ch; }
+
+/* Landing template (and homepage): placeholders from the top, title over the first */
+.tpl-landing .page-heading { position: absolute; left: var(--page-gutter); top: var(--landing-title-top); width: var(--page-title-width); max-width: calc(100% - 2 * var(--page-gutter)); }
+
+/* Content template: breadcrumb + title, then placeholders */
+.tpl-content .page-intro,
+.tpl-cobranded .page-intro { padding: var(--breadcrumb-top) var(--page-gutter) 0; }
+.tpl-content .page-title { margin-top: var(--breadcrumb-to-title); width: var(--page-title-width); max-width: 100%; }
+.tpl-content .placeholder-stack { margin-top: var(--content-title-to-image); }
+
+/* Course template */
+.course-hero { position: relative; }
+.course-hero .placeholder { height: var(--course-hero-height); }
+.course-hero-content {
+  position: absolute; inset: var(--course-eyebrow-top) 0 auto 0;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+  padding: 0 var(--page-gutter);
+}
+.course-eyebrow {
+  margin: 0; font-family: var(--font-body); text-transform: uppercase;
+  font-size: var(--type-eyebrow-size); line-height: var(--type-eyebrow-line); font-weight: var(--type-eyebrow-weight);
+}
+.tpl-course .page-title { margin-top: var(--course-eyebrow-to-title); width: var(--course-title-width); max-width: 100%; }
+.course-intro {
+  margin: var(--course-title-to-intro) 0 0; width: var(--course-intro-width); max-width: 100%;
+  font-family: var(--font-body); font-size: var(--type-h4-size); line-height: var(--type-h4-line); font-weight: var(--type-h4-weight);
+}
+.course-actions { display: flex; gap: var(--course-button-gap); margin-top: var(--course-intro-to-buttons); }
+.course-button {
+  width: var(--course-button-width); height: var(--course-button-height);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-family: var(--font-body); font-size: var(--type-h4-size); line-height: var(--type-h4-line); font-weight: var(--type-h4-weight);
+}
+.course-button.enquire { background: var(--course-enquire-bg); color: var(--course-enquire-text); }
+.course-button.apply { background: var(--course-apply-bg); color: var(--course-apply-text); }
+.course-main { width: var(--course-content-width); max-width: calc(100% - 2 * var(--page-gutter)); margin: var(--course-hero-to-tabs) auto 0; }
+.course-tabs {
+  height: var(--course-tabs-height); background: var(--course-tabs-bg);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-body); font-size: var(--type-h3-size); line-height: var(--type-h3-line); font-weight: var(--type-h3-weight);
+}
+.course-body {
+  margin: var(--course-tabs-to-body) 0 0;
+  font-family: var(--font-body); font-size: var(--type-body-intro-size); line-height: var(--type-body-intro-line); font-weight: var(--type-body-intro-weight);
+}
+.course-cards { display: flex; justify-content: space-between; gap: 24px; margin-top: var(--course-body-to-cards); }
+.course-cards .col { display: flex; flex-direction: column; gap: var(--course-card-gap-y); width: var(--course-card-width); }
+.course-cards .placeholder { height: var(--course-card-height); }
+.course-cards .placeholder.short { height: var(--course-card-short-height); }
+
+/* Co-branded site template */
+.tpl-cobranded .cobranded-hero { position: relative; margin-top: calc(var(--cobranded-hero-top) - var(--breadcrumb-top) - 24px); }
+.tpl-cobranded .cobranded-hero .placeholder { height: var(--cobranded-hero-height); }
+.tpl-cobranded .placeholder.sage rect { fill: var(--cobranded-bg); }
+.cobranded-title {
+  position: absolute; left: 0; right: 0; top: var(--cobranded-title-top); margin: 0; text-align: center;
+  font-family: var(--font-cobranded);
+  font-size: var(--type-cobranded-h1-size); line-height: var(--type-cobranded-h1-line); font-weight: var(--type-cobranded-h1-weight);
+}
+.cobranded-tiles { display: flex; overflow: hidden; }
+.cobranded-tiles .placeholder { flex: none; width: var(--cobranded-tile-width); height: var(--cobranded-tile-height); }
+.tpl-cobranded .placeholder-stack { margin-top: var(--placeholder-gap); }
+
+/* Full-width placeholders keep the Figma 1440 x 808 ratio */
+.placeholder.full { aspect-ratio: 1440 / 808; }
 
 /* ---------- Password screen ---------- */
 .gate { display: none; }
@@ -207,9 +272,13 @@ html.is-locked .gate {
   .menu-panes { right: var(--panes-left); flex-direction: column; }
   .core-pane, .dynamic-pane { width: auto; min-height: 0; }
   .header-bar { flex-wrap: wrap; row-gap: 12px; }
+  .course-cards .placeholder, .course-cards .placeholder.short { height: auto; aspect-ratio: 357 / 746; }
 }
 @media (max-width: 640px) {
   .header-shortcuts { margin-left: 0; margin-right: 0; flex-basis: 100%; }
   .page-title { font-size: calc(var(--type-h1-size) * 0.6); }
+  .course-actions { flex-direction: column; gap: 12px; }
+  .course-cards { flex-direction: column; }
+  .course-cards .col { width: 100%; }
   :root { --pane-padding-left: 24px; --pane-padding-right: 24px; --pane-padding-top: 24px; --pane-padding-bottom: 24px; --panes-left: 12px; --header-padding-x: 12px; }
 }

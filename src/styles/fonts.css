@@ -31,3 +31,19 @@
     local('MelunDisplayUWA-Bold'),
     url('/uwa-nav-proto/fonts/MelunDisplayUWA-Bold.woff2') format('woff2');
 }
+
+/* Novel Pro SemiBold: co-branded site titles. No file supplied yet, so this
+   only works where it's installed locally; otherwise Crimson Pro (free, bundled)
+   stands in. To add the real font, put NovelPro-SemiBold.woff2 in /public/fonts/
+   and uncomment the url() line. */
+@font-face {
+  font-family: 'Novel Pro';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local('Novel Pro SemiBold'),
+    local('NovelPro-SemiBd');
+    /* To add the file, replace the semicolon above with a comma and add:
+       url('/uwa-nav-proto/fonts/NovelPro-SemiBold.woff2') format('woff2'); */
+}

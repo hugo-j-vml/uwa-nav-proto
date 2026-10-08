@@ -1,0 +1,17 @@
+---
+/** Content page template (Figma "Content page template"). */
+import Placeholder from '../components/Placeholder.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+interface Props { title: string; crumbs: { label: string; path: string }[] }
+const { title, crumbs } = Astro.props;
+---
+<div class="tpl-content">
+  <div class="page-intro">
+    <Breadcrumbs crumbs={crumbs} current={title} />
+    <h1 class="page-title">{title}</h1>
+  </div>
+  <div class="placeholder-stack">
+    <Placeholder full />
+    <Placeholder full />
+  </div>
+</div>

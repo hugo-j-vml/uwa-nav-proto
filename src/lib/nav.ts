@@ -7,6 +7,10 @@ export interface NavNode {
   slug: string;
   path: string;
   level: number;
+  template: 'landing' | 'content' | 'course' | 'cobranded';
+  eyebrow?: string;
+  intro?: string;
+  body?: string;
   children: NavNode[];
 }
 

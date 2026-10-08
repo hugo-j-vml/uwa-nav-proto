@@ -1,0 +1,23 @@
+---
+/** Co-branded site page template (Figma "Co-branded site page template"). */
+import Placeholder from '../components/Placeholder.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+interface Props { title: string; crumbs: { label: string; path: string }[] }
+const { title, crumbs } = Astro.props;
+---
+<div class="tpl-cobranded">
+  <div class="page-intro">
+    <Breadcrumbs crumbs={crumbs} current={title} />
+  </div>
+  <div class="cobranded-hero">
+    <Placeholder sage />
+    <h1 class="cobranded-title">{title}</h1>
+  </div>
+  <div class="cobranded-tiles">
+    <Placeholder sage />
+    <Placeholder sage />
+  </div>
+  <div class="placeholder-stack">
+    <Placeholder full />
+  </div>
+</div>

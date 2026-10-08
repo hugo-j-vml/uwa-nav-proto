@@ -1,0 +1,16 @@
+---
+/** Landing page template (Figma "Landing page template"); also used for the homepage. */
+import Placeholder from '../components/Placeholder.astro';
+interface Props { title: string; note?: string }
+const { title, note } = Astro.props;
+---
+<div class="tpl-landing">
+  <div class="placeholder-stack">
+    <Placeholder full />
+    <Placeholder full />
+  </div>
+  <div class="page-heading">
+    <h1 class="page-title">{title}</h1>
+    {note && <p class="page-note">{note}</p>}
+  </div>
+</div>

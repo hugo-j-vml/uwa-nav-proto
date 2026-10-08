@@ -18,6 +18,7 @@
   --font-display: 'Melun Display UWA', 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
   --font-body: 'TT Norms Pro', 'Helvetica Neue', Arial, sans-serif;
   --font-ui: 'Inter', 'Helvetica Neue', Arial, sans-serif;  /* header buttons, wireframe labels */
+  --font-cobranded: 'Novel Pro', 'Crimson Pro', Georgia, serif; /* co-branded site title (Crimson Pro = free stand-in) */
 
   /* ---------- Type styles (Figma text styles) ---------- */
   /* Desktop/Display Heading/H1: Melun Display UWA Bold 60 / 1.1 */
@@ -32,11 +33,29 @@
   --type-h4-size: 22px;
   --type-h4-line: 1.3;
   --type-h4-weight: 500;
+  /* Desktop/Heading/H5: TT Norms Pro Medium 18 / 1.35 (breadcrumbs) */
+  --type-h5-size: 18px;
+  --type-h5-line: 1.35;
+  --type-h5-weight: 500;
+  /* Desktop/Heading/Eyebrow: TT Norms Pro Bold 20 / 1.2, uppercase (course page) */
+  --type-eyebrow-size: 20px;
+  --type-eyebrow-line: 1.2;
+  --type-eyebrow-weight: 700;
+  /* Desktop/Body/Introduction: TT Norms Pro Regular 22 / 1.5 (course page body) */
+  --type-body-intro-size: 22px;
+  --type-body-intro-line: 1.5;
+  --type-body-intro-weight: 400;
+  /* Co-branded Desktop/Heading/H1: Novel Pro SemiBold 56 / 1.2 */
+  --type-cobranded-h1-size: 56px;
+  --type-cobranded-h1-line: 1.2;
+  --type-cobranded-h1-weight: 600;
   /* Header buttons: Inter Regular 16 */
   --type-ui-size: 16px;
   --type-ui-weight: 400;
 
   /* ---------- Header ---------- */
+  --header-height: 128px;
+  --header-bg: #c0c0c0;                /* grey band behind the header (raw hex in Figma) */
   --header-padding-top: 20px;
   --header-padding-x: 27px;
   --logo-width: 135px;
@@ -77,15 +96,62 @@
   --item-selected-bleed-x: 10px;       /* how far the black block extends beyond the text, left and right */
   --item-selected-bleed-y: 2px;        /* ...and above and below */
 
-  /* ---------- Page (wireframe content) ---------- */
+  /* ---------- Page templates (wireframe content) ---------- */
   --page-bg: var(--colour-ironbark-20);
-  --page-title-left: 50px;
-  --page-title-top: 227px;
+  --page-gutter: 50px;                 /* left inset of breadcrumbs and titles */
   --page-title-width: 610px;
   --placeholder-stroke: var(--colour-black);
-  --placeholder-stroke-width: 2.5px;
-  --placeholder-ratio: 1440 / 808;
-  --placeholder-gap: 60px;
+  --placeholder-stroke-width: 4px;     /* Figma stroke is 4 (half is clipped at the box edges) */
+  --placeholder-fill: var(--colour-ironbark-20);
+  --placeholder-gap: 60px;             /* space between stacked full-width placeholders */
+
+  /* Landing template (also the homepage) */
+  --landing-title-top: 227px;
+
+  /* Breadcrumbs (content + co-branded templates) */
+  --breadcrumb-top: 165px;
+  --breadcrumb-gap-x: 12px;
+  --breadcrumb-gap-y: 8px;
+  --breadcrumb-link: var(--colour-vivid-blue);
+  --breadcrumb-current: var(--colour-black);
+  --breadcrumb-to-title: 38px;         /* breadcrumb top 165 + height 24 -> title top 227 */
+
+  /* Content template */
+  --content-title-to-image: 55px;      /* gap between the title block and the first placeholder */
+
+  /* Course template */
+  --course-hero-height: 808px;
+  --course-eyebrow-top: 221px;
+  --course-title-width: 1113px;
+  --course-intro-width: 708px;
+  --course-eyebrow-to-title: 19px;
+  --course-title-to-intro: 19px;
+  --course-intro-to-buttons: 57px;
+  --course-button-width: 260px;
+  --course-button-height: 80px;
+  --course-button-gap: 72px;
+  --course-enquire-bg: #b9b9b9;
+  --course-enquire-text: var(--colour-black);
+  --course-apply-bg: #404040;
+  --course-apply-text: var(--colour-white);
+  --course-content-width: 1280px;
+  --course-hero-to-tabs: 57px;
+  --course-tabs-height: 80px;
+  --course-tabs-bg: #bebebe;
+  --course-tabs-to-body: 52px;
+  --course-body-to-cards: 62px;
+  --course-card-width: 357px;
+  --course-card-height: 746px;
+  --course-card-short-height: 649px;   /* first card in the middle column */
+  --course-card-gap-y: 52px;
+
+  /* Co-branded site template */
+  --cobranded-bg: #aab7af;             /* sage placeholder fill */
+  --cobranded-hero-top: 227px;
+  --cobranded-hero-height: 490px;
+  --cobranded-title-top: 51px;         /* from top of the hero */
+  --cobranded-tile-width: 937px;
+  --cobranded-tile-height: 590px;
 
   /* ---------- Breakpoints (placeholders until tablet/mobile designs exist) ---------- */
   /* CSS can't use variables inside @media, so these are for reference;

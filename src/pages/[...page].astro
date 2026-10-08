@@ -1,23 +1,35 @@
 ---
-/** One page per sitemap node, plus stand-in pages for header shortcuts not in the sitemap. */
+/**
+ * One page per sitemap item, rendered with the template set in the sitemap CSV
+ * (landing / content / course / cobranded), plus stand-in landing pages for
+ * header shortcuts that aren't in the sitemap.
+ */
 import Base from '../layouts/Base.astro';
-import PageTemplate from '../components/PageTemplate.astro';
-import { flatten, ancestors, standalonePages } from '../lib/nav';
+import Landing from '../templates/Landing.astro';
+import Content from '../templates/Content.astro';
+import Course from '../templates/Course.astro';
+import CoBranded from '../templates/CoBranded.astro';
+import { flatten, ancestors, standalonePages, type NavNode } from '../lib/nav';
 
 export function getStaticPaths() {
   const fromSitemap = flatten().map(n => ({
     params: { page: n.path },
-    props: { title: n.label, crumbs: ancestors(n.path).map(a => ({ label: a.label, path: a.path })), note: undefined as string | undefined },
+    props: { node: n as NavNode | undefined, title: n.label, note: undefined as string | undefined },
   }));
   const standalone = standalonePages().map(s => ({
     params: { page: s.path },
-    props: { title: s.label, crumbs: [], note: 'Stand-in landing page: this header shortcut is not in the sitemap yet.' },
+    props: { node: undefined, title: s.label, note: 'Stand-in landing page: this header shortcut is not in the sitemap yet.' },
   }));
   return [...fromSitemap, ...standalone];
 }
 
-const { title, crumbs, note } = Astro.props;
+const { node, title, note } = Astro.props;
+const template = node?.template ?? 'landing';
+const crumbs = node ? ancestors(node.path).map(a => ({ label: a.label, path: a.path })) : [];
 ---
 <Base title={title}>
-  <PageTemplate title={title} crumbs={crumbs} note={note} />
+  {template === 'landing' && <Landing title={title} note={note} />}
+  {template === 'content' && <Content title={title} crumbs={crumbs} />}
+  {template === 'course' && <Course title={title} eyebrow={node?.eyebrow} intro={node?.intro} body={node?.body} />}
+  {template === 'cobranded' && <CoBranded title={title} crumbs={crumbs} />}
 </Base>

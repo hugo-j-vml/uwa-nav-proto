@@ -1,0 +1,13 @@
+---
+/** Breadcrumbs (Figma "Breadcrumbs"): UWA › ancestors › current page (not a link). */
+import { href } from '../lib/nav';
+interface Props { crumbs: { label: string; path: string }[]; current: string }
+const { crumbs, current } = Astro.props;
+---
+<nav aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li><a href={href('')}>UWA</a></li>
+    {crumbs.map(c => <li><a href={href(c.path)}>{c.label}</a></li>)}
+    <li aria-current="page">{current}</li>
+  </ol>
+</nav>
