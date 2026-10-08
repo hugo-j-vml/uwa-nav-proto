@@ -1,0 +1,215 @@
+/* ==========================================================================
+   COMPONENT STYLES
+   Layout and structure only: values come from tokens.css.
+   Class names follow the Figma layer names where possible.
+   ========================================================================== */
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--page-bg);
+  color: var(--colour-black);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; text-align: inherit; }
+a { color: inherit; text-decoration: none; }
+:focus-visible { outline: 3px solid var(--colour-vivid-blue); outline-offset: 2px; }
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+.site { position: relative; overflow-x: clip; }
+
+/* ---------- 3.1 primary nav header ---------- */
+.primary-nav-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 10;
+  padding: var(--header-padding-top) var(--header-padding-x) 0;
+  pointer-events: none;            /* header is transparent; only its controls take clicks */
+}
+.primary-nav-header > * { pointer-events: auto; }
+
+.header-bar { display: flex; align-items: flex-start; }
+
+.logo {
+  flex: none;
+  width: var(--logo-width);
+  height: var(--logo-height);
+  background: var(--colour-white);
+  display: flex; align-items: center; justify-content: center;
+  text-align: center;
+  font-family: var(--font-ui);
+  font-size: var(--type-ui-size);
+  line-height: 1.2;
+}
+.logo span { width: 4ch; }
+
+.header-controls,
+.header-shortcuts {
+  display: flex;
+  gap: var(--header-button-gap);
+  margin-top: var(--header-controls-offset-top);
+}
+.header-controls { margin-left: var(--logo-to-menu-gap); }
+.header-shortcuts { margin-left: auto; margin-right: var(--shortcuts-margin-right); }
+
+.menu-button,
+.search-button,
+.shortcut-button {
+  height: var(--button-height);
+  background: var(--colour-white);
+  color: var(--colour-black);
+  font-family: var(--font-ui);
+  font-size: var(--type-ui-size);
+  font-weight: var(--type-ui-weight);
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.menu-button {
+  width: var(--menu-button-width);
+  padding-left: var(--menu-button-padding-left);
+  justify-content: flex-start;
+}
+.menu-button svg { width: var(--menu-icon-size); height: var(--menu-icon-size); flex: none; }
+.menu-button .menu-button-label { flex: 1; text-align: center; }
+.menu-button[aria-expanded='true'] {
+  background: var(--colour-ironbark-80);
+  color: var(--colour-white);
+}
+.search-button { width: var(--search-button-size); }
+.search-button svg { width: var(--search-button-size); height: var(--search-button-size); }
+.shortcut-button { width: var(--shortcut-button-width); }
+
+/* ---------- Menu panes ---------- */
+.menu-panes {
+  position: absolute;
+  top: var(--panes-top);
+  left: var(--panes-left);
+  display: flex;
+  align-items: stretch;
+}
+.menu-panes[hidden] { display: none; }
+
+.pane {
+  min-height: var(--pane-min-height);
+  padding: var(--pane-padding-top) var(--pane-padding-right) var(--pane-padding-bottom) var(--pane-padding-left);
+}
+.core-pane {
+  width: var(--core-pane-width);
+  background: var(--colour-ironbark-80);
+  color: var(--colour-white);
+  position: relative; z-index: 2;
+}
+.dynamic-pane {
+  width: var(--dynamic-pane-width);
+  background: var(--colour-dynamic-pane);
+  color: var(--colour-black);
+  position: relative; z-index: 1;
+}
+.dynamic-pane[hidden] { display: none; }
+
+.menu-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--item-gap); }
+
+/* A menu item: the whole row (label + space + arrow) is one click target */
+.menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: calc(100% - var(--item-indent) * var(--depth, 0));
+  margin-left: calc(var(--item-indent) * var(--depth, 0));
+  font-family: var(--font-body);
+  font-size: var(--type-h4-size);
+  line-height: var(--type-h4-line);
+  font-weight: var(--type-h4-weight);
+  color: inherit;
+  position: relative;
+}
+.menu-item-label { max-width: var(--item-label-max-width); }
+.menu-item-arrow { width: var(--item-arrow-size); height: var(--item-arrow-size); flex: none; color: var(--colour-vivid-blue); }
+
+/* Selected item: contrast reversal. The black block bleeds outside the row
+   so the text doesn't shift when an item becomes selected. */
+.menu-item.is-selected {
+  background: var(--item-selected-bg);
+  color: var(--item-selected-text);
+  box-shadow:
+    0 0 0 var(--item-selected-bleed-y) var(--item-selected-bg),
+    var(--item-selected-bleed-x) 0 0 var(--item-selected-bleed-y) var(--item-selected-bg),
+    calc(-1 * var(--item-selected-bleed-x)) 0 0 var(--item-selected-bleed-y) var(--item-selected-bg);
+}
+.menu-item.is-selected .menu-item-arrow { color: var(--item-selected-arrow); }
+
+.dynamic-heading {
+  min-height: var(--dynamic-heading-height);
+  font-size: var(--type-h3-size);
+  line-height: var(--type-h3-line);
+  font-weight: var(--type-h3-weight);
+}
+
+/* ---------- Page content (wireframe) ---------- */
+.page { position: relative; display: flex; flex-direction: column; gap: var(--placeholder-gap); }
+.placeholder { display: block; width: 100%; aspect-ratio: var(--placeholder-ratio); }
+.placeholder line, .placeholder rect { stroke: var(--placeholder-stroke); stroke-width: var(--placeholder-stroke-width); vector-effect: non-scaling-stroke; fill: none; }
+
+.page-heading {
+  position: absolute;
+  left: var(--page-title-left);
+  top: var(--page-title-top);
+  width: var(--page-title-width);
+  max-width: calc(100% - 2 * var(--page-title-left));
+}
+.breadcrumb {
+  font-family: var(--font-ui);
+  font-size: var(--type-ui-size);
+  margin: 0 0 12px;
+  display: flex; flex-wrap: wrap; gap: 6px;
+  list-style: none; padding: 0;
+}
+.breadcrumb li + li::before { content: '/'; margin-right: 6px; }
+.breadcrumb a { text-decoration: underline; }
+.page-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--type-h1-size);
+  line-height: var(--type-h1-line);
+  font-weight: var(--type-h1-weight);
+  text-transform: uppercase;
+}
+.page-note { font-family: var(--font-ui); font-size: var(--type-ui-size); margin-top: 16px; max-width: 46ch; }
+
+/* ---------- Password screen ---------- */
+.gate { display: none; }
+html.is-locked .site { display: none; }
+html.is-locked .gate {
+  display: flex; min-height: 100vh; align-items: center; justify-content: center; padding: 24px;
+}
+.gate form {
+  background: var(--colour-white);
+  padding: 32px; width: min(100%, 380px);
+  display: flex; flex-direction: column; gap: 12px;
+  font-family: var(--font-ui);
+}
+.gate h1 { font-family: var(--font-body); font-weight: 500; font-size: 22px; margin: 0; }
+.gate p { margin: 0; font-size: 14px; }
+.gate input { font: inherit; padding: 8px 10px; border: 1px solid var(--colour-ironbark-80); }
+.gate button { background: var(--colour-black); color: var(--colour-white); padding: 10px; text-align: center; }
+.gate .gate-error { color: #b00020; min-height: 1.2em; }
+
+/* ---------- Smaller screens (interim, until tablet/mobile designs exist) ----------
+   Keeps the desktop system usable on narrow screens without inventing a
+   mobile design: panes stack and fill the width, header controls wrap. */
+@media (max-width: 1024px) {
+  .menu-panes { right: var(--panes-left); flex-direction: column; }
+  .core-pane, .dynamic-pane { width: auto; min-height: 0; }
+  .header-bar { flex-wrap: wrap; row-gap: 12px; }
+}
+@media (max-width: 640px) {
+  .header-shortcuts { margin-left: 0; margin-right: 0; flex-basis: 100%; }
+  .page-title { font-size: calc(var(--type-h1-size) * 0.6); }
+  :root { --pane-padding-left: 24px; --pane-padding-right: 24px; --pane-padding-top: 24px; --pane-padding-bottom: 24px; --panes-left: 12px; --header-padding-x: 12px; }
+}

@@ -1,0 +1,52 @@
+---
+/**
+ * 3.1 primary nav header (Figma component).
+ * Logo, Menu button, Search button, header shortcuts, and the menu panes:
+ *   - 3.1 L1 core pane     (grey; top-level items, plus the open path nested inline)
+ *   - 3.1 Ln dynamic pane  (light; children of the selected item)
+ * The panes are drawn by src/scripts/menu.ts from the sitemap data embedded below.
+ */
+import Icon from './Icons.astro';
+import { nodes, shortcuts, href, base } from '../lib/nav';
+
+// Compact tree for the client: [label, path, children[]]
+type Compact = { l: string; p: string; c: Compact[] };
+const compact = (list: typeof nodes): Compact[] => list.map(n => ({ l: n.label, p: n.path, c: compact(n.children) }));
+const data = JSON.stringify({ base, tree: compact(nodes) }).replace(/</g, '\\u003c');
+---
+<header class="primary-nav-header" data-figma="3.1 primary nav header">
+  <div class="header-bar">
+    <a class="logo" href={href('')} aria-label="UWA home"><span>UWA Logo</span></a>
+
+    <div class="header-controls">
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-panes" data-menu-toggle>
+        <Icon name="menu" />
+        <span class="menu-button-label">Menu</span>
+      </button>
+      <!-- Panes sit straight after the Menu button so keyboard focus moves into them next -->
+      <nav id="menu-panes" class="menu-panes" aria-label="Main menu" hidden>
+        <div class="pane core-pane" data-figma="3.1 L1 core pane">
+          <ul class="menu-list" data-core-list></ul>
+        </div>
+        <div class="pane dynamic-pane" data-figma="3.1 dynamic pane" hidden>
+          <ul class="menu-list" data-dynamic-list></ul>
+        </div>
+      </nav>
+      <button class="search-button" type="button" aria-label="Search (not available in this prototype)" data-search>
+        <Icon name="search" />
+      </button>
+    </div>
+
+    <nav class="header-shortcuts" aria-label="Shortcuts">
+      {shortcuts.map(s => <a class="shortcut-button" href={href(s.path)}>{s.label}</a>)}
+    </nav>
+  </div>
+
+
+  <template data-arrow><Icon name="arrow" /></template>
+  <script type="application/json" data-nav-data set:html={data}></script>
+</header>
+
+<script>
+  import '../scripts/menu.ts';
+</script>

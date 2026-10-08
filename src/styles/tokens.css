@@ -1,0 +1,100 @@
+/* ==========================================================================
+   DESIGN TOKENS: edit these to retune the prototype.
+   Every tunable value lives here. Components only reference these variables.
+   Starting values come from the Figma file "THEUVP0058 – IA – Nav Refresh",
+   section "Core menu opens with submenu journey" (desktop, 1440px frames).
+   ========================================================================== */
+
+:root {
+  /* ---------- Colour (Figma variables) ---------- */
+  --colour-black: #0a0a0a;          /* Primary/Black */
+  --colour-white: #ffffff;          /* Primary/White */
+  --colour-vivid-blue: #0032ff;     /* Primary/Vivid Blue (menu arrows) */
+  --colour-ironbark-20: #e0e1e0;    /* Secondary/Neutrals/Ironbark 20 (page background) */
+  --colour-ironbark-80: #848585;    /* Secondary/Neutrals/Ironbark 80 (core pane, open menu button) */
+  --colour-dynamic-pane: #efeded;   /* Dynamic pane background (raw hex in Figma, no variable) */
+
+  /* ---------- Typefaces ---------- */
+  --font-display: 'Melun Display UWA', 'Arial Black', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'TT Norms Pro', 'Helvetica Neue', Arial, sans-serif;
+  --font-ui: 'Inter', 'Helvetica Neue', Arial, sans-serif;  /* header buttons, wireframe labels */
+
+  /* ---------- Type styles (Figma text styles) ---------- */
+  /* Desktop/Display Heading/H1: Melun Display UWA Bold 60 / 1.1 */
+  --type-h1-size: 60px;
+  --type-h1-line: 1.1;
+  --type-h1-weight: 700;
+  /* Desktop/Heading/H3: TT Norms Pro Medium 28 / 1.3 (dynamic pane heading) */
+  --type-h3-size: 28px;
+  --type-h3-line: 1.3;
+  --type-h3-weight: 500;
+  /* Desktop/Heading/H4: TT Norms Pro Medium 22 / 1.3 (menu items) */
+  --type-h4-size: 22px;
+  --type-h4-line: 1.3;
+  --type-h4-weight: 500;
+  /* Header buttons: Inter Regular 16 */
+  --type-ui-size: 16px;
+  --type-ui-weight: 400;
+
+  /* ---------- Header ---------- */
+  --header-padding-top: 20px;
+  --header-padding-x: 27px;
+  --logo-width: 135px;
+  --logo-height: 87px;
+  --header-controls-offset-top: 26px;  /* menu + shortcut buttons sit lower than the logo */
+  --logo-to-menu-gap: 43px;            /* logo right edge to Menu button */
+  --header-button-gap: 12px;           /* between Menu/Search, and between shortcuts */
+  --shortcuts-margin-right: 19px;      /* extra inset of shortcut buttons from the right */
+  --button-height: 36px;
+  --menu-button-width: 116px;
+  --menu-button-padding-left: 9px;
+  --menu-icon-size: 24px;
+  --search-button-size: 36px;
+  --shortcut-button-width: 120px;
+
+  /* ---------- Menu panes ---------- */
+  --panes-top: 131px;                  /* distance from top of page to top of panes */
+  --panes-left: 27px;
+  --core-pane-width: 483px;
+  --dynamic-pane-width: 481px;
+  --pane-min-height: 501px;
+  --pane-padding-top: 50px;
+  --pane-padding-bottom: 50px;
+  --pane-padding-left: 57px;
+  --pane-padding-right: 56px;
+
+  /* ---------- Menu items ---------- */
+  --item-gap: 8px;                     /* vertical space between items */
+  --item-arrow-size: 24px;
+  --item-label-max-width: 330px;       /* label wraps beyond this */
+  --item-indent: 18px;                 /* indent per nesting level in the core pane */
+  --dynamic-heading-height: 45px;      /* heading row in the dynamic pane */
+
+  /* ---------- Selected item (contrast reversal) ---------- */
+  --item-selected-bg: var(--colour-black);
+  --item-selected-text: var(--colour-white);
+  --item-selected-arrow: var(--colour-vivid-blue);
+  --item-selected-bleed-x: 10px;       /* how far the black block extends beyond the text, left and right */
+  --item-selected-bleed-y: 2px;        /* ...and above and below */
+
+  /* ---------- Page (wireframe content) ---------- */
+  --page-bg: var(--colour-ironbark-20);
+  --page-title-left: 50px;
+  --page-title-top: 227px;
+  --page-title-width: 610px;
+  --placeholder-stroke: var(--colour-black);
+  --placeholder-stroke-width: 2.5px;
+  --placeholder-ratio: 1440 / 808;
+  --placeholder-gap: 60px;
+
+  /* ---------- Breakpoints (placeholders until tablet/mobile designs exist) ---------- */
+  /* CSS can't use variables inside @media, so these are for reference;
+     the matching @media rules are in components.css. */
+  --bp-tablet: 1024px;
+  --bp-mobile: 640px;
+
+  /* ---------- Motion (unused in v1, all state changes are instant) ---------- */
+  --motion-duration-submenu: 0ms;
+  --motion-duration-core: 0ms;
+  --motion-easing: ease;
+}

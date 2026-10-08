@@ -1,0 +1,23 @@
+---
+/** One page per sitemap node, plus stand-in pages for header shortcuts not in the sitemap. */
+import Base from '../layouts/Base.astro';
+import PageTemplate from '../components/PageTemplate.astro';
+import { flatten, ancestors, standalonePages } from '../lib/nav';
+
+export function getStaticPaths() {
+  const fromSitemap = flatten().map(n => ({
+    params: { page: n.path },
+    props: { title: n.label, crumbs: ancestors(n.path).map(a => ({ label: a.label, path: a.path })), note: undefined as string | undefined },
+  }));
+  const standalone = standalonePages().map(s => ({
+    params: { page: s.path },
+    props: { title: s.label, crumbs: [], note: 'Stand-in landing page: this header shortcut is not in the sitemap yet.' },
+  }));
+  return [...fromSitemap, ...standalone];
+}
+
+const { title, crumbs, note } = Astro.props;
+---
+<Base title={title}>
+  <PageTemplate title={title} crumbs={crumbs} note={note} />
+</Base>

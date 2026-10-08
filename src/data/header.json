@@ -1,0 +1,8 @@
+{
+  "_comment": "Header shortcut buttons (top right). 'path' is the page they link to. If a path is not in the sitemap, a stand-in landing page is generated for it.",
+  "shortcuts": [
+    { "label": "Study", "path": "study" },
+    { "label": "Impact", "path": "impact" },
+    { "label": "Research", "path": "research" }
+  ]
+}

@@ -1,0 +1,295 @@
+{
+  "generated": "2026-10-08T07:21:10.595Z",
+  "source": "data/sitemap.csv",
+  "columns": [
+    "L1",
+    "L2",
+    "L3",
+    "L4"
+  ],
+  "nodes": [
+    {
+      "id": "study",
+      "label": "Study",
+      "slug": "study",
+      "path": "study",
+      "level": 1,
+      "children": [
+        {
+          "id": "study/explore-courses",
+          "label": "Explore courses",
+          "slug": "explore-courses",
+          "path": "study/explore-courses",
+          "level": 2,
+          "children": [
+            {
+              "id": "study/explore-courses/explore-all-courses",
+              "label": "Explore all courses",
+              "slug": "explore-all-courses",
+              "path": "study/explore-courses/explore-all-courses",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "study/explore-courses/find-a-course",
+              "label": "Find a course",
+              "slug": "find-a-course",
+              "path": "study/explore-courses/find-a-course",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "study/explore-courses/study-areas",
+              "label": "Study areas",
+              "slug": "study-areas",
+              "path": "study/explore-courses/study-areas",
+              "level": 3,
+              "children": [
+                {
+                  "id": "study/explore-courses/study-areas/architecture-and-design",
+                  "label": "Architecture and Design",
+                  "slug": "architecture-and-design",
+                  "path": "study/explore-courses/study-areas/architecture-and-design",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "study/explore-courses/study-areas/business-and-commerce",
+                  "label": "Business and Commerce",
+                  "slug": "business-and-commerce",
+                  "path": "study/explore-courses/study-areas/business-and-commerce",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "study/explore-courses/study-areas/data-and-computer-science",
+                  "label": "Data and Computer Science",
+                  "slug": "data-and-computer-science",
+                  "path": "study/explore-courses/study-areas/data-and-computer-science",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "study/explore-courses/study-areas/education",
+                  "label": "Education",
+                  "slug": "education",
+                  "path": "study/explore-courses/study-areas/education",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "study/explore-courses/study-areas/engineering",
+                  "label": "Engineering",
+                  "slug": "engineering",
+                  "path": "study/explore-courses/study-areas/engineering",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "study/explore-courses/study-areas/health-and-biomedical-sciences",
+                  "label": "Health and Biomedical Sciences",
+                  "slug": "health-and-biomedical-sciences",
+                  "path": "study/explore-courses/study-areas/health-and-biomedical-sciences",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "study/explore-courses/study-areas/humanities-and-social-sciences",
+                  "label": "Humanities and Social Sciences",
+                  "slug": "humanities-and-social-sciences",
+                  "path": "study/explore-courses/study-areas/humanities-and-social-sciences",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "study/explore-courses/study-areas/law",
+                  "label": "Law",
+                  "slug": "law",
+                  "path": "study/explore-courses/study-areas/law",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "study/explore-courses/study-areas/music-and-fine-arts",
+                  "label": "Music and Fine Arts",
+                  "slug": "music-and-fine-arts",
+                  "path": "study/explore-courses/study-areas/music-and-fine-arts",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "study/explore-courses/study-areas/natural-and-physical-sciences",
+                  "label": "Natural and Physical Sciences",
+                  "slug": "natural-and-physical-sciences",
+                  "path": "study/explore-courses/study-areas/natural-and-physical-sciences",
+                  "level": 4,
+                  "children": []
+                },
+                {
+                  "id": "study/explore-courses/study-areas/psychology",
+                  "label": "Psychology",
+                  "slug": "psychology",
+                  "path": "study/explore-courses/study-areas/psychology",
+                  "level": 4,
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "study/explore-courses/undergraduate-courses",
+              "label": "Undergraduate courses",
+              "slug": "undergraduate-courses",
+              "path": "study/explore-courses/undergraduate-courses",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "study/explore-courses/postgraduate-courses",
+              "label": "Postgraduate courses",
+              "slug": "postgraduate-courses",
+              "path": "study/explore-courses/postgraduate-courses",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "study/explore-courses/higher-degree-by-research",
+              "label": "Higher Degree by Research",
+              "slug": "higher-degree-by-research",
+              "path": "study/explore-courses/higher-degree-by-research",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "study/explore-courses/assured-pathways",
+              "label": "Assured Pathways",
+              "slug": "assured-pathways",
+              "path": "study/explore-courses/assured-pathways",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "study/explore-courses/short-courses",
+              "label": "Short courses",
+              "slug": "short-courses",
+              "path": "study/explore-courses/short-courses",
+              "level": 3,
+              "children": []
+            },
+            {
+              "id": "study/explore-courses/our-courses-explained",
+              "label": "Our courses explained",
+              "slug": "our-courses-explained",
+              "path": "study/explore-courses/our-courses-explained",
+              "level": 3,
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "study/discover-uwa",
+          "label": "Discover UWA",
+          "slug": "discover-uwa",
+          "path": "study/discover-uwa",
+          "level": 2,
+          "children": []
+        },
+        {
+          "id": "study/how-to-apply",
+          "label": "How to apply",
+          "slug": "how-to-apply",
+          "path": "study/how-to-apply",
+          "level": 2,
+          "children": []
+        },
+        {
+          "id": "study/scholarships-and-fees",
+          "label": "Scholarships and fees",
+          "slug": "scholarships-and-fees",
+          "path": "study/scholarships-and-fees",
+          "level": 2,
+          "children": []
+        },
+        {
+          "id": "study/support-information",
+          "label": "Support information",
+          "slug": "support-information",
+          "path": "study/support-information",
+          "level": 2,
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "life-at-uwa",
+      "label": "Life at UWA",
+      "slug": "life-at-uwa",
+      "path": "life-at-uwa",
+      "level": 1,
+      "children": []
+    },
+    {
+      "id": "our-research",
+      "label": "Our research",
+      "slug": "our-research",
+      "path": "our-research",
+      "level": 1,
+      "children": []
+    },
+    {
+      "id": "partners-and-community",
+      "label": "Partners and community",
+      "slug": "partners-and-community",
+      "path": "partners-and-community",
+      "level": 1,
+      "children": []
+    },
+    {
+      "id": "about-us",
+      "label": "About us",
+      "slug": "about-us",
+      "path": "about-us",
+      "level": 1,
+      "children": []
+    },
+    {
+      "id": "current-students",
+      "label": "Current students",
+      "slug": "current-students",
+      "path": "current-students",
+      "level": 1,
+      "children": []
+    },
+    {
+      "id": "news",
+      "label": "News",
+      "slug": "news",
+      "path": "news",
+      "level": 1,
+      "children": []
+    },
+    {
+      "id": "events",
+      "label": "Events",
+      "slug": "events",
+      "path": "events",
+      "level": 1,
+      "children": []
+    },
+    {
+      "id": "library",
+      "label": "Library",
+      "slug": "library",
+      "path": "library",
+      "level": 1,
+      "children": []
+    },
+    {
+      "id": "staff",
+      "label": "Staff",
+      "slug": "staff",
+      "path": "staff",
+      "level": 1,
+      "children": []
+    }
+  ]
+}

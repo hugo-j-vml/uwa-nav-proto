@@ -1,0 +1,18 @@
+---
+/**
+ * Icons exported as SVG from the Figma file (THEUVP0058 – IA – Nav Refresh).
+ * Paths are unchanged from the Figma export. The hamburger is exported in black
+ * (closed) and white (open); here it uses currentColor so one icon covers both.
+ */
+interface Props { name: 'menu' | 'search' | 'arrow' }
+const { name } = Astro.props;
+---
+{name === 'menu' && (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path d="M2 5V7H22V5H2ZM2 11V13H22V11H2ZM2 17V19H22V17H2Z" fill="currentColor"/></svg>
+)}
+{name === 'search' && (
+  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M25.4341 26C25.3028 26 25.1785 25.9516 25.0748 25.8687L19.4995 20.5699L19.3406 20.6459C18.3319 21.3782 17.1367 21.7651 15.8862 21.7651C12.6391 21.772 10 19.133 10 15.886C10 12.639 12.6391 10 15.8862 10C19.1333 10 21.7725 12.639 21.7725 15.886C21.7725 17.247 21.2958 18.5734 20.4391 19.6166L20.3147 19.7686L25.821 25.0052C26.049 25.2193 26.0628 25.5855 25.8417 25.8135C25.7312 25.9309 25.5861 25.9931 25.4272 25.9931L25.4341 26ZM15.8862 11.1468C13.2747 11.1468 11.1468 13.2746 11.1468 15.886C11.1468 18.4974 13.2747 20.6252 15.8862 20.6252C18.4977 20.6252 20.6256 18.4974 20.6256 15.886C20.6256 13.2746 18.4977 11.1468 15.8862 11.1468Z" fill="#0A0A0A"/></svg>
+)}
+{name === 'arrow' && (
+  <svg class="menu-item-arrow" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false"><path fill-rule="evenodd" clip-rule="evenodd" d="M13.7451 5.29084C13.4639 5.00966 13.0081 5.00966 12.7269 5.29084C12.4673 5.55039 12.4474 5.95879 12.667 6.24124L12.7269 6.30907L18.4172 12L12.7269 17.6908C12.4673 17.9504 12.4474 18.3588 12.667 18.6412L12.7269 18.7091C12.9864 18.9686 13.3948 18.9886 13.6773 18.769L13.7451 18.7091L19.9451 12.5091C20.2047 12.2495 20.2246 11.8411 20.005 11.5587L19.9451 11.4908L13.7451 5.29084Z" fill="currentColor"/><path d="M18.25 12.6744H4.75C4.33579 12.6744 4 12.3387 4 11.9244C4 11.5102 4.33579 11.1744 4.75 11.1744H18.25C18.6642 11.1744 19 11.5102 19 11.9244C19 12.3387 18.6642 12.6744 18.25 12.6744Z" fill="currentColor"/></svg>
+)}

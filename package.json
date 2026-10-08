@@ -1,0 +1,21 @@
+{
+  "name": "uwa-nav-proto",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "description": "UWA main navigation prototype for user testing (wireframe fidelity).",
+  "scripts": {
+    "sitemap": "node scripts/build-sitemap.mjs",
+    "dev": "node scripts/build-sitemap.mjs && astro dev",
+    "build": "node scripts/build-sitemap.mjs && astro build",
+    "preview": "astro preview",
+    "hash-password": "node scripts/hash-password.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@fontsource/inter": "5.2.8",
+    "astro": "5.18.2"
+  }
+}
