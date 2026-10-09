@@ -38,6 +38,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--header-bg);
   z-index: 1;
 }
+.primary-nav-header.is-transparent::before { background: var(--header-bg-transparent); }
 .logo, .menu-button, .search-button, .header-shortcuts { position: relative; z-index: 2; }
 
 .header-bar { display: flex; align-items: flex-start; }
@@ -143,7 +144,7 @@ a { color: inherit; text-decoration: none; }
    so the text doesn't shift when an item becomes selected. */
 /* Selected = the item whose sub-menu is showing, or the page you're on */
 .menu-item.is-selected,
-.menu-item[aria-current='page']:not(.dynamic-heading) {
+.menu-item.is-current {
   background: var(--item-selected-bg);
   color: var(--item-selected-text);
   box-shadow:
@@ -152,7 +153,7 @@ a { color: inherit; text-decoration: none; }
     calc(-1 * var(--item-selected-bleed-x)) 0 0 var(--item-selected-bleed-y) var(--item-selected-bg);
 }
 .menu-item.is-selected .menu-item-arrow,
-.menu-item[aria-current='page']:not(.dynamic-heading) .menu-item-arrow { color: var(--item-selected-arrow); }
+.menu-item.is-current .menu-item-arrow { color: var(--item-selected-arrow); }
 
 .dynamic-heading {
   min-height: var(--dynamic-heading-height);

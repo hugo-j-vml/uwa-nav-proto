@@ -27,7 +27,7 @@ const { node, title, note } = Astro.props;
 const template = node?.template ?? 'landing';
 const crumbs = node ? ancestors(node.path).map(a => ({ label: a.label, path: a.path })) : [];
 ---
-<Base title={title} currentPath={node?.path ?? ''}>
+<Base title={title} currentPath={node?.path ?? ''} transparentHeader={template === 'landing'}>
   {template === 'landing' && <Landing title={title} note={note} />}
   {template === 'content' && <Content title={title} crumbs={crumbs} />}
   {template === 'course' && <Course title={title} eyebrow={node?.eyebrow} intro={node?.intro} body={node?.body} />}

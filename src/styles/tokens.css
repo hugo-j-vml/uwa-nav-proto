@@ -56,6 +56,7 @@
   /* ---------- Header ---------- */
   --header-height: 128px;
   --header-bg: #c0c0c0;                /* grey band behind the header (raw hex in Figma) */
+  --header-bg-transparent: transparent; /* homepage and landing pages: no band, the hero shows through */
   --header-padding-top: 20px;
   --header-padding-x: 27px;
   --logo-width: 135px;

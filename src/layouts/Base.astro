@@ -9,8 +9,9 @@ import PasswordGate from '../components/PasswordGate.astro';
 import { PASSWORD_SHA256, PROTOTYPE_NAME } from '../config';
 
 /** currentPath: sitemap path of this page (e.g. 'study/study-areas'), used to open the menu at the right place */
-interface Props { title: string; currentPath?: string }
-const { title, currentPath = '' } = Astro.props;
+/** transparentHeader: no grey band behind the header (homepage and landing pages, per Figma) */
+interface Props { title: string; currentPath?: string; transparentHeader?: boolean }
+const { title, currentPath = '', transparentHeader = false } = Astro.props;
 ---
 <!doctype html>
 <html lang="en-AU">
@@ -31,7 +32,7 @@ const { title, currentPath = '' } = Astro.props;
   <body>
     <PasswordGate />
     <div class="site">
-      <PrimaryNavHeader currentPath={currentPath} />
+      <PrimaryNavHeader currentPath={currentPath} transparent={transparentHeader} />
       <main class="page">
         <slot />
       </main>

@@ -12,7 +12,8 @@
  * open, so the current section is nested and selected.
  *
  * Motion (timings in tokens.css):
- *   - the whole menu slides down from under the header band on open, and back up on close
+ *   - the whole menu slides down from the header's bottom edge on open, and back up on close
+ *     (clipped at that edge, so it also works when the header is transparent)
  *   - when the sub-menu changes, the old one retreats left under the core pane
  *     and the new one slides back out
  *   - parents nested in / removed from the core pane open up or close up smoothly
@@ -69,7 +70,7 @@ function init(header: HTMLElement) {
   }
 
   // ---------- Rendering ----------
-  function row(node: MenuNode, opts: { depth?: number; heading?: boolean } = {}): HTMLLIElement {
+  function row(node: MenuNode, opts: { depth?: number; heading?: boolean; core?: boolean } = {}): HTMLLIElement {
     const li = document.createElement('li');
     const hasChildren = node.c.length > 0 && !opts.heading;
     const el = hasChildren ? document.createElement('button') : document.createElement('a');
@@ -83,7 +84,12 @@ function init(header: HTMLElement) {
     } else {
       (el as HTMLAnchorElement).href = href(node.p);
     }
-    if (node.p === currentPath) el.setAttribute('aria-current', 'page');
+    if (node.p === currentPath) {
+      el.setAttribute('aria-current', 'page');
+      // Highlight the page you're on in the sub-menu; in the core pane only when nothing
+      // else is selected there, so the core pane never shows two black blocks
+      if (!opts.heading && (!opts.core || path.length === 0)) el.classList.add('is-current');
+    }
     const label = document.createElement('span');
     label.className = 'menu-item-label';
     label.textContent = node.l;
@@ -98,9 +104,9 @@ function init(header: HTMLElement) {
     const before = oldRows.map(li => (li.firstElementChild as HTMLElement).dataset.path!);
     coreList.replaceChildren();
     for (const top of tree) {
-      coreList.append(row(top));
+      coreList.append(row(top, { core: true }));
       if (path[0] === top.p) {
-        path.slice(1).forEach((p, i) => { const n = byPath.get(p); if (n) coreList.append(row(n, { depth: i + 1 })); });
+        path.slice(1).forEach((p, i) => { const n = byPath.get(p); if (n) coreList.append(row(n, { depth: i + 1, core: true })); });
       }
     }
     if (animate) animateRowChanges(oldRows, before);
@@ -238,11 +244,11 @@ function init(header: HTMLElement) {
       renderCore();
       await renderDynamic(false);
       panes.hidden = false;
-      await play(panes, [{ transform: 'translateY(-100%)' }, { transform: 'translateY(0)' }],
+      await play(panes, [{ transform: 'translateY(-100%)', clipPath: 'inset(100% 0 0 0)' }, { transform: 'translateY(0)', clipPath: 'inset(0 0 0 0)' }],
         '--motion-core-duration', '--motion-core-easing');
     } else {
       closing = true;
-      await play(panes, [{ transform: 'translateY(0)' }, { transform: 'translateY(-100%)' }],
+      await play(panes, [{ transform: 'translateY(0)', clipPath: 'inset(0 0 0 0)' }, { transform: 'translateY(-100%)', clipPath: 'inset(100% 0 0 0)' }],
         '--motion-core-duration', '--motion-core-easing');
       if (!closing) return; // reopened mid-close
       panes.hidden = true;

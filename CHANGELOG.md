@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.2 (9 Oct 2026)
+
+- Homepage and landing pages now have a transparent header (no grey band), matching the updated Figma landing template; the hero shows through. Content, course and co-branded pages keep the band. Token: `--header-bg-transparent`.
+- The core pane only ever shows one black block: the item you've just chosen. The page you're on is still highlighted in its sub-menu, and in the core pane only when nothing else is selected there.
+- The menu's slide down/up is now clipped at the bottom edge of the header, so it never shows through a transparent header.
+
 ## 0.4.1 (9 Oct 2026)
 
 - Removed nested rows now close up smoothly too: the row shrinks away while its text slides up and fades (same `--motion-core-item-*` tokens). When one row replaces another, both happen together.

@@ -9,15 +9,15 @@
 import Icon from './Icons.astro';
 import { nodes, shortcuts, href, base } from '../lib/nav';
 
-interface Props { currentPath?: string }
-const { currentPath = '' } = Astro.props;
+interface Props { currentPath?: string; transparent?: boolean }
+const { currentPath = '', transparent = false } = Astro.props;
 
 // Compact tree for the client: [label, path, children[]]
 type Compact = { l: string; p: string; c: Compact[] };
 const compact = (list: typeof nodes): Compact[] => list.map(n => ({ l: n.label, p: n.path, c: compact(n.children) }));
 const data = JSON.stringify({ base, tree: compact(nodes) }).replace(/</g, '\\u003c');
 ---
-<header class="primary-nav-header" data-figma="3.1 primary nav header" data-current-path={currentPath}>
+<header class:list={['primary-nav-header', { 'is-transparent': transparent }]} data-figma="3.1 primary nav header" data-current-path={currentPath}>
   <div class="header-bar">
     <a class="logo" href={href('')} aria-label="UWA home"><span>UWA Logo</span></a>
 
