@@ -293,3 +293,19 @@ html.is-locked .gate {
   .course-cards .col { width: 100%; }
   :root { --pane-padding-left: 24px; --pane-padding-right: 24px; --pane-padding-top: 24px; --pane-padding-bottom: 24px; --panes-left: 12px; --header-padding-x: 12px; }
 }
+
+/* ---------- Page transitions (cross-document view transitions) ----------
+   The browser cross-fades from one page to the next. The header has its own
+   transition name so it stays in place while the page content fades.
+   Supported in Chrome, Edge and Safari; elsewhere pages change instantly. */
+@view-transition { navigation: auto; }
+.primary-nav-header { view-transition-name: site-header; }
+::view-transition-group(*),
+::view-transition-old(*),
+::view-transition-new(*) {
+  animation-duration: var(--motion-page-duration);
+  animation-timing-function: var(--motion-page-easing);
+}
+@media (prefers-reduced-motion: reduce) {
+  @view-transition { navigation: none; }
+}

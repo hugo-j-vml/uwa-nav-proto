@@ -173,6 +173,12 @@
   --motion-core-item-duration: 300ms;
   --motion-core-item-easing: ease-out;
   --motion-core-item-offset: 12px;     /* how far the text drops in from */
+  /* Clicking a page link in the menu: the menu slides away first, then the page changes */
+  --motion-menu-exit-duration: 350ms;
+  /* Page change: old page fades out as the new one fades in (header stays put).
+     Chrome, Edge and Safari; other browsers change page instantly. */
+  --motion-page-duration: 300ms;
+  --motion-page-easing: ease;
   /* Set any duration to 0ms to switch that motion off. Motion is also off
      when the device asks for reduced motion. */
 }

@@ -19,6 +19,8 @@
  *   - parents nested in / removed from the core pane open up or close up smoothly
  *
  * Closes on: Menu button, Esc, or a click anywhere outside the menu panes.
+ * Clicking a page link in the menu slides the menu away first, then navigates;
+ * the page change itself is a cross-fade (CSS view transitions, components.css).
  * Whole rows are click targets. Items with children are <button>s that open
  * their sub-menu; items without children are links to their page.
  */
@@ -231,7 +233,7 @@ function init(header: HTMLElement) {
 
   // ---------- Open / close ----------
   let closing = false;
-  async function setOpen(next: boolean) {
+  async function setOpen(next: boolean, closeDuration = '--motion-core-duration') {
     if (next === open) return;
     open = next;
     toggle.setAttribute('aria-expanded', String(open));
@@ -249,7 +251,7 @@ function init(header: HTMLElement) {
     } else {
       closing = true;
       await play(panes, [{ transform: 'translateY(0)', clipPath: 'inset(0 0 0 0)' }, { transform: 'translateY(-100%)', clipPath: 'inset(100% 0 0 0)' }],
-        '--motion-core-duration', '--motion-core-easing');
+        closeDuration, '--motion-core-easing');
       if (!closing) return; // reopened mid-close
       panes.hidden = true;
       path = [];
@@ -284,6 +286,26 @@ function init(header: HTMLElement) {
     render(true);
     focusPath(p);
   });
+
+  // Page links in the menu: show the clicked row as selected, slide the menu
+  // away, then go to the page (the browser then cross-fades to it).
+  let leaving = false;
+  panes.addEventListener('click', async (e) => {
+    const link = (e.target as HTMLElement).closest<HTMLAnchorElement>('a.menu-item');
+    if (!link) return;
+    // Let new-tab / new-window clicks behave normally
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    if (leaving) return;
+    leaving = true;
+    const pane = link.closest('.pane');
+    pane?.querySelectorAll('.is-selected, .is-current').forEach(el => el.classList.remove('is-selected', 'is-current'));
+    link.classList.add('is-selected');
+    await setOpen(false, '--motion-menu-exit-duration');
+    window.location.href = link.href;
+  });
+  // Coming back with the browser's Back button can restore this page from cache: reset
+  window.addEventListener('pageshow', () => { leaving = false; });
 
   // Click anywhere outside the menu panes (and not on the Menu button) closes the menu
   document.addEventListener('click', (e) => {

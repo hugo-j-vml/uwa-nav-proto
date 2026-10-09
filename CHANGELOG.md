@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (9 Oct 2026)
+
+Softer page changes.
+
+- Clicking a page link in the menu now shows that row as selected, slides the menu away (350ms, `--motion-menu-exit-duration`), then goes to the page. Cmd/Ctrl-click still opens a new tab.
+- Pages cross-fade into each other (300ms, `--motion-page-duration`) while the header stays in place. Uses the browser's built-in view transitions (Chrome, Edge, Safari); other browsers change page instantly as before.
+- Both are off on devices set to reduce motion.
+
 ## 0.4.2 (9 Oct 2026)
 
 - Homepage and landing pages now have a transparent header (no grey band), matching the updated Figma landing template; the hero shows through. Content, course and co-branded pages keep the band. Token: `--header-bg-transparent`.
