@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1 (9 Oct 2026)
+
+- Removed nested rows now close up smoothly too: the row shrinks away while its text slides up and fades (same `--motion-core-item-*` tokens). When one row replaces another, both happen together.
+- Parents newly nested in the core pane no longer pop in: the row opens up so items below glide down, and its text and arrow slide down into place (300ms, ease-out, 12px; tokens `--motion-core-item-*`).
+- The page you're on is highlighted (black block, white text) wherever it appears in the menu, e.g. Accommodation in the Life at UWA sub-menu when you're on that page. Sub-menu headings are not highlighted.
+
 ## 0.4.0 (9 Oct 2026)
 
 Menu refinements.

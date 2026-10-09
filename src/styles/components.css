@@ -141,7 +141,9 @@ a { color: inherit; text-decoration: none; }
 
 /* Selected item: contrast reversal. The black block bleeds outside the row
    so the text doesn't shift when an item becomes selected. */
-.menu-item.is-selected {
+/* Selected = the item whose sub-menu is showing, or the page you're on */
+.menu-item.is-selected,
+.menu-item[aria-current='page']:not(.dynamic-heading) {
   background: var(--item-selected-bg);
   color: var(--item-selected-text);
   box-shadow:
@@ -149,7 +151,8 @@ a { color: inherit; text-decoration: none; }
     var(--item-selected-bleed-x) 0 0 var(--item-selected-bleed-y) var(--item-selected-bg),
     calc(-1 * var(--item-selected-bleed-x)) 0 0 var(--item-selected-bleed-y) var(--item-selected-bg);
 }
-.menu-item.is-selected .menu-item-arrow { color: var(--item-selected-arrow); }
+.menu-item.is-selected .menu-item-arrow,
+.menu-item[aria-current='page']:not(.dynamic-heading) .menu-item-arrow { color: var(--item-selected-arrow); }
 
 .dynamic-heading {
   min-height: var(--dynamic-heading-height);

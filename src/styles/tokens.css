@@ -168,6 +168,10 @@
   --motion-submenu-out-easing: ease-in;
   --motion-submenu-in-duration: 300ms;
   --motion-submenu-in-easing: ease-out;
+  /* Core pane: a parent newly nested under its section opens up and its text slides down into place */
+  --motion-core-item-duration: 300ms;
+  --motion-core-item-easing: ease-out;
+  --motion-core-item-offset: 12px;     /* how far the text drops in from */
   /* Set any duration to 0ms to switch that motion off. Motion is also off
      when the device asks for reduced motion. */
 }

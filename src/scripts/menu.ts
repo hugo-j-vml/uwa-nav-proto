@@ -15,6 +15,7 @@
  *   - the whole menu slides down from under the header band on open, and back up on close
  *   - when the sub-menu changes, the old one retreats left under the core pane
  *     and the new one slides back out
+ *   - parents nested in / removed from the core pane open up or close up smoothly
  *
  * Closes on: Menu button, Esc, or a click anywhere outside the menu panes.
  * Whole rows are click targets. Items with children are <button>s that open
@@ -91,7 +92,10 @@ function init(header: HTMLElement) {
     return li;
   }
 
-  function renderCore() {
+  function renderCore(animate = false) {
+    // Snapshot the rows on screen (ignoring any rows still collapsing from a previous change)
+    const oldRows = ([...coreList.children] as HTMLLIElement[]).filter(li => !li.dataset.ghost);
+    const before = oldRows.map(li => (li.firstElementChild as HTMLElement).dataset.path!);
     coreList.replaceChildren();
     for (const top of tree) {
       coreList.append(row(top));
@@ -99,6 +103,69 @@ function init(header: HTMLElement) {
         path.slice(1).forEach((p, i) => { const n = byPath.get(p); if (n) coreList.append(row(n, { depth: i + 1 })); });
       }
     }
+    if (animate) animateRowChanges(oldRows, before);
+  }
+
+  /** Clip a row while its height animates, keeping the selected block's side bleed visible. */
+  function clipRow(li: HTMLLIElement, on: boolean) {
+    li.style.overflow = on ? 'clip' : '';
+    if (on) li.style.setProperty('overflow-clip-margin', 'var(--item-selected-bleed-x)');
+    else li.style.removeProperty('overflow-clip-margin');
+  }
+
+  /**
+   * Smooth changes to the nested rows in the core pane:
+   *   - added rows open up (items below glide down) while their text and arrow slide down into place
+   *   - removed rows stay briefly as non-interactive "ghosts" that close up while their text slides up and fades
+   * When one row replaces another, the two happen together, so the list height changes smoothly.
+   */
+  function animateRowChanges(oldRows: HTMLLIElement[], before: string[]) {
+    const duration = ms('--motion-core-item-duration');
+    if (!duration) return;
+    const easing = token('--motion-core-item-easing') || 'ease-out';
+    const offset = token('--motion-core-item-offset') || '12px';
+    const gap = parseFloat(getComputedStyle(coreList).rowGap) || 0;
+    const rows = [...coreList.children] as HTMLLIElement[];
+    const pathOf = (li: HTMLLIElement) => (li.firstElementChild as HTMLElement).dataset.path!;
+    const after = new Set(rows.map(pathOf));
+    const textFrames = (dir: 1 | -1): Keyframe[] => dir === 1
+      ? [{ transform: `translateY(-${offset})`, opacity: 0 }, { transform: 'translateY(0)', opacity: 1 }]
+      : [{ transform: 'translateY(0)', opacity: 1 }, { transform: `translateY(-${offset})`, opacity: 0 }];
+
+    // Removed rows: re-insert the old row as a ghost where it was, then close it up
+    oldRows.forEach((oldLi, i) => {
+      if (after.has(before[i])) return;
+      const nextKept = before.slice(i + 1).find(p => after.has(p));
+      const anchor = nextKept ? rows.find(li => pathOf(li) === nextKept) ?? null : null;
+      const ghost = oldLi; // detached by replaceChildren, safe to reuse
+      ghost.dataset.ghost = 'true';
+      ghost.setAttribute('aria-hidden', 'true');
+      ghost.style.pointerEvents = 'none';
+      const item = ghost.firstElementChild as HTMLElement;
+      item.removeAttribute('data-path');
+      item.tabIndex = -1;
+      coreList.insertBefore(ghost, anchor);
+      const h = ghost.getBoundingClientRect().height;
+      clipRow(ghost, true);
+      for (const part of item.children as HTMLCollectionOf<HTMLElement>) {
+        part.animate(textFrames(-1), { duration, easing, fill: 'forwards' });
+      }
+      ghost.animate([{ height: `${h}px`, marginTop: '0px' }, { height: '0px', marginTop: `${-gap}px` }],
+        { duration, easing, fill: 'forwards' }).finished.then(() => ghost.remove(), () => {});
+    });
+
+    // Added rows: open up and slide the text down into place
+    rows.forEach(li => {
+      if (before.includes(pathOf(li))) return;
+      const item = li.firstElementChild as HTMLElement;
+      for (const part of item.children as HTMLCollectionOf<HTMLElement>) {
+        part.animate(textFrames(1), { duration, easing, fill: 'backwards' });
+      }
+      const h = li.getBoundingClientRect().height;
+      clipRow(li, true);
+      li.animate([{ height: '0px', marginTop: `${-gap}px` }, { height: `${h}px`, marginTop: '0px' }],
+        { duration, easing }).finished.then(() => clipRow(li, false), () => {});
+    });
   }
 
   function fillDynamic(target: string) {
@@ -138,9 +205,9 @@ function init(header: HTMLElement) {
     }
   }
 
-  function render(animateSubmenu: boolean) {
-    renderCore();
-    return renderDynamic(animateSubmenu);
+  function render(animate: boolean) {
+    renderCore(animate);
+    return renderDynamic(animate);
   }
 
   /** The open path for the page we're on: its ancestors, plus itself if it has children. */
