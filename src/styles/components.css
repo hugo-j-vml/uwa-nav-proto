@@ -31,8 +31,14 @@ a { color: inherit; text-decoration: none; }
   z-index: 10;
   min-height: var(--header-height);
   padding: var(--header-padding-top) var(--header-padding-x) 0;
-  background: var(--header-bg);
 }
+/* The grey band sits above the menu panes, so the menu slides out from under it */
+.primary-nav-header::before {
+  content: ''; position: absolute; inset: 0;
+  background: var(--header-bg);
+  z-index: 1;
+}
+.logo, .menu-button, .search-button, .header-shortcuts { position: relative; z-index: 2; }
 
 .header-bar { display: flex; align-items: flex-start; }
 
@@ -87,6 +93,7 @@ a { color: inherit; text-decoration: none; }
 /* ---------- Menu panes ---------- */
 .menu-panes {
   position: absolute;
+  z-index: 0;
   top: var(--panes-top);
   left: var(--panes-left);
   display: flex;

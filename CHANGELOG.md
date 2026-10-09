@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.4.0 (9 Oct 2026)
+
+Menu refinements.
+
+- Clicking anywhere outside the menu panes closes the menu.
+- Motion: the menu slides down from under the header band on open (500ms, ease-out) and back up on close. When the sub-menu changes, the old one retreats left under the core pane and the new one slides back out (200ms ease-in out, 300ms ease-out in). All timings are in `tokens.css`; reduced-motion devices get no animation.
+- Core pane nesting indent increased 50% (18px to 27px).
+- Menu panes now join the bottom of the header band (top 128px, was 131px).
+- Opening the menu on a page deep in the IA starts with that page's section open: its parents nested in the core pane and the nearest parent selected.
+- Selected item arrow is now white.
+
+## 0.3.1 (9 Oct 2026)
+
+- Real fonts added in `public/fonts/`: Melun Display UWA Bold (supplied as WOFF2) and TT Norms Pro Medium (converted from TTF to WOFF2).
+- TT Norms Pro Regular (course body copy) and Bold (course eyebrow) added, converted from TTF.
+
 ## 0.3.0 (8 Oct 2026)
 
 Real IA from Hugo's sitemap (replaces the stand-in built from Figma labels).

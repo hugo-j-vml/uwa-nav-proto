@@ -72,7 +72,7 @@
   --shortcut-button-width: 120px;
 
   /* ---------- Menu panes ---------- */
-  --panes-top: 131px;                  /* distance from top of page to top of panes */
+  --panes-top: var(--header-height);   /* panes join the bottom of the header band */
   --panes-left: 27px;
   --core-pane-width: 483px;
   --dynamic-pane-width: 481px;
@@ -86,13 +86,13 @@
   --item-gap: 8px;                     /* vertical space between items */
   --item-arrow-size: 24px;
   --item-label-max-width: 330px;       /* label wraps beyond this */
-  --item-indent: 18px;                 /* indent per nesting level in the core pane */
+  --item-indent: 27px;                 /* indent per nesting level in the core pane (was 18px, +50%) */
   --dynamic-heading-height: 45px;      /* heading row in the dynamic pane */
 
   /* ---------- Selected item (contrast reversal) ---------- */
   --item-selected-bg: var(--colour-black);
   --item-selected-text: var(--colour-white);
-  --item-selected-arrow: var(--colour-vivid-blue);
+  --item-selected-arrow: var(--colour-white);
   --item-selected-bleed-x: 10px;       /* how far the black block extends beyond the text, left and right */
   --item-selected-bleed-y: 2px;        /* ...and above and below */
 
@@ -159,8 +159,15 @@
   --bp-tablet: 1024px;
   --bp-mobile: 640px;
 
-  /* ---------- Motion (unused in v1, all state changes are instant) ---------- */
-  --motion-duration-submenu: 0ms;
-  --motion-duration-core: 0ms;
-  --motion-easing: ease;
+  /* ---------- Motion ---------- */
+  /* Core menu: slides down from under the header band on open, back up on close */
+  --motion-core-duration: 500ms;
+  --motion-core-easing: ease-out;
+  /* Sub-menu (dynamic pane): retreats left under the core pane, then the new one slides out */
+  --motion-submenu-out-duration: 200ms;
+  --motion-submenu-out-easing: ease-in;
+  --motion-submenu-in-duration: 300ms;
+  --motion-submenu-in-easing: ease-out;
+  /* Set any duration to 0ms to switch that motion off. Motion is also off
+     when the device asks for reduced motion. */
 }

@@ -75,9 +75,10 @@ Generate the SHA-256 hash of the new password and paste it into `PASSWORD_SHA256
 - Click only, no hover. The whole row (label, space and arrow) is the click target.
 - **Menu** opens the core pane. Clicking an item with children shows them in the dynamic pane and nests the item under its parent in the core pane.
 - Only the item whose sub-menu is showing is selected (black block, white text).
-- Clicking the selected item closes its sub-menu. **Menu** again, or **Esc**, closes everything.
+- Clicking the selected item closes its sub-menu. **Menu** again, **Esc**, or a click anywhere outside the panes closes everything.
+- Opening the menu on a page deep in the IA starts with that page's section open and its nearest parent selected.
 - The dynamic pane heading links to that section's landing page.
-- No animation yet (planned).
+- Motion: the menu slides down from under the header band; sub-menus retreat left under the core pane and slide back out. Timings are in `tokens.css`.
 
 ## Running locally (optional)
 
