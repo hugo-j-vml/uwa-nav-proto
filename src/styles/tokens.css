@@ -158,6 +158,7 @@
   /* CSS can't use variables inside @media, so these are for reference;
      the matching @media rules are in components.css. */
   --bp-tablet: 1024px;
+  --bp-hide-shortcuts: 800px;          /* header shortcuts hide below this width */
   --bp-mobile: 640px;
 
   /* ---------- Motion ---------- */

@@ -285,8 +285,11 @@ html.is-locked .gate {
   .header-bar { flex-wrap: wrap; row-gap: 12px; }
   .course-cards .placeholder, .course-cards .placeholder.short { height: auto; aspect-ratio: 357 / 746; }
 }
+/* Header shortcuts (Study / Impact / Research) hide below 800px wide */
+@media (max-width: 799.98px) {
+  .header-shortcuts { display: none; }
+}
 @media (max-width: 640px) {
-  .header-shortcuts { margin-left: 0; margin-right: 0; flex-basis: 100%; }
   .page-title { font-size: calc(var(--type-h1-size) * 0.6); }
   .course-actions { flex-direction: column; gap: 12px; }
   .course-cards { flex-direction: column; }

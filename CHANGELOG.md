@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.5.1 (12 Oct 2026)
+
+- Header shortcuts (Study / Impact / Research) are hidden when the window is under 800px wide.
+
 ## 0.5.0 (9 Oct 2026)
 
 Softer page changes.
