@@ -564,7 +564,7 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 /* Hidden panel on variant pages (Shift+O): same dark look as the index page */
 .options-panel {
   position: fixed; right: 16px; bottom: 16px; z-index: 100;
-  width: min(var(--options-panel-width), calc(100vw - 32px)); box-sizing: border-box;
+  width: max-content; max-width: calc(100vw - 32px); box-sizing: border-box; /* wide enough for the choices in one row */
   padding: 20px 22px; background: var(--index-bg); color: var(--index-text);
   font-family: var(--index-font); font-weight: var(--index-weight-copy);
   box-shadow: 0 12px 40px rgb(0 0 0 / 0.35);

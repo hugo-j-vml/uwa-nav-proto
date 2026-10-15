@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.22.0 (15 Oct 2026)
+
+- Co-brand menu option 7 in B: the site's name is no longer an item in the grey core pane. When the menu opens, the white pane shows the site's name (a link to its home) above its sections. Choosing a top-level item shows that section instead; closing it again brings the site back. A, C, D and E are unchanged.
+- Shift+O panel is wide enough to keep the choices in one row.
+
 ## 0.21.4 (15 Oct 2026)
 
 - Shift+O panel matches the index page: just the "Co-brand menu behaviour" headline and the three choices, with the same number spacing and 8px corners. The option description, "(default)" labels, "Current:" line and Shift+O hint are gone; the selected choice shows the current setting. The panel's title and Close link stay.

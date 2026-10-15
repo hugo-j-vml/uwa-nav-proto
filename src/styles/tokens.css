@@ -280,7 +280,6 @@
   --options-gap: 10px;                 /* between choice buttons */
   --options-id-gap: 0.58em;            /* extra space after a choice's number (on top of the word space; 3x in total) */
   --options-radius: 8px;               /* choice button corners */
-  --options-panel-width: 380px;
   /* Password screen (same look as the index page) */
   --gate-width: 420px;                 /* form width */
   --gate-padding: 48px;                /* space above and below the form */

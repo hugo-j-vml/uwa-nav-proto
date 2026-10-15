@@ -47,7 +47,10 @@
  *   7 (alongside core menu): both menus at once.
  *     A: the site's name and sections in a block above a "University of
  *       Western Australia" heading and the normal top level.
- *     B and C: the site is an extra item at the top of the static core pane,
+ *     B: the site's name and sections fill the white pane when the menu opens;
+ *       choosing a top-level item shows that instead, and closing it again
+ *       brings the site back.
+ *     C: the site is an extra item at the top of the static core pane,
  *       already chosen when the menu opens, so its sections fill the panes.
  */
 
@@ -82,10 +85,11 @@ function init(header: HTMLElement) {
   const cbTop = cobrand ? cobrandTop(cobrand) : [];
   const cbNode = cobrand ? cobrandNode(cobrand) : undefined;
   const stackedBlock = alongside && !accordion && !columns; // option 7 in A: site block above the top level
+  const siteInPane = alongside && accordion; // option 7 in B: the site fills the white pane by default
   let mode: 'core' | 'cobrand' = 'core';
   const topLevel = (): MenuNode[] => {
     if (mode === 'cobrand') return cbTop;
-    if (alongside && !stackedBlock) return [cbNode!, ...tree]; // option 7 in B and C
+    if (alongside && columns) return [cbNode!, ...tree]; // option 7 in C
     return tree;
   };
 
@@ -305,6 +309,7 @@ function init(header: HTMLElement) {
     const current = byPath.get(target);
     dynamicList.replaceChildren();
     if (!current) { dynamicPane.hidden = true; return; }
+    if (siteInPane && current === cbNode) dynamicList.append(siteTitleRow()); // option 7 in B: the site's name on top
     if (accordion || columns) {
       // B: the section's items, with the open branch expanded inline. C: the section's items only.
       (function branch(list: MenuNode[], depth: number) {
@@ -426,6 +431,7 @@ function init(header: HTMLElement) {
     // A: clicking the selected item closes its sub-menu; any other item opens its own.
     // B and C: clicking the chosen section closes it (and everything open under it).
     path = accordion || columns ? toggleBranch(path, p) : choose(path, p);
+    if (siteInPane && !path.length) path = [cbNode!.p]; // option 7 in B: closing a section brings the site back
     render(true);
     focusPath(p);
   });
