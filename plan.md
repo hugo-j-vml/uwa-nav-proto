@@ -195,6 +195,17 @@ Agreed 15 Oct 2026.
 - **Closing:** the trigger again, Esc, or a click outside the pane and the trigger. Clicking a page link slides the pane away, then goes to the page. The menu always opens at the top (v0.10).
 - **Logo:** the horizontal UWA logo replaces the header placeholder in A, B and C.
 
+## 7d. Behaviour options and co-branded sites
+
+Alternative behaviours are switched across all variants with **behaviour options** (`src/options.ts`), not new variants: on the index page, with the hidden Shift+O panel on any variant page, or with `?<option>=<choice>` in a link (sets and remembers it; use to preset test sessions).
+
+**Co-brand menu** (default 1). Co-branded sites (e.g. Oceans Institute) have their own two-level IA (`data/cobranded/<slug>.csv`), kept out of the core tree; the site is a single link in the core menu. On the site's pages, A–C show a co-brand logo placeholder next to the UWA logo and no shortcuts.
+- **1 · Menu bar on page:** a bar under the breadcrumb with the site's sections and dropdowns; Menu stays the core menu.
+- **2 · Replaces core menu:** Menu (D: the sidebar list) shows the site's sections in place of the top level, with a "UWA main menu" switch and back.
+- **7 · Alongside core menu:** both at once. A, E: the site's block above a "University of Western Australia" heading and the top level. B, C: the site as the first core item, already chosen on open. D: the site as the first sidebar item.
+
+Options 2 and 7 break "the menu always opens at the top level", on co-branded pages only.
+
 ## 8. Motion
 
 Built in v0.4 for variant A, and saved as preset "A":

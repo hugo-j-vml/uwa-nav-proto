@@ -608,3 +608,22 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 }
 .sidebar-site-title:hover { text-decoration: underline; }
 .sidebar-site-title + .sidebar-list { margin-top: var(--menu-switch-gap); }
+
+/* ==========================================================================
+   Co-brand menu option 7 ("Alongside core menu")
+   ========================================================================== */
+/* A and E: heading above the University's top level, under the site's block */
+.menu-group-heading {
+  display: block; margin-top: var(--menu-group-gap); padding-top: var(--menu-group-gap);
+  border-top: 1px solid currentColor;
+  font-family: var(--font-ui); font-size: var(--type-ui-size); opacity: 0.8;
+}
+/* B and C: the site as the first item in the core pane, set apart from the top level */
+.menu-site-item .menu-item-label { font-family: var(--font-cobranded); font-weight: var(--type-cobranded-h1-weight); }
+li:has(> .menu-site-item) { padding-bottom: var(--menu-group-gap); margin-bottom: var(--menu-group-gap); border-bottom: 1px solid currentColor; }
+/* D: the site as the first sidebar item (option 7 only) */
+.sidebar-cobrand-item { display: none; }
+[data-opt-cobrand-menu="7"] .sidebar-cobrand-item {
+  display: block; padding-bottom: var(--sidebar-item-gap); border-bottom: 1px solid var(--colour-black);
+}
+.sidebar-cobrand-item .sidebar-item span { font-family: var(--font-cobranded); font-weight: var(--type-cobranded-h1-weight); font-size: 22px; }

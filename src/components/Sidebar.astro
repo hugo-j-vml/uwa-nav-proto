@@ -6,7 +6,8 @@
  * drawn by src/scripts/sidebar-menu.ts from the sitemap data embedded below.
  * On a co-branded site's pages, D also gets the site's own list (shown in place
  * of the top-level items for behaviour option "Co-brand menu" = 2, with a
- * switch between the two; CSS decides which shows).
+ * switch between the two; CSS decides which shows), and the site as an extra
+ * first item in the top-level list (option 7; also shown by CSS).
  */
 import Icon from './Icons.astro';
 import { nodes, shortcuts, href, variantBase, base, cobrandData, type Cobrand } from '../lib/nav';
@@ -33,6 +34,13 @@ const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes), 
     <nav aria-label="Main menu">
       {site && <button class="sidebar-switch is-back" type="button" data-sidebar-switch="cobrand"><Icon name="arrow" /><span>{site.label} menu</span></button>}
       <ul class="sidebar-list" data-sidebar-list>
+        {site && (
+          <li class="sidebar-cobrand-item">
+            <button class="sidebar-item" type="button" data-path="~" aria-expanded="false" aria-controls="drill-pane">
+              <span>{site.label}</span><Icon name="arrow" />
+            </button>
+          </li>
+        )}
         {nodes.map(n => (
           <li>
             {n.children.length ? (

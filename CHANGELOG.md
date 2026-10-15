@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.21.0 (15 Oct 2026)
+
+- **Co-brand menu option 7, "Alongside core menu"**, in all five variants. On the Oceans Institute home and its pages, the menu shows the Oceans Institute's menu and the UWA top level together:
+  - A: the site's name (serif, links to its home) and six sections, then a divider, a "University of Western Australia" heading and the normal top level. Sections open their pages in the dynamic pane.
+  - B and C: "Oceans Institute" is the first item in the static core pane, set apart by a rule, and is already chosen when the menu opens: B's white pane lists the sections (opening to their pages), C's panel 1 the sections and panel 2 their pages.
+  - D: "Oceans Institute" is the first item in the sidebar, set apart by a rule; it opens the pane on the sections, which drill down to their pages.
+  - E: Menu opens the pane on the same two blocks as A; sections drill down, Back returns.
+- `plan.md` 7d describes the behaviour options and the three co-brand menu choices.
+
 ## 0.20.0 (15 Oct 2026)
 
 - **Co-brand menu option 2, "Replaces core menu"**, in all five variants. On the Oceans Institute home and its pages, the menu shows the Oceans Institute's six sections in place of the UWA top level, under a "UWA main menu →" switch and the site's name (serif, links to the Oceans Institute home). The switch swaps to the normal UWA top level, which then has an "← Oceans Institute menu" switch back. The sections behave like top-level items in each variant:

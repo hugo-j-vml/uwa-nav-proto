@@ -44,9 +44,14 @@
  *     to its home). The switch swaps to the normal top level, which then has an
  *     "<site> menu" switch back. Each opening starts on the site's sections.
  *     The sections behave like top-level items in each variant.
+ *   7 (alongside core menu): both menus at once.
+ *     A: the site's name and sections in a block above a "University of
+ *       Western Australia" heading and the normal top level.
+ *     B and C: the site is an extra item at the top of the static core pane,
+ *       already chosen when the menu opens, so its sections fill the panes.
  */
 
-import { indexTree, choose, toggle as toggleBranch, selected, pagePath, cobrandTop, type MenuNode, type CobrandData } from '../lib/menu-state';
+import { indexTree, choose, toggle as toggleBranch, selected, pagePath, cobrandTop, cobrandNode, type MenuNode, type CobrandData } from '../lib/menu-state';
 import { getOption } from '../lib/options';
 
 const header = document.querySelector<HTMLElement>('.primary-nav-header');
@@ -71,12 +76,20 @@ function init(header: HTMLElement) {
   const search = header.querySelector<HTMLButtonElement>('[data-search]');
 
   // Co-brand menu option 2: the site's sections stand in for the top level (see above)
-  const replaces = !!cobrand && getOption('cobrand-menu') === '2';
+  const option = cobrand ? getOption('cobrand-menu') : '';
+  const replaces = option === '2';
+  const alongside = option === '7';
   const cbTop = cobrand ? cobrandTop(cobrand) : [];
+  const cbNode = cobrand ? cobrandNode(cobrand) : undefined;
+  const stackedBlock = alongside && !accordion && !columns; // option 7 in A: site block above the top level
   let mode: 'core' | 'cobrand' = 'core';
-  const topLevel = () => (mode === 'cobrand' ? cbTop : tree);
+  const topLevel = (): MenuNode[] => {
+    if (mode === 'cobrand') return cbTop;
+    if (alongside && !stackedBlock) return [cbNode!, ...tree]; // option 7 in B and C
+    return tree;
+  };
 
-  const byPath = indexTree([...tree, ...cbTop]);
+  const byPath = indexTree([...tree, ...cbTop, ...(cbNode ? [cbNode] : [])]);
 
   const href = (p: string) => `${base}${p}/`;
   let open = false;
@@ -109,7 +122,7 @@ function init(header: HTMLElement) {
     const li = document.createElement('li');
     const hasChildren = node.c.length > 0 && !opts.heading && !opts.leaf;
     const el = hasChildren ? document.createElement('button') : document.createElement('a');
-    el.className = 'menu-item' + (opts.heading ? ' dynamic-heading' : '');
+    el.className = 'menu-item' + (opts.heading ? ' dynamic-heading' : '') + (node === cbNode ? ' menu-site-item' : '');
     el.dataset.path = node.p;
     if (opts.depth) el.style.setProperty('--depth', String(opts.depth));
     if (hasChildren) {
@@ -148,12 +161,19 @@ function init(header: HTMLElement) {
     const before = oldRows.map(li => (li.firstElementChild as HTMLElement).dataset.path!);
     coreList.replaceChildren();
     if (replaces) coreList.append(...switchRows());
-    for (const top of topLevel()) {
+    const addTop = (top: MenuNode) => {
       coreList.append(row(top, { core: true }));
       if (highlight && path[0] === top.p) {
         path.slice(1).forEach((p, i) => { const n = byPath.get(p); if (n) coreList.append(row(n, { depth: i + 1, core: true })); });
       }
+    };
+    if (stackedBlock) {
+      // Option 7 in A: the site's block, then the University's top level under its own heading
+      coreList.append(siteTitleRow());
+      cbTop.forEach(addTop);
+      coreList.append(groupHeading('University of Western Australia'));
     }
+    topLevel().forEach(addTop);
     if (animate) animateRowChanges(coreList, oldRows, before);
   }
 
@@ -174,18 +194,34 @@ function init(header: HTMLElement) {
     btn.append(label, arrowTpl.content.cloneNode(true));
     li.append(btn);
     if (!toCore) return [li];
-    const titleLi = document.createElement('li');
+    return [li, siteTitleRow()];
+  }
+
+  /** The co-branded site's name, linking to its home (options 2 and 7). */
+  function siteTitleRow(): HTMLLIElement {
+    const li = document.createElement('li');
     const title = document.createElement('a');
     title.className = 'menu-item menu-site-title';
     title.dataset.path = '~title';
     title.href = href(cobrand!.h);
     if (cobrand!.h === currentPath) title.setAttribute('aria-current', 'page');
-    const titleLabel = document.createElement('span');
-    titleLabel.className = 'menu-item-label';
-    titleLabel.textContent = cobrand!.l;
-    title.append(titleLabel);
-    titleLi.append(title);
-    return [li, titleLi];
+    const label = document.createElement('span');
+    label.className = 'menu-item-label';
+    label.textContent = cobrand!.l;
+    title.append(label);
+    li.append(title);
+    return li;
+  }
+
+  /** A small heading between groups of items (option 7 in A). Not interactive. */
+  function groupHeading(text: string): HTMLLIElement {
+    const li = document.createElement('li');
+    const el = document.createElement('span');
+    el.className = 'menu-group-heading';
+    el.dataset.path = `~group-${text}`;
+    el.textContent = text;
+    li.append(el);
+    return li;
   }
 
   /** Option 2: swap between the site's menu and the UWA main menu. */
@@ -355,6 +391,7 @@ function init(header: HTMLElement) {
       closing = false;
       path = []; // always open at the top level, as on the homepage
       mode = replaces ? 'cobrand' : 'core'; // option 2: start on the co-branded site's menu
+      if (alongside && !stackedBlock) path = [cbNode!.p]; // option 7 in B and C: the site is already chosen
       slots.forEach(s => { s.shown = ''; s.pane.getAnimations().forEach(a => a.cancel()); });
       renderCore();
       await renderDynamic(false);
