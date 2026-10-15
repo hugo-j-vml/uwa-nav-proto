@@ -171,7 +171,7 @@ Agreed 15 Oct 2026. Everything not listed here is as variant A (Section 7).
 
 Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is as variant A (Section 7).
 
-- **Panes:** core pane 386px (as B), panel 1 481px, panel 2 481px, with a thin divider between the panels.
+- **Panes:** core pane 386px (as B), panel 1 481px on light grey (#d4d4d4), panel 2 481px on the white pane colour.
 - **Core pane:** as B: top-level items only, static, no black highlight.
 - **Panel 1:** the chosen section's items (L2), one level only, no heading.
 - **Panel 2:** opens to the right when an L2 parent is chosen; lists its items (L3), one level only. L3 items are always links, even if they have children, so the menu stops at L3. Slides out from under panel 1 (A's sub-menu motion).

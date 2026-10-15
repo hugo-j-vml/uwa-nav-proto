@@ -177,6 +177,7 @@ a { color: inherit; text-decoration: none; }
   position: relative; z-index: 0;
 }
 .panel-2[hidden] { display: none; }
+[data-variant="c"] .dynamic-pane { background: var(--panel-1-bg); }
 [data-variant="c"] .menu-item { justify-content: flex-start; gap: var(--c-open-arrow-gap); }
 [data-variant="c"] .menu-item-arrow.is-open { color: var(--c-open-arrow-colour); }
 

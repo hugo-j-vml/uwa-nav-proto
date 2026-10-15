@@ -241,6 +241,7 @@
   /* Panes: B's narrow core pane, then two panels of one IA level each (L2, then L3) */
   --core-pane-width: 386px;
   --dynamic-pane-width: 481px;         /* panel 1 */
+  --panel-1-bg: #d4d4d4;               /* panel 1: light grey, a step darker than the page background */
   --panel-2-width: 481px;
   --panel-2-bg: var(--colour-dynamic-pane);
   --panel-divider: #d6d4d4;            /* line between panel 1 and panel 2 */
