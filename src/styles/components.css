@@ -304,8 +304,12 @@ a { color: inherit; text-decoration: none; }
 /* Content template: breadcrumb + title, then placeholders */
 .tpl-content .page-intro,
 .tpl-cobranded .page-intro { padding: var(--breadcrumb-top) var(--page-gutter) 0; }
-/* Behaviour option "Breadcrumbs on co-branded pages": hidden, the page moves up by the breadcrumb's height */
+/* Behaviour option "Breadcrumbs on co-branded pages": hidden, the first thing on the page
+   (menu bar, hero or title) starts where the breadcrumb would have
+   (the intro's top padding keeps that space; its margin can't collapse through and move the header) */
 [data-opt-cobrand-breadcrumbs="hide"] .tpl-cobranded .page-intro nav { display: none; }
+[data-opt-cobrand-breadcrumbs="hide"] .tpl-cobranded :is(.site-nav, .cobranded-hero) { margin-top: 0; }
+html:not([data-opt-cobrand-menu="1"])[data-opt-cobrand-breadcrumbs="hide"] .cobranded-page-title { margin-top: 0; }
 .tpl-content .page-title { margin-top: var(--breadcrumb-to-title); width: var(--page-title-width); max-width: 100%; }
 .tpl-content .placeholder-stack { margin-top: var(--content-title-to-image); }
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.26.1 (15 Oct 2026)
+
+- Breadcrumbs hidden on co-branded pages: the gap closes up. The first thing on the page (the option 1 menu bar, the hero or the page title) now starts where the breadcrumb was: 37px under the header in A–C, 60px from the top in D and E (was about 60px lower). With breadcrumbs shown, nothing changes.
+
 ## 0.26.0 (15 Oct 2026)
 
 - Index page layout: the variant list moves to the left (at the page gutter) and the options sit in a column to its right, tops aligned, leaving room for more options. Below 1280px wide the options go back under the list. The space above the list is back to scaling with window height (22vh).
