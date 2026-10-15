@@ -352,7 +352,7 @@ html.is-locked .gate {
   display: flex; min-height: 100vh; align-items: center; justify-content: center; padding: 24px;
 }
 .gate form {
-  background: var(--colour-white);
+  background: var(--colour-white); color: var(--colour-black);
   padding: 32px; width: min(100%, 380px);
   display: flex; flex-direction: column; gap: 12px;
   font-family: var(--font-ui);

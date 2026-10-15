@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.11.2 (15 Oct 2026)
+
+- Password screen: the text in the white box is black. On the index page it had picked up the page's light text colour and was unreadable.
+
 ## 0.11.1 (15 Oct 2026)
 
 - D and E: the logo is centred in the sidebar.
