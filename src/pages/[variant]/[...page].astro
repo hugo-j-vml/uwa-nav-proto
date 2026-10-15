@@ -40,5 +40,5 @@ const crumbs = node ? ancestors(node.path).map(a => ({ label: a.label, href: hre
   {template === 'landing' && <Landing title={title} note={note} />}
   {template === 'content' && <Content title={title} home={home} crumbs={crumbs} />}
   {template === 'course' && <Course title={title} eyebrow={node?.eyebrow} intro={node?.intro} body={node?.body} />}
-  {template === 'cobranded' && <CoBranded title={title} home={home} crumbs={crumbs} />}
+  {template === 'cobranded' && <CoBranded title={title} home={home} crumbs={[]} />}{/* co-branded sites: short breadcrumb, UWA › site name */}
 </Base>

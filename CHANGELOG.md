@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.15.1 (15 Oct 2026)
+
+- Co-branded pages use a short breadcrumb, UWA › page name (for example "UWA › Oceans Institute"), as in Hugo's reference. Other templates keep the full trail.
+
 ## 0.15.0 (15 Oct 2026)
 
 - IA: new page **Oceans Institute** under Our research › Institutes and centres › Centres and other entities, using the co-branded template (sage hero with the serif title, two tiles, then a full-width placeholder). It's the first co-branded page in the current IA. 252 pages.
