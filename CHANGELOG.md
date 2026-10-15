@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.25.2 (15 Oct 2026)
+
+- Option choice buttons: 2px more padding at the top (10px top, 8px bottom) so the labels sit in the vertical centre. Applies on the index page and in the Shift+O panel, which share the buttons.
+
 ## 0.25.1 (15 Oct 2026)
 
 - Index page fits a laptop screen (checked at 1440 x 720, a MacBook Air with the browser's bars and the Dock): the space above the variant list and above the options now shrinks on shorter windows, and the minimum space above the footer is 24px (was 48px). On taller screens the gaps grow back (options up to 80px below the list).

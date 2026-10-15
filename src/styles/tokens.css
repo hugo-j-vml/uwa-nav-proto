@@ -280,6 +280,7 @@
   --options-size: 15px;
   --options-gap: 10px;                 /* between choice buttons */
   --options-id-gap: 0.58em;            /* extra space after a choice's number (on top of the word space; 3x in total) */
+  --options-pad-top: 10px;             /* 2px more than the bottom so Snowflake Sans sits in the vertical centre */
   --options-radius: 8px;               /* choice button corners */
   /* Password screen (same look as the index page) */
   --gate-width: 420px;                 /* form width */
