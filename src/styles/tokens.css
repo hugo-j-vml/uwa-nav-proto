@@ -240,6 +240,13 @@
   --index-item-gap: 0.3em;             /* space between list items */
   --index-letter-gap: 0.35em;          /* letter to label */
   --index-tag-size: 14px;
+  /* Password screen (same look as the index page) */
+  --gate-width: 420px;                 /* form width */
+  --gate-padding: 48px;                /* space above and below the form */
+  --gate-gap: 20px;                    /* between the form's elements */
+  --gate-title-size: 32px;
+  --gate-field-padding: 16px 18px;     /* input and button */
+  --gate-error: #ff8a80;               /* readable on the dark background */
 }
 
 /* Index page on phones (below 640px wide): smaller fixed sizes.
@@ -250,6 +257,8 @@
     --index-intro-size: 15px;
     --index-item-size: 24px;
     --index-tag-size: 12px;
+    --gate-title-size: 24px;
+    --gate-gap: 16px;
   }
 }
 

@@ -8,13 +8,12 @@
 import Base from '../layouts/Base.astro';
 import { variantBase } from '../lib/nav';
 import { variants } from '../variants';
+import VmlMark from '../components/VmlMark.astro';
 ---
 <Base title="Variants">
   <div class="index-page">
     <header class="index-header">
-      <svg class="index-mark" viewBox="0 0 30 30" role="img" aria-label="VML" xmlns="http://www.w3.org/2000/svg">
-        <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M2.83316 -1.90735e-06H0V2.80785L12.1533 14.9995L0 27.1641V30H2.83316L14.9855 17.8073L27.1667 30H30L29.9719 27.1641L17.8186 14.9995L30 2.80785V-1.90735e-06H27.1388L14.9855 12.1646L2.83316 -1.90735e-06ZM6.88369 -1.90735e-06L14.9855 8.0814L23.0874 -1.90735e-06H17.9606L14.9855 2.97794L12.0114 -1.90735e-06H6.88369ZM0 6.89012V11.9946L2.97406 14.9995L0 17.9774V23.0809L8.10191 14.9995L0 6.89012ZM30 6.89012L21.8981 14.9995L30 23.0809V17.9774L26.9969 14.9995L30 11.9946V6.89012ZM14.9855 21.8906L6.88369 29.971H12.0114L14.9855 26.9941L17.9606 29.971H23.0874L14.9855 21.8906Z" />
-      </svg>
+      <VmlMark />
     </header>
     <main class="index-main">
       <p class="index-intro">UWA main navigation prototypes<br />Choose a concept to continue!</p>

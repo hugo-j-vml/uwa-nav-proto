@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.12.0 (15 Oct 2026)
+
+- Password screen redesigned to match the index page: dark background, VML mark and white rule at the top, and the title, intro text, password field and Enter button centred, with more space around them. The field has a white outline, the button is white with dark text, and the error message is a light red so it reads on the dark background. Same on every page. Sizes and spacing are `--gate-*` tokens in `tokens.css`.
+- The VML mark is now a shared component (`VmlMark.astro`), used by the index page and the password screen.
+
 ## 0.11.2 (15 Oct 2026)
 
 - Password screen: the text in the white box is black. On the index page it had picked up the page's light text colour and was unreadable.
