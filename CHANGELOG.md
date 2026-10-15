@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.13.3 (15 Oct 2026)
+
+- E: the search field and Menu button are grouped closer together (12px apart, was 40px). The shortcuts sit a little further down (32px below the Menu button, was 12px) to separate them from that group, and their labels are left-aligned, in line with the search text. D is unchanged.
+
 ## 0.13.2 (15 Oct 2026)
 
 - Browser tab titles on variant pages start with the variant letter, without the prototype name, for example "A | Homepage" or "C | About us". The index page keeps "Variants | UWA navigation prototype".

@@ -204,6 +204,9 @@
   --sidebar-item-gap: 14px;
   --sidebar-button-height: 40px;       /* E: Menu button and shortcuts */
   --sidebar-button-gap: 12px;
+  --sidebar-search-to-menu-button: 12px; /* E: search field to the Menu button, grouped close together */
+  --sidebar-menu-to-shortcuts: 32px;   /* E: a little extra space to separate the shortcuts from that group */
+  --sidebar-shortcut-padding-left: 12px; /* E: left-aligned shortcut labels, in line with the search text */
   --drill-pane-width: 540px;
   --drill-pane-bg: var(--colour-dynamic-pane);
   --drill-pane-padding-top: 50px;
