@@ -64,3 +64,12 @@ export function standalonePages(): { path: string; label: string }[] {
   const known = new Set(flatten().map(n => n.path));
   return shortcuts.filter(s => !known.has(s.path)).map(s => ({ path: s.path, label: s.label }));
 }
+
+/** A co-branded site, for the pages that belong to it (its home and the pages in its own IA). */
+export interface Cobrand { label: string; path: string; href: string; site: SiteNode[] }
+
+/** Compact co-brand data for the menu scripts: l = label, h = page path, c = children. */
+export const cobrandData = (cb: Cobrand) => ({
+  l: cb.label, h: cb.path,
+  c: cb.site.map(s => ({ l: s.label, h: s.path, c: s.children.map(x => ({ l: x.label, h: x.path, c: [] })) })),
+});

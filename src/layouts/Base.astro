@@ -11,12 +11,13 @@ import { PASSWORD_SHA256, PROTOTYPE_NAME } from '../config';
 import { OPTIONS, OPTIONS_KEY } from '../options';
 import OptionsPanel from '../components/OptionsPanel.astro';
 import type { Variant } from '../variants';
+import type { Cobrand } from '../lib/nav';
 
 /** variant: the nav concept this page belongs to; omit for pages outside the variants (the index page) */
 /** currentPath: sitemap path of this page (e.g. 'study-at-uwa/explore-courses'), used to open the menu at the right place */
 /** transparentHeader: no grey band behind the header (homepage and landing pages, per Figma) */
-/** cobrand: on a co-branded site's pages, the site's name and home URL (A, B, C header shows its logo next to UWA's) */
-interface Props { title: string; variant?: Variant; currentPath?: string; transparentHeader?: boolean; cobrand?: { label: string; href: string } }
+/** cobrand: on a co-branded site's pages, the site (A, B, C header shows its logo next to UWA's; the menus use its IA for the co-brand menu options) */
+interface Props { title: string; variant?: Variant; currentPath?: string; transparentHeader?: boolean; cobrand?: Cobrand }
 const { title, variant, currentPath = '', transparentHeader = false, cobrand } = Astro.props;
 ---
 <!doctype html>
@@ -57,7 +58,7 @@ const { title, variant, currentPath = '', transparentHeader = false, cobrand } =
       <div class="site">
         {/* Variant shell: header across the top (A, B, C) or a fixed sidebar (D, E) */}
         {variant.shell === 'header' && <PrimaryNavHeader variant={variant.id} menu={variant.menu} currentPath={currentPath} transparent={transparentHeader} cobrand={cobrand} />}
-        {variant.shell === 'sidebar' && <Sidebar variant={variant.id} menu={variant.menu} currentPath={currentPath} />}
+        {variant.shell === 'sidebar' && <Sidebar variant={variant.id} menu={variant.menu} currentPath={currentPath} cobrand={cobrand} />}
         <main class="page">
           <slot />
         </main>

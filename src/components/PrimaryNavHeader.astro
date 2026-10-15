@@ -8,15 +8,15 @@
  * The panes are drawn by src/scripts/menu.ts from the sitemap data embedded below.
  */
 import Icon from './Icons.astro';
-import { nodes, shortcuts, href, variantBase, base } from '../lib/nav';
+import { nodes, shortcuts, href, variantBase, base, cobrandData, type Cobrand } from '../lib/nav';
 
-interface Props { variant: string; menu: string; currentPath?: string; transparent?: boolean; cobrand?: { label: string; href: string } }
+interface Props { variant: string; menu: string; currentPath?: string; transparent?: boolean; cobrand?: Cobrand }
 const { variant, menu, currentPath = '', transparent = false, cobrand } = Astro.props;
 
 // Compact tree for the client: [label, path, children[]]
 type Compact = { l: string; p: string; c: Compact[] };
 const compact = (list: typeof nodes): Compact[] => list.map(n => ({ l: n.label, p: n.path, c: compact(n.children) }));
-const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes) }).replace(/</g, '\\u003c');
+const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes), cobrand: cobrand?.site.length ? cobrandData(cobrand) : undefined }).replace(/</g, '\\u003c');
 ---
 <header class:list={['primary-nav-header', { 'is-transparent': transparent, 'is-cobrand': cobrand }]} data-figma="3.1 primary nav header" data-current-path={currentPath} data-menu-layout={menu}>
   <div class="header-bar">

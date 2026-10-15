@@ -4,18 +4,22 @@
  * Logo, a search field, then either the top-level items (D) or a Menu button
  * and the header shortcuts (E). The drill-down pane opens to its right; it is
  * drawn by src/scripts/sidebar-menu.ts from the sitemap data embedded below.
+ * On a co-branded site's pages, D also gets the site's own list (shown in place
+ * of the top-level items for behaviour option "Co-brand menu" = 2, with a
+ * switch between the two; CSS decides which shows).
  */
 import Icon from './Icons.astro';
-import { nodes, shortcuts, href, variantBase, base } from '../lib/nav';
+import { nodes, shortcuts, href, variantBase, base, cobrandData, type Cobrand } from '../lib/nav';
 
-interface Props { variant: string; menu: string; currentPath?: string }
-const { variant, menu, currentPath = '' } = Astro.props;
+interface Props { variant: string; menu: string; currentPath?: string; cobrand?: Cobrand }
+const { variant, menu, currentPath = '', cobrand } = Astro.props;
+const site = cobrand?.site.length ? cobrand : undefined;
 
 type Compact = { l: string; p: string; c: Compact[] };
 const compact = (list: typeof nodes): Compact[] => list.map(n => ({ l: n.label, p: n.path, c: compact(n.children) }));
-const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes) }).replace(/</g, '\\u003c');
+const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes), cobrand: site ? cobrandData(site) : undefined }).replace(/</g, '\\u003c');
 ---
-<aside class="sidebar" data-sidebar data-current-path={currentPath} data-menu-layout={menu}>
+<aside class:list={['sidebar', { 'has-cobrand': site }]} data-sidebar data-current-path={currentPath} data-menu-layout={menu}>
   <a class="sidebar-logo" href={href('', variant)}><img src={`${base}logos/uwa-vertical.svg`} alt="The University of Western Australia: home" width="94" height="162" /></a>
 
   <form class="sidebar-search" role="search" data-sidebar-search>
@@ -25,7 +29,9 @@ const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes) }
   </form>
 
   {menu === 'drilldown' ? (
+    <>
     <nav aria-label="Main menu">
+      {site && <button class="sidebar-switch is-back" type="button" data-sidebar-switch="cobrand"><Icon name="arrow" /><span>{site.label} menu</span></button>}
       <ul class="sidebar-list" data-sidebar-list>
         {nodes.map(n => (
           <li>
@@ -40,6 +46,22 @@ const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes) }
         ))}
       </ul>
     </nav>
+    {site && (
+      <nav class="sidebar-cobrand" aria-label={`${site.label} menu`}>
+        <button class="sidebar-switch" type="button" data-sidebar-switch="core"><span>UWA main menu</span><Icon name="arrow" /></button>
+        <a class="sidebar-site-title" href={site.href} aria-current={currentPath === site.path ? 'page' : undefined}>{site.label}</a>
+        <ul class="sidebar-list">
+          {site.site.map((sec, i) => (
+            <li>
+              <button class="sidebar-item" type="button" data-path={`~${i}`} aria-expanded="false" aria-controls="drill-pane">
+                <span>{sec.label}</span><Icon name="arrow" />
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    )}
+    </>
   ) : (
     <>
       <button class="sidebar-menu-button" type="button" aria-expanded="false" aria-controls="drill-pane" data-menu-toggle>

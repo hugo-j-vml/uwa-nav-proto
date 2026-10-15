@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.20.0 (15 Oct 2026)
+
+- **Co-brand menu option 2, "Replaces core menu"**, in all five variants. On the Oceans Institute home and its pages, the menu shows the Oceans Institute's six sections in place of the UWA top level, under a "UWA main menu →" switch and the site's name (serif, links to the Oceans Institute home). The switch swaps to the normal UWA top level, which then has an "← Oceans Institute menu" switch back. The sections behave like top-level items in each variant:
+  - A: a section opens its pages in the dynamic pane, with the section's page as the heading link.
+  - B: a section opens its pages in the white pane. C: a section's pages fill panel 1.
+  - D: the sidebar lists the sections in place of the top-level items (on every page load); choosing one opens the drill-down pane.
+  - E: Menu opens the pane on the sections; choosing one drills down, Back returns.
+  - A, B, C and E start on the Oceans Institute menu each time the menu opens. Other pages are unchanged.
+- As in the core menu, B and C don't link a section's own page from the menu (no heading in those variants); it's reachable from the breadcrumb and option 1's bar.
+
 ## 0.19.0 (15 Oct 2026)
 
 - **Co-brand menu option 1, "Menu bar on page"** (the default), in all five variants. On the Oceans Institute home and its pages, a darker sage bar under the breadcrumb shows the site name (links to the Oceans Institute home) and its six sections. Clicking a section opens a dropdown: the section's own page first, then its pages. One open at a time; closes on a second click, Esc or a click elsewhere; the current section is underlined. The Menu button stays the UWA core menu. In D and E the bar sits within the page margins. This is the bar from 0.16.0, back behind the option; with options 2 and 7 it's hidden and the pages are as before.

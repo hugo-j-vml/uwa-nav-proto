@@ -15,15 +15,25 @@
  * trigger again, Esc, or a click outside the pane and the trigger. Clicking a
  * page link slides the pane away first, then navigates.
  * Motion timings come from tokens.css (same tokens as the header variants).
+ *
+ * Co-branded site pages, behaviour option "Co-brand menu" = 2 (replaces core menu):
+ *   D: the sidebar lists the site's sections (under a "UWA main menu" switch and
+ *     the site's name) in place of the top-level items; the switch swaps them,
+ *     and the top-level list then has an "<site> menu" switch back. Sections
+ *     open the pane like top-level items. The sidebar starts on the site's list
+ *     on every page load (CSS shows the right list before this script runs).
+ *   E: Menu opens the pane on the site's sections, under the same switch and
+ *     site name; the switch swaps the pane to the top level and back.
  */
-import { indexTree, type MenuNode } from '../lib/menu-state';
+import { indexTree, pagePath, cobrandTop, type MenuNode, type CobrandData } from '../lib/menu-state';
+import { getOption } from '../lib/options';
 
 const sidebar = document.querySelector<HTMLElement>('[data-sidebar]');
 if (sidebar) init(sidebar);
 
 function init(sidebar: HTMLElement) {
   const dataEl = document.querySelector<HTMLScriptElement>('[data-nav-data]')!;
-  const { base, tree } = JSON.parse(dataEl.textContent || '{}') as { base: string; tree: MenuNode[] };
+  const { base, tree, cobrand } = JSON.parse(dataEl.textContent || '{}') as { base: string; tree: MenuNode[]; cobrand?: CobrandData };
   const currentPath = sidebar.dataset.currentPath || '';
   const menuButton = sidebar.dataset.menuLayout === 'menu-button'; // variant E
   const pane = document.querySelector<HTMLElement>('#drill-pane')!;
@@ -32,9 +42,16 @@ function init(sidebar: HTMLElement) {
   const arrowTpl = document.querySelector<HTMLTemplateElement>('[data-arrow]')!;
   const sideList = sidebar.querySelector<HTMLUListElement>('[data-sidebar-list]');   // D
   const toggle = sidebar.querySelector<HTMLButtonElement>('[data-menu-toggle]');      // E
-  const trigger = (sideList ?? toggle)!;
+  // D: the item lists (top level and, on co-branded pages, the site's list); E: the Menu button
+  const triggers: HTMLElement[] = sideList ? [...sidebar.querySelectorAll<HTMLElement>('.sidebar-list, [data-sidebar-switch]')] : [toggle!];
 
-  const byPath = indexTree(tree);
+  // Co-brand menu option 2: the site's sections stand in for the top level (see above)
+  const replaces = !!cobrand && getOption('cobrand-menu') === '2';
+  const cbTop = cobrand ? cobrandTop(cobrand) : [];
+  let mode: 'core' | 'cobrand' = replaces ? 'cobrand' : 'core';
+  const topLevel = () => (mode === 'cobrand' ? cbTop : tree);
+
+  const byPath = indexTree([...tree, ...cbTop]);
   const href = (p: string) => `${base}${p}/`;
   let open = false;
   let path: string[] = []; // the chain drilled into; the pane shows the last item's children
@@ -64,8 +81,8 @@ function init(sidebar: HTMLElement) {
     el.className = 'menu-item' + (heading ? ' dynamic-heading' : '');
     el.dataset.path = node.p;
     if (drills) (el as HTMLButtonElement).type = 'button';
-    else (el as HTMLAnchorElement).href = href(node.p);
-    if (node.p === currentPath) el.setAttribute('aria-current', 'page');
+    else (el as HTMLAnchorElement).href = href(pagePath(node));
+    if (pagePath(node) === currentPath) el.setAttribute('aria-current', 'page');
     const label = document.createElement('span');
     label.className = 'menu-item-label';
     label.textContent = node.l;
@@ -85,18 +102,62 @@ function init(sidebar: HTMLElement) {
       for (const child of node.c) list.append(row(child));
       pane.setAttribute('aria-label', node.l);
     } else {
-      for (const top of tree) list.append(row(top)); // E: the top level
-      pane.setAttribute('aria-label', 'Main menu');
+      // E: the top level (option 2: the site's sections, or the top level, under the switch)
+      if (replaces) list.append(...switchRows());
+      for (const top of topLevel()) list.append(row(top));
+      pane.setAttribute('aria-label', mode === 'cobrand' ? `${cobrand!.l} menu` : 'Main menu');
     }
     // D starts the pane at a top-level item's children, so Back appears from the second level
     back.hidden = menuButton ? path.length === 0 : path.length <= 1;
     // D: mark the open top-level item in the sidebar
-    sideList?.querySelectorAll<HTMLElement>('.sidebar-item').forEach(item => {
+    sidebar.querySelectorAll<HTMLElement>('.sidebar-item').forEach(item => {
       const on = open && item.dataset.path === path[0];
       item.classList.toggle('is-open', on);
       if (item.tagName === 'BUTTON') item.setAttribute('aria-expanded', String(on));
     });
     toggle?.setAttribute('aria-expanded', String(open));
+  }
+
+  /** E, option 2: the switch between the site's menu and the top level, and the site's name. */
+  function switchRows(): HTMLLIElement[] {
+    const toCore = mode === 'cobrand';
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'menu-switch' + (toCore ? '' : ' is-back');
+    btn.dataset.switch = toCore ? 'core' : 'cobrand';
+    const label = document.createElement('span');
+    label.textContent = toCore ? 'UWA main menu' : `${cobrand!.l} menu`;
+    btn.append(label, arrowTpl.content.cloneNode(true));
+    li.append(btn);
+    if (!toCore) return [li];
+    const titleLi = document.createElement('li');
+    const title = document.createElement('a');
+    title.className = 'menu-item menu-site-title';
+    title.href = href(cobrand!.h);
+    if (cobrand!.h === currentPath) title.setAttribute('aria-current', 'page');
+    const titleLabel = document.createElement('span');
+    titleLabel.className = 'menu-item-label';
+    titleLabel.textContent = cobrand!.l;
+    title.append(titleLabel);
+    titleLi.append(title);
+    return [li, titleLi];
+  }
+
+  /** Option 2: swap between the site's menu and the top level (D: the sidebar list; E: the pane). */
+  function switchMode(next: 'core' | 'cobrand') {
+    mode = next;
+    if (sideList) {
+      sidebar.dataset.mode = next;
+      if (open) setOpen(false);
+      const first = sidebar.querySelector<HTMLElement>(next === 'core' ? '[data-sidebar-switch="cobrand"]' : '[data-sidebar-switch="core"]');
+      first?.focus();
+    } else {
+      path = [];
+      fill();
+      slideContents(next === 'core' ? 1 : -1);
+      list.querySelector<HTMLElement>('.menu-switch')?.focus();
+    }
   }
 
   /** Slide the pane's contents in from the right (deeper) or the left (Back). */
@@ -139,8 +200,12 @@ function init(sidebar: HTMLElement) {
   }
 
   // ---------- Events ----------
-  // D: a top-level item opens the pane at its children; the open one closes it
-  sideList?.addEventListener('click', (e) => {
+  // D, option 2: the sidebar switches between the site's list and the top level
+  sidebar.querySelectorAll<HTMLButtonElement>('[data-sidebar-switch]').forEach(b =>
+    b.addEventListener('click', () => switchMode(b.dataset.sidebarSwitch as 'core' | 'cobrand')));
+
+  // D: a top-level item (or a co-branded site's section) opens the pane at its children; the open one closes it
+  if (sideList) sidebar.addEventListener('click', (e) => {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.sidebar-item');
     if (!btn) return;
     const p = btn.dataset.path!;
@@ -154,11 +219,14 @@ function init(sidebar: HTMLElement) {
   toggle?.addEventListener('click', () => {
     if (open) { setOpen(false); return; }
     path = [];
+    mode = replaces ? 'cobrand' : 'core'; // option 2: start on the co-branded site's menu
     setOpen(true);
   });
 
-  // Drill down
+  // Drill down (E, option 2: or switch menus)
   list.addEventListener('click', (e) => {
+    const sw = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-switch');
+    if (sw) { switchMode(sw.dataset.switch as 'core' | 'cobrand'); return; }
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     path = [...path, btn.dataset.path!];
@@ -192,13 +260,13 @@ function init(sidebar: HTMLElement) {
   document.addEventListener('click', (e) => {
     if (!open) return;
     const where = e.composedPath();
-    if (where.includes(pane) || where.includes(trigger)) return;
+    if (where.includes(pane) || triggers.some(t => where.includes(t))) return;
     setOpen(false);
   });
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape' || !open) return;
-    const returnTo = sideList?.querySelector<HTMLElement>(`[data-path="${CSS.escape(path[0] ?? '')}"]`) ?? toggle;
+    const returnTo = sideList ? sidebar.querySelector<HTMLElement>(`.sidebar-item[data-path="${CSS.escape(path[0] ?? '')}"]`) : toggle;
     setOpen(false);
     returnTo?.focus();
   });

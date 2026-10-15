@@ -35,16 +35,26 @@
  * the page change itself is a cross-fade (CSS view transitions, components.css).
  * Whole rows are click targets. Items with children are <button>s that open
  * their sub-menu; items without children are links to their page.
+ *
+ * Co-branded site pages (e.g. Oceans Institute), behaviour option "Co-brand menu"
+ * (src/options.ts):
+ *   1 (menu bar on page): the menu is unchanged; the site's menu is a bar on the page.
+ *   2 (replaces core menu): the menu opens on the site's sections in place of the
+ *     top-level items, under a "UWA main menu" switch and the site's name (a link
+ *     to its home). The switch swaps to the normal top level, which then has an
+ *     "<site> menu" switch back. Each opening starts on the site's sections.
+ *     The sections behave like top-level items in each variant.
  */
 
-import { indexTree, choose, toggle as toggleBranch, selected, type MenuNode } from '../lib/menu-state';
+import { indexTree, choose, toggle as toggleBranch, selected, pagePath, cobrandTop, type MenuNode, type CobrandData } from '../lib/menu-state';
+import { getOption } from '../lib/options';
 
 const header = document.querySelector<HTMLElement>('.primary-nav-header');
 if (header) init(header);
 
 function init(header: HTMLElement) {
   const dataEl = header.querySelector<HTMLScriptElement>('[data-nav-data]')!;
-  const { base, tree } = JSON.parse(dataEl.textContent || '{}') as { base: string; tree: MenuNode[] };
+  const { base, tree, cobrand } = JSON.parse(dataEl.textContent || '{}') as { base: string; tree: MenuNode[]; cobrand?: CobrandData };
   const currentPath = header.dataset.currentPath || '';
   const layout = header.dataset.menuLayout;
   const accordion = layout === 'panels'; // variant B
@@ -60,7 +70,13 @@ function init(header: HTMLElement) {
   const arrowTpl = header.querySelector<HTMLTemplateElement>('[data-arrow]')!;
   const search = header.querySelector<HTMLButtonElement>('[data-search]');
 
-  const byPath = indexTree(tree);
+  // Co-brand menu option 2: the site's sections stand in for the top level (see above)
+  const replaces = !!cobrand && getOption('cobrand-menu') === '2';
+  const cbTop = cobrand ? cobrandTop(cobrand) : [];
+  let mode: 'core' | 'cobrand' = 'core';
+  const topLevel = () => (mode === 'cobrand' ? cbTop : tree);
+
+  const byPath = indexTree([...tree, ...cbTop]);
 
   const href = (p: string) => `${base}${p}/`;
   let open = false;
@@ -102,9 +118,9 @@ function init(header: HTMLElement) {
       // A: the item whose sub-menu is showing. B: only the chosen top-level item, in the core pane.
       if (highlight && node.p === selected(path)) el.classList.add('is-selected');
     } else {
-      (el as HTMLAnchorElement).href = href(node.p);
+      (el as HTMLAnchorElement).href = href(pagePath(node));
     }
-    if (node.p === currentPath) {
+    if (pagePath(node) === currentPath) {
       el.setAttribute('aria-current', 'page');
       // Highlight the page you're on in the sub-menu; in the core pane only when nothing
       // else is selected there, so the core pane never shows two black blocks
@@ -131,13 +147,60 @@ function init(header: HTMLElement) {
     const oldRows = ([...coreList.children] as HTMLLIElement[]).filter(li => !li.dataset.ghost);
     const before = oldRows.map(li => (li.firstElementChild as HTMLElement).dataset.path!);
     coreList.replaceChildren();
-    for (const top of tree) {
+    if (replaces) coreList.append(...switchRows());
+    for (const top of topLevel()) {
       coreList.append(row(top, { core: true }));
       if (highlight && path[0] === top.p) {
         path.slice(1).forEach((p, i) => { const n = byPath.get(p); if (n) coreList.append(row(n, { depth: i + 1, core: true })); });
       }
     }
     if (animate) animateRowChanges(coreList, oldRows, before);
+  }
+
+  /**
+   * Option 2: the switch between the site's menu and the UWA main menu, and (in
+   * the site's menu) the site's name linking to its home.
+   */
+  function switchRows(): HTMLLIElement[] {
+    const toCore = mode === 'cobrand';
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'menu-switch' + (toCore ? '' : ' is-back');
+    btn.dataset.path = `~switch-${mode}`;
+    btn.dataset.switch = toCore ? 'core' : 'cobrand';
+    const label = document.createElement('span');
+    label.textContent = toCore ? 'UWA main menu' : `${cobrand!.l} menu`;
+    btn.append(label, arrowTpl.content.cloneNode(true));
+    li.append(btn);
+    if (!toCore) return [li];
+    const titleLi = document.createElement('li');
+    const title = document.createElement('a');
+    title.className = 'menu-item menu-site-title';
+    title.dataset.path = '~title';
+    title.href = href(cobrand!.h);
+    if (cobrand!.h === currentPath) title.setAttribute('aria-current', 'page');
+    const titleLabel = document.createElement('span');
+    titleLabel.className = 'menu-item-label';
+    titleLabel.textContent = cobrand!.l;
+    title.append(titleLabel);
+    titleLi.append(title);
+    return [li, titleLi];
+  }
+
+  /** Option 2: swap between the site's menu and the UWA main menu. */
+  function switchMode(next: 'core' | 'cobrand') {
+    mode = next;
+    path = [];
+    renderCore();
+    renderDynamic(true);
+    const duration = ms('--motion-submenu-in-duration');
+    if (duration) {
+      const offset = token('--motion-drill-offset') || '24px';
+      coreList.animate([{ transform: `translateX(${next === 'core' ? offset : `-${offset}`})`, opacity: 0 }, { transform: 'translateX(0)', opacity: 1 }],
+        { duration, easing: token('--motion-submenu-in-easing') || 'ease-out' });
+    }
+    coreList.querySelector<HTMLElement>('.menu-switch')?.focus();
   }
 
   /** Clip a row while its height animates, keeping the selected block's side bleed visible. */
@@ -291,6 +354,7 @@ function init(header: HTMLElement) {
     if (open) {
       closing = false;
       path = []; // always open at the top level, as on the homepage
+      mode = replaces ? 'cobrand' : 'core'; // option 2: start on the co-branded site's menu
       slots.forEach(s => { s.shown = ''; s.pane.getAnimations().forEach(a => a.cancel()); });
       renderCore();
       await renderDynamic(false);
@@ -317,6 +381,8 @@ function init(header: HTMLElement) {
   toggle.addEventListener('click', () => setOpen(!open));
 
   coreList.addEventListener('click', (e) => {
+    const sw = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-switch');
+    if (sw) { switchMode(sw.dataset.switch as 'core' | 'cobrand'); return; }
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     const p = btn.dataset.path!;

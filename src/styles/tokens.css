@@ -171,6 +171,9 @@
   --site-nav-name-gap: 48px;           /* site name to the first item */
   --site-nav-dropdown-width: 320px;
   --site-nav-dropdown-bg: var(--colour-white);
+  /* Co-brand menu option 2: switch between the site's menu and the UWA main menu */
+  --menu-switch-gap: 16px;             /* below the switch row */
+  --menu-site-title-size: 26px;        /* the site's name above its sections, co-branded serif */
   --cobranded-page-title-size: 48px;   /* page title inside a co-branded site */
   --cobranded-page-title-gap: 48px;    /* breadcrumb (or menu bar) to title, and title to the first placeholder */
 
