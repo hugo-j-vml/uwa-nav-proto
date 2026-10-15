@@ -373,7 +373,7 @@ html.is-locked .gate {
   display: flex; flex-direction: column; gap: var(--gate-gap);
 }
 .gate h1 { font-family: inherit; font-size: var(--gate-title-size); line-height: 1.15; font-weight: var(--index-weight-link); margin: 0; }
-.gate p { margin: 0; font-size: var(--index-intro-size); line-height: var(--index-intro-line); }
+.gate-form p { margin: 0; font-size: var(--index-intro-size); line-height: var(--index-intro-line); }
 .gate input {
   font: inherit; font-size: var(--index-intro-size); color: var(--index-text);
   padding: var(--gate-field-padding); margin-top: var(--gate-gap);
@@ -432,6 +432,7 @@ html.is-locked .gate {
 html[data-variant="index"] body { background: var(--index-bg); color: var(--index-text); }
 html.is-locked .index-page { display: none; }
 .index-page {
+  display: flex; flex-direction: column;
   min-height: 100vh; box-sizing: border-box;
   padding: var(--index-gutter);
   font-family: var(--index-font); font-weight: var(--index-weight-copy);
@@ -465,4 +466,15 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 }
 @media (max-width: 1024px) {
   .index-list { margin-left: 0; }
+}
+/* Footer: VML wordmark bottom left, version and build time bottom right (index page and password screen) */
+.index-footer {
+  display: flex; justify-content: space-between; align-items: flex-end; gap: var(--index-gutter);
+  margin-top: auto; padding-top: var(--index-footer-top);
+}
+.index-wordmark { display: block; flex: none; width: var(--index-wordmark-width); height: auto; }
+.index-build {
+  margin: 0; text-align: right;
+  font-size: var(--index-build-size); line-height: 1.3; font-weight: var(--index-weight-copy);
+  color: var(--index-text);
 }

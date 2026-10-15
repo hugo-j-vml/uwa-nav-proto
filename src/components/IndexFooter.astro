@@ -1,0 +1,13 @@
+---
+/** Footer for the index page and password screen: VML wordmark bottom left, version and build time bottom right. */
+import { VERSION, BUILT_AT, BUILT_AT_ISO } from '../lib/build-info';
+---
+<footer class="index-footer">
+  <svg class="index-wordmark" viewBox="0 0 98 30" role="img" aria-label="VML" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M32.1719 0H23.1634L16.1023 20.1965L9.00856 0H0L11.3506 29.9663H20.8213L32.1719 0ZM36.494 0L31.0172 29.9663H39.6952L41.8731 12.7302L46.6574 30H54.4774L59.2291 12.6965L61.407 29.9663H70.1176L64.6407 0H55.4343L50.5511 17.6307L45.7005 0H36.494ZM74.4071 0V22.3027V29.9663H82.7556H95.0969L98 22.3027H82.7556V0H74.4071Z" />
+  </svg>
+  <p class="index-build">
+    Version {VERSION}<br />
+    Last updated <time datetime={BUILT_AT_ISO}>{BUILT_AT}</time>
+  </p>
+</footer>

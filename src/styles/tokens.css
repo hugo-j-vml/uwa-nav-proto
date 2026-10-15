@@ -247,6 +247,9 @@
   --index-item-gap: 0.3em;             /* space between list items */
   --index-letter-gap: 0.35em;          /* letter to label */
   --index-tag-size: 14px;
+  --index-wordmark-width: 98px;        /* VML wordmark, bottom left */
+  --index-footer-top: 48px;            /* minimum space above the footer */
+  --index-build-size: 14px;            /* version and last updated, bottom right */
   /* Password screen (same look as the index page) */
   --gate-width: 420px;                 /* form width */
   --gate-padding: 48px;                /* space above and below the form */
@@ -264,6 +267,8 @@
     --index-intro-size: 15px;
     --index-item-size: 24px;
     --index-tag-size: 12px;
+    --index-wordmark-width: 72px;
+    --index-build-size: 12px;
     --gate-title-size: 24px;
     --gate-gap: 16px;
   }

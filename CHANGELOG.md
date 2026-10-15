@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.14.0 (15 Oct 2026)
+
+- Index page and password screen: a footer with the VML wordmark bottom left and the version and "Last updated" time bottom right, both on the page margin (as in Hugo's reference). The version is read from the latest heading in this changelog, so bump it here with each change. The time is when the site was built and deployed, in Perth time (AWST). Footer tokens: `--index-wordmark-width`, `--index-footer-top`, `--index-build-size`.
+
 ## 0.13.3 (15 Oct 2026)
 
 - E: the search field and Menu button are grouped closer together (12px apart, was 40px). The shortcuts sit a little further down (32px below the Menu button, was 12px) to separate them from that group, and their labels are left-aligned, in line with the search text. D is unchanged.
