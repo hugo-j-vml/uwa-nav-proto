@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.0 (15 Oct 2026)
+
+- IA: new page **Oceans Institute** under Our research › Institutes and centres › Centres and other entities, using the co-branded template (sage hero with the serif title, two tiles, then a full-width placeholder). It's the first co-branded page in the current IA. 252 pages.
+- D and E, co-branded template: the hero sits the same distance below the breadcrumb as in A, B and C (it was over 100px lower), and the two tiles share the narrower content area in the same proportions instead of running off the right edge.
+
 ## 0.14.0 (15 Oct 2026)
 
 - Index page and password screen: a footer with the VML wordmark bottom left and the version and "Last updated" time bottom right, both on the page margin (as in Hugo's reference). The version is read from the latest heading in this changelog, so bump it here with each change. The time is when the site was built and deployed, in Perth time (AWST). Footer tokens: `--index-wordmark-width`, `--index-footer-top`, `--index-build-size`.

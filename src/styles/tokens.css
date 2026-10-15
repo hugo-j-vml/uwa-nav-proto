@@ -219,6 +219,7 @@
   --breadcrumb-top: 60px;
   --item-label-max-width: none;        /* pane labels use the pane's full width before wrapping */
   --placeholder-inset: var(--page-gutter); /* placeholders line up with the headings, clear of the menu pane */
+  --cobranded-hero-top: 122px;         /* breadcrumb to hero gap as in A, B and C (60px higher, as the breadcrumb is) */
 }
 
 /* ==========================================================================

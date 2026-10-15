@@ -351,6 +351,9 @@ a { color: inherit; text-decoration: none; }
    The landing title moves in by the same amount so it stays over the image. */
 .placeholder-stack, .course-hero, .cobranded-hero, .cobranded-tiles { padding-inline: var(--placeholder-inset); }
 .tpl-landing .page-heading { margin-left: var(--placeholder-inset); }
+/* D and E: the co-branded tiles fit the narrower content area (same 937:503 split as at 1440 in A) instead of running off the right */
+[data-shell="sidebar"] .cobranded-tiles .placeholder { flex: 503 1 0; width: auto; }
+[data-shell="sidebar"] .cobranded-tiles .placeholder:first-child { flex-grow: 937; }
 
 /* Full-width placeholders keep the Figma 1440 x 808 ratio */
 .placeholder.full { aspect-ratio: 1440 / 808; }

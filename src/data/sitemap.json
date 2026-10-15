@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-15T02:09:46.832Z",
+  "generated": "2026-10-15T06:51:23.396Z",
   "source": "data/sitemap.csv",
   "columns": [
     "L1",
@@ -1524,7 +1524,17 @@
               "path": "our-research/institutes-and-centres/centres-and-other-entities",
               "level": 3,
               "template": "content",
-              "children": []
+              "children": [
+                {
+                  "id": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute",
+                  "label": "Oceans Institute",
+                  "slug": "oceans-institute",
+                  "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute",
+                  "level": 4,
+                  "template": "cobranded",
+                  "children": []
+                }
+              ]
             }
           ]
         },
