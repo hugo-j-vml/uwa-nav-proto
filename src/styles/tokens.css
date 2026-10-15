@@ -265,17 +265,17 @@
   --index-intro-size: 18px;
   --index-intro-line: 1.25;
   --index-list-left: 38%;              /* where the big list starts (desktop) */
-  --index-list-top: clamp(32px, 22vh, 280px);  /* space above the list; scales with window height to sit near the middle */
+  --index-list-top: clamp(24px, 92vh - 640px, 280px);  /* space above the list; scales with window height so the list, options and footer fit on a laptop screen (1440 x 720) */
   --index-item-size: 40px;             /* variant links: one line each at 1440px wide */
   --index-item-line: 1.05;
   --index-item-gap: 0.3em;             /* space between list items */
   --index-letter-gap: 0.35em;          /* letter to label */
   --index-tag-size: 14px;
   --index-wordmark-width: 98px;        /* VML wordmark, bottom left */
-  --index-footer-top: 48px;            /* minimum space above the footer */
+  --index-footer-top: 24px;            /* minimum space above the footer */
   --index-build-size: 14px;            /* version and last updated, bottom right */
   /* Behaviour options: index page section and the hidden panel (Shift+O) */
-  --options-top: 80px;                 /* last variant link to the options */
+  --options-top: clamp(32px, 7vh, 80px); /* last variant link to the options; tighter on short windows */
   --options-indent: calc(var(--index-item-size) * 1.5); /* past the list letters (letter column 1.15em + gap 0.35em) */
   --options-size: 15px;
   --options-gap: 10px;                 /* between choice buttons */

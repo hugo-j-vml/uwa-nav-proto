@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.25.1 (15 Oct 2026)
+
+- Index page fits a laptop screen (checked at 1440 x 720, a MacBook Air with the browser's bars and the Dock): the space above the variant list and above the options now shrinks on shorter windows, and the minimum space above the footer is 24px (was 48px). On taller screens the gaps grow back (options up to 80px below the list).
+
 ## 0.25.0 (15 Oct 2026)
 
 - New behaviour option **Shortcuts on co-branded pages**: Show or Hide (default) the shortcut links (Study, Impact, Research) on a co-branded site's pages, in the A–C header and the E sidebar (D has none). On the index page and in the Shift+O panel; also `?cobrand-shortcuts=show` in a link. Hide matches A–C before; E used to show them.
