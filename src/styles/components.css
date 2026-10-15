@@ -612,9 +612,6 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
    ========================================================================== */
 /* A and E: divider above the University's top level, under the site's block */
 .menu-group-divider { display: block; margin: var(--menu-group-gap) 0; border-top: 1px solid currentColor; }
-/* B and C: the site as the first item in the core pane, set apart from the top level */
-.menu-site-item .menu-item-label { font-family: var(--font-cobranded); font-weight: var(--type-cobranded-h1-weight); }
-li:has(> .menu-site-item) { padding-bottom: var(--menu-group-gap); margin-bottom: var(--menu-group-gap); border-bottom: 1px solid currentColor; }
 /* D: the site's name and sections at the top of the sidebar list, above a divider (option 7 only) */
 .sidebar-cobrand-item { display: none; }
 [data-opt-cobrand-menu="7"] .sidebar-cobrand-item { display: block; }

@@ -107,7 +107,7 @@ Current options:
 
 | Option | Choices |
 |---|---|
-| Co-brand menu behaviour (`cobrand-menu`) | **1** Menu bar on page (default): a bar under the breadcrumb with the site's sections and dropdowns. **2** Replaces core menu: the menu shows the site's sections, with a "UWA main menu" switch. **7** Alongside core menu: both together (A, E: site block above a divider and the top level; B: the site's name and sections fill the white pane on open, until a top-level item is chosen; C: the site as the first core item, pre-chosen; D: the site's name and sections at the top of the sidebar, above a divider and the top level; a section opens the pane). |
+| Co-brand menu behaviour (`cobrand-menu`) | **1** Menu bar on page (default): a bar under the breadcrumb with the site's sections and dropdowns. **2** Replaces core menu: the menu shows the site's sections, with a "UWA main menu" switch. **7** Alongside core menu: both together (A, E: site block above a divider and the top level; B, C: the site's name and sections fill the white pane on open, until a top-level item is chosen; D: the site's name and sections at the top of the sidebar, above a divider and the top level; a section opens the pane). |
 
 To add an option: add an entry to `src/options.ts`, then branch on it in CSS (`[data-opt-<id>="<choice>"]` on `<html>`) or in scripts (`getOption('<id>')` from `src/lib/options.ts`).
 

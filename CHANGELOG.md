@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.23.1 (15 Oct 2026)
+
+- Co-brand menu option 7 in C now works like B: the site's name is no longer an item in the grey core pane; the white pane shows the site's name (a link to its home) above its sections when the menu opens. A section's pages show in the next panel as before. Choosing a top-level item shows that instead; closing it again brings the site back.
+
 ## 0.23.0 (15 Oct 2026)
 
 - Co-brand menu option 7 in D: the sidebar lists the site's name (a link to its home) and its sections, then a divider and the top-level items. A section opens the slide-out pane at its pages. (Was: the site as a single first item.)
