@@ -200,10 +200,12 @@ Agreed 15 Oct 2026.
 
 Alternative behaviours are switched across all variants with **behaviour options** (`src/options.ts`), not new variants: on the index page, with the hidden Shift+O panel on any variant page, or with `?<option>=<choice>` in a link (sets and remembers it; use to preset test sessions).
 
-**Co-brand menu** (default 1). Co-branded sites (e.g. Oceans Institute) have their own two-level IA (`data/cobranded/<slug>.csv`), kept out of the core tree; the site is a single link in the core menu. On the site's pages, A–C show a co-brand logo placeholder next to the UWA logo and no shortcuts; D and E show it under the vertical UWA logo.
+**Co-brand menu** (default 1). Co-branded sites (e.g. Oceans Institute) have their own two-level IA (`data/cobranded/<slug>.csv`), kept out of the core tree; the site is a single link in the core menu. On the site's pages, A–C show a co-brand logo placeholder next to the UWA logo; D and E show it under the vertical UWA logo.
 - **1 · Menu bar on page:** a bar under the breadcrumb with the site's sections and dropdowns; Menu stays the core menu.
 - **2 · Replaces core menu:** Menu (D: the sidebar list) shows the site's sections in place of the top level, with a "UWA main menu" switch and back.
 - **7 · Alongside core menu:** both at once. A, E: the site's block above a divider and the top level. B, C: the site's name and sections fill the white pane on open; choosing a top-level item shows that instead, and closing it brings the site back. D: the site's name and sections at the top of the sidebar, above a divider and the top-level items; a section opens the pane at its pages.
+
+**Shortcuts on co-branded pages** (default Hide): Show or Hide the shortcut links on the site's pages (A–C header, E sidebar; D has none).
 
 Options 2 and 7 break "the menu always opens at the top level", on co-branded pages only.
 

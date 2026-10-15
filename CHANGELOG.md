@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.25.0 (15 Oct 2026)
+
+- New behaviour option **Shortcuts on co-branded pages**: Show or Hide (default) the shortcut links (Study, Impact, Research) on a co-branded site's pages, in the A–C header and the E sidebar (D has none). On the index page and in the Shift+O panel; also `?cobrand-shortcuts=show` in a link. Hide matches A–C before; E used to show them.
+- Fix: after arriving with an option in the link (e.g. `?cobrand-menu=7`), changing it in the Shift+O panel was undone by the reload. The option is now dropped from the address once remembered.
+
 ## 0.24.0 (15 Oct 2026)
 
 - D and E, co-branded site pages only: the co-brand logo placeholder (same size as in the A–C header, links to the site's home) sits centred under the vertical UWA logo, 24px below it.

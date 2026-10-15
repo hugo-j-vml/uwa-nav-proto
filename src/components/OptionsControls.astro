@@ -16,7 +16,7 @@ const { reload = false } = Astro.props;
       <div class="option-choices">
         {o.choices.map(c => (
           <button type="button" class="option-choice" data-option={o.id} data-choice={c.id} aria-pressed={String(c.id === o.default)}>
-            <span class="option-choice-id">{c.id}</span> {c.label}
+            {c.tag && <><span class="option-choice-id">{c.tag}</span> </>}{c.label}
           </button>
         ))}
       </div>

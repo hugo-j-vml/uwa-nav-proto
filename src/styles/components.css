@@ -67,6 +67,8 @@ a { color: inherit; text-decoration: none; }
 }
 .header-controls { margin-left: var(--logo-to-menu-gap); }
 .header-shortcuts { margin-left: auto; margin-right: var(--shortcuts-margin-right); }
+/* Co-branded site pages: behaviour option "Shortcuts on co-branded pages" (A–C header, E sidebar) */
+[data-opt-cobrand-shortcuts="hide"] :is(.header-shortcuts, .sidebar-shortcuts)[data-cobrand] { display: none; }
 
 .menu-button,
 .search-button,

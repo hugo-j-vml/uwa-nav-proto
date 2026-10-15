@@ -36,7 +36,7 @@ const { title, variant, currentPath = '', transparentHeader = false, cobrand } =
       })();
     </script>
     <!-- Behaviour options (src/options.ts): apply the chosen ones before the page paints.
-         A link like ?cobrand-menu=7 sets and remembers a choice. -->
+         A link like ?cobrand-menu=7 sets and remembers a choice (then drops it from the address). -->
     <script is:inline define:vars={{ options: OPTIONS.map(o => ({ id: o.id, d: o.default, c: o.choices.map(c => c.id) })), key: OPTIONS_KEY }}>
       (function () {
         var saved = {};
@@ -45,10 +45,13 @@ const { title, variant, currentPath = '', transparentHeader = false, cobrand } =
         options.forEach(function (o) {
           var fromUrl = params.get(o.id);
           if (fromUrl && o.c.indexOf(fromUrl) !== -1) { saved[o.id] = fromUrl; changed = true; }
+          params.delete(o.id);
           var v = o.c.indexOf(saved[o.id]) !== -1 ? saved[o.id] : o.d;
           document.documentElement.setAttribute('data-opt-' + o.id, v);
         });
         if (changed) try { localStorage.setItem(key, JSON.stringify(saved)); } catch (e) {}
+        // Drop the option from the address once remembered, so a later change (e.g. in the Shift+O panel) isn't undone on reload
+        if (changed) { var q = params.toString(); history.replaceState(history.state, '', location.pathname + (q ? '?' + q : '') + location.hash); }
       })();
     </script>
   </head>

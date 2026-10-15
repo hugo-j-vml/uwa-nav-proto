@@ -85,7 +85,7 @@ const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes), 
         <Icon name="menu" />
         <span>Menu</span>
       </button>
-      <nav class="sidebar-shortcuts" aria-label="Shortcuts">
+      <nav class="sidebar-shortcuts" aria-label="Shortcuts" data-cobrand={cobrand ? '' : undefined}>
         {shortcuts.map(s => <a class="sidebar-shortcut" href={href(s.path, variant)}>{s.label}</a>)}
       </nav>
     </>
