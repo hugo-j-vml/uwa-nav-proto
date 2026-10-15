@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-15T06:51:23.396Z",
+  "generated": "2026-10-15T07:15:38.167Z",
   "source": "data/sitemap.csv",
   "columns": [
     "L1",
@@ -1532,7 +1532,243 @@
                   "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute",
                   "level": 4,
                   "template": "cobranded",
-                  "children": []
+                  "children": [],
+                  "site": [
+                    {
+                      "label": "About the OI",
+                      "slug": "about-the-oi",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/about-the-oi",
+                      "children": [
+                        {
+                          "label": "Our people",
+                          "slug": "our-people",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/about-the-oi/our-people",
+                          "children": []
+                        },
+                        {
+                          "label": "News and events",
+                          "slug": "news-and-events",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/about-the-oi/news-and-events",
+                          "children": []
+                        },
+                        {
+                          "label": "Newsletters",
+                          "slug": "newsletters",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/about-the-oi/newsletters",
+                          "children": []
+                        },
+                        {
+                          "label": "Support the ocean community",
+                          "slug": "support-the-ocean-community",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/about-the-oi/support-the-ocean-community",
+                          "children": []
+                        },
+                        {
+                          "label": "Contact us",
+                          "slug": "contact-us",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/about-the-oi/contact-us",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Research Priorities",
+                      "slug": "research-priorities",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/research-priorities",
+                      "children": [
+                        {
+                          "label": "Strategy",
+                          "slug": "strategy",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/research-priorities/strategy",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Partnerships",
+                      "slug": "partnerships",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships",
+                      "children": [
+                        {
+                          "label": "M4 Project",
+                          "slug": "m4-project",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships/m4-project",
+                          "children": []
+                        },
+                        {
+                          "label": "MERA",
+                          "slug": "mera",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships/mera",
+                          "children": []
+                        },
+                        {
+                          "label": "OceanOmics Centre",
+                          "slug": "oceanomics-centre",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships/oceanomics-centre",
+                          "children": []
+                        },
+                        {
+                          "label": "Minderoo-UWA Deep-Sea Research Centre",
+                          "slug": "minderoo-uwa-deep-sea-research-centre",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships/minderoo-uwa-deep-sea-research-centre",
+                          "children": []
+                        },
+                        {
+                          "label": "JCMF Oceans Chair",
+                          "slug": "jcmf-oceans-chair",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships/jcmf-oceans-chair",
+                          "children": []
+                        },
+                        {
+                          "label": "Coastal R&D Infrastructure Initiative",
+                          "slug": "coastal-r-and-d-infrastructure-initiative",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships/coastal-r-and-d-infrastructure-initiative",
+                          "children": []
+                        },
+                        {
+                          "label": "Coastal & Offshore Research Lab",
+                          "slug": "coastal-and-offshore-research-lab",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships/coastal-and-offshore-research-lab",
+                          "children": []
+                        },
+                        {
+                          "label": "National Geotechnical Centrifuge Facility",
+                          "slug": "national-geotechnical-centrifuge-facility",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships/national-geotechnical-centrifuge-facility",
+                          "children": []
+                        },
+                        {
+                          "label": "AIMS@UWA",
+                          "slug": "aims-uwa",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships/aims-uwa",
+                          "children": []
+                        },
+                        {
+                          "label": "IOMRC",
+                          "slug": "iomrc",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/partnerships/iomrc",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Expeditions",
+                      "slug": "expeditions",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/expeditions",
+                      "children": [
+                        {
+                          "label": "Iceland Kelp",
+                          "slug": "iceland-kelp",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/expeditions/iceland-kelp",
+                          "children": []
+                        },
+                        {
+                          "label": "M4 Journey",
+                          "slug": "m4-journey",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/expeditions/m4-journey",
+                          "children": []
+                        },
+                        {
+                          "label": "Svalbard Archipelago",
+                          "slug": "svalbard-archipelago",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/expeditions/svalbard-archipelago",
+                          "children": []
+                        },
+                        {
+                          "label": "Browse Basin Ocean Dynamics",
+                          "slug": "browse-basin-ocean-dynamics",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/expeditions/browse-basin-ocean-dynamics",
+                          "children": []
+                        },
+                        {
+                          "label": "Gathaagudu Animal Tracking",
+                          "slug": "gathaagudu-animal-tracking",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/expeditions/gathaagudu-animal-tracking",
+                          "children": []
+                        },
+                        {
+                          "label": "Pilbara Islands",
+                          "slug": "pilbara-islands",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/expeditions/pilbara-islands",
+                          "children": []
+                        },
+                        {
+                          "label": "Cocos (Keeling) Island",
+                          "slug": "cocos-keeling-island",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/expeditions/cocos-keeling-island",
+                          "children": []
+                        },
+                        {
+                          "label": "Southwest Australia",
+                          "slug": "southwest-australia",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/expeditions/southwest-australia",
+                          "children": []
+                        },
+                        {
+                          "label": "Abyssal and Hadal East Indian Ocean",
+                          "slug": "abyssal-and-hadal-east-indian-ocean",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/expeditions/abyssal-and-hadal-east-indian-ocean",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Resources",
+                      "slug": "resources",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/resources",
+                      "children": [
+                        {
+                          "label": "Publications",
+                          "slug": "publications",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/resources/publications",
+                          "children": []
+                        },
+                        {
+                          "label": "Public Lecture Series",
+                          "slug": "public-lecture-series",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/resources/public-lecture-series",
+                          "children": []
+                        },
+                        {
+                          "label": "Learn with us",
+                          "slug": "learn-with-us",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/resources/learn-with-us",
+                          "children": []
+                        },
+                        {
+                          "label": "OI in the media",
+                          "slug": "oi-in-the-media",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/resources/oi-in-the-media",
+                          "children": []
+                        },
+                        {
+                          "label": "OI Publications",
+                          "slug": "oi-publications",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/resources/oi-publications",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Awards",
+                      "slug": "awards",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/awards",
+                      "children": [
+                        {
+                          "label": "R&R Awards",
+                          "slug": "r-and-r-awards",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/awards/r-and-r-awards",
+                          "children": []
+                        },
+                        {
+                          "label": "Elizabeth Pearce Marine Science Award",
+                          "slug": "elizabeth-pearce-marine-science-award",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/awards/elizabeth-pearce-marine-science-award",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
                 }
               ]
             }

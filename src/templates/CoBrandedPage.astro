@@ -1,0 +1,26 @@
+---
+/**
+ * A page inside a co-branded site's own menu (for example Oceans Institute ›
+ * About the OI › Our people). Breadcrumb starts at the site (UWA › site ›
+ * section › page), then the site menu, the title in the co-branded serif, and
+ * placeholders.
+ */
+import Placeholder from '../components/Placeholder.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SiteNav from '../components/SiteNav.astro';
+import { href, type NavNode, type SiteNode } from '../lib/nav';
+interface Props { title: string; home: string; variant: string; page: SiteNode; root: NavNode; parent?: SiteNode }
+const { title, home, variant, page, root, parent } = Astro.props;
+const crumbs = [root, ...(parent ? [parent] : [])].map(n => ({ label: n.label, href: href(n.path, variant) }));
+---
+<div class="tpl-cobranded tpl-cobranded-page">
+  <div class="page-intro">
+    <Breadcrumbs home={home} crumbs={crumbs} current={title} />
+  </div>
+  <SiteNav root={root} site={root.site!} variant={variant} currentPath={page.path} />
+  <h1 class="cobranded-page-title">{title}</h1>
+  <div class="placeholder-stack">
+    <Placeholder full sage />
+    <Placeholder full />
+  </div>
+</div>

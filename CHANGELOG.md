@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.16.0 (15 Oct 2026)
+
+- **Co-branded site menus.** A co-branded site can have its own two-level menu, kept separate from the UWA main menu: `data/cobranded/<page slug>.csv` with columns L1 and L2. In the main menu the co-branded site stays a single link.
+- **Oceans Institute** has its menu: 6 sections (About the OI, Research Priorities, Partnerships, Expeditions, Resources, Awards) and 32 pages under them, 38 new pages in total. Every item is a page, including the sections.
+- **Site menu bar** on all Oceans Institute pages, under the breadcrumb: a darker sage bar with the site name (links to the Oceans Institute home) and the six sections. Clicking a section opens a dropdown: the section's own page first, then its pages. One open at a time; closes on a second click, Esc or a click elsewhere. The current section is underlined. In D and E the bar sits within the page margins and wraps onto two rows. Tokens: `--site-nav-*`.
+- **Pages inside the site** have a breadcrumb that starts at the site (UWA › Oceans Institute › Expeditions › Iceland Kelp), the site menu, the title in the co-branded serif, then placeholders.
+
 ## 0.15.1 (15 Oct 2026)
 
 - Co-branded pages use a short breadcrumb, UWA › page name (for example "UWA › Oceans Institute"), as in Hugo's reference. Other templates keep the full trail.

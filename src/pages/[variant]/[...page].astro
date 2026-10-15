@@ -10,35 +10,42 @@ import Landing from '../../templates/Landing.astro';
 import Content from '../../templates/Content.astro';
 import Course from '../../templates/Course.astro';
 import CoBranded from '../../templates/CoBranded.astro';
-import { flatten, ancestors, standalonePages, href, type NavNode } from '../../lib/nav';
+import CoBrandedPage from '../../templates/CoBrandedPage.astro';
+import { flatten, ancestors, standalonePages, sitePages, href, type NavNode, type SiteNode } from '../../lib/nav';
 import { builtVariants } from '../../variants';
 
 export function getStaticPaths() {
   return builtVariants.flatMap(variant => {
     const home = {
       params: { variant: variant.id, page: undefined },
-      props: { variant, node: undefined as NavNode | undefined, title: 'Homepage', note: undefined as string | undefined },
+      props: { variant, node: undefined as NavNode | undefined, title: 'Homepage', note: undefined as string | undefined, sitePage: undefined },
     };
     const fromSitemap = flatten().map(n => ({
       params: { variant: variant.id, page: n.path },
-      props: { variant, node: n as NavNode | undefined, title: n.label, note: undefined as string | undefined },
+      props: { variant, node: n as NavNode | undefined, title: n.label, note: undefined as string | undefined, sitePage: undefined as { page: SiteNode; root: NavNode; parent?: SiteNode } | undefined },
+    }));
+    // Pages in co-branded sites' own menus (not in the main menu)
+    const fromSites = sitePages().map(sp => ({
+      params: { variant: variant.id, page: sp.page.path },
+      props: { variant, node: undefined, title: sp.page.label, note: undefined, sitePage: sp },
     }));
     const standalone = standalonePages().map(s => ({
       params: { variant: variant.id, page: s.path },
-      props: { variant, node: undefined, title: s.label, note: 'Stand-in landing page: this header shortcut is not in the sitemap yet.' },
+      props: { variant, node: undefined, title: s.label, note: 'Stand-in landing page: this header shortcut is not in the sitemap yet.', sitePage: undefined },
     }));
-    return [home, ...fromSitemap, ...standalone];
+    return [home, ...fromSitemap, ...fromSites, ...standalone];
   });
 }
 
-const { variant, node, title, note } = Astro.props;
-const template = node?.template ?? 'landing';
+const { variant, node, title, note, sitePage } = Astro.props;
+const template = sitePage ? 'cobranded-page' : (node?.template ?? 'landing');
 const home = href('', variant.id);
 const crumbs = node ? ancestors(node.path).map(a => ({ label: a.label, href: href(a.path, variant.id) })) : [];
 ---
-<Base title={title} variant={variant} currentPath={node?.path ?? ''} transparentHeader={template === 'landing'}>
+<Base title={title} variant={variant} currentPath={node?.path ?? sitePage?.root.path ?? ''} transparentHeader={template === 'landing'}>
   {template === 'landing' && <Landing title={title} note={note} />}
   {template === 'content' && <Content title={title} home={home} crumbs={crumbs} />}
   {template === 'course' && <Course title={title} eyebrow={node?.eyebrow} intro={node?.intro} body={node?.body} />}
-  {template === 'cobranded' && <CoBranded title={title} home={home} crumbs={[]} />}{/* co-branded sites: short breadcrumb, UWA › site name */}
+  {template === 'cobranded' && <CoBranded title={title} home={home} site={node?.site} variant={variant.id} currentPath={node!.path} />}
+  {sitePage && <CoBrandedPage title={title} home={home} variant={variant.id} {...sitePage} />}
 </Base>

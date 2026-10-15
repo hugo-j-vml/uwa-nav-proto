@@ -18,9 +18,15 @@
  *   intro     course pages: intro line under the title
  *   body      course pages: paragraph under the in-page tabs
  *
+ * Co-branded sites: a page with the cobranded template can have its own menu,
+ * separate from the main menu. Put it in data/cobranded/<page slug>.csv with
+ * columns L1 and L2 (indented style, two levels only). Its pages are built
+ * under the co-branded page's URL and are stored on that page as "site";
+ * they don't appear in the main menu.
+ *
  * Usage: npm run sitemap   (also runs automatically before dev and build)
  */
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -124,6 +130,43 @@ const seen = new Map();
 (function walk(nodes) { for (const n of nodes) { seen.set(n.label, (seen.get(n.label) || 0) + 1); walk(n.children); } })(rootNode.children);
 for (const [label, n] of seen) if (n > 1) warnings.push(`Label "${label}" appears ${n} times in different places`);
 
+// Co-branded sites: their own two-level menus, from data/cobranded/<slug>.csv
+let siteCount = 0;
+const siteNames = [];
+(function sites(nodes) {
+  for (const n of nodes) {
+    sites(n.children);
+    if (n.template !== 'cobranded') continue;
+    const file = join(root, 'data/cobranded', `${n.slug}.csv`);
+    if (!existsSync(file)) continue;
+    const [head, ...lines] = parseCsv(readFileSync(file, 'utf8').replace(/^\uFEFF/, ''));
+    const col = (name) => head.findIndex(h => h.trim().toUpperCase() === name);
+    const c1 = col('L1'), c2 = col('L2');
+    if (c1 < 0 || c2 < 0) { errors.push(`data/cobranded/${n.slug}.csv needs columns L1 and L2`); continue; }
+    const site = [];
+    lines.forEach((cells, i) => {
+      const l1 = (cells[c1] || '').trim(), l2 = (cells[c2] || '').trim();
+      const where = `data/cobranded/${n.slug}.csv row ${i + 2}`;
+      if (l1) {
+        const slug = slugify(l1);
+        if (site.some(x => x.slug === slug)) { errors.push(`${where}: "${l1}" is a duplicate`); return; }
+        site.push({ label: l1, slug, path: `${n.path}/${slug}`, children: [] });
+      }
+      if (l2) {
+        const parent = site[site.length - 1];
+        if (!parent) { errors.push(`${where}: "${l2}" has no L1 item above it`); return; }
+        const slug = slugify(l2);
+        if (parent.children.some(x => x.slug === slug)) { errors.push(`${where}: "${l2}" is a duplicate`); return; }
+        parent.children.push({ label: l2, slug, path: `${parent.path}/${slug}`, children: [] });
+      }
+    });
+    n.site = site;
+    const pages = site.reduce((t, x) => t + 1 + x.children.length, 0);
+    siteCount += pages;
+    siteNames.push(`${n.label} (${pages} pages)`);
+  }
+})(rootNode.children);
+
 if (errors.length) {
   console.error(`\nSitemap has ${errors.length} error(s):\n  - ${errors.join('\n  - ')}\n`);
   process.exit(1);
@@ -132,5 +175,6 @@ writeFileSync(outPath, JSON.stringify({ generated: new Date().toISOString(), sou
 const byTemplate = {};
 (function tally(nodes) { for (const n of nodes) { byTemplate[n.template] = (byTemplate[n.template] || 0) + 1; tally(n.children); } })(rootNode.children);
 console.log(`Sitemap: ${count} pages, ${rootNode.children.length} top-level items, max depth ${maxDepth} -> src/data/sitemap.json`);
+if (siteNames.length) console.log(`Co-branded site menus: ${siteNames.join(', ')}`);
 console.log(`Templates: ${Object.entries(byTemplate).map(([k, v]) => `${k} ${v}`).join(', ')}`);
 if (warnings.length) console.warn(`Warnings:\n  - ${warnings.join('\n  - ')}`);

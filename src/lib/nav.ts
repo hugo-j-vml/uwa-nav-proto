@@ -12,6 +12,19 @@ export interface NavNode {
   intro?: string;
   body?: string;
   children: NavNode[];
+  /** Co-branded pages only: the site's own two-level menu (not in the main menu) */
+  site?: SiteNode[];
+}
+
+/** A page in a co-branded site's own menu (data/cobranded/<slug>.csv). */
+export interface SiteNode { label: string; slug: string; path: string; children: SiteNode[] }
+
+/** Every co-branded site page, with its site's root page and its L1 parent (for L2 pages). */
+export function sitePages(): { page: SiteNode; root: NavNode; parent?: SiteNode }[] {
+  return flatten().flatMap(root => (root.site ?? []).flatMap(l1 => [
+    { page: l1, root },
+    ...l1.children.map(page => ({ page, root, parent: l1 })),
+  ]));
 }
 
 export const nodes = sitemap.nodes as NavNode[];
