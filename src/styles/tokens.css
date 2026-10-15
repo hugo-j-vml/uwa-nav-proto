@@ -101,6 +101,7 @@
   --page-bg: var(--colour-ironbark-20);
   --page-gutter: 50px;                 /* left inset of breadcrumbs and titles */
   --page-title-width: 610px;
+  --page-title-colour: var(--colour-vivid-blue); /* page headings (H1), same blue as the menu arrows */
   --placeholder-stroke: var(--colour-black);
   --placeholder-stroke-width: 4px;     /* Figma stroke is 4 (half is clipped at the box edges) */
   --placeholder-fill: var(--colour-ironbark-20);
