@@ -546,6 +546,8 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 .index-options { margin: var(--options-top) 0 0 calc(var(--index-list-left) + var(--options-indent)); max-width: 640px; }
 .index-options .option:first-child { margin-top: 0; }
 .index-options .option-label { font-size: var(--index-intro-size); margin-bottom: 10px; }
+.index-options .option-choice { border-radius: var(--options-radius); }
+.index-options .option-choice-id { margin-right: var(--options-id-gap); }
 @media (max-width: 1024px) { .index-options { margin-left: var(--options-indent); } }
 
 .options-controls { font-size: var(--options-size); line-height: 1.4; }

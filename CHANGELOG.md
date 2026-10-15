@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.21.3 (15 Oct 2026)
+
+- Index page option choices: three times the space between the number and the label, 8px corners instead of fully rounded, and twice the gap above them (80px below the last variant link, was 40px). The Shift+O panel is unchanged.
+
 ## 0.21.2 (15 Oct 2026)
 
 - Index page options simplified: just the headline "Co-brand menu behaviour" and the three choices, directly under the last variant link (40px below, was 72px) and lined up with the link text. The "Options" heading, explanatory note, option description, "(default)" labels and "Current:" line are gone; the filled-in choice shows the current setting. The Shift+O panel on variant pages keeps the fuller version.
