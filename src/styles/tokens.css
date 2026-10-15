@@ -238,6 +238,14 @@
   --b-open-arrow-gap: 12px;            /* label to ↓ */
 }
 [data-variant="c"] {
-  /* C: overrides go here once the designs land (e.g. --header-height, --breadcrumb-top, --landing-title-top for the sidebar shell). */
+  /* Panes: B's narrow core pane, then two panels of one IA level each (L2, then L3) */
+  --core-pane-width: 386px;
+  --dynamic-pane-width: 481px;         /* panel 1 */
+  --panel-2-width: 481px;
+  --panel-2-bg: var(--colour-dynamic-pane);
+  --panel-divider: #d6d4d4;            /* line between panel 1 and panel 2 */
+  --item-label-max-width: none;
+  --c-open-arrow-colour: currentColor; /* the → on the open item in the core pane and panel 1 */
+  --c-open-arrow-gap: 12px;            /* label to → */
 }
 

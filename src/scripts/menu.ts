@@ -6,6 +6,12 @@
  *     accordion: a parent opens inline (↓ arrow, children indented beneath it),
  *     one branch open at a time; clicking an open parent closes it. No heading
  *     and no → arrows. Same motion, closing and reopen behaviour as A.
+ *   C (columns): the same static core pane as B. The chosen section's items
+ *     (L2) fill panel 1; a chosen L2 opens its items (L3) in panel 2, which
+ *     slides out to the right from under panel 1. One level per panel; L3
+ *     items are always links. The open item in the core pane and panel 1 gets
+ *     a → after its label. Clicking an open item closes it.
+ *   B and C have no black highlights (no selected or current-page block).
  *
  * State is an "open path": the chain of items whose sub-menus are open,
  * e.g. ["study", "study/study-areas"].
@@ -40,12 +46,17 @@ function init(header: HTMLElement) {
   const dataEl = header.querySelector<HTMLScriptElement>('[data-nav-data]')!;
   const { base, tree } = JSON.parse(dataEl.textContent || '{}') as { base: string; tree: MenuNode[] };
   const currentPath = header.dataset.currentPath || '';
-  const accordion = header.dataset.menuLayout === 'panels'; // variant B
+  const layout = header.dataset.menuLayout;
+  const accordion = layout === 'panels'; // variant B
+  const columns = layout === 'columns';  // variant C
+  const highlight = !accordion && !columns; // black selected / current-page blocks: A only
   const toggle = header.querySelector<HTMLButtonElement>('[data-menu-toggle]')!;
   const panes = header.querySelector<HTMLElement>('#menu-panes')!;
   const coreList = header.querySelector<HTMLUListElement>('[data-core-list]')!;
   const dynamicPane = header.querySelector<HTMLElement>('.dynamic-pane')!;
   const dynamicList = header.querySelector<HTMLUListElement>('[data-dynamic-list]')!;
+  const panel2 = header.querySelector<HTMLElement>('.panel-2');            // C only
+  const panel2List = header.querySelector<HTMLUListElement>('[data-panel2-list]');
   const arrowTpl = header.querySelector<HTMLTemplateElement>('[data-arrow]')!;
   const search = header.querySelector<HTMLButtonElement>('[data-search]');
 
@@ -54,8 +65,8 @@ function init(header: HTMLElement) {
   const href = (p: string) => `${base}${p}/`;
   let open = false;
   let path: string[] = [];
-  let shownSubmenu = '';  // which item's children the dynamic pane is showing ('' = hidden)
-  let seq = 0;            // guards against overlapping sub-menu animations
+  /** A pane whose contents slide out and back in when they change. */
+  type Slot = { pane: HTMLElement; list: HTMLUListElement; shown: string; seq: number; fill: (target: string) => void };
 
   // ---------- Motion helpers ----------
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -78,9 +89,9 @@ function init(header: HTMLElement) {
   }
 
   // ---------- Rendering ----------
-  function row(node: MenuNode, opts: { depth?: number; heading?: boolean; core?: boolean } = {}): HTMLLIElement {
+  function row(node: MenuNode, opts: { depth?: number; heading?: boolean; core?: boolean; leaf?: boolean } = {}): HTMLLIElement {
     const li = document.createElement('li');
-    const hasChildren = node.c.length > 0 && !opts.heading;
+    const hasChildren = node.c.length > 0 && !opts.heading && !opts.leaf;
     const el = hasChildren ? document.createElement('button') : document.createElement('a');
     el.className = 'menu-item' + (opts.heading ? ' dynamic-heading' : '');
     el.dataset.path = node.p;
@@ -89,7 +100,7 @@ function init(header: HTMLElement) {
       (el as HTMLButtonElement).type = 'button';
       el.setAttribute('aria-expanded', String(path.includes(node.p)));
       // A: the item whose sub-menu is showing. B: only the chosen top-level item, in the core pane.
-      if (accordion ? opts.core && node.p === path[0] : node.p === selected(path)) el.classList.add('is-selected');
+      if (highlight && node.p === selected(path)) el.classList.add('is-selected');
     } else {
       (el as HTMLAnchorElement).href = href(node.p);
     }
@@ -97,17 +108,18 @@ function init(header: HTMLElement) {
       el.setAttribute('aria-current', 'page');
       // Highlight the page you're on in the sub-menu; in the core pane only when nothing
       // else is selected there, so the core pane never shows two black blocks
-      if (!opts.heading && (!opts.core || path.length === 0)) el.classList.add('is-current');
+      if (highlight && !opts.heading && (!opts.core || path.length === 0)) el.classList.add('is-current');
     }
     const label = document.createElement('span');
     label.className = 'menu-item-label';
     label.textContent = node.l;
     el.append(label);
-    if (!accordion) el.append(arrowTpl.content.cloneNode(true));
-    else if (hasChildren && !opts.core && path.includes(node.p)) {
-      // B: an open parent gets a ↓ next to its label; nothing else has an arrow
+    if (highlight) el.append(arrowTpl.content.cloneNode(true));
+    else if (hasChildren && path.includes(node.p) && (columns || !opts.core)) {
+      // B: an open parent in the white pane gets a ↓ next to its label.
+      // C: the open item in the core pane and panel 1 gets a →. Nothing else has an arrow.
       const arrow = arrowTpl.content.cloneNode(true) as DocumentFragment;
-      arrow.querySelector('svg')?.classList.add('is-down');
+      arrow.querySelector('svg')?.classList.add(columns ? 'is-open' : 'is-down');
       el.append(arrow);
     }
     li.append(el);
@@ -121,7 +133,7 @@ function init(header: HTMLElement) {
     coreList.replaceChildren();
     for (const top of tree) {
       coreList.append(row(top, { core: true }));
-      if (!accordion && path[0] === top.p) {
+      if (highlight && path[0] === top.p) {
         path.slice(1).forEach((p, i) => { const n = byPath.get(p); if (n) coreList.append(row(n, { depth: i + 1, core: true })); });
       }
     }
@@ -194,12 +206,12 @@ function init(header: HTMLElement) {
     const current = byPath.get(target);
     dynamicList.replaceChildren();
     if (!current) { dynamicPane.hidden = true; return; }
-    if (accordion) {
-      // B: the section's items, with the open branch expanded inline
+    if (accordion || columns) {
+      // B: the section's items, with the open branch expanded inline. C: the section's items only.
       (function branch(list: MenuNode[], depth: number) {
         for (const n of list) {
           dynamicList.append(row(n, { depth }));
-          if (path.includes(n.p)) branch(n.c, depth + 1);
+          if (accordion && path.includes(n.p)) branch(n.c, depth + 1);
         }
       })(current.c, 0);
     } else {
@@ -210,35 +222,58 @@ function init(header: HTMLElement) {
     dynamicPane.hidden = false;
   }
 
-  /** Update the dynamic pane, sliding the old sub-menu out and the new one in. */
-  async function renderDynamic(animate: boolean) {
-    // A: the selected item's sub-menu. B: the chosen section (its branches open and close in place).
-    const target = accordion ? (path[0] ?? '') : selected(path);
-    const mine = ++seq; // any earlier, still-running update is now stale
-    if (target === shownSubmenu) {
-      // Same sub-menu as on screen: stop any slide in progress and refresh in place
-      dynamicPane.getAnimations().forEach(a => a.cancel());
-      const oldRows = ([...dynamicList.children] as HTMLLIElement[]).filter(li => !li.dataset.ghost);
+  /** C: panel 2 lists the chosen L2's items, all as links (the menu stops at L3). */
+  function fillPanel2(target: string) {
+    if (!panel2 || !panel2List) return;
+    const current = byPath.get(target);
+    panel2List.replaceChildren();
+    if (!current || !current.c.length) { panel2.hidden = true; return; }
+    for (const child of current.c) panel2List.append(row(child, { leaf: true }));
+    panel2.setAttribute('aria-label', current.l);
+    panel2.hidden = false;
+  }
+
+  const dynamicSlot: Slot = { pane: dynamicPane, list: dynamicList, shown: '', seq: 0, fill: fillDynamic };
+  const panel2Slot: Slot | null = panel2 && panel2List ? { pane: panel2, list: panel2List, shown: '', seq: 0, fill: fillPanel2 } : null;
+  const slots = [dynamicSlot, ...(panel2Slot ? [panel2Slot] : [])];
+
+  /** Show `target`'s items in a pane, sliding the old contents out and the new ones in. */
+  async function slideTo(slot: Slot, target: string, animate: boolean) {
+    const { pane, list } = slot;
+    const mine = ++slot.seq; // any earlier, still-running update is now stale
+    if (target === slot.shown) {
+      // Same contents as on screen: stop any slide in progress and refresh in place
+      pane.getAnimations().forEach(a => a.cancel());
+      const oldRows = ([...list.children] as HTMLLIElement[]).filter(li => !li.dataset.ghost);
       const before = oldRows.map(li => (li.firstElementChild as HTMLElement).dataset.path!);
-      fillDynamic(target);
-      if (accordion && animate) animateRowChanges(dynamicList, oldRows, before);
+      slot.fill(target);
+      if (accordion && animate) animateRowChanges(list, oldRows, before);
       return;
     }
     const slide = animate && !stacked.matches;
-    // If a slide is already running (fast clicking), drop it and go straight to the new sub-menu
-    const busy = dynamicPane.getAnimations().length > 0;
-    dynamicPane.getAnimations().forEach(a => a.cancel());
-    if (slide && shownSubmenu && !busy) {
-      await play(dynamicPane, [{ transform: 'translateX(0)' }, { transform: 'translateX(-100%)' }],
+    // If a slide is already running (fast clicking), drop it and go straight to the new contents
+    const busy = pane.getAnimations().length > 0;
+    pane.getAnimations().forEach(a => a.cancel());
+    if (slide && slot.shown && !busy) {
+      await play(pane, [{ transform: 'translateX(0)' }, { transform: 'translateX(-100%)' }],
         '--motion-submenu-out-duration', '--motion-submenu-out-easing');
-      if (mine !== seq) return; // a newer click has taken over
+      if (mine !== slot.seq) return; // a newer click has taken over
     }
-    shownSubmenu = target;
-    fillDynamic(target);
+    slot.shown = target;
+    slot.fill(target);
     if (slide && target) {
-      await play(dynamicPane, [{ transform: 'translateX(-100%)' }, { transform: 'translateX(0)' }],
+      await play(pane, [{ transform: 'translateX(-100%)' }, { transform: 'translateX(0)' }],
         '--motion-submenu-in-duration', '--motion-submenu-in-easing');
     }
+  }
+
+  /** Update the panes to the right of the core pane. */
+  function renderDynamic(animate: boolean) {
+    // A: the selected item's sub-menu. B and C: the chosen section (B's branches open and close in place).
+    const target = accordion || columns ? (path[0] ?? '') : selected(path);
+    const jobs = [slideTo(dynamicSlot, target, animate)];
+    if (panel2Slot) jobs.push(slideTo(panel2Slot, path[1] ?? '', animate));
+    return Promise.all(jobs);
   }
 
   function render(animate: boolean) {
@@ -252,12 +287,12 @@ function init(header: HTMLElement) {
     if (next === open) return;
     open = next;
     toggle.setAttribute('aria-expanded', String(open));
-    seq++; // cancel any sub-menu animation in flight
+    slots.forEach(s => s.seq++); // cancel any sub-menu animation in flight
     if (open) {
       closing = false;
       path = pathForPage(byPath, currentPath);
-      shownSubmenu = '';
-      dynamicPane.getAnimations().forEach(a => a.cancel());
+      if (columns) path = path.slice(0, 2); // C shows down to L3: at most the section and one L2 open
+      slots.forEach(s => { s.shown = ''; s.pane.getAnimations().forEach(a => a.cancel()); });
       renderCore();
       await renderDynamic(false);
       panes.hidden = false;
@@ -270,7 +305,7 @@ function init(header: HTMLElement) {
       if (!closing) return; // reopened mid-close
       panes.hidden = true;
       path = [];
-      shownSubmenu = '';
+      slots.forEach(s => { s.shown = ''; });
       closing = false;
     }
   }
@@ -286,8 +321,9 @@ function init(header: HTMLElement) {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     const p = btn.dataset.path!;
-    // Clicking the selected item closes its sub-menu; any other item opens its own.
-    path = choose(path, p);
+    // A: clicking the selected item closes its sub-menu; any other item opens its own.
+    // B and C: clicking the chosen section closes it (and everything open under it).
+    path = accordion || columns ? toggleBranch(path, p) : choose(path, p);
     render(true);
     focusPath(p);
   });
@@ -296,7 +332,7 @@ function init(header: HTMLElement) {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     const p = btn.dataset.path!;
-    path = accordion ? toggleBranch(path, p) : choose(path, p);
+    path = accordion || columns ? toggleBranch(path, p) : choose(path, p);
     render(true);
     focusPath(p);
   });

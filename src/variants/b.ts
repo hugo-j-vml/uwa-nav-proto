@@ -8,7 +8,7 @@ import type { Variant } from './types';
 export const b: Variant = {
   id: 'b',
   letter: 'B',
-  name: 'Static core with level panels',
+  name: 'Static core with dynamic panel',
   status: 'ready',
   shell: 'header',
   menu: 'panels',

@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.9.0 (15 Oct 2026)
+
+Variant C, and changes to B.
+
+- **New: variant C, "Static core with two panels"**, at `/c/` (and on the index page). Same header and static core pane as B. Choosing a section opens panel 1 with its L2 items; choosing an L2 opens panel 2, to the right, with its L3 items. One IA level per panel, so the menu goes down to L3 (L3 items are always links; deeper pages are reached from those pages). Panel 2 slides out from under panel 1 with A's sub-menu motion. The open item in the core pane and panel 1 has a → after its label. Clicking an open item closes it. No black highlights.
+- **B renamed** "Static core with dynamic panel".
+- **B has no black highlights** any more: not on the chosen section, not on the page you're on.
+- **B and C:** clicking the chosen section in the core pane closes everything (before, in B, it only closed the open branch).
+- Variant A is unchanged (screenshots match the previous build exactly).
+
 ## 0.8.0 (15 Oct 2026)
 
 Variant B, at `/b/` (and now a link on the index page).
