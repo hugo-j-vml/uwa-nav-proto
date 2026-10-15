@@ -40,9 +40,12 @@ export function getStaticPaths() {
 const { variant, node, title, note, sitePage } = Astro.props;
 const template = sitePage ? 'cobranded-page' : (node?.template ?? 'landing');
 const home = href('', variant.id);
+// Co-branded site pages (the site's home and the pages in its own IA): name and home URL for the header lockup
+const cobrandRoot = template === 'cobranded' ? node : sitePage?.root;
+const cobrand = cobrandRoot ? { label: cobrandRoot.label, href: href(cobrandRoot.path, variant.id) } : undefined;
 const crumbs = node ? ancestors(node.path).map(a => ({ label: a.label, href: href(a.path, variant.id) })) : [];
 ---
-<Base title={title} variant={variant} currentPath={node?.path ?? sitePage?.root.path ?? ''} transparentHeader={template === 'landing'}>
+<Base title={title} variant={variant} currentPath={node?.path ?? sitePage?.root.path ?? ''} transparentHeader={template === 'landing'} cobrand={cobrand}>
   {template === 'landing' && <Landing title={title} note={note} />}
   {template === 'content' && <Content title={title} home={home} crumbs={crumbs} />}
   {template === 'course' && <Course title={title} eyebrow={node?.eyebrow} intro={node?.intro} body={node?.body} />}

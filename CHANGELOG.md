@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.17.0 (15 Oct 2026)
+
+- A, B and C, co-branded site pages (the Oceans Institute home and the pages in its own IA): the header has a darker band (#858585), a "Co-brand Logo" placeholder in a lockup next to the UWA logo (135 × 86, 18px gap, vertically centred, links to the co-branded site's home), and no Study / Impact / Research shortcuts, as in Hugo's reference. Tokens: `--header-bg-cobrand`, `--cobrand-logo-*`. Other pages are unchanged. D and E are unchanged for now.
+
 ## 0.16.1 (15 Oct 2026)
 
 - Removed the co-branded site menu bar and dropdowns added in 0.16.0: menus for co-branded sites are still to be designed. The Oceans Institute IA stays in the background (below).

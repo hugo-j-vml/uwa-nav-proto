@@ -10,17 +10,19 @@
 import Icon from './Icons.astro';
 import { nodes, shortcuts, href, variantBase, base } from '../lib/nav';
 
-interface Props { variant: string; menu: string; currentPath?: string; transparent?: boolean }
-const { variant, menu, currentPath = '', transparent = false } = Astro.props;
+interface Props { variant: string; menu: string; currentPath?: string; transparent?: boolean; cobrand?: { label: string; href: string } }
+const { variant, menu, currentPath = '', transparent = false, cobrand } = Astro.props;
 
 // Compact tree for the client: [label, path, children[]]
 type Compact = { l: string; p: string; c: Compact[] };
 const compact = (list: typeof nodes): Compact[] => list.map(n => ({ l: n.label, p: n.path, c: compact(n.children) }));
 const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes) }).replace(/</g, '\\u003c');
 ---
-<header class:list={['primary-nav-header', { 'is-transparent': transparent }]} data-figma="3.1 primary nav header" data-current-path={currentPath} data-menu-layout={menu}>
+<header class:list={['primary-nav-header', { 'is-transparent': transparent, 'is-cobrand': cobrand }]} data-figma="3.1 primary nav header" data-current-path={currentPath} data-menu-layout={menu}>
   <div class="header-bar">
     <a class="logo" href={href('', variant)}><img src={`${base}logos/uwa-horizontal.svg`} alt="The University of Western Australia: home" width="216" height="71" /></a>
+    {/* Co-branded sites: the entity's logo in a lockup next to UWA's (placeholder until logos are supplied) */}
+    {cobrand && <a class="cobrand-logo" href={cobrand.href} aria-label={`${cobrand.label}: home`}><span aria-hidden="true">Co-brand<br />Logo</span></a>}
 
     <div class="header-controls">
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-panes" data-menu-toggle>
@@ -46,9 +48,9 @@ const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes) }
       </button>
     </div>
 
-    <nav class="header-shortcuts" aria-label="Shortcuts">
+    {!cobrand && <nav class="header-shortcuts" aria-label="Shortcuts">
       {shortcuts.map(s => <a class="shortcut-button" href={href(s.path, variant)}>{s.label}</a>)}
-    </nav>
+    </nav>}
   </div>
 
 
