@@ -243,7 +243,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 8. ~~Is password protection needed?~~ **Phase 1:** simple password screen on GitHub Pages. Proper protection to be decided before client sharing.
 9. Are utility nav, footer and audience gateways in scope, or only the global header and menu?
 10. ~~Will we test more than one nav concept?~~ **Resolved 15 Oct:** yes, three variants by path (Section 4a).
-10a. ~~Do C's content pages need their own layout?~~ **Resolved 15 Oct:** same templates. The sidebar sits on the left and the page column takes the remaining width; only spacing tokens (e.g. title and breadcrumb offsets that assumed the header band) are overridden for C. Hugo's first sketch: a grey sidebar with the 10 top-level items as plain text, vertically offset, with the hero running to the top of the page column.
+10a. ~~Do C's content pages need their own layout?~~ **Superseded 15 Oct:** C now uses the header, so it uses the same templates and spacing as A. *(Earlier answer, for the sidebar idea:)* same templates. The sidebar sits on the left and the page column takes the remaining width; only spacing tokens (e.g. title and breadcrumb offsets that assumed the header band) are overridden for C. Hugo's first sketch: a grey sidebar with the 10 top-level items as plain text, vertically offset, with the hero running to the top of the page column.
 10b. ~~Variant C sidebar details~~ **Superseded 15 Oct:** C is now a header variant with two panels (Section 7b).
 
 **Fonts**
