@@ -199,10 +199,10 @@
   --index-mark-size: 30px;            /* VML mark, top left */
   --index-rule-gap: 16px;              /* mark to rule */
   --index-rule-width: 2px;
-  --index-intro-size: clamp(18px, 2vw, 40px);
+  --index-intro-size: clamp(15px, 1.25vw, 22px);  /* ~18px at 1440px wide */
   --index-intro-line: 1.25;
   --index-list-left: 38%;              /* where the big list starts (desktop) */
-  --index-list-top: clamp(32px, 4vw, 60px);
+  --index-list-top: clamp(32px, 22vh, 280px);  /* space above the list; scales with window height to sit near the middle */
   --index-item-size: clamp(22px, 2.8vw, 56px);  /* variant links: ~40px at 1440px wide, one line each */
   --index-item-line: 1.05;
   --index-item-gap: 0.3em;             /* space between list items */

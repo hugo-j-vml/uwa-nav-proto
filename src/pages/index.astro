@@ -22,7 +22,7 @@ import { variants } from '../variants';
         {variants.map(v => (
           <li class:list={['index-item', { 'is-coming-soon': v.status !== 'ready' }]}>
             {v.status === 'ready' ? (
-              <a class="index-link" href={variantBase(v.id)}>
+              <a class="index-link" href={variantBase(v.id)} target="_blank" rel="noopener">
                 <span class="index-letter">{v.letter}.</span>
                 <span class="index-name">{v.name}</span>
               </a>
