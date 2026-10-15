@@ -203,7 +203,7 @@
   --index-intro-line: 1.25;
   --index-list-left: 38%;              /* where the big list starts (desktop) */
   --index-list-top: clamp(32px, 4vw, 60px);
-  --index-item-size: clamp(34px, 5.6vw, 112px);
+  --index-item-size: clamp(22px, 2.8vw, 56px);  /* variant links: ~40px at 1440px wide, one line each */
   --index-item-line: 1.05;
   --index-item-gap: 0.3em;             /* space between list items */
   --index-letter-gap: 0.35em;          /* letter to label */
