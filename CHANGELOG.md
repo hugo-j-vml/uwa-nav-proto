@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.21.4 (15 Oct 2026)
+
+- Shift+O panel matches the index page: just the "Co-brand menu behaviour" headline and the three choices, with the same number spacing and 8px corners. The option description, "(default)" labels, "Current:" line and Shift+O hint are gone; the selected choice shows the current setting. The panel's title and Close link stay.
+
 ## 0.21.3 (15 Oct 2026)
 
 - Index page option choices: three times the space between the number and the label, 8px corners instead of fully rounded, and twice the gap above them (80px below the last variant link, was 40px). The Shift+O panel is unchanged.
