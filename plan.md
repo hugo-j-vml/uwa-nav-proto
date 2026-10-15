@@ -89,7 +89,7 @@ One repo, one build, one IA. Each nav concept is a **variant** that builds the f
 
 ### Index page (added to scope 15 Oct 2026)
 
-- **Layout and colours** follow Hugo's reference: dark page (`#1a1a1a`), off-white text, a mark top left with a full-width rule under it, a short intro top left, and a large lettered list starting about 38% across.
+- **Layout and colours** follow Hugo's reference: dark page (`#1a1a1a`), off-white text, a mark top left with a full-width rule under it, a short intro top left, and a large lettered list on the left, with the behaviour options in a column to its right, tops aligned (below 1280px wide the options sit under the list).
 - **Each list item is a variant link**, e.g. "A. Core with expanding parent nodes". Variants not built yet are greyed out with a "Coming soon" tag and aren't links.
 - **Typeface:** Snowflake Sans (Medium for the intro and links, Book for other copy), `--index-font`. The password screen uses the same layout and font.
 - **Also on the index page:** the Options section (behaviour options, Section 7d) and a footer with the VML wordmark and the version and last-updated time.
@@ -204,6 +204,8 @@ Alternative behaviours are switched across all variants with **behaviour options
 - **1 · Menu bar on page:** a bar under the breadcrumb with the site's sections and dropdowns; Menu stays the core menu.
 - **2 · Replaces core menu:** Menu (D: the sidebar list) shows the site's sections in place of the top level, with a "UWA main menu" switch and back.
 - **7 · Alongside core menu:** both at once. A, E: the site's block above a divider and the top level. B, C: the site's name and sections fill the white pane on open; choosing a top-level item shows that instead, and closing it brings the site back. D: the site's name and sections at the top of the sidebar, above a divider and the top-level items; a section opens the pane at its pages.
+
+**Breadcrumbs on co-branded pages** (default Show): Show or Hide the breadcrumb on the site's pages.
 
 **Shortcuts on co-branded pages** (default Hide): Show or Hide the shortcut links on the site's pages (A–C header, E sidebar; D has none).
 

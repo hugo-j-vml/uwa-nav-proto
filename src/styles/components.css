@@ -304,6 +304,8 @@ a { color: inherit; text-decoration: none; }
 /* Content template: breadcrumb + title, then placeholders */
 .tpl-content .page-intro,
 .tpl-cobranded .page-intro { padding: var(--breadcrumb-top) var(--page-gutter) 0; }
+/* Behaviour option "Breadcrumbs on co-branded pages": hidden, the page moves up by the breadcrumb's height */
+[data-opt-cobrand-breadcrumbs="hide"] .tpl-cobranded .page-intro nav { display: none; }
 .tpl-content .page-title { margin-top: var(--breadcrumb-to-title); width: var(--page-title-width); max-width: 100%; }
 .tpl-content .placeholder-stack { margin-top: var(--content-title-to-image); }
 
@@ -511,7 +513,7 @@ html.is-locked .index-page { display: none; }
   font-size: var(--index-intro-size); line-height: var(--index-intro-line); font-weight: var(--index-weight-link); /* Medium */
 }
 .index-list {
-  list-style: none; margin: var(--index-list-top) 0 0 var(--index-list-left); padding: 0;
+  list-style: none; margin: var(--index-list-top) 0 0; padding: 0;
   display: grid; gap: var(--index-item-gap);
   font-size: var(--index-item-size); line-height: var(--index-item-line); font-weight: var(--index-weight-link);
   letter-spacing: -0.01em;
@@ -528,9 +530,6 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
   padding: 0.3em 0.6em; border: 1px solid currentColor; border-radius: var(--options-radius);
   font-size: var(--index-tag-size); line-height: 1; font-weight: var(--index-weight-copy); letter-spacing: 0.02em; white-space: nowrap;
 }
-@media (max-width: 1024px) {
-  .index-list { margin-left: 0; }
-}
 /* Footer: VML wordmark bottom left, version and build time bottom right (index page and password screen) */
 .index-footer {
   display: flex; justify-content: space-between; align-items: flex-end; gap: var(--index-gutter);
@@ -546,11 +545,15 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 /* ==========================================================================
    Behaviour options (src/options.ts): index page section and hidden panel
    ========================================================================== */
-/* Index page: under the last variant link, lined up with the link text (past the letters) */
-.index-options { margin: var(--options-top) 0 0 calc(var(--index-list-left) + var(--options-indent)); max-width: 640px; }
+/* Index page: a column to the right of the variant list, tops aligned (narrow screens: under the list, lined up with the link text) */
+@media (min-width: 1280px) {
+  .index-main { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--index-columns-gap); align-items: start; }
+  .index-intro { grid-column: 1 / -1; }
+  .index-options { margin-top: var(--index-list-top); }
+}
 .index-options .option:first-child { margin-top: 0; }
 .index-options .option-label { font-size: var(--index-intro-size); }
-@media (max-width: 1024px) { .index-options { margin-left: var(--options-indent); } }
+@media (max-width: 1279px) { .index-options { margin: var(--options-top) 0 0 var(--options-indent); } }
 
 .options-controls { font-size: var(--options-size); line-height: 1.4; }
 .option { margin: 20px 0 0; padding: 0; border: 0; min-width: 0; }

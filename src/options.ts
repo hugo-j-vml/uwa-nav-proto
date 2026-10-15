@@ -39,6 +39,16 @@ export const OPTIONS: OptionDef[] = [
     ],
     default: 'hide',
   },
+  {
+    id: 'cobrand-breadcrumbs',
+    label: 'Breadcrumbs on co-branded pages',
+    description: 'Whether the breadcrumb shows on a co-branded site’s pages.',
+    choices: [
+      { id: 'show', label: 'Show' },
+      { id: 'hide', label: 'Hide' },
+    ],
+    default: 'show',
+  },
 ];
 
 /** localStorage key for the chosen options ({ [id]: choice }). */

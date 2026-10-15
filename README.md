@@ -99,7 +99,7 @@ Full specs per variant are in `plan.md` (sections 7–7d). In short:
 
 Alternative behaviours that apply across every variant, without making new variants. Defined in `src/options.ts`; each choice is remembered per browser.
 
-- **Index page:** under the variant links, a headline per option and its choices; the filled-in choice is the current setting.
+- **Index page:** in a column to the right of the variant links (under them below 1280px wide), a headline per option and its choices; the filled-in choice is the current setting.
 - **Any variant page:** Shift+O shows a hidden panel (bottom right); choosing reloads the page.
 - **Links:** `?cobrand-menu=7` (or `?cobrand-menu=7&cobrand-shortcuts=show`) on any URL sets and remembers a choice (for presetting test sessions); it's then dropped from the address.
 
@@ -108,6 +108,7 @@ Current options:
 | Option | Choices |
 |---|---|
 | Co-brand menu behaviour (`cobrand-menu`) | **1** Menu bar on page (default): a bar under the breadcrumb with the site's sections and dropdowns. **2** Replaces core menu: the menu shows the site's sections, with a "UWA main menu" switch. **7** Alongside core menu: both together (A, E: site block above a divider and the top level; B, C: the site's name and sections fill the white pane on open, until a top-level item is chosen; D: the site's name and sections at the top of the sidebar, above a divider and the top level; a section opens the pane). |
+| Breadcrumbs on co-branded pages (`cobrand-breadcrumbs`) | **Show** (default) or **Hide** the breadcrumb on a co-branded site's pages, all variants. Hidden, the page moves up by the breadcrumb's height. |
 | Shortcuts on co-branded pages (`cobrand-shortcuts`) | **Show** or **Hide** (default) the shortcut links (Study, Impact, Research) on a co-branded site's pages: A–C header, E sidebar. D has none. Other pages always show them. |
 
 To add an option: add an entry to `src/options.ts`, then branch on it in CSS (`[data-opt-<id>="<choice>"]` on `<html>`) or in scripts (`getOption('<id>')` from `src/lib/options.ts`).

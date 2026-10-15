@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.26.0 (15 Oct 2026)
+
+- Index page layout: the variant list moves to the left (at the page gutter) and the options sit in a column to its right, tops aligned, leaving room for more options. Below 1280px wide the options go back under the list. The space above the list is back to scaling with window height (22vh).
+- New behaviour option **Breadcrumbs on co-branded pages**: Show (default) or Hide the breadcrumb on a co-branded site's pages, in every variant. Hidden, the page moves up by the breadcrumb's height. Also `?cobrand-breadcrumbs=hide` in a link.
+
 ## 0.25.2 (15 Oct 2026)
 
 - Option choice buttons: 2px more padding at the top (10px top, 8px bottom) so the labels sit in the vertical centre. Applies on the index page and in the Shift+O panel, which share the buttons.
