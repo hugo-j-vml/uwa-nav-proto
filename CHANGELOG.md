@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.17.1 (15 Oct 2026)
+
+- Co-brand header: back to the normal header band colour (the darker band from 0.17.0 is removed), and twice the space between the UWA logo and the co-brand logo (36px, was 18px).
+
 ## 0.17.0 (15 Oct 2026)
 
 - A, B and C, co-branded site pages (the Oceans Institute home and the pages in its own IA): the header has a darker band (#858585), a "Co-brand Logo" placeholder in a lockup next to the UWA logo (135 × 86, 18px gap, vertically centred, links to the co-branded site's home), and no Study / Impact / Research shortcuts, as in Hugo's reference. Tokens: `--header-bg-cobrand`, `--cobrand-logo-*`. Other pages are unchanged. D and E are unchanged for now.

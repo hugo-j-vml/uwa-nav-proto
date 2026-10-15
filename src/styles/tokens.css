@@ -63,11 +63,10 @@
   --logo-height: 71px;
   --header-controls-offset-top: 26px;  /* menu + shortcut buttons sit lower than the logo */
   --logo-to-menu-gap: 43px;            /* logo right edge to Menu button */
-  /* Co-branded site pages (A, B, C): darker header band, co-brand logo next to UWA's, no shortcuts */
-  --header-bg-cobrand: #858585;
+  /* Co-branded site pages (A, B, C): co-brand logo next to UWA's, no shortcuts */
   --cobrand-logo-width: 135px;         /* placeholder box until the entity's logo is supplied */
   --cobrand-logo-height: 86px;
-  --cobrand-logo-gap: 18px;            /* UWA logo to co-brand logo */
+  --cobrand-logo-gap: 36px;            /* UWA logo to co-brand logo */
   --header-button-gap: 12px;           /* between Menu/Search, and between shortcuts */
   --shortcuts-margin-right: 19px;      /* extra inset of shortcut buttons from the right */
   --button-height: 36px;
