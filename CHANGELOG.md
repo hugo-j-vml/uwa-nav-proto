@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.9.2 (15 Oct 2026)
+
+- Index page: intro text sits 12px below the line divider (was 30px), `--index-intro-top`.
+
 ## 0.9.1 (15 Oct 2026)
 
 - Variant C: panel 1 (the middle panel) has a light grey background, #d4d4d4 (`--panel-1-bg`), so the three panes step from dark to light.

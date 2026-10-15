@@ -199,6 +199,7 @@
   --index-mark-size: 30px;            /* VML mark, top left */
   --index-rule-gap: 16px;              /* mark to rule */
   --index-rule-width: 2px;
+  --index-intro-top: 12px;             /* line divider to intro text */
   --index-intro-size: 18px;
   --index-intro-line: 1.25;
   --index-list-left: 38%;              /* where the big list starts (desktop) */
