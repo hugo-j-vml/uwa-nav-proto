@@ -38,3 +38,13 @@ export function choose(path: string[], p: string): string[] {
 
 /** The item whose sub-menu is showing ('' if none). */
 export const selected = (path: string[]) => path[path.length - 1] ?? '';
+
+/**
+ * Accordion click (variant B's white pane): an open item closes, along with
+ * everything open below it; a closed item opens, closing any other open item
+ * at its level and below.
+ */
+export function toggle(path: string[], p: string): string[] {
+  const depth = p.split('/').length - 1;
+  return path.includes(p) ? path.slice(0, depth) : [...path.slice(0, depth), p];
+}

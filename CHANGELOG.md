@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.8.0 (15 Oct 2026)
+
+Variant B, at `/b/` (and now a link on the index page).
+
+- Same header, shortcuts, content pages and motion as A.
+- The core pane is narrower and static: top-level items only, never nested. The chosen item gets the black block; clicking it again closes the menu's white pane.
+- The white pane is wider (core and white pane split about 40/60, same total width as A) and has no heading. It lists the chosen section's items as an accordion: clicking a parent opens it inline, with a ↓ next to its label and its children indented beneath it. One branch is open at a time; clicking an open parent closes it. Rows open and close with A's row motion.
+- No → arrows in B. The page you're on is highlighted in the white pane, and the menu reopens with your page's branch open, as in A.
+- Tokens: B's widths, label width and ↓ colour are in the `[data-variant="b"]` block at the end of `tokens.css`.
+- Variant A is unchanged (screenshots match the previous build exactly).
+
 ## 0.7.1 (15 Oct 2026)
 
 - Index page: the VML mark replaces the "UWA" text top left, as in the reference (30px, `--index-mark-size`).

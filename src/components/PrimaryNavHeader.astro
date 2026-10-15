@@ -1,6 +1,7 @@
 ---
 /**
- * 3.1 primary nav header (Figma component).
+ * 3.1 primary nav header (Figma component). Shared by variants A and B; the
+ * menu layout (A: core-expanding, B: panels) is passed to src/scripts/menu.ts.
  * Logo, Menu button, Search button, header shortcuts, and the menu panes:
  *   - 3.1 L1 core pane     (grey; top-level items, plus the open path nested inline)
  *   - 3.1 Ln dynamic pane  (light; children of the selected item)
@@ -9,15 +10,15 @@
 import Icon from './Icons.astro';
 import { nodes, shortcuts, href, variantBase } from '../lib/nav';
 
-interface Props { variant: string; currentPath?: string; transparent?: boolean }
-const { variant, currentPath = '', transparent = false } = Astro.props;
+interface Props { variant: string; menu: string; currentPath?: string; transparent?: boolean }
+const { variant, menu, currentPath = '', transparent = false } = Astro.props;
 
 // Compact tree for the client: [label, path, children[]]
 type Compact = { l: string; p: string; c: Compact[] };
 const compact = (list: typeof nodes): Compact[] => list.map(n => ({ l: n.label, p: n.path, c: compact(n.children) }));
 const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes) }).replace(/</g, '\\u003c');
 ---
-<header class:list={['primary-nav-header', { 'is-transparent': transparent }]} data-figma="3.1 primary nav header" data-current-path={currentPath}>
+<header class:list={['primary-nav-header', { 'is-transparent': transparent }]} data-figma="3.1 primary nav header" data-current-path={currentPath} data-menu-layout={menu}>
   <div class="header-bar">
     <a class="logo" href={href('', variant)} aria-label="UWA home"><span>UWA Logo</span></a>
 

@@ -33,7 +33,7 @@ From 15 Oct, the prototype hosts **several nav concepts (variants)** side by sid
 | 4 | Tablet and mobile frames | ⏳ To come | Hugo designing soon |
 | 5 | Font files | ✅ Done 15 Oct | TT Norms Pro, Melun Display UWA and Inter, working in the prototype |
 | 6 | Test tasks | ⏳ Later | Used to set start pages and target pages, not to shape the build |
-| 7 | Variant B designs | ⏳ To come | Hugo designing (Section 4a) |
+| 7 | Variant B designs | ✅ Received 15 Oct | Desktop mockup (labels predate the new IA). Built as v0.8 |
 | 8 | Variant C designs | ⏳ To come | Hugo designing (Section 4a) |
 | 9 | Reviewed 2026 IA spreadsheet | ✅ Received 15 Oct | 251 pages, 7 top-level items. Loaded as v0.6 (rows after Login's children are notes; navigation label and URL columns ignored) |
 | 10 | Index page design | ✅ Received 15 Oct | Reference image: dark page, mark and rule, intro top left, large list of variant links. Exact typeface to come |
@@ -78,7 +78,7 @@ One repo, one build, one IA. Each nav concept is a **variant** that builds the f
 |------|---------|-------------|--------|
 | `/uwa-nav-proto/` | Index | A short list of the variants with links. Behind the password screen. Layout and colours from Hugo's reference (see below). | ✅ Built 15 Oct |
 | `/uwa-nav-proto/a/…` | **A** | The current prototype (v0.4): header, indented core pane, dynamic pane, current motion. Behaviour and design unchanged. | ✅ Moved 15 Oct |
-| `/uwa-nav-proto/b/…` | **B** | Same header layout as A. A static core menu on the left with no indents that shows parent nodes; each new level opens in a new panel. | Waiting for Hugo's designs |
+| `/uwa-nav-proto/b/…` | **B** | Same header layout as A. A static core menu on the left with no indents that shows parent nodes; the chosen section opens in the wider white pane, where parents expand inline. | ✅ Built 15 Oct (v0.8, Section 7a) |
 | `/uwa-nav-proto/c/…` | **C** | A sidebar instead of a header, with more SaaS-like behaviours. | Waiting for Hugo's designs |
 
 - Paths are **neutral letters** so participants aren't cued by the URL.
@@ -116,7 +116,7 @@ One repo, one build, one IA. Each nav concept is a **variant** that builds the f
 
 1. ✅ **Done 15 Oct (v0.7).** Refactor: pull the menu state out into a shared module, add the variant config and path prefixes, and move the current build to `/a/` with no visible change. Add the index page. **Acceptance:** every A page at `/a/…` looks and behaves exactly like the current root build (menu states, motion, reopen state, Esc/click-outside, shortcuts hiding below 800px). The index lists A, B and C, with B and C marked "coming soon" until they're built. Log it in `CHANGELOG.md`.
    - **Optional, before B and C designs land:** a working skeleton of C (sidebar shell plus the existing templates, top-level items only, as in Hugo's sketch), clearly marked work in progress. Only if Hugo asks for it; otherwise wait for the designs.
-2. Variant B once Hugo's designs land.
+2. ✅ **Done 15 Oct (v0.8).** Variant B (Section 7a).
 3. Variant C once Hugo's designs land.
 
 ## 5. Tokens file: hand-editable values
@@ -156,7 +156,18 @@ Nesting indent is applied as real padding per level, not with spaces in the text
   - The core menu closes completely when the menu button is pressed again.
   - Esc and clicking outside both close the menu (v0.4).
 
-Variants B and C get their own interaction specs once Hugo's designs are in.
+## 7a. Interaction specification (desktop, variant B)
+
+Agreed 15 Oct 2026. Everything not listed here is as variant A (Section 7).
+
+- **Panes:** same total width as A (964px), split about 40/60: core pane 386px, white pane 578px, so the white pane has room for indents. The core pane keeps its own height; the white pane grows with the open branch.
+- **Core pane:** top-level items only, static (never nested or indented), no arrows. The chosen item gets the black block. Clicking it again closes the white pane.
+- **White pane:** no heading. Lists the chosen section's items. Clicking a parent opens it **inline** (accordion): a ↓ appears after its label and its children appear indented beneath it, one indent per level. **One branch open at a time:** opening a parent closes any other open parent at its level. Clicking an open parent closes it and everything below it.
+- **Arrows:** none, except the ↓ on an open parent (black, as the mockup).
+- **Highlight:** only the chosen top-level item in the core pane, and the page you're on (as A).
+- **Reopen state, closing, Esc, click-outside, page-link motion:** as A.
+
+Variant C gets its own interaction spec once Hugo's designs are in.
 
 ## 8. Motion
 
@@ -214,7 +225,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 7d. The Impact and Research header shortcuts don't match any item in the menu, so they have stand-in landing pages. Should Research go to "Our research"?
 
 7e. Reviewed IA (15 Oct), to confirm: "Campus initiatives or Campus development or Campus management" is built as written; which one? "Applicants (or apply portal…)" and "Agents (or International agents)" are built as Applicants and Agents. Students › Academic support has a child also called Academic support.
-7f. Index page, to confirm: the variant names for B ("Static core with level panels") and C ("Sidebar navigation") are stand-ins taken from Section 4a; the intro copy is now Hugo's ("UWA main navigation prototypes / Choose a concept to continue!"). (The VML mark is in, from Hugo's SVG.)
+7f. Index page, to confirm: the variant names for B ("Static core with level panels") and C ("Sidebar navigation") are stand-ins taken from Section 4a; B's no longer fits its behaviour (parents expand inline in the white pane), so it needs a new name; the intro copy is now Hugo's ("UWA main navigation prototypes / Choose a concept to continue!"). (The VML mark is in, from Hugo's SVG.)
 
 **Testing and hosting**
 

@@ -230,7 +230,12 @@
   /* A uses the base values. */
 }
 [data-variant="b"] {
-  /* B: overrides go here once the designs land. */
+  /* Panes: same total width as A (964px), split about 40/60 so the white pane has room for the indents */
+  --core-pane-width: 386px;
+  --dynamic-pane-width: 578px;
+  --item-label-max-width: none;        /* labels use the full width of the white pane before wrapping */
+  --b-open-arrow-colour: currentColor; /* the ↓ on an open parent in the white pane (black in the mockup) */
+  --b-open-arrow-gap: 12px;            /* label to ↓ */
 }
 [data-variant="c"] {
   /* C: overrides go here once the designs land (e.g. --header-height, --breadcrumb-top, --landing-title-top for the sidebar shell). */

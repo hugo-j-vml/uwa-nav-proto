@@ -1,5 +1,11 @@
 /**
- * Menu behaviour (click only, no hover).
+ * Menu behaviour (click only, no hover), for the header variants:
+ *   A (core-expanding): described below.
+ *   B (panels): the core pane only ever lists the top-level items, with the
+ *     chosen one selected. The white pane lists that section's items as an
+ *     accordion: a parent opens inline (↓ arrow, children indented beneath it),
+ *     one branch open at a time; clicking an open parent closes it. No heading
+ *     and no → arrows. Same motion, closing and reopen behaviour as A.
  *
  * State is an "open path": the chain of items whose sub-menus are open,
  * e.g. ["study", "study/study-areas"].
@@ -25,7 +31,7 @@
  * their sub-menu; items without children are links to their page.
  */
 
-import { indexTree, pathForPage, choose, selected, type MenuNode } from '../lib/menu-state';
+import { indexTree, pathForPage, choose, toggle as toggleBranch, selected, type MenuNode } from '../lib/menu-state';
 
 const header = document.querySelector<HTMLElement>('.primary-nav-header');
 if (header) init(header);
@@ -34,6 +40,7 @@ function init(header: HTMLElement) {
   const dataEl = header.querySelector<HTMLScriptElement>('[data-nav-data]')!;
   const { base, tree } = JSON.parse(dataEl.textContent || '{}') as { base: string; tree: MenuNode[] };
   const currentPath = header.dataset.currentPath || '';
+  const accordion = header.dataset.menuLayout === 'panels'; // variant B
   const toggle = header.querySelector<HTMLButtonElement>('[data-menu-toggle]')!;
   const panes = header.querySelector<HTMLElement>('#menu-panes')!;
   const coreList = header.querySelector<HTMLUListElement>('[data-core-list]')!;
@@ -81,7 +88,8 @@ function init(header: HTMLElement) {
     if (hasChildren) {
       (el as HTMLButtonElement).type = 'button';
       el.setAttribute('aria-expanded', String(path.includes(node.p)));
-      if (node.p === selected(path)) el.classList.add('is-selected');
+      // A: the item whose sub-menu is showing. B: only the chosen top-level item, in the core pane.
+      if (accordion ? opts.core && node.p === path[0] : node.p === selected(path)) el.classList.add('is-selected');
     } else {
       (el as HTMLAnchorElement).href = href(node.p);
     }
@@ -94,7 +102,14 @@ function init(header: HTMLElement) {
     const label = document.createElement('span');
     label.className = 'menu-item-label';
     label.textContent = node.l;
-    el.append(label, arrowTpl.content.cloneNode(true));
+    el.append(label);
+    if (!accordion) el.append(arrowTpl.content.cloneNode(true));
+    else if (hasChildren && !opts.core && path.includes(node.p)) {
+      // B: an open parent gets a ↓ next to its label; nothing else has an arrow
+      const arrow = arrowTpl.content.cloneNode(true) as DocumentFragment;
+      arrow.querySelector('svg')?.classList.add('is-down');
+      el.append(arrow);
+    }
     li.append(el);
     return li;
   }
@@ -106,11 +121,11 @@ function init(header: HTMLElement) {
     coreList.replaceChildren();
     for (const top of tree) {
       coreList.append(row(top, { core: true }));
-      if (path[0] === top.p) {
+      if (!accordion && path[0] === top.p) {
         path.slice(1).forEach((p, i) => { const n = byPath.get(p); if (n) coreList.append(row(n, { depth: i + 1, core: true })); });
       }
     }
-    if (animate) animateRowChanges(oldRows, before);
+    if (animate) animateRowChanges(coreList, oldRows, before);
   }
 
   /** Clip a row while its height animates, keeping the selected block's side bleed visible. */
@@ -121,18 +136,18 @@ function init(header: HTMLElement) {
   }
 
   /**
-   * Smooth changes to the nested rows in the core pane:
+   * Smooth changes to the nested rows in a list (A: core pane; B: white pane):
    *   - added rows open up (items below glide down) while their text and arrow slide down into place
    *   - removed rows stay briefly as non-interactive "ghosts" that close up while their text slides up and fades
    * When one row replaces another, the two happen together, so the list height changes smoothly.
    */
-  function animateRowChanges(oldRows: HTMLLIElement[], before: string[]) {
+  function animateRowChanges(list: HTMLUListElement, oldRows: HTMLLIElement[], before: string[]) {
     const duration = ms('--motion-core-item-duration');
     if (!duration) return;
     const easing = token('--motion-core-item-easing') || 'ease-out';
     const offset = token('--motion-core-item-offset') || '12px';
-    const gap = parseFloat(getComputedStyle(coreList).rowGap) || 0;
-    const rows = [...coreList.children] as HTMLLIElement[];
+    const gap = parseFloat(getComputedStyle(list).rowGap) || 0;
+    const rows = [...list.children] as HTMLLIElement[];
     const pathOf = (li: HTMLLIElement) => (li.firstElementChild as HTMLElement).dataset.path!;
     const after = new Set(rows.map(pathOf));
     const textFrames = (dir: 1 | -1): Keyframe[] => dir === 1
@@ -151,7 +166,7 @@ function init(header: HTMLElement) {
       const item = ghost.firstElementChild as HTMLElement;
       item.removeAttribute('data-path');
       item.tabIndex = -1;
-      coreList.insertBefore(ghost, anchor);
+      list.insertBefore(ghost, anchor);
       const h = ghost.getBoundingClientRect().height;
       clipRow(ghost, true);
       for (const part of item.children as HTMLCollectionOf<HTMLElement>) {
@@ -179,20 +194,34 @@ function init(header: HTMLElement) {
     const current = byPath.get(target);
     dynamicList.replaceChildren();
     if (!current) { dynamicPane.hidden = true; return; }
-    dynamicList.append(row(current, { heading: true }));
-    for (const child of current.c) dynamicList.append(row(child));
+    if (accordion) {
+      // B: the section's items, with the open branch expanded inline
+      (function branch(list: MenuNode[], depth: number) {
+        for (const n of list) {
+          dynamicList.append(row(n, { depth }));
+          if (path.includes(n.p)) branch(n.c, depth + 1);
+        }
+      })(current.c, 0);
+    } else {
+      dynamicList.append(row(current, { heading: true }));
+      for (const child of current.c) dynamicList.append(row(child));
+    }
     dynamicPane.setAttribute('aria-label', current.l);
     dynamicPane.hidden = false;
   }
 
   /** Update the dynamic pane, sliding the old sub-menu out and the new one in. */
   async function renderDynamic(animate: boolean) {
-    const target = selected(path);
+    // A: the selected item's sub-menu. B: the chosen section (its branches open and close in place).
+    const target = accordion ? (path[0] ?? '') : selected(path);
     const mine = ++seq; // any earlier, still-running update is now stale
     if (target === shownSubmenu) {
       // Same sub-menu as on screen: stop any slide in progress and refresh in place
       dynamicPane.getAnimations().forEach(a => a.cancel());
+      const oldRows = ([...dynamicList.children] as HTMLLIElement[]).filter(li => !li.dataset.ghost);
+      const before = oldRows.map(li => (li.firstElementChild as HTMLElement).dataset.path!);
       fillDynamic(target);
+      if (accordion && animate) animateRowChanges(dynamicList, oldRows, before);
       return;
     }
     const slide = animate && !stacked.matches;
@@ -247,7 +276,7 @@ function init(header: HTMLElement) {
   }
 
   function focusPath(p: string) {
-    coreList.querySelector<HTMLElement>(`[data-path="${CSS.escape(p)}"]`)?.focus();
+    panes.querySelector<HTMLElement>(`[data-path="${CSS.escape(p)}"]`)?.focus();
   }
 
   // ---------- Events ----------
@@ -267,7 +296,7 @@ function init(header: HTMLElement) {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     const p = btn.dataset.path!;
-    path = choose(path, p);
+    path = accordion ? toggleBranch(path, p) : choose(path, p);
     render(true);
     focusPath(p);
   });

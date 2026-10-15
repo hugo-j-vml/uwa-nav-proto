@@ -35,8 +35,8 @@ const { title, variant, currentPath = '', transparentHeader = false } = Astro.pr
     <PasswordGate />
     {variant ? (
       <div class="site">
-        {/* Variant shell: only the header shell exists so far (A); B and C swap theirs in here */}
-        {variant.shell === 'header' && <PrimaryNavHeader variant={variant.id} currentPath={currentPath} transparent={transparentHeader} />}
+        {/* Variant shell: header (A, B); C's sidebar shell goes here */}
+        {variant.shell === 'header' && <PrimaryNavHeader variant={variant.id} menu={variant.menu} currentPath={currentPath} transparent={transparentHeader} />}
         <main class="page">
           <slot />
         </main>
