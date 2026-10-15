@@ -254,8 +254,8 @@
   --index-text: #f1f1f1;              /* also the VML mark colour */
   --index-muted: #6e6e6e;              /* "coming soon" items */
   --index-font: 'Snowflake Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --index-weight-copy: 400;            /* Book: intro, password screen text, tags */
-  --index-weight-link: 500;            /* Medium: variant links, Enter button, password screen title */
+  --index-weight-copy: 400;            /* Book: password screen text, tags, options */
+  --index-weight-link: 500;            /* Medium: intro, variant links, Enter button, password screen title */
   --index-gutter: 30px;
   --index-mark-size: 30px;            /* VML mark, top left */
   --index-rule-gap: 16px;              /* mark to rule */

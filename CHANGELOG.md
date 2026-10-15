@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.21.1 (15 Oct 2026)
+
+- Index page: the intro reads "UWA Navigation Prototyping System" (the "Choose a concept" line is gone), in Snowflake Sans Medium, on one line.
+- Docs brought up to date: README (behaviour per variant, behaviour options, co-branded templates, version number), `plan.md` (fonts, index page, resolved and new open questions), and a new `CLAUDE.md` with working notes for Claude sessions.
+
 ## 0.21.0 (15 Oct 2026)
 
 - **Co-brand menu option 7, "Alongside core menu"**, in all five variants. On the Oceans Institute home and its pages, the menu shows the Oceans Institute's menu and the UWA top level together:

@@ -503,8 +503,8 @@ html.is-locked .index-page { display: none; }
 }
 .index-mark { display: block; width: var(--index-mark-size); height: var(--index-mark-size); }
 .index-intro {
-  margin: var(--index-intro-top) 0 0; max-width: 18em;
-  font-size: var(--index-intro-size); line-height: var(--index-intro-line); font-weight: var(--index-weight-copy);
+  margin: var(--index-intro-top) 0 0;
+  font-size: var(--index-intro-size); line-height: var(--index-intro-line); font-weight: var(--index-weight-link); /* Medium */
 }
 .index-list {
   list-style: none; margin: var(--index-list-top) 0 0 var(--index-list-left); padding: 0;

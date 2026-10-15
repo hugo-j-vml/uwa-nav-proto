@@ -91,7 +91,8 @@ One repo, one build, one IA. Each nav concept is a **variant** that builds the f
 
 - **Layout and colours** follow Hugo's reference: dark page (`#1a1a1a`), off-white text, a mark top left with a full-width rule under it, a short intro top left, and a large lettered list starting about 38% across.
 - **Each list item is a variant link**, e.g. "A. Core with expanding parent nodes". Variants not built yet are greyed out with a "Coming soon" tag and aren't links.
-- **Typeface:** a plain stand-in (Helvetica Neue / Arial) until Hugo confirms the exact one. It's one token, `--index-font`.
+- **Typeface:** Snowflake Sans (Medium for the intro and links, Book for other copy), `--index-font`. The password screen uses the same layout and font.
+- **Also on the index page:** the Options section (behaviour options, Section 7d) and a footer with the VML wordmark and the version and last-updated time.
 - All values (colours, sizes, list position) are `--index-*` tokens in `tokens.css`.
 
 ### Structure
@@ -141,9 +142,9 @@ Nesting indent is applied as real padding per level, not with spaces in the text
 
 ## 6. Fonts
 
-- ✅ **Done (15 Oct):** the real typefaces are working in the prototype: TT Norms Pro, Melun Display UWA and Inter.
+- ✅ **Done (15 Oct):** the real typefaces are working in the prototype: TT Norms Pro, Melun Display UWA and Inter. Snowflake Sans (VML) for the index page and password screen.
 - Self-hosted with the prototype as WOFF2. Claude can convert OTF/TTF files if needed.
-- ⚠️ **Licence check (Hugo/UWA):** confirm the licences allow web embedding on a password-protected test site. Most desktop font licences don't cover web use automatically.
+- ✅ **Licences:** Hugo confirmed licensing is fine (15 Oct).
 
 ## 7. Interaction specification (desktop, v1, variant A)
 
@@ -233,7 +234,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 | **3. Content pages** | Generated pages for every node, with breadcrumbs and current-state indicators | ✅ v0.2 (8 Oct): landing, content, course and co-branded templates from Figma section *Page templates* (`607:11926`), assigned via a `template` column in the sitemap CSV |
 | **4. Tablet and mobile** | Responsive layouts and breakpoints | Hugo reviews against Figma |
 | **5. Motion** | Transitions per Section 8 | ✅ v0.4 (9 Oct): menu slides down/up 500ms ease-out; sub-menu retreats left under the core pane (200ms) and slides back out (300ms) |
-| **5a. Variants** | Variant setup, index page, A moved to `/a/`, then B and C | ✅ Refactor and index page done 15 Oct (v0.7). B and C wait for designs |
+| **5a. Variants** | Variant setup, index page, A moved to `/a/`, then B–E | ✅ All five built 15 Oct (v0.7–v0.11); behaviour options for cross-variant experiments (v0.18) |
 | **6. Test readiness** | Deep links, hosting, and a pilot run in Maze/Lyssna | A pilot task completes cleanly in the testing tool |
 | **7. Iteration** | Updates between test rounds via the Section 12 workflow | Ongoing |
 
@@ -257,12 +258,13 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
    - Esc closes the menu.
    - The arrow on a selected row stays Vivid Blue (`--item-selected-arrow`). It has low contrast on black.
 7c. The closed-state frame (1) has a hidden 11th top-level item, **Giving**, that isn't in the open frames. Should it be in or out? (Currently out.)
-7c-ii. Co-branded breadcrumb: built as UWA › (ancestors) › site, the same as content pages. The Figma example shows UWA › Oceans Institute. Confirm once the IA places co-branded sites.
+7c-ii. ~~Co-branded breadcrumb~~ **Resolved (v0.15.1):** co-branded pages use the short form, UWA › site name; pages in the site's own IA continue from there.
 7c-iii. Course page Enquire/Apply buttons and the in-page tabs bar are static (no action). Should they do anything in testing?
 7d. The Impact and Research header shortcuts don't match any item in the menu, so they have stand-in landing pages. Should Research go to "Our research"?
 
 7e. Reviewed IA (15 Oct), to confirm: "Campus initiatives or Campus development or Campus management" is built as written; which one? "Applicants (or apply portal…)" and "Agents (or International agents)" are built as Applicants and Agents. Students › Academic support has a child also called Academic support.
-7f. Index page, to confirm: B is "Static core with dynamic panel" (Hugo, 15 Oct); C's name ("Static core with two panels") is a stand-in; the intro copy is now Hugo's ("UWA main navigation prototypes / Choose a concept to continue!"). (The VML mark is in, from Hugo's SVG.)
+7f. Index page: B is "Static core with dynamic panel" (Hugo, 15 Oct); C's name ("Static core with two panels") and D/E's names are stand-ins. Intro copy: "UWA Navigation Prototyping System" (Hugo, v0.21.1).
+7g. Co-branded sites, open: which Co-brand menu option goes forward (1, 2 or 7, being tested); whether D and E should show the co-brand logo; whether search on co-branded pages covers the site, UWA or both; the co-brand menu's visual design (switch rows, headings and the option 1 bar are wireframe stand-ins).
 
 **Testing and hosting**
 
@@ -275,7 +277,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 
 **Fonts**
 
-11. Do the font licences allow web embedding on the hosted prototype?
+11. ~~Do the font licences allow web embedding?~~ **Resolved:** yes (Hugo, 15 Oct).
 
 ## 12. Figma handover conventions
 

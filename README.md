@@ -20,14 +20,15 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Index page look (colours, font, sizes) | `--index-*` tokens in `src/styles/tokens.css` |
 | Variant names, and which variants are built | `src/variants/a.ts` … `e.ts` (`status: 'ready'` or `'coming-soon'`) |
 | The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below) |
-| A co-branded site's own pages (e.g. Oceans Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the main menu; pages are built (reachable by URL) but not in any menu yet. |
-| Behaviour options (alternative behaviours switched on the index page, with Shift+O, or with `?<option>=<choice>` in a link) | `src/options.ts` |
+| A co-branded site's own pages (e.g. Oceans Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the core menu tree; how they appear in the menus depends on the Co-brand menu option. |
+| Behaviour options (alternative behaviours switched on the index page, with Shift+O on any variant page, or with `?<option>=<choice>` in a link) | `src/options.ts` (see below) |
 | Header shortcut buttons (Study / Impact / Research) | `src/data/header.json` |
 | Password | `src/config.ts` (see below) |
-| Fonts | Put the files in `public/fonts/` (names in `src/styles/fonts.css`). Novel Pro falls back to Crimson Pro (free). |
+| Fonts | Put the files in `public/fonts/` (names in `src/styles/fonts.css`). Novel Pro falls back to Crimson Pro (free). Index page and password screen: Snowflake Sans (`--index-font`). |
 | Layout/structure of components and templates | `src/styles/components.css`, `src/components/` and `src/templates/` |
-| Menu behaviour | `src/scripts/menu.ts` (A, B, C), `src/scripts/sidebar-menu.ts` (D, E), shared state in `src/lib/menu-state.ts` |
-| Logos | `public/logos/` (horizontal: header; vertical: sidebar) |
+| Menu behaviour | `src/scripts/menu.ts` (A, B, C), `src/scripts/sidebar-menu.ts` (D, E), shared state in `src/lib/menu-state.ts`; option 1's co-brand menu bar: `src/components/SiteNav.astro` + `src/scripts/site-nav.ts` |
+| Logos | `public/logos/` (horizontal: header; vertical: sidebar). Co-brand logo: a placeholder box (`--cobrand-logo-*` tokens) |
+| Version number on the index page | The latest heading in `CHANGELOG.md` (add an entry for each change). "Last updated" is the build time, in Perth time. |
 
 Every push to `main` rebuilds and republishes the site automatically (see the **Actions** tab). It usually takes 1–2 minutes.
 
@@ -72,7 +73,8 @@ Oceans Institute,,,,cobranded,,,
 - **Landing**: placeholder with the title over it. Also used for the homepage.
 - **Content**: breadcrumbs, title, then placeholders.
 - **Course**: hero with eyebrow, title, intro, Enquire/Apply; in-page tabs bar, body copy, 3-column cards.
-- **Co-branded site**: breadcrumbs, sage hero with the site name (Novel Pro), sage tiles.
+- **Co-branded site**: short breadcrumb (UWA › site name), sage hero with the site name (Novel Pro), sage tiles. In A–C the header shows a co-brand logo placeholder next to the UWA logo and no shortcuts.
+- **Co-branded site pages** (the pages in a site's own IA): breadcrumb from the site (UWA › site › section › page), serif title, placeholders.
 
 ### Changing the password
 
@@ -81,15 +83,33 @@ Generate the SHA-256 hash of the new password and paste it into `PASSWORD_SHA256
 - with Node installed: `npm run hash-password -- "new password"`
 - or any SHA-256 generator (lower-case hex output).
 
-## Behaviour (v1)
+## Behaviour
 
-- Click only, no hover. The whole row (label, space and arrow) is the click target.
-- **Menu** opens the core pane. Clicking an item with children shows them in the dynamic pane and nests the item under its parent in the core pane.
-- Only the item whose sub-menu is showing is selected (black block, white text). The page you're on is highlighted the same way wherever it appears in the menu.
-- Clicking the selected item closes its sub-menu. **Menu** again, **Esc**, or a click anywhere outside the panes closes everything.
-- Opening the menu on a page deep in the IA starts with that page's section open and its nearest parent selected.
-- The dynamic pane heading links to that section's landing page.
-- Motion: the menu slides down from under the header band; sub-menus retreat left under the core pane and slide back out. Timings are in `tokens.css`.
+Full specs per variant are in `plan.md` (sections 7–7d). In short:
+
+- Click only, no hover; the whole row is the click target. **Esc**, the trigger again, or a click outside closes the menu. Page links slide the menu away, then navigate.
+- The menu **always opens at the top level**, as on the homepage, wherever you are (except on co-branded pages with Co-brand menu options 2 and 7).
+- **A** Core with expanding parent nodes: chosen parents nest in the core pane; their children show in the dynamic pane, with a heading linking to the section. Black block on the selected item and the current page.
+- **B** Static core with dynamic panel: static core pane; the white pane shows the chosen section as an accordion.
+- **C** Static core with two panels: core pane, panel 1 (L2), panel 2 (L3); stops at L3.
+- **D** Sidebar with drill-down: fixed sidebar with the top-level items; a 540px pane drills down one level at a time, with Back.
+- **E** Sidebar menu button: fixed sidebar with a Menu button and shortcuts; Menu opens the same pane at the top level.
+
+## Behaviour options
+
+Alternative behaviours that apply across every variant, without making new variants. Defined in `src/options.ts`; each choice is remembered per browser.
+
+- **Index page:** the Options section, with a "Current:" line.
+- **Any variant page:** Shift+O shows a hidden panel (bottom right); choosing reloads the page.
+- **Links:** `?cobrand-menu=7` on any URL sets and remembers a choice (for presetting test sessions).
+
+Current options:
+
+| Option | Choices |
+|---|---|
+| Co-brand menu (`cobrand-menu`) | **1** Menu bar on page (default): a bar under the breadcrumb with the site's sections and dropdowns. **2** Replaces core menu: the menu shows the site's sections, with a "UWA main menu" switch. **7** Alongside core menu: both together (A, E: site block above the top level; B, C: the site as the first core item, pre-chosen; D: the site as the first sidebar item). |
+
+To add an option: add an entry to `src/options.ts`, then branch on it in CSS (`[data-opt-<id>="<choice>"]` on `<html>`) or in scripts (`getOption('<id>')` from `src/lib/options.ts`).
 
 ## Running locally (optional)
 
