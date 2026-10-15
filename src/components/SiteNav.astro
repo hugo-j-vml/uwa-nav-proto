@@ -1,0 +1,36 @@
+---
+/**
+ * Behaviour option "Co-brand menu" = 1 (hidden for other choices, in CSS).
+ * A co-branded site's own menu (for example Oceans Institute), separate from
+ * the UWA main menu. A bar with the site name (links to the site's home page)
+ * and its top-level items. Each item opens a dropdown: the item's own page
+ * first, then its child pages. Click only; one dropdown open at a time.
+ * Behaviour: src/scripts/site-nav.ts.
+ */
+import { href, type NavNode, type SiteNode } from '../lib/nav';
+interface Props { root: NavNode; site: SiteNode[]; variant: string; currentPath: string }
+const { root, site, variant, currentPath } = Astro.props;
+const inSection = (n: SiteNode) => currentPath === n.path || currentPath.startsWith(n.path + '/');
+---
+<nav class="site-nav" aria-label={`${root.label} menu`} data-site-nav>
+  <a class="site-nav-name" href={href(root.path, variant)} aria-current={currentPath === root.path ? 'page' : undefined}>{root.label}</a>
+  <ul class="site-nav-list">
+    {site.map((l1, i) => (
+      <li class="site-nav-item">
+        <button type="button" class:list={['site-nav-button', { 'is-current': inSection(l1) }]} aria-expanded="false" aria-controls={`site-nav-${i}`}>
+          {l1.label}
+          <svg class="site-nav-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+        </button>
+        <ul class="site-nav-dropdown" id={`site-nav-${i}`} hidden>
+          <li><a class="site-nav-link is-overview" href={href(l1.path, variant)} aria-current={currentPath === l1.path ? 'page' : undefined}>{l1.label}</a></li>
+          {l1.children.map(l2 => (
+            <li><a class="site-nav-link" href={href(l2.path, variant)} aria-current={currentPath === l2.path ? 'page' : undefined}>{l2.label}</a></li>
+          ))}
+        </ul>
+      </li>
+    ))}
+  </ul>
+</nav>
+<script>
+  import '../scripts/site-nav';
+</script>

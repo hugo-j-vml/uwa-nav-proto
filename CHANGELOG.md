@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.19.0 (15 Oct 2026)
+
+- **Co-brand menu option 1, "Menu bar on page"** (the default), in all five variants. On the Oceans Institute home and its pages, a darker sage bar under the breadcrumb shows the site name (links to the Oceans Institute home) and its six sections. Clicking a section opens a dropdown: the section's own page first, then its pages. One open at a time; closes on a second click, Esc or a click elsewhere; the current section is underlined. The Menu button stays the UWA core menu. In D and E the bar sits within the page margins. This is the bar from 0.16.0, back behind the option; with options 2 and 7 it's hidden and the pages are as before.
+
 ## 0.18.0 (15 Oct 2026)
 
 - **Behaviour options.** A way to switch alternative behaviours across every variant without making new variants. Options are defined in `src/options.ts`; the first is **Co-brand menu** (1 Menu bar on page, the default; 2 Replaces core menu; 7 Alongside core menu). The behaviours themselves come in the next releases.

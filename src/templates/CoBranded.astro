@@ -1,17 +1,21 @@
 ---
 /**
  * Co-branded site home page (Figma "Co-branded site page template"). Short
- * breadcrumb (UWA › site name), then the sage hero with the title.
+ * breadcrumb (UWA › site name), the site's menu bar if it has its own IA
+ * (shown for behaviour option "Co-brand menu" = 1), then the sage hero.
  */
 import Placeholder from '../components/Placeholder.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-interface Props { title: string; home: string }
-const { title, home } = Astro.props;
+import SiteNav from '../components/SiteNav.astro';
+import type { NavNode } from '../lib/nav';
+interface Props { title: string; home: string; root: NavNode; variant: string }
+const { title, home, root, variant } = Astro.props;
 ---
 <div class="tpl-cobranded">
   <div class="page-intro">
     <Breadcrumbs home={home} crumbs={[]} current={title} />
   </div>
+  {root.site?.length ? <SiteNav root={root} site={root.site} variant={variant} currentPath={root.path} /> : null}
   <div class="cobranded-hero">
     <Placeholder sage />
     <h1 class="cobranded-title">{title}</h1>

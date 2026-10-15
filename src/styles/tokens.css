@@ -159,8 +159,20 @@
   --cobranded-title-top: 51px;         /* from top of the hero */
   --cobranded-tile-width: 937px;
   --cobranded-tile-height: 590px;
+  /* Co-branded site menu bar (behaviour option "Co-brand menu" = 1) */
+  --site-nav-bg: #8fa197;              /* a darker sage than the hero, so the bar reads as separate */
+  --site-nav-text: var(--colour-black);
+  --site-nav-height: 64px;
+  --site-nav-padding-y: 10px;          /* bar padding; the bar can wrap onto more rows in narrow spaces */
+  --site-nav-button-height: 44px;
+  --site-nav-name-size: 26px;          /* site name, co-branded serif */
+  --site-nav-item-size: var(--type-ui-size);
+  --site-nav-gap: 28px;                /* between items */
+  --site-nav-name-gap: 48px;           /* site name to the first item */
+  --site-nav-dropdown-width: 320px;
+  --site-nav-dropdown-bg: var(--colour-white);
   --cobranded-page-title-size: 48px;   /* page title inside a co-branded site */
-  --cobranded-page-title-gap: 48px;    /* breadcrumb to title, and title to the first placeholder */
+  --cobranded-page-title-gap: 48px;    /* breadcrumb (or menu bar) to title, and title to the first placeholder */
 
   /* ---------- Breakpoints (placeholders until tablet/mobile designs exist) ---------- */
   /* CSS can't use variables inside @media, so these are for reference;

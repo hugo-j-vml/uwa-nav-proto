@@ -1,12 +1,13 @@
 ---
 /**
  * A page inside a co-branded site's own menu (for example Oceans Institute ›
- * About the OI › Our people). Not in any menu yet (reachable by URL and
- * breadcrumb). Breadcrumb starts at the site (UWA › site › section › page),
- * then the title in the co-branded serif, and placeholders.
+ * About the OI › Our people). Breadcrumb starts at the site (UWA › site ›
+ * section › page), then the site's menu bar (behaviour option "Co-brand
+ * menu" = 1), the title in the co-branded serif, and placeholders.
  */
 import Placeholder from '../components/Placeholder.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SiteNav from '../components/SiteNav.astro';
 import { href, type NavNode, type SiteNode } from '../lib/nav';
 interface Props { title: string; home: string; variant: string; page: SiteNode; root: NavNode; parent?: SiteNode }
 const { title, home, variant, page, root, parent } = Astro.props;
@@ -16,6 +17,7 @@ const crumbs = [root, ...(parent ? [parent] : [])].map(n => ({ label: n.label, h
   <div class="page-intro">
     <Breadcrumbs home={home} crumbs={crumbs} current={title} />
   </div>
+  <SiteNav root={root} site={root.site!} variant={variant} currentPath={page.path} />
   <h1 class="cobranded-page-title">{title}</h1>
   <div class="placeholder-stack">
     <Placeholder full sage />
