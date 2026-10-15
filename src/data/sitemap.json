@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-08T07:51:29.710Z",
+  "generated": "2026-10-15T02:09:46.832Z",
   "source": "data/sitemap.csv",
   "columns": [
     "L1",
@@ -14,146 +14,308 @@
   ],
   "nodes": [
     {
-      "id": "study",
-      "label": "Study",
-      "slug": "study",
-      "path": "study",
+      "id": "study-at-uwa",
+      "label": "Study at UWA",
+      "slug": "study-at-uwa",
+      "path": "study-at-uwa",
       "level": 1,
       "template": "landing",
       "children": [
         {
-          "id": "study/study-areas",
-          "label": "Study areas",
-          "slug": "study-areas",
-          "path": "study/study-areas",
+          "id": "study-at-uwa/explore-courses",
+          "label": "Explore courses",
+          "slug": "explore-courses",
+          "path": "study-at-uwa/explore-courses",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "study/study-areas/architecture-and-design",
-              "label": "Architecture and Design",
-              "slug": "architecture-and-design",
-              "path": "study/study-areas/architecture-and-design",
+              "id": "study-at-uwa/explore-courses/find-a-course",
+              "label": "Find a course",
+              "slug": "find-a-course",
+              "path": "study-at-uwa/explore-courses/find-a-course",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study-at-uwa/explore-courses/study-areas",
+              "label": "Study areas",
+              "slug": "study-areas",
+              "path": "study-at-uwa/explore-courses/study-areas",
               "level": 3,
               "template": "content",
               "children": [
                 {
-                  "id": "study/study-areas/architecture-and-design/specific-course-pages",
-                  "label": "Specific course pages",
-                  "slug": "specific-course-pages",
-                  "path": "study/study-areas/architecture-and-design/specific-course-pages",
+                  "id": "study-at-uwa/explore-courses/study-areas/architecture-and-design",
+                  "label": "Architecture and Design",
+                  "slug": "architecture-and-design",
+                  "path": "study-at-uwa/explore-courses/study-areas/architecture-and-design",
                   "level": 4,
-                  "template": "course",
-                  "children": []
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/architecture-and-design/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/architecture-and-design/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study-at-uwa/explore-courses/study-areas/business-and-commerce",
+                  "label": "Business and Commerce",
+                  "slug": "business-and-commerce",
+                  "path": "study-at-uwa/explore-courses/study-areas/business-and-commerce",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/business-and-commerce/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/business-and-commerce/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study-at-uwa/explore-courses/study-areas/data-and-computer-science",
+                  "label": "Data and Computer Science",
+                  "slug": "data-and-computer-science",
+                  "path": "study-at-uwa/explore-courses/study-areas/data-and-computer-science",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/data-and-computer-science/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/data-and-computer-science/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study-at-uwa/explore-courses/study-areas/education",
+                  "label": "Education",
+                  "slug": "education",
+                  "path": "study-at-uwa/explore-courses/study-areas/education",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/education/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/education/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study-at-uwa/explore-courses/study-areas/engineering",
+                  "label": "Engineering",
+                  "slug": "engineering",
+                  "path": "study-at-uwa/explore-courses/study-areas/engineering",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/engineering/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/engineering/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study-at-uwa/explore-courses/study-areas/health-and-biomedical-sciences",
+                  "label": "Health and Biomedical Sciences",
+                  "slug": "health-and-biomedical-sciences",
+                  "path": "study-at-uwa/explore-courses/study-areas/health-and-biomedical-sciences",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/health-and-biomedical-sciences/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/health-and-biomedical-sciences/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study-at-uwa/explore-courses/study-areas/humanities-and-social-sciences",
+                  "label": "Humanities and Social Sciences",
+                  "slug": "humanities-and-social-sciences",
+                  "path": "study-at-uwa/explore-courses/study-areas/humanities-and-social-sciences",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/humanities-and-social-sciences/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/humanities-and-social-sciences/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study-at-uwa/explore-courses/study-areas/law",
+                  "label": "Law",
+                  "slug": "law",
+                  "path": "study-at-uwa/explore-courses/study-areas/law",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/law/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/law/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study-at-uwa/explore-courses/study-areas/music-and-fine-arts",
+                  "label": "Music and Fine Arts",
+                  "slug": "music-and-fine-arts",
+                  "path": "study-at-uwa/explore-courses/study-areas/music-and-fine-arts",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/music-and-fine-arts/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/music-and-fine-arts/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study-at-uwa/explore-courses/study-areas/natural-and-physical-sciences",
+                  "label": "Natural and Physical Sciences",
+                  "slug": "natural-and-physical-sciences",
+                  "path": "study-at-uwa/explore-courses/study-areas/natural-and-physical-sciences",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/natural-and-physical-sciences/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/natural-and-physical-sciences/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study-at-uwa/explore-courses/study-areas/psychology",
+                  "label": "Psychology",
+                  "slug": "psychology",
+                  "path": "study-at-uwa/explore-courses/study-areas/psychology",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/explore-courses/study-areas/psychology/specific-course-pages",
+                      "label": "Specific course pages",
+                      "slug": "specific-course-pages",
+                      "path": "study-at-uwa/explore-courses/study-areas/psychology/specific-course-pages",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
                 }
               ]
             },
             {
-              "id": "study/study-areas/business-and-commerce",
-              "label": "Business and Commerce",
-              "slug": "business-and-commerce",
-              "path": "study/study-areas/business-and-commerce",
-              "level": 3,
-              "template": "content",
-              "children": []
-            },
-            {
-              "id": "study/study-areas/data-and-computer-science",
-              "label": "Data and Computer Science",
-              "slug": "data-and-computer-science",
-              "path": "study/study-areas/data-and-computer-science",
-              "level": 3,
-              "template": "content",
-              "children": []
-            },
-            {
-              "id": "study/study-areas/education",
-              "label": "Education",
-              "slug": "education",
-              "path": "study/study-areas/education",
-              "level": 3,
-              "template": "content",
-              "children": []
-            },
-            {
-              "id": "study/study-areas/engineering",
-              "label": "Engineering",
-              "slug": "engineering",
-              "path": "study/study-areas/engineering",
-              "level": 3,
-              "template": "content",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "study/find-a-course",
-          "label": "Find a course",
-          "slug": "find-a-course",
-          "path": "study/find-a-course",
-          "level": 2,
-          "template": "content",
-          "children": [
-            {
-              "id": "study/find-a-course/undergraduate-courses",
+              "id": "study-at-uwa/explore-courses/undergraduate-courses",
               "label": "Undergraduate courses",
               "slug": "undergraduate-courses",
-              "path": "study/find-a-course/undergraduate-courses",
+              "path": "study-at-uwa/explore-courses/undergraduate-courses",
               "level": 3,
               "template": "content",
-              "children": [
-                {
-                  "id": "study/find-a-course/undergraduate-courses/specific-course-pages",
-                  "label": "Specific course pages",
-                  "slug": "specific-course-pages",
-                  "path": "study/find-a-course/undergraduate-courses/specific-course-pages",
-                  "level": 4,
-                  "template": "course",
-                  "children": []
-                }
-              ]
+              "children": []
             },
             {
-              "id": "study/find-a-course/postgraduate-courses",
+              "id": "study-at-uwa/explore-courses/postgraduate-courses",
               "label": "Postgraduate courses",
               "slug": "postgraduate-courses",
-              "path": "study/find-a-course/postgraduate-courses",
+              "path": "study-at-uwa/explore-courses/postgraduate-courses",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/find-a-course/hdr",
-              "label": "HDR",
-              "slug": "hdr",
-              "path": "study/find-a-course/hdr",
+              "id": "study-at-uwa/explore-courses/higher-degree-by-research",
+              "label": "Higher degree by research",
+              "slug": "higher-degree-by-research",
+              "path": "study-at-uwa/explore-courses/higher-degree-by-research",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/find-a-course/assured-pathways",
-              "label": "Assured pathways",
-              "slug": "assured-pathways",
-              "path": "study/find-a-course/assured-pathways",
+              "id": "study-at-uwa/explore-courses/online-courses",
+              "label": "Online courses",
+              "slug": "online-courses",
+              "path": "study-at-uwa/explore-courses/online-courses",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/find-a-course/short-courses",
+              "id": "study-at-uwa/explore-courses/short-courses",
               "label": "Short courses",
               "slug": "short-courses",
-              "path": "study/find-a-course/short-courses",
+              "path": "study-at-uwa/explore-courses/short-courses",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/find-a-course/our-courses-explained",
-              "label": "Our courses explained",
-              "slug": "our-courses-explained",
-              "path": "study/find-a-course/our-courses-explained",
+              "id": "study-at-uwa/explore-courses/advice-for-parents",
+              "label": "Advice for parents",
+              "slug": "advice-for-parents",
+              "path": "study-at-uwa/explore-courses/advice-for-parents",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study-at-uwa/explore-courses/our-degrees-explained",
+              "label": "Our degrees explained",
+              "slug": "our-degrees-explained",
+              "path": "study-at-uwa/explore-courses/our-degrees-explained",
               "level": 3,
               "template": "content",
               "children": []
@@ -161,82 +323,81 @@
           ]
         },
         {
-          "id": "study/study-levels",
-          "label": "Study levels",
-          "slug": "study-levels",
-          "path": "study/study-levels",
-          "level": 2,
-          "template": "content",
-          "children": []
-        },
-        {
-          "id": "study/pathways-and-eligibility",
-          "label": "Pathways and eligibility",
-          "slug": "pathways-and-eligibility",
-          "path": "study/pathways-and-eligibility",
+          "id": "study-at-uwa/discover-uwa",
+          "label": "Discover UWA",
+          "slug": "discover-uwa",
+          "path": "study-at-uwa/discover-uwa",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "study/pathways-and-eligibility/atar",
-              "label": "ATAR",
-              "slug": "atar",
-              "path": "study/pathways-and-eligibility/atar",
-              "level": 3,
-              "template": "content",
-              "children": [
-                {
-                  "id": "study/pathways-and-eligibility/atar/specific-pathway-pages",
-                  "label": "Specific pathway pages",
-                  "slug": "specific-pathway-pages",
-                  "path": "study/pathways-and-eligibility/atar/specific-pathway-pages",
-                  "level": 4,
-                  "template": "content",
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "study/pathways-and-eligibility/entry-pathways",
-              "label": "Entry pathways",
-              "slug": "entry-pathways",
-              "path": "study/pathways-and-eligibility/entry-pathways",
+              "id": "study-at-uwa/discover-uwa/career-opportunities",
+              "label": "Career opportunities",
+              "slug": "career-opportunities",
+              "path": "study-at-uwa/discover-uwa/career-opportunities",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/pathways-and-eligibility/entry-standards",
-              "label": "Entry standards",
-              "slug": "entry-standards",
-              "path": "study/pathways-and-eligibility/entry-standards",
+              "id": "study-at-uwa/discover-uwa/seek-wisdom",
+              "label": "Seek Wisdom",
+              "slug": "seek-wisdom",
+              "path": "study-at-uwa/discover-uwa/seek-wisdom",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/pathways-and-eligibility/in-school-programs",
-              "label": "In-school programs",
-              "slug": "in-school-programs",
-              "path": "study/pathways-and-eligibility/in-school-programs",
+              "id": "study-at-uwa/discover-uwa/our-campus",
+              "label": "Our campus",
+              "slug": "our-campus",
+              "path": "study-at-uwa/discover-uwa/our-campus",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/pathways-and-eligibility/university-preparation-programs",
-              "label": "University preparation programs",
-              "slug": "university-preparation-programs",
-              "path": "study/pathways-and-eligibility/university-preparation-programs",
+              "id": "study-at-uwa/discover-uwa/uwa-albany",
+              "label": "UWA Albany",
+              "slug": "uwa-albany",
+              "path": "study-at-uwa/discover-uwa/uwa-albany",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/pathways-and-eligibility/prerequisites-and-recommended-subjects",
-              "label": "Prerequisites and recommended subjects",
-              "slug": "prerequisites-and-recommended-subjects",
-              "path": "study/pathways-and-eligibility/prerequisites-and-recommended-subjects",
+              "id": "study-at-uwa/discover-uwa/accommodation",
+              "label": "Accommodation",
+              "slug": "accommodation",
+              "path": "study-at-uwa/discover-uwa/accommodation",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study-at-uwa/discover-uwa/open-day",
+              "label": "Open Day",
+              "slug": "open-day",
+              "path": "study-at-uwa/discover-uwa/open-day",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study-at-uwa/discover-uwa/events",
+              "label": "Events",
+              "slug": "events",
+              "path": "study-at-uwa/discover-uwa/events",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study-at-uwa/discover-uwa/student-exchange-and-study-abroad",
+              "label": "Student exchange and study abroad",
+              "slug": "student-exchange-and-study-abroad",
+              "path": "study-at-uwa/discover-uwa/student-exchange-and-study-abroad",
               "level": 3,
               "template": "content",
               "children": []
@@ -244,73 +405,209 @@
           ]
         },
         {
-          "id": "study/how-to-apply",
-          "label": "How to Apply",
+          "id": "study-at-uwa/how-to-apply",
+          "label": "How to apply",
           "slug": "how-to-apply",
-          "path": "study/how-to-apply",
+          "path": "study-at-uwa/how-to-apply",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "study/how-to-apply/undergraduate-applicants",
+              "id": "study-at-uwa/how-to-apply/undergraduate-applicants",
               "label": "Undergraduate applicants",
               "slug": "undergraduate-applicants",
-              "path": "study/how-to-apply/undergraduate-applicants",
+              "path": "study-at-uwa/how-to-apply/undergraduate-applicants",
               "level": 3,
               "template": "content",
-              "children": [
-                {
-                  "id": "study/how-to-apply/undergraduate-applicants/specific-how-to-apply",
-                  "label": "Specific how to apply",
-                  "slug": "specific-how-to-apply",
-                  "path": "study/how-to-apply/undergraduate-applicants/specific-how-to-apply",
-                  "level": 4,
-                  "template": "content",
-                  "children": []
-                }
-              ]
+              "children": []
             },
             {
-              "id": "study/how-to-apply/postgraduate-applicants",
+              "id": "study-at-uwa/how-to-apply/postgraduate-applicants",
               "label": "Postgraduate applicants",
               "slug": "postgraduate-applicants",
-              "path": "study/how-to-apply/postgraduate-applicants",
+              "path": "study-at-uwa/how-to-apply/postgraduate-applicants",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/how-to-apply/research-applicants",
+              "id": "study-at-uwa/how-to-apply/research-applicants",
               "label": "Research applicants",
               "slug": "research-applicants",
-              "path": "study/how-to-apply/research-applicants",
+              "path": "study-at-uwa/how-to-apply/research-applicants",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/how-to-apply/international-applicants",
-              "label": "International applicants",
-              "slug": "international-applicants",
-              "path": "study/how-to-apply/international-applicants",
+              "id": "study-at-uwa/how-to-apply/international-applications",
+              "label": "International applications",
+              "slug": "international-applications",
+              "path": "study-at-uwa/how-to-apply/international-applications",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/how-to-apply/accept-your-offer",
+              "id": "study-at-uwa/how-to-apply/pathways-and-eligibility",
+              "label": "Pathways and eligibility",
+              "slug": "pathways-and-eligibility",
+              "path": "study-at-uwa/how-to-apply/pathways-and-eligibility",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/english-language-requirements",
+                  "label": "English language requirements",
+                  "slug": "english-language-requirements",
+                  "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/english-language-requirements",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                },
+                {
+                  "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa",
+                  "label": "Entry pathways to UWA",
+                  "slug": "entry-pathways-to-uwa",
+                  "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/atar",
+                      "label": "ATAR",
+                      "slug": "atar",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/atar",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/early-offer",
+                      "label": "Early offer",
+                      "slug": "early-offer",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/early-offer",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/experience-based-entry",
+                      "label": "Experience-based entry",
+                      "slug": "experience-based-entry",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/experience-based-entry",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/indigenous-entry-and-orientation-courses",
+                      "label": "Indigenous entry and orientation courses",
+                      "slug": "indigenous-entry-and-orientation-courses",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/indigenous-entry-and-orientation-courses",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/access-uwa",
+                      "label": "Access UWA",
+                      "slug": "access-uwa",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/access-uwa",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/broadway-uwa",
+                      "label": "Broadway UWA",
+                      "slug": "broadway-uwa",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/broadway-uwa",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/fairway-uwa",
+                      "label": "Fairway UWA",
+                      "slug": "fairway-uwa",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/fairway-uwa",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/first-in-family",
+                      "label": "First in family",
+                      "slug": "first-in-family",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/first-in-family",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/educational-access-scheme-eas",
+                      "label": "Educational Access Scheme (EAS)",
+                      "slug": "educational-access-scheme-eas",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/educational-access-scheme-eas",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/diploma-entry",
+                      "label": "Diploma entry",
+                      "slug": "diploma-entry",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/diploma-entry",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/special-tertiary-admissions-stat",
+                      "label": "Special tertiary admissions (STAT)",
+                      "slug": "special-tertiary-admissions-stat",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/special-tertiary-admissions-stat",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/international-baccalaureate-entry-ib",
+                      "label": "International Baccalaureate entry (IB)",
+                      "slug": "international-baccalaureate-entry-ib",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/international-baccalaureate-entry-ib",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    },
+                    {
+                      "id": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/transferring-from-another-university",
+                      "label": "Transferring from another university",
+                      "slug": "transferring-from-another-university",
+                      "path": "study-at-uwa/how-to-apply/pathways-and-eligibility/entry-pathways-to-uwa/transferring-from-another-university",
+                      "level": 5,
+                      "template": "content",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "study-at-uwa/how-to-apply/accept-your-offer",
               "label": "Accept your offer",
               "slug": "accept-your-offer",
-              "path": "study/how-to-apply/accept-your-offer",
+              "path": "study-at-uwa/how-to-apply/accept-your-offer",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/how-to-apply/defer-your-offer",
+              "id": "study-at-uwa/how-to-apply/defer-your-offer",
               "label": "Defer your offer",
               "slug": "defer-your-offer",
-              "path": "study/how-to-apply/defer-your-offer",
+              "path": "study-at-uwa/how-to-apply/defer-your-offer",
               "level": 3,
               "template": "content",
               "children": []
@@ -318,26 +615,44 @@
           ]
         },
         {
-          "id": "study/scholarships-and-fees",
-          "label": "Scholarships and Fees",
-          "slug": "scholarships-and-fees",
-          "path": "study/scholarships-and-fees",
+          "id": "study-at-uwa/fees-and-scholarships",
+          "label": "Fees and scholarships",
+          "slug": "fees-and-scholarships",
+          "path": "study-at-uwa/fees-and-scholarships",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "study/scholarships-and-fees/calculate-your-fees",
-              "label": "Calculate your fees",
-              "slug": "calculate-your-fees",
-              "path": "study/scholarships-and-fees/calculate-your-fees",
+              "id": "study-at-uwa/fees-and-scholarships/tuition-and-payments",
+              "label": "Tuition and payments",
+              "slug": "tuition-and-payments",
+              "path": "study-at-uwa/fees-and-scholarships/tuition-and-payments",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study-at-uwa/fees-and-scholarships/fee-calculator",
+              "label": "Fee calculator",
+              "slug": "fee-calculator",
+              "path": "study-at-uwa/fees-and-scholarships/fee-calculator",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study-at-uwa/fees-and-scholarships/scholarships-and-grants",
+              "label": "Scholarships and grants",
+              "slug": "scholarships-and-grants",
+              "path": "study-at-uwa/fees-and-scholarships/scholarships-and-grants",
               "level": 3,
               "template": "content",
               "children": [
                 {
-                  "id": "study/scholarships-and-fees/calculate-your-fees/specific-scholarships",
-                  "label": "Specific scholarships",
-                  "slug": "specific-scholarships",
-                  "path": "study/scholarships-and-fees/calculate-your-fees/specific-scholarships",
+                  "id": "study-at-uwa/fees-and-scholarships/scholarships-and-grants/prestigious-student-scholarships",
+                  "label": "Prestigious student scholarships",
+                  "slug": "prestigious-student-scholarships",
+                  "path": "study-at-uwa/fees-and-scholarships/scholarships-and-grants/prestigious-student-scholarships",
                   "level": 4,
                   "template": "content",
                   "children": []
@@ -345,28 +660,46 @@
               ]
             },
             {
-              "id": "study/scholarships-and-fees/international-student-fees",
-              "label": "International student fees",
-              "slug": "international-student-fees",
-              "path": "study/scholarships-and-fees/international-student-fees",
+              "id": "study-at-uwa/fees-and-scholarships/hdr-scholarships",
+              "label": "HDR Scholarships",
+              "slug": "hdr-scholarships",
+              "path": "study-at-uwa/fees-and-scholarships/hdr-scholarships",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/scholarships-and-fees/domestic-student-fees",
+              "id": "study-at-uwa/fees-and-scholarships/domestic-student-fees",
               "label": "Domestic student fees",
               "slug": "domestic-student-fees",
-              "path": "study/scholarships-and-fees/domestic-student-fees",
+              "path": "study-at-uwa/fees-and-scholarships/domestic-student-fees",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/scholarships-and-fees/scholarships",
-              "label": "Scholarships",
-              "slug": "scholarships",
-              "path": "study/scholarships-and-fees/scholarships",
+              "id": "study-at-uwa/fees-and-scholarships/international-student-fees",
+              "label": "International student fees",
+              "slug": "international-student-fees",
+              "path": "study-at-uwa/fees-and-scholarships/international-student-fees",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study-at-uwa/fees-and-scholarships/student-service-amenities-fees",
+              "label": "Student service amenities fees",
+              "slug": "student-service-amenities-fees",
+              "path": "study-at-uwa/fees-and-scholarships/student-service-amenities-fees",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "study-at-uwa/fees-and-scholarships/loans-and-financial-support",
+              "label": "Loans and financial support",
+              "slug": "loans-and-financial-support",
+              "path": "study-at-uwa/fees-and-scholarships/loans-and-financial-support",
               "level": 3,
               "template": "content",
               "children": []
@@ -374,26 +707,53 @@
           ]
         },
         {
-          "id": "study/support-information",
-          "label": "Support information",
-          "slug": "support-information",
-          "path": "study/support-information",
+          "id": "study-at-uwa/student-information",
+          "label": "Student information",
+          "slug": "student-information",
+          "path": "study-at-uwa/student-information",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "study/support-information/contacts-and-enquiries",
-              "label": "Contacts and enquiries",
-              "slug": "contacts-and-enquiries",
-              "path": "study/support-information/contacts-and-enquiries",
+              "id": "study-at-uwa/student-information/international-students",
+              "label": "International students",
+              "slug": "international-students",
+              "path": "study-at-uwa/student-information/international-students",
               "level": 3,
               "template": "content",
               "children": [
                 {
-                  "id": "study/support-information/contacts-and-enquiries/specific-support-pages",
-                  "label": "Specific support pages",
-                  "slug": "specific-support-pages",
-                  "path": "study/support-information/contacts-and-enquiries/specific-support-pages",
+                  "id": "study-at-uwa/student-information/international-students/moving-to-perth",
+                  "label": "Moving to Perth",
+                  "slug": "moving-to-perth",
+                  "path": "study-at-uwa/student-information/international-students/moving-to-perth",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                },
+                {
+                  "id": "study-at-uwa/student-information/international-students/visa-information",
+                  "label": "Visa information",
+                  "slug": "visa-information",
+                  "path": "study-at-uwa/student-information/international-students/visa-information",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                },
+                {
+                  "id": "study-at-uwa/student-information/international-students/agent-information",
+                  "label": "Agent information",
+                  "slug": "agent-information",
+                  "path": "study-at-uwa/student-information/international-students/agent-information",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                },
+                {
+                  "id": "study-at-uwa/student-information/international-students/overseas-students-in-perth",
+                  "label": "Overseas students in Perth",
+                  "slug": "overseas-students-in-perth",
+                  "path": "study-at-uwa/student-information/international-students/overseas-students-in-perth",
                   "level": 4,
                   "template": "content",
                   "children": []
@@ -401,46 +761,19 @@
               ]
             },
             {
-              "id": "study/support-information/international-students",
-              "label": "International students",
-              "slug": "international-students",
-              "path": "study/support-information/international-students",
-              "level": 3,
-              "template": "content",
-              "children": []
-            },
-            {
-              "id": "study/support-information/indigenous-students",
+              "id": "study-at-uwa/student-information/indigenous-students",
               "label": "Indigenous students",
               "slug": "indigenous-students",
-              "path": "study/support-information/indigenous-students",
+              "path": "study-at-uwa/student-information/indigenous-students",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "study/support-information/regional-students",
+              "id": "study-at-uwa/student-information/regional-students",
               "label": "Regional students",
               "slug": "regional-students",
-              "path": "study/support-information/regional-students",
-              "level": 3,
-              "template": "content",
-              "children": []
-            },
-            {
-              "id": "study/support-information/parents-and-guardians",
-              "label": "Parents and guardians",
-              "slug": "parents-and-guardians",
-              "path": "study/support-information/parents-and-guardians",
-              "level": 3,
-              "template": "content",
-              "children": []
-            },
-            {
-              "id": "study/support-information/high-schools-and-career-advisors",
-              "label": "High schools and career advisors",
-              "slug": "high-schools-and-career-advisors",
-              "path": "study/support-information/high-schools-and-career-advisors",
+              "path": "study-at-uwa/student-information/regional-students",
               "level": 3,
               "template": "content",
               "children": []
@@ -458,6 +791,33 @@
       "template": "landing",
       "children": [
         {
+          "id": "life-at-uwa/libraries",
+          "label": "Libraries",
+          "slug": "libraries",
+          "path": "life-at-uwa/libraries",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "life-at-uwa/arts-and-culture",
+          "label": "Arts and culture",
+          "slug": "arts-and-culture",
+          "path": "life-at-uwa/arts-and-culture",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "life-at-uwa/sport",
+          "label": "Sport",
+          "slug": "sport",
+          "path": "life-at-uwa/sport",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
           "id": "life-at-uwa/accommodation",
           "label": "Accommodation",
           "slug": "accommodation",
@@ -467,17 +827,8 @@
           "children": []
         },
         {
-          "id": "life-at-uwa/arts-and-culture",
-          "label": "Arts and Culture",
-          "slug": "arts-and-culture",
-          "path": "life-at-uwa/arts-and-culture",
-          "level": 2,
-          "template": "content",
-          "children": []
-        },
-        {
           "id": "life-at-uwa/clubs-and-societies",
-          "label": "Clubs and Societies",
+          "label": "Clubs and societies",
           "slug": "clubs-and-societies",
           "path": "life-at-uwa/clubs-and-societies",
           "level": 2,
@@ -485,10 +836,10 @@
           "children": []
         },
         {
-          "id": "life-at-uwa/sport-and-fitness",
-          "label": "Sport and Fitness",
-          "slug": "sport-and-fitness",
-          "path": "life-at-uwa/sport-and-fitness",
+          "id": "life-at-uwa/volunteers",
+          "label": "Volunteers",
+          "slug": "volunteers",
+          "path": "life-at-uwa/volunteers",
           "level": 2,
           "template": "content",
           "children": []
@@ -504,9 +855,27 @@
         },
         {
           "id": "life-at-uwa/study-abroad",
-          "label": "Study Abroad",
+          "label": "Study abroad",
           "slug": "study-abroad",
           "path": "life-at-uwa/study-abroad",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "life-at-uwa/international-community",
+          "label": "International community",
+          "slug": "international-community",
+          "path": "life-at-uwa/international-community",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "life-at-uwa/indigenous-community",
+          "label": "Indigenous community",
+          "slug": "indigenous-community",
+          "path": "life-at-uwa/indigenous-community",
           "level": 2,
           "template": "content",
           "children": []
@@ -514,129 +883,44 @@
       ]
     },
     {
-      "id": "our-research",
-      "label": "Our Research",
-      "slug": "our-research",
-      "path": "our-research",
+      "id": "students",
+      "label": "Students",
+      "slug": "students",
+      "path": "students",
       "level": 1,
       "template": "landing",
       "children": [
         {
-          "id": "our-research/strengths",
-          "label": "Strengths",
-          "slug": "strengths",
-          "path": "our-research/strengths",
+          "id": "students/new-students",
+          "label": "New students",
+          "slug": "new-students",
+          "path": "students/new-students",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "our-research/strengths/clean-energy-transition",
-              "label": "Clean energy transition",
-              "slug": "clean-energy-transition",
-              "path": "our-research/strengths/clean-energy-transition",
-              "level": 3,
-              "template": "content",
-              "children": [
-                {
-                  "id": "our-research/strengths/clean-energy-transition/berndt-research-foundation",
-                  "label": "Berndt research foundation",
-                  "slug": "berndt-research-foundation",
-                  "path": "our-research/strengths/clean-energy-transition/berndt-research-foundation",
-                  "level": 4,
-                  "template": "content",
-                  "children": [
-                    {
-                      "id": "our-research/strengths/clean-energy-transition/berndt-research-foundation/hdr-resources",
-                      "label": "HDR resources",
-                      "slug": "hdr-resources",
-                      "path": "our-research/strengths/clean-energy-transition/berndt-research-foundation/hdr-resources",
-                      "level": 5,
-                      "template": "content",
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "our-research/strengths/health-and-biotechnology",
-              "label": "Health and biotechnology",
-              "slug": "health-and-biotechnology",
-              "path": "our-research/strengths/health-and-biotechnology",
-              "level": 3,
-              "template": "content",
-              "children": [
-                {
-                  "id": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa",
-                  "label": "Indigenous research UWA",
-                  "slug": "indigenous-research-uwa",
-                  "path": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa",
-                  "level": 4,
-                  "template": "content",
-                  "children": [
-                    {
-                      "id": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/indigenous-researchers",
-                      "label": "Indigenous researchers",
-                      "slug": "indigenous-researchers",
-                      "path": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/indigenous-researchers",
-                      "level": 5,
-                      "template": "content",
-                      "children": []
-                    },
-                    {
-                      "id": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/locate-our-research",
-                      "label": "Locate our research",
-                      "slug": "locate-our-research",
-                      "path": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/locate-our-research",
-                      "level": 5,
-                      "template": "content",
-                      "children": []
-                    },
-                    {
-                      "id": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/protocols-resources",
-                      "label": "Protocols resources",
-                      "slug": "protocols-resources",
-                      "path": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/protocols-resources",
-                      "level": 5,
-                      "template": "content",
-                      "children": []
-                    },
-                    {
-                      "id": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/nature-science-journals",
-                      "label": "Nature science journals",
-                      "slug": "nature-science-journals",
-                      "path": "our-research/strengths/health-and-biotechnology/indigenous-research-uwa/nature-science-journals",
-                      "level": 5,
-                      "template": "content",
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "our-research/strengths/frontier-technologies",
-              "label": "Frontier technologies",
-              "slug": "frontier-technologies",
-              "path": "our-research/strengths/frontier-technologies",
+              "id": "students/new-students/enrol-with-uni-start",
+              "label": "Enrol with Uni Start",
+              "slug": "enrol-with-uni-start",
+              "path": "students/new-students/enrol-with-uni-start",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "our-research/strengths/our-place-culture-and-heritage",
-              "label": "Our place - Culture and heritage",
-              "slug": "our-place-culture-and-heritage",
-              "path": "our-research/strengths/our-place-culture-and-heritage",
+              "id": "students/new-students/orientation",
+              "label": "Orientation",
+              "slug": "orientation",
+              "path": "students/new-students/orientation",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "our-research/strengths/resilient-environment-and-climate-change",
-              "label": "Resilient environment and climate change",
-              "slug": "resilient-environment-and-climate-change",
-              "path": "our-research/strengths/resilient-environment-and-climate-change",
+              "id": "students/new-students/campus-access",
+              "label": "Campus access",
+              "slug": "campus-access",
+              "path": "students/new-students/campus-access",
               "level": 3,
               "template": "content",
               "children": []
@@ -644,54 +928,90 @@
           ]
         },
         {
-          "id": "our-research/reputation-governance",
-          "label": "Reputation governance",
-          "slug": "reputation-governance",
-          "path": "our-research/reputation-governance",
+          "id": "students/academic-support",
+          "label": "Academic support",
+          "slug": "academic-support",
+          "path": "students/academic-support",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "our-research/reputation-governance/prizes",
-              "label": "Prizes",
-              "slug": "prizes",
-              "path": "our-research/reputation-governance/prizes",
+              "id": "students/academic-support/key-dates",
+              "label": "Key dates",
+              "slug": "key-dates",
+              "path": "students/academic-support/key-dates",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "our-research/reputation-governance/rankings",
-              "label": "Rankings",
-              "slug": "rankings",
-              "path": "our-research/reputation-governance/rankings",
+              "id": "students/academic-support/course-handbook",
+              "label": "Course handbook",
+              "slug": "course-handbook",
+              "path": "students/academic-support/course-handbook",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "our-research/reputation-governance/foreign-interference",
-              "label": "Foreign interference",
-              "slug": "foreign-interference",
-              "path": "our-research/reputation-governance/foreign-interference",
+              "id": "students/academic-support/study-plans",
+              "label": "Study plans",
+              "slug": "study-plans",
+              "path": "students/academic-support/study-plans",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "our-research/reputation-governance/ethics-and-integrity",
-              "label": "Ethics and integrity",
-              "slug": "ethics-and-integrity",
-              "path": "our-research/reputation-governance/ethics-and-integrity",
+              "id": "students/academic-support/course-changes-and-credits",
+              "label": "Course changes and credits",
+              "slug": "course-changes-and-credits",
+              "path": "students/academic-support/course-changes-and-credits",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "our-research/reputation-governance/our-experts",
-              "label": "Our experts",
-              "slug": "our-experts",
-              "path": "our-research/reputation-governance/our-experts",
+              "id": "students/academic-support/learning-materials",
+              "label": "Learning materials",
+              "slug": "learning-materials",
+              "path": "students/academic-support/learning-materials",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "students/academic-support/referencing-and-textbooks",
+              "label": "Referencing and textbooks",
+              "slug": "referencing-and-textbooks",
+              "path": "students/academic-support/referencing-and-textbooks",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "students/academic-support/online-study-tools",
+              "label": "Online study tools",
+              "slug": "online-study-tools",
+              "path": "students/academic-support/online-study-tools",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "students/academic-support/academic-support",
+              "label": "Academic support",
+              "slug": "academic-support",
+              "path": "students/academic-support/academic-support",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "students/academic-support/pursuing-further-study",
+              "label": "Pursuing further study",
+              "slug": "pursuing-further-study",
+              "path": "students/academic-support/pursuing-further-study",
               "level": 3,
               "template": "content",
               "children": []
@@ -699,18 +1019,45 @@
           ]
         },
         {
-          "id": "our-research/institutes-centres",
-          "label": "Institutes-centres",
-          "slug": "institutes-centres",
-          "path": "our-research/institutes-centres",
+          "id": "students/careers-and-employability",
+          "label": "Careers and employability",
+          "slug": "careers-and-employability",
+          "path": "students/careers-and-employability",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "our-research/institutes-centres/entities",
-              "label": "Entities",
-              "slug": "entities",
-              "path": "our-research/institutes-centres/entities",
+              "id": "students/careers-and-employability/develop-your-career-plan",
+              "label": "Develop your career plan",
+              "slug": "develop-your-career-plan",
+              "path": "students/careers-and-employability/develop-your-career-plan",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "students/careers-and-employability/job-prospects-and-top-employers",
+              "label": "Job prospects and top employers",
+              "slug": "job-prospects-and-top-employers",
+              "path": "students/careers-and-employability/job-prospects-and-top-employers",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "students/careers-and-employability/internship-placements",
+              "label": "Internship placements",
+              "slug": "internship-placements",
+              "path": "students/careers-and-employability/internship-placements",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "students/careers-and-employability/co-curricular-programs-and-activities",
+              "label": "Co-curricular programs and activities",
+              "slug": "co-curricular-programs-and-activities",
+              "path": "students/careers-and-employability/co-curricular-programs-and-activities",
               "level": 3,
               "template": "content",
               "children": []
@@ -718,93 +1065,45 @@
           ]
         },
         {
-          "id": "our-research/infrastructure",
-          "label": "Infrastructure",
-          "slug": "infrastructure",
-          "path": "our-research/infrastructure",
+          "id": "students/student-support",
+          "label": "Student support",
+          "slug": "student-support",
+          "path": "students/student-support",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "our-research/infrastructure/animal-care-services",
-              "label": "Animal care services",
-              "slug": "animal-care-services",
-              "path": "our-research/infrastructure/animal-care-services",
-              "level": 3,
-              "template": "content",
-              "children": [
-                {
-                  "id": "our-research/infrastructure/animal-care-services/western-australian-zebrafish-experimental-research-centre",
-                  "label": "Western Australian Zebrafish experimental research centre",
-                  "slug": "western-australian-zebrafish-experimental-research-centre",
-                  "path": "our-research/infrastructure/animal-care-services/western-australian-zebrafish-experimental-research-centre",
-                  "level": 4,
-                  "template": "content",
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "our-research/infrastructure/high-performance-computing",
-              "label": "High performance computing",
-              "slug": "high-performance-computing",
-              "path": "our-research/infrastructure/high-performance-computing",
+              "id": "students/student-support/health-and-wellbeing",
+              "label": "Health and wellbeing",
+              "slug": "health-and-wellbeing",
+              "path": "students/student-support/health-and-wellbeing",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "our-research/infrastructure/x-ray-diffraction",
-              "label": "X-ray diffraction",
-              "slug": "x-ray-diffraction",
-              "path": "our-research/infrastructure/x-ray-diffraction",
-              "level": 3,
-              "template": "content",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "our-research/connect",
-          "label": "Connect",
-          "slug": "connect",
-          "path": "our-research/connect",
-          "level": 2,
-          "template": "content",
-          "children": [
-            {
-              "id": "our-research/connect/consumer-community-involvement",
-              "label": "Consumer community involvement",
-              "slug": "consumer-community-involvement",
-              "path": "our-research/connect/consumer-community-involvement",
-              "level": 3,
-              "template": "content",
-              "children": [
-                {
-                  "id": "our-research/connect/consumer-community-involvement/specific-events",
-                  "label": "Specific events",
-                  "slug": "specific-events",
-                  "path": "our-research/connect/consumer-community-involvement/specific-events",
-                  "level": 4,
-                  "template": "content",
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "our-research/connect/events",
-              "label": "Events",
-              "slug": "events",
-              "path": "our-research/connect/events",
+              "id": "students/student-support/mentoring-peer-to-peer",
+              "label": "Mentoring / Peer to peer",
+              "slug": "mentoring-peer-to-peer",
+              "path": "students/student-support/mentoring-peer-to-peer",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "our-research/connect/policies-guidelines",
-              "label": "Policies-guidelines",
-              "slug": "policies-guidelines",
-              "path": "our-research/connect/policies-guidelines",
+              "id": "students/student-support/uniaccess",
+              "label": "UniAccess",
+              "slug": "uniaccess",
+              "path": "students/student-support/uniaccess",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "students/student-support/graduation-ceremonies",
+              "label": "Graduation ceremonies",
+              "slug": "graduation-ceremonies",
+              "path": "students/student-support/graduation-ceremonies",
               "level": 3,
               "template": "content",
               "children": []
@@ -815,81 +1114,61 @@
     },
     {
       "id": "partners-and-community",
-      "label": "Partners and Community",
+      "label": "Partners and community",
       "slug": "partners-and-community",
       "path": "partners-and-community",
       "level": 1,
       "template": "landing",
       "children": [
         {
-          "id": "partners-and-community/partnerships",
-          "label": "Partnerships",
-          "slug": "partnerships",
-          "path": "partners-and-community/partnerships",
+          "id": "partners-and-community/industry-partnerships",
+          "label": "Industry partnerships",
+          "slug": "industry-partnerships",
+          "path": "partners-and-community/industry-partnerships",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "partners-and-community/partnerships/research-partnerships",
-              "label": "Research partnerships",
-              "slug": "research-partnerships",
-              "path": "partners-and-community/partnerships/research-partnerships",
-              "level": 3,
-              "template": "content",
-              "children": [
-                {
-                  "id": "partners-and-community/partnerships/research-partnerships/research-internships",
-                  "label": "Research internships",
-                  "slug": "research-internships",
-                  "path": "partners-and-community/partnerships/research-partnerships/research-internships",
-                  "level": 4,
-                  "template": "content",
-                  "children": [
-                    {
-                      "id": "partners-and-community/partnerships/research-partnerships/research-internships/eoi-for-research-internships",
-                      "label": "EOI for research internships",
-                      "slug": "eoi-for-research-internships",
-                      "path": "partners-and-community/partnerships/research-partnerships/research-internships/eoi-for-research-internships",
-                      "level": 5,
-                      "template": "content",
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "partners-and-community/partnerships/commercialisation",
-              "label": "Commercialisation",
-              "slug": "commercialisation",
-              "path": "partners-and-community/partnerships/commercialisation",
+              "id": "partners-and-community/industry-partnerships/partner-with-us",
+              "label": "Partner with us",
+              "slug": "partner-with-us",
+              "path": "partners-and-community/industry-partnerships/partner-with-us",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "partners-and-community/partnerships/professional-development",
-              "label": "Professional development",
-              "slug": "professional-development",
-              "path": "partners-and-community/partnerships/professional-development",
+              "id": "partners-and-community/industry-partnerships/commercialisation-opportunities",
+              "label": "Commercialisation opportunities",
+              "slug": "commercialisation-opportunities",
+              "path": "partners-and-community/industry-partnerships/commercialisation-opportunities",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "partners-and-community/partnerships/consulting-services",
-              "label": "Consulting services",
-              "slug": "consulting-services",
-              "path": "partners-and-community/partnerships/consulting-services",
+              "id": "partners-and-community/industry-partnerships/consulting-and-professional-development",
+              "label": "Consulting and professional development",
+              "slug": "consulting-and-professional-development",
+              "path": "partners-and-community/industry-partnerships/consulting-and-professional-development",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "partners-and-community/partnerships/access-student-talent",
-              "label": "Access student talent",
-              "slug": "access-student-talent",
-              "path": "partners-and-community/partnerships/access-student-talent",
+              "id": "partners-and-community/industry-partnerships/accessing-student-talent",
+              "label": "Accessing student talent",
+              "slug": "accessing-student-talent",
+              "path": "partners-and-community/industry-partnerships/accessing-student-talent",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/industry-partnerships/internship-hosts",
+              "label": "Internship hosts",
+              "slug": "internship-hosts",
+              "path": "partners-and-community/industry-partnerships/internship-hosts",
               "level": 3,
               "template": "content",
               "children": []
@@ -905,10 +1184,28 @@
           "template": "content",
           "children": [
             {
-              "id": "partners-and-community/community-engagement/specific-community-partner-pages",
-              "label": "Specific community partner pages",
-              "slug": "specific-community-partner-pages",
-              "path": "partners-and-community/community-engagement/specific-community-partner-pages",
+              "id": "partners-and-community/community-engagement/the-western-force",
+              "label": "The Western Force",
+              "slug": "the-western-force",
+              "path": "partners-and-community/community-engagement/the-western-force",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/community-engagement/perth-festival",
+              "label": "Perth Festival",
+              "slug": "perth-festival",
+              "path": "partners-and-community/community-engagement/perth-festival",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/community-engagement/historical-society",
+              "label": "Historical Society",
+              "slug": "historical-society",
+              "path": "partners-and-community/community-engagement/historical-society",
               "level": 3,
               "template": "content",
               "children": []
@@ -916,18 +1213,91 @@
           ]
         },
         {
-          "id": "partners-and-community/global-engagement",
-          "label": "Global engagement",
-          "slug": "global-engagement",
-          "path": "partners-and-community/global-engagement",
+          "id": "partners-and-community/education-networks",
+          "label": "Education networks",
+          "slug": "education-networks",
+          "path": "partners-and-community/education-networks",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "partners-and-community/global-engagement/entities",
-              "label": "Entities",
-              "slug": "entities",
-              "path": "partners-and-community/global-engagement/entities",
+              "id": "partners-and-community/education-networks/global-engagement",
+              "label": "Global engagement",
+              "slug": "global-engagement",
+              "path": "partners-and-community/education-networks/global-engagement",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/education-networks/high-schools-and-career-advisors",
+              "label": "High schools and career advisors",
+              "slug": "high-schools-and-career-advisors",
+              "path": "partners-and-community/education-networks/high-schools-and-career-advisors",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "partners-and-community/alumni",
+          "label": "Alumni",
+          "slug": "alumni",
+          "path": "partners-and-community/alumni",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "partners-and-community/alumni/update-my-details",
+              "label": "Update my details",
+              "slug": "update-my-details",
+              "path": "partners-and-community/alumni/update-my-details",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/alumni/recent-graduates",
+              "label": "Recent graduates",
+              "slug": "recent-graduates",
+              "path": "partners-and-community/alumni/recent-graduates",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/alumni/groups-and-networks",
+              "label": "Groups and networks",
+              "slug": "groups-and-networks",
+              "path": "partners-and-community/alumni/groups-and-networks",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/alumni/find-alumni",
+              "label": "Find alumni",
+              "slug": "find-alumni",
+              "path": "partners-and-community/alumni/find-alumni",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/alumni/ambassadors",
+              "label": "Ambassadors",
+              "slug": "ambassadors",
+              "path": "partners-and-community/alumni/ambassadors",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/alumni/continuing-education",
+              "label": "Continuing education",
+              "slug": "continuing-education",
+              "path": "partners-and-community/alumni/continuing-education",
               "level": 3,
               "template": "content",
               "children": []
@@ -941,87 +1311,39 @@
           "path": "partners-and-community/convocation",
           "level": 2,
           "template": "content",
-          "children": [
-            {
-              "id": "partners-and-community/convocation/animal-care-services",
-              "label": "Animal care services",
-              "slug": "animal-care-services",
-              "path": "partners-and-community/convocation/animal-care-services",
-              "level": 3,
-              "template": "content",
-              "children": [
-                {
-                  "id": "partners-and-community/convocation/animal-care-services/western-australian-zebrafish-experimental-research-centre",
-                  "label": "Western Australian Zebrafish experimental research centre",
-                  "slug": "western-australian-zebrafish-experimental-research-centre",
-                  "path": "partners-and-community/convocation/animal-care-services/western-australian-zebrafish-experimental-research-centre",
-                  "level": 4,
-                  "template": "content",
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "partners-and-community/convocation/high-performance-computing",
-              "label": "High performance computing",
-              "slug": "high-performance-computing",
-              "path": "partners-and-community/convocation/high-performance-computing",
-              "level": 3,
-              "template": "content",
-              "children": []
-            },
-            {
-              "id": "partners-and-community/convocation/x-ray-diffraction",
-              "label": "X-ray diffraction",
-              "slug": "x-ray-diffraction",
-              "path": "partners-and-community/convocation/x-ray-diffraction",
-              "level": 3,
-              "template": "content",
-              "children": []
-            }
-          ]
+          "children": []
         },
         {
-          "id": "partners-and-community/connect",
-          "label": "Connect",
-          "slug": "connect",
-          "path": "partners-and-community/connect",
+          "id": "partners-and-community/giving",
+          "label": "Giving",
+          "slug": "giving",
+          "path": "partners-and-community/giving",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "partners-and-community/connect/consumer-community-involvement",
-              "label": "Consumer community involvement",
-              "slug": "consumer-community-involvement",
-              "path": "partners-and-community/connect/consumer-community-involvement",
-              "level": 3,
-              "template": "content",
-              "children": [
-                {
-                  "id": "partners-and-community/connect/consumer-community-involvement/specific-events",
-                  "label": "Specific events",
-                  "slug": "specific-events",
-                  "path": "partners-and-community/connect/consumer-community-involvement/specific-events",
-                  "level": 4,
-                  "template": "content",
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "partners-and-community/connect/events",
-              "label": "Events",
-              "slug": "events",
-              "path": "partners-and-community/connect/events",
+              "id": "partners-and-community/giving/donate-to-uwa",
+              "label": "Donate to UWA",
+              "slug": "donate-to-uwa",
+              "path": "partners-and-community/giving/donate-to-uwa",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "partners-and-community/connect/policies-guidelines",
-              "label": "Policies-guidelines",
-              "slug": "policies-guidelines",
-              "path": "partners-and-community/connect/policies-guidelines",
+              "id": "partners-and-community/giving/your-impact",
+              "label": "Your impact",
+              "slug": "your-impact",
+              "path": "partners-and-community/giving/your-impact",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "partners-and-community/giving/thank-you-stories",
+              "label": "Thank you, stories",
+              "slug": "thank-you-stories",
+              "path": "partners-and-community/giving/thank-you-stories",
               "level": 3,
               "template": "content",
               "children": []
@@ -1031,167 +1353,175 @@
       ]
     },
     {
-      "id": "about",
-      "label": "About",
-      "slug": "about",
-      "path": "about",
+      "id": "our-research",
+      "label": "Our research",
+      "slug": "our-research",
+      "path": "our-research",
       "level": 1,
       "template": "landing",
       "children": [
         {
-          "id": "about/partnerships",
-          "label": "Partnerships",
-          "slug": "partnerships",
-          "path": "about/partnerships",
+          "id": "our-research/reputation-and-governance",
+          "label": "Reputation and governance",
+          "slug": "reputation-and-governance",
+          "path": "our-research/reputation-and-governance",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "about/partnerships/research-partnerships",
-              "label": "Research partnerships",
-              "slug": "research-partnerships",
-              "path": "about/partnerships/research-partnerships",
+              "id": "our-research/reputation-and-governance/rankings",
+              "label": "Rankings",
+              "slug": "rankings",
+              "path": "our-research/reputation-and-governance/rankings",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/reputation-and-governance/prizes",
+              "label": "Prizes",
+              "slug": "prizes",
+              "path": "our-research/reputation-and-governance/prizes",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/reputation-and-governance/foreign-interference",
+              "label": "Foreign interference",
+              "slug": "foreign-interference",
+              "path": "our-research/reputation-and-governance/foreign-interference",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/reputation-and-governance/ethics-and-integrity",
+              "label": "Ethics and integrity",
+              "slug": "ethics-and-integrity",
+              "path": "our-research/reputation-and-governance/ethics-and-integrity",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "our-research/research-strengths",
+          "label": "Research strengths",
+          "slug": "research-strengths",
+          "path": "our-research/research-strengths",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "our-research/research-strengths/frontier-technologies",
+              "label": "Frontier technologies",
+              "slug": "frontier-technologies",
+              "path": "our-research/research-strengths/frontier-technologies",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/research-strengths/resilient-environment-and-climate-change",
+              "label": "Resilient environment and climate change",
+              "slug": "resilient-environment-and-climate-change",
+              "path": "our-research/research-strengths/resilient-environment-and-climate-change",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/research-strengths/clean-energy-transition-and-sustainable-resources",
+              "label": "Clean energy transition and sustainable resources",
+              "slug": "clean-energy-transition-and-sustainable-resources",
+              "path": "our-research/research-strengths/clean-energy-transition-and-sustainable-resources",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/research-strengths/health-and-biotechnology",
+              "label": "Health and biotechnology",
+              "slug": "health-and-biotechnology",
+              "path": "our-research/research-strengths/health-and-biotechnology",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/research-strengths/our-place-culture-and-heritage",
+              "label": "Our place - culture and heritage",
+              "slug": "our-place-culture-and-heritage",
+              "path": "our-research/research-strengths/our-place-culture-and-heritage",
               "level": 3,
               "template": "content",
               "children": [
                 {
-                  "id": "about/partnerships/research-partnerships/research-internships",
-                  "label": "Research internships",
-                  "slug": "research-internships",
-                  "path": "about/partnerships/research-partnerships/research-internships",
-                  "level": 4,
-                  "template": "content",
-                  "children": [
-                    {
-                      "id": "about/partnerships/research-partnerships/research-internships/eoi-for-research-internships",
-                      "label": "EOI for research internships",
-                      "slug": "eoi-for-research-internships",
-                      "path": "about/partnerships/research-partnerships/research-internships/eoi-for-research-internships",
-                      "level": 5,
-                      "template": "content",
-                      "children": []
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "about/partnerships/commercialisation",
-              "label": "Commercialisation",
-              "slug": "commercialisation",
-              "path": "about/partnerships/commercialisation",
-              "level": 3,
-              "template": "content",
-              "children": []
-            },
-            {
-              "id": "about/partnerships/professional-development",
-              "label": "Professional development",
-              "slug": "professional-development",
-              "path": "about/partnerships/professional-development",
-              "level": 3,
-              "template": "content",
-              "children": []
-            },
-            {
-              "id": "about/partnerships/consulting-services",
-              "label": "Consulting services",
-              "slug": "consulting-services",
-              "path": "about/partnerships/consulting-services",
-              "level": 3,
-              "template": "content",
-              "children": []
-            },
-            {
-              "id": "about/partnerships/access-student-talent",
-              "label": "Access student talent",
-              "slug": "access-student-talent",
-              "path": "about/partnerships/access-student-talent",
-              "level": 3,
-              "template": "content",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "about/community-engagement",
-          "label": "Community engagement",
-          "slug": "community-engagement",
-          "path": "about/community-engagement",
-          "level": 2,
-          "template": "content",
-          "children": [
-            {
-              "id": "about/community-engagement/specific-community-partner-pages",
-              "label": "Specific community partner pages",
-              "slug": "specific-community-partner-pages",
-              "path": "about/community-engagement/specific-community-partner-pages",
-              "level": 3,
-              "template": "content",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "about/global-engagement",
-          "label": "Global engagement",
-          "slug": "global-engagement",
-          "path": "about/global-engagement",
-          "level": 2,
-          "template": "content",
-          "children": [
-            {
-              "id": "about/global-engagement/entities",
-              "label": "Entities",
-              "slug": "entities",
-              "path": "about/global-engagement/entities",
-              "level": 3,
-              "template": "content",
-              "children": []
-            }
-          ]
-        },
-        {
-          "id": "about/convocation",
-          "label": "Convocation",
-          "slug": "convocation",
-          "path": "about/convocation",
-          "level": 2,
-          "template": "content",
-          "children": [
-            {
-              "id": "about/convocation/animal-care-services",
-              "label": "Animal care services",
-              "slug": "animal-care-services",
-              "path": "about/convocation/animal-care-services",
-              "level": 3,
-              "template": "content",
-              "children": [
-                {
-                  "id": "about/convocation/animal-care-services/western-australian-zebrafish-experimental-research-centre",
-                  "label": "Western Australian Zebrafish experimental research centre",
-                  "slug": "western-australian-zebrafish-experimental-research-centre",
-                  "path": "about/convocation/animal-care-services/western-australian-zebrafish-experimental-research-centre",
+                  "id": "our-research/research-strengths/our-place-culture-and-heritage/indigenous-research",
+                  "label": "Indigenous research",
+                  "slug": "indigenous-research",
+                  "path": "our-research/research-strengths/our-place-culture-and-heritage/indigenous-research",
                   "level": 4,
                   "template": "content",
                   "children": []
                 }
               ]
-            },
+            }
+          ]
+        },
+        {
+          "id": "our-research/infrastructure",
+          "label": "Infrastructure",
+          "slug": "infrastructure",
+          "path": "our-research/infrastructure",
+          "level": 2,
+          "template": "content",
+          "children": [
             {
-              "id": "about/convocation/high-performance-computing",
+              "id": "our-research/infrastructure/high-performance-computing",
               "label": "High performance computing",
               "slug": "high-performance-computing",
-              "path": "about/convocation/high-performance-computing",
+              "path": "our-research/infrastructure/high-performance-computing",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "about/convocation/x-ray-diffraction",
-              "label": "X-ray diffraction",
-              "slug": "x-ray-diffraction",
-              "path": "about/convocation/x-ray-diffraction",
+              "id": "our-research/infrastructure/animal-care-services",
+              "label": "Animal care services",
+              "slug": "animal-care-services",
+              "path": "our-research/infrastructure/animal-care-services",
+              "level": 3,
+              "template": "content",
+              "children": [
+                {
+                  "id": "our-research/infrastructure/animal-care-services/wa-zebrafish-experimental-research-centre",
+                  "label": "WA Zebrafish Experimental Research Centre",
+                  "slug": "wa-zebrafish-experimental-research-centre",
+                  "path": "our-research/infrastructure/animal-care-services/wa-zebrafish-experimental-research-centre",
+                  "level": 4,
+                  "template": "content",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "our-research/institutes-and-centres",
+          "label": "Institutes and centres",
+          "slug": "institutes-and-centres",
+          "path": "our-research/institutes-and-centres",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "our-research/institutes-and-centres/centres-and-other-entities",
+              "label": "Centres and other entities",
+              "slug": "centres-and-other-entities",
+              "path": "our-research/institutes-and-centres/centres-and-other-entities",
               "level": 3,
               "template": "content",
               "children": []
@@ -1199,46 +1529,54 @@
           ]
         },
         {
-          "id": "about/connect",
+          "id": "our-research/connect",
           "label": "Connect",
           "slug": "connect",
-          "path": "about/connect",
+          "path": "our-research/connect",
           "level": 2,
           "template": "content",
           "children": [
             {
-              "id": "about/connect/consumer-community-involvement",
-              "label": "Consumer community involvement",
-              "slug": "consumer-community-involvement",
-              "path": "about/connect/consumer-community-involvement",
-              "level": 3,
-              "template": "content",
-              "children": [
-                {
-                  "id": "about/connect/consumer-community-involvement/specific-events",
-                  "label": "Specific events",
-                  "slug": "specific-events",
-                  "path": "about/connect/consumer-community-involvement/specific-events",
-                  "level": 4,
-                  "template": "content",
-                  "children": []
-                }
-              ]
-            },
-            {
-              "id": "about/connect/events",
-              "label": "Events",
-              "slug": "events",
-              "path": "about/connect/events",
+              "id": "our-research/connect/find-a-researcher",
+              "label": "Find a researcher",
+              "slug": "find-a-researcher",
+              "path": "our-research/connect/find-a-researcher",
               "level": 3,
               "template": "content",
               "children": []
             },
             {
-              "id": "about/connect/policies-guidelines",
-              "label": "Policies-guidelines",
-              "slug": "policies-guidelines",
-              "path": "about/connect/policies-guidelines",
+              "id": "our-research/connect/collaborate-with-us",
+              "label": "Collaborate with us",
+              "slug": "collaborate-with-us",
+              "path": "our-research/connect/collaborate-with-us",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/connect/policies-and-guidelines",
+              "label": "Policies and guidelines",
+              "slug": "policies-and-guidelines",
+              "path": "our-research/connect/policies-and-guidelines",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/connect/consumer-and-community-involvement",
+              "label": "Consumer and Community Involvement",
+              "slug": "consumer-and-community-involvement",
+              "path": "our-research/connect/consumer-and-community-involvement",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "our-research/connect/research-events",
+              "label": "Research events",
+              "slug": "research-events",
+              "path": "our-research/connect/research-events",
               "level": 3,
               "template": "content",
               "children": []
@@ -1248,49 +1586,743 @@
       ]
     },
     {
-      "id": "current-students",
-      "label": "Current students",
-      "slug": "current-students",
-      "path": "current-students",
+      "id": "about-us",
+      "label": "About us",
+      "slug": "about-us",
+      "path": "about-us",
       "level": 1,
       "template": "landing",
-      "children": []
+      "children": [
+        {
+          "id": "about-us/our-history",
+          "label": "Our history",
+          "slug": "our-history",
+          "path": "about-us/our-history",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "about-us/reputation",
+          "label": "Reputation",
+          "slug": "reputation",
+          "path": "about-us/reputation",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "about-us/leadership-and-governance",
+          "label": "Leadership and governance",
+          "slug": "leadership-and-governance",
+          "path": "about-us/leadership-and-governance",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about-us/leadership-and-governance/our-leadership-team",
+              "label": "Our leadership team",
+              "slug": "our-leadership-team",
+              "path": "about-us/leadership-and-governance/our-leadership-team",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/leadership-and-governance/governance",
+              "label": "Governance",
+              "slug": "governance",
+              "path": "about-us/leadership-and-governance/governance",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/leadership-and-governance/policy",
+              "label": "Policy",
+              "slug": "policy",
+              "path": "about-us/leadership-and-governance/policy",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/leadership-and-governance/integrity-and-standards",
+              "label": "Integrity and standards",
+              "slug": "integrity-and-standards",
+              "path": "about-us/leadership-and-governance/integrity-and-standards",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about-us/strategy-and-values",
+          "label": "Strategy and values",
+          "slug": "strategy-and-values",
+          "path": "about-us/strategy-and-values",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about-us/strategy-and-values/uwa2030-strategy",
+              "label": "UWA2030 strategy",
+              "slug": "uwa2030-strategy",
+              "path": "about-us/strategy-and-values/uwa2030-strategy",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/strategy-and-values/safer-communities",
+              "label": "Safer communities",
+              "slug": "safer-communities",
+              "path": "about-us/strategy-and-values/safer-communities",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/strategy-and-values/sustainability",
+              "label": "Sustainability",
+              "slug": "sustainability",
+              "path": "about-us/strategy-and-values/sustainability",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/strategy-and-values/indigenous-portfolio",
+              "label": "Indigenous portfolio",
+              "slug": "indigenous-portfolio",
+              "path": "about-us/strategy-and-values/indigenous-portfolio",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/strategy-and-values/mental-health-and-wellbeing",
+              "label": "Mental health and wellbeing",
+              "slug": "mental-health-and-wellbeing",
+              "path": "about-us/strategy-and-values/mental-health-and-wellbeing",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/strategy-and-values/diversity-equity-and-inclusion",
+              "label": "Diversity, equity and inclusion",
+              "slug": "diversity-equity-and-inclusion",
+              "path": "about-us/strategy-and-values/diversity-equity-and-inclusion",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about-us/locations-and-campuses",
+          "label": "Locations and campuses",
+          "slug": "locations-and-campuses",
+          "path": "about-us/locations-and-campuses",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about-us/locations-and-campuses/about-western-australia",
+              "label": "About Western Australia",
+              "slug": "about-western-australia",
+              "path": "about-us/locations-and-campuses/about-western-australia",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/locations-and-campuses/perth-campus",
+              "label": "Perth Campus",
+              "slug": "perth-campus",
+              "path": "about-us/locations-and-campuses/perth-campus",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/locations-and-campuses/claremont-campus",
+              "label": "Claremont Campus",
+              "slug": "claremont-campus",
+              "path": "about-us/locations-and-campuses/claremont-campus",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/locations-and-campuses/nedlands-campus",
+              "label": "Nedlands Campus",
+              "slug": "nedlands-campus",
+              "path": "about-us/locations-and-campuses/nedlands-campus",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/locations-and-campuses/albany-campus",
+              "label": "Albany Campus",
+              "slug": "albany-campus",
+              "path": "about-us/locations-and-campuses/albany-campus",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/locations-and-campuses/campus-tours",
+              "label": "Campus tours",
+              "slug": "campus-tours",
+              "path": "about-us/locations-and-campuses/campus-tours",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/locations-and-campuses/campus-initiatives-or-campus-development-or-campus-management",
+              "label": "Campus initiatives or Campus development or Campus management",
+              "slug": "campus-initiatives-or-campus-development-or-campus-management",
+              "path": "about-us/locations-and-campuses/campus-initiatives-or-campus-development-or-campus-management",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about-us/campus-services",
+          "label": "Campus services",
+          "slug": "campus-services",
+          "path": "about-us/campus-services",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about-us/campus-services/accessibility",
+              "label": "Accessibility",
+              "slug": "accessibility",
+              "path": "about-us/campus-services/accessibility",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/campus-services/childcare",
+              "label": "Childcare",
+              "slug": "childcare",
+              "path": "about-us/campus-services/childcare",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/campus-services/retail",
+              "label": "Retail",
+              "slug": "retail",
+              "path": "about-us/campus-services/retail",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/campus-services/food-and-beverage",
+              "label": "Food and beverage",
+              "slug": "food-and-beverage",
+              "path": "about-us/campus-services/food-and-beverage",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/campus-services/medical",
+              "label": "Medical",
+              "slug": "medical",
+              "path": "about-us/campus-services/medical",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/campus-services/spirituality-and-faith",
+              "label": "Spirituality and faith",
+              "slug": "spirituality-and-faith",
+              "path": "about-us/campus-services/spirituality-and-faith",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/campus-services/safety-and-security",
+              "label": "Safety and security",
+              "slug": "safety-and-security",
+              "path": "about-us/campus-services/safety-and-security",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/campus-services/cyber-security",
+              "label": "Cyber security",
+              "slug": "cyber-security",
+              "path": "about-us/campus-services/cyber-security",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/campus-services/it",
+              "label": "IT",
+              "slug": "it",
+              "path": "about-us/campus-services/it",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/campus-services/transport",
+              "label": "Transport",
+              "slug": "transport",
+              "path": "about-us/campus-services/transport",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about-us/schools",
+          "label": "Schools",
+          "slug": "schools",
+          "path": "about-us/schools",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about-us/schools/business-school",
+              "label": "Business School",
+              "slug": "business-school",
+              "path": "about-us/schools/business-school",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/confucius-institute",
+              "label": "Confucius Institute",
+              "slug": "confucius-institute",
+              "path": "about-us/schools/confucius-institute",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/conservatorium-of-music",
+              "label": "Conservatorium of Music",
+              "slug": "conservatorium-of-music",
+              "path": "about-us/schools/conservatorium-of-music",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/dental-school",
+              "label": "Dental School",
+              "slug": "dental-school",
+              "path": "about-us/schools/dental-school",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/graduate-research-school",
+              "label": "Graduate Research School",
+              "slug": "graduate-research-school",
+              "path": "about-us/schools/graduate-research-school",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/graduate-school-of-education",
+              "label": "Graduate School of Education",
+              "slug": "graduate-school-of-education",
+              "path": "about-us/schools/graduate-school-of-education",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/law-school",
+              "label": "Law School",
+              "slug": "law-school",
+              "path": "about-us/schools/law-school",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/medical-school",
+              "label": "Medical School",
+              "slug": "medical-school",
+              "path": "about-us/schools/medical-school",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/oceans-graduate-school",
+              "label": "Oceans Graduate School",
+              "slug": "oceans-graduate-school",
+              "path": "about-us/schools/oceans-graduate-school",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-allied-health",
+              "label": "School of Allied Health",
+              "slug": "school-of-allied-health",
+              "path": "about-us/schools/school-of-allied-health",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-biological-sciences",
+              "label": "School of Biological Sciences",
+              "slug": "school-of-biological-sciences",
+              "path": "about-us/schools/school-of-biological-sciences",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-biomedical-sciences",
+              "label": "School of Biomedical Sciences",
+              "slug": "school-of-biomedical-sciences",
+              "path": "about-us/schools/school-of-biomedical-sciences",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-design",
+              "label": "School of Design",
+              "slug": "school-of-design",
+              "path": "about-us/schools/school-of-design",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-earth-sciences",
+              "label": "School of Earth Sciences",
+              "slug": "school-of-earth-sciences",
+              "path": "about-us/schools/school-of-earth-sciences",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-engineering",
+              "label": "School of Engineering",
+              "slug": "school-of-engineering",
+              "path": "about-us/schools/school-of-engineering",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-human-sciences",
+              "label": "School of Human Sciences",
+              "slug": "school-of-human-sciences",
+              "path": "about-us/schools/school-of-human-sciences",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-humanities",
+              "label": "School of Humanities",
+              "slug": "school-of-humanities",
+              "path": "about-us/schools/school-of-humanities",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-indigenous-studies",
+              "label": "School of Indigenous Studies",
+              "slug": "school-of-indigenous-studies",
+              "path": "about-us/schools/school-of-indigenous-studies",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-molecular-sciences",
+              "label": "School of Molecular Sciences",
+              "slug": "school-of-molecular-sciences",
+              "path": "about-us/schools/school-of-molecular-sciences",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-physics-mathematics-and-computing",
+              "label": "School of Physics, Mathematics and Computing",
+              "slug": "school-of-physics-mathematics-and-computing",
+              "path": "about-us/schools/school-of-physics-mathematics-and-computing",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-population-and-global-health",
+              "label": "School of Population and Global Health",
+              "slug": "school-of-population-and-global-health",
+              "path": "about-us/schools/school-of-population-and-global-health",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-psychological-science",
+              "label": "School of Psychological Science",
+              "slug": "school-of-psychological-science",
+              "path": "about-us/schools/school-of-psychological-science",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/school-of-social-sciences",
+              "label": "School of Social Sciences",
+              "slug": "school-of-social-sciences",
+              "path": "about-us/schools/school-of-social-sciences",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/schools/uwa-school-of-agriculture-and-environment",
+              "label": "UWA School of Agriculture and Environment",
+              "slug": "uwa-school-of-agriculture-and-environment",
+              "path": "about-us/schools/uwa-school-of-agriculture-and-environment",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about-us/working-at-uwa",
+          "label": "Working at UWA",
+          "slug": "working-at-uwa",
+          "path": "about-us/working-at-uwa",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about-us/working-at-uwa/careers-and-jobs",
+              "label": "Careers and jobs",
+              "slug": "careers-and-jobs",
+              "path": "about-us/working-at-uwa/careers-and-jobs",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/working-at-uwa/volunteers",
+              "label": "Volunteers",
+              "slug": "volunteers",
+              "path": "about-us/working-at-uwa/volunteers",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/working-at-uwa/contractors",
+              "label": "Contractors",
+              "slug": "contractors",
+              "path": "about-us/working-at-uwa/contractors",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about-us/contact-and-support",
+          "label": "Contact and support",
+          "slug": "contact-and-support",
+          "path": "about-us/contact-and-support",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about-us/contact-and-support/faqs",
+              "label": "FAQs",
+              "slug": "faqs",
+              "path": "about-us/contact-and-support/faqs",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/contact-and-support/enquiries",
+              "label": "Enquiries",
+              "slug": "enquiries",
+              "path": "about-us/contact-and-support/enquiries",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/contact-and-support/application-and-enrolment-support",
+              "label": "Application & enrolment support",
+              "slug": "application-and-enrolment-support",
+              "path": "about-us/contact-and-support/application-and-enrolment-support",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/contact-and-support/find-an-expert",
+              "label": "Find an expert",
+              "slug": "find-an-expert",
+              "path": "about-us/contact-and-support/find-an-expert",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/contact-and-support/emergencies",
+              "label": "Emergencies",
+              "slug": "emergencies",
+              "path": "about-us/contact-and-support/emergencies",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/contact-and-support/complaints-and-disputes",
+              "label": "Complaints and disputes",
+              "slug": "complaints-and-disputes",
+              "path": "about-us/contact-and-support/complaints-and-disputes",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about-us/news",
+          "label": "News",
+          "slug": "news",
+          "path": "about-us/news",
+          "level": 2,
+          "template": "content",
+          "children": [
+            {
+              "id": "about-us/news/articles",
+              "label": "Articles",
+              "slug": "articles",
+              "path": "about-us/news/articles",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/news/expert-opinions",
+              "label": "Expert opinions",
+              "slug": "expert-opinions",
+              "path": "about-us/news/expert-opinions",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/news/publications",
+              "label": "Publications",
+              "slug": "publications",
+              "path": "about-us/news/publications",
+              "level": 3,
+              "template": "content",
+              "children": []
+            },
+            {
+              "id": "about-us/news/podcasts",
+              "label": "Podcasts",
+              "slug": "podcasts",
+              "path": "about-us/news/podcasts",
+              "level": 3,
+              "template": "content",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "about-us/events",
+          "label": "Events",
+          "slug": "events",
+          "path": "about-us/events",
+          "level": 2,
+          "template": "content",
+          "children": []
+        }
+      ]
     },
     {
-      "id": "news",
-      "label": "News",
-      "slug": "news",
-      "path": "news",
+      "id": "login",
+      "label": "Login",
+      "slug": "login",
+      "path": "login",
       "level": 1,
       "template": "landing",
-      "children": []
-    },
-    {
-      "id": "events",
-      "label": "Events",
-      "slug": "events",
-      "path": "events",
-      "level": 1,
-      "template": "landing",
-      "children": []
-    },
-    {
-      "id": "library",
-      "label": "Library",
-      "slug": "library",
-      "path": "library",
-      "level": 1,
-      "template": "landing",
-      "children": []
-    },
-    {
-      "id": "staff",
-      "label": "Staff",
-      "slug": "staff",
-      "path": "staff",
-      "level": 1,
-      "template": "landing",
-      "children": []
+      "children": [
+        {
+          "id": "login/staff",
+          "label": "Staff",
+          "slug": "staff",
+          "path": "login/staff",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "login/students",
+          "label": "Students",
+          "slug": "students",
+          "path": "login/students",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "login/applicants",
+          "label": "Applicants",
+          "slug": "applicants",
+          "path": "login/applicants",
+          "level": 2,
+          "template": "content",
+          "children": []
+        },
+        {
+          "id": "login/agents",
+          "label": "Agents",
+          "slug": "agents",
+          "path": "login/agents",
+          "level": 2,
+          "template": "content",
+          "children": []
+        }
+      ]
     }
   ]
 }

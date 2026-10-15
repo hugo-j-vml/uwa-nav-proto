@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.0 (15 Oct 2026)
+
+New IA from the reviewed 2026 Information Architecture spreadsheet.
+
+- Sitemap replaced: 251 pages, 7 top-level items (Study at UWA, Life at UWA, Students, Partners and community, Our research, About us, Login), up to 5 levels deep.
+- The Figma-only top-level items (Current students, News, Events, Library, Staff) are gone. News, Events and Libraries now sit inside sections.
+- Each of the 11 study areas has a "Specific course pages" page (course template).
+- Labels as written, with obvious typos fixed ("Opportunites", "Our History") and the alternatives in brackets dropped ("Applicants", "Agents").
+- Header shortcuts: Study goes to Study at UWA, Research to Our research. Impact still has a stand-in page.
+- Page headings are Vivid Blue (`--page-title-colour`).
+
 ## 0.5.1 (12 Oct 2026)
 
 - Header shortcuts (Study / Impact / Research) are hidden when the window is under 800px wide.
