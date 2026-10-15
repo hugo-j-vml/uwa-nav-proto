@@ -25,10 +25,10 @@
  *   E: Menu opens the pane on the site's sections, under the same switch and
  *     site name; the switch swaps the pane to the top level and back.
  * Option 7 (alongside core menu):
- *   D: the site is an extra first item in the sidebar list; it opens the pane
- *     on the site's sections, which drill down to their pages.
- *   E: Menu opens the pane on the site's name and sections, above a "University
- *     of Western Australia" heading and the normal top level.
+ *   D: the sidebar list starts with the site's name and sections, then a
+ *     divider and the top-level items. A section opens the pane at its pages.
+ *   E: Menu opens the pane on the site's name and sections, above a divider
+ *     and the normal top level.
  */
 import { indexTree, pagePath, cobrandTop, cobrandNode, type MenuNode, type CobrandData } from '../lib/menu-state';
 import { getOption } from '../lib/options';
@@ -55,7 +55,7 @@ function init(sidebar: HTMLElement) {
   const replaces = option === '2';
   const alongside = option === '7';
   const cbTop = cobrand ? cobrandTop(cobrand) : [];
-  const cbNode = cobrand ? cobrandNode(cobrand) : undefined; // option 7 in D: the sidebar's extra item
+  const cbNode = cobrand ? cobrandNode(cobrand) : undefined;
   let mode: 'core' | 'cobrand' = replaces ? 'cobrand' : 'core';
   const topLevel = () => (mode === 'cobrand' ? cbTop : tree);
 
@@ -113,10 +113,10 @@ function init(sidebar: HTMLElement) {
       // E: the top level (option 2: the site's sections, or the top level, under the switch)
       if (replaces) list.append(...switchRows());
       if (alongside) {
-        // Option 7: the site's block, then the University's top level under its own heading
+        // Option 7: the site's block, then a divider and the University's top level
         list.append(siteTitleRow());
         for (const sec of cbTop) list.append(row(sec));
-        list.append(groupHeading('University of Western Australia'));
+        list.append(groupDivider());
       }
       for (const top of topLevel()) list.append(row(top));
       pane.setAttribute('aria-label', mode === 'cobrand' ? `${cobrand!.l} menu` : 'Main menu');
@@ -163,12 +163,12 @@ function init(sidebar: HTMLElement) {
     return li;
   }
 
-  /** A small heading between groups of items (option 7 in E). Not interactive. */
-  function groupHeading(text: string): HTMLLIElement {
+  /** A divider between the site's items and the University's top level (option 7 in E). */
+  function groupDivider(): HTMLLIElement {
     const li = document.createElement('li');
+    li.setAttribute('role', 'separator');
     const el = document.createElement('span');
-    el.className = 'menu-group-heading';
-    el.textContent = text;
+    el.className = 'menu-group-divider';
     li.append(el);
     return li;
   }
@@ -295,7 +295,8 @@ function init(sidebar: HTMLElement) {
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape' || !open) return;
-    const returnTo = sideList ? sidebar.querySelector<HTMLElement>(`.sidebar-item[data-path="${CSS.escape(path[0] ?? '')}"]`) : toggle;
+    // D: the sidebar item that opened the pane (the visible one: a site's section can be in both lists)
+    const returnTo = sideList ? [...sidebar.querySelectorAll<HTMLElement>(`.sidebar-item[data-path="${CSS.escape(path[0] ?? '')}"]`)].find(el => el.offsetParent) : toggle;
     setOpen(false);
     returnTo?.focus();
   });

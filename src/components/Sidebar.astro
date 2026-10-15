@@ -6,8 +6,9 @@
  * drawn by src/scripts/sidebar-menu.ts from the sitemap data embedded below.
  * On a co-branded site's pages, D also gets the site's own list (shown in place
  * of the top-level items for behaviour option "Co-brand menu" = 2, with a
- * switch between the two; CSS decides which shows), and the site as an extra
- * first item in the top-level list (option 7; also shown by CSS).
+ * switch between the two; CSS decides which shows), and the site's name and
+ * sections at the top of the top-level list, above a divider (option 7; also
+ * shown by CSS).
  */
 import Icon from './Icons.astro';
 import { nodes, shortcuts, href, variantBase, base, cobrandData, type Cobrand } from '../lib/nav';
@@ -35,11 +36,17 @@ const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes), 
       {site && <button class="sidebar-switch is-back" type="button" data-sidebar-switch="cobrand"><Icon name="arrow" /><span>{site.label} menu</span></button>}
       <ul class="sidebar-list" data-sidebar-list>
         {site && (
-          <li class="sidebar-cobrand-item">
-            <button class="sidebar-item" type="button" data-path="~" aria-expanded="false" aria-controls="drill-pane">
-              <span>{site.label}</span><Icon name="arrow" />
-            </button>
-          </li>
+          <>
+            <li class="sidebar-cobrand-item"><a class="sidebar-site-title" href={site.href} aria-current={currentPath === site.path ? 'page' : undefined}>{site.label}</a></li>
+            {site.site.map((sec, i) => (
+              <li class="sidebar-cobrand-item">
+                <button class="sidebar-item" type="button" data-path={`~${i}`} aria-expanded="false" aria-controls="drill-pane">
+                  <span>{sec.label}</span><Icon name="arrow" />
+                </button>
+              </li>
+            ))}
+            <li class="sidebar-cobrand-item sidebar-divider" role="separator"></li>
+          </>
         )}
         {nodes.map(n => (
           <li>

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.23.0 (15 Oct 2026)
+
+- Co-brand menu option 7 in D: the sidebar lists the site's name (a link to its home) and its sections, then a divider and the top-level items. A section opens the slide-out pane at its pages. (Was: the site as a single first item.)
+- Co-brand menu option 7 in A and E: the "University of Western Australia" heading is gone; just the divider separates the site's block from the top level.
+
 ## 0.22.0 (15 Oct 2026)
 
 - Co-brand menu option 7 in B: the site's name is no longer an item in the grey core pane. When the menu opens, the white pane shows the site's name (a link to its home) above its sections. Choosing a top-level item shows that section instead; closing it again brings the site back. A, C, D and E are unchanged.

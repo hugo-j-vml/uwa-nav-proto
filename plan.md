@@ -203,7 +203,7 @@ Alternative behaviours are switched across all variants with **behaviour options
 **Co-brand menu** (default 1). Co-branded sites (e.g. Oceans Institute) have their own two-level IA (`data/cobranded/<slug>.csv`), kept out of the core tree; the site is a single link in the core menu. On the site's pages, A–C show a co-brand logo placeholder next to the UWA logo and no shortcuts.
 - **1 · Menu bar on page:** a bar under the breadcrumb with the site's sections and dropdowns; Menu stays the core menu.
 - **2 · Replaces core menu:** Menu (D: the sidebar list) shows the site's sections in place of the top level, with a "UWA main menu" switch and back.
-- **7 · Alongside core menu:** both at once. A, E: the site's block above a "University of Western Australia" heading and the top level. B: the site's name and sections fill the white pane on open; choosing a top-level item shows that instead, and closing it brings the site back. C: the site as the first core item, already chosen on open. D: the site as the first sidebar item.
+- **7 · Alongside core menu:** both at once. A, E: the site's block above a divider and the top level. B: the site's name and sections fill the white pane on open; choosing a top-level item shows that instead, and closing it brings the site back. C: the site as the first core item, already chosen on open. D: the site's name and sections at the top of the sidebar, above a divider and the top-level items; a section opens the pane at its pages.
 
 Options 2 and 7 break "the menu always opens at the top level", on co-branded pages only.
 

@@ -45,8 +45,8 @@
  *     "<site> menu" switch back. Each opening starts on the site's sections.
  *     The sections behave like top-level items in each variant.
  *   7 (alongside core menu): both menus at once.
- *     A: the site's name and sections in a block above a "University of
- *       Western Australia" heading and the normal top level.
+ *     A: the site's name and sections in a block above a divider and the
+ *       normal top level.
  *     B: the site's name and sections fill the white pane when the menu opens;
  *       choosing a top-level item shows that instead, and closing it again
  *       brings the site back.
@@ -172,10 +172,10 @@ function init(header: HTMLElement) {
       }
     };
     if (stackedBlock) {
-      // Option 7 in A: the site's block, then the University's top level under its own heading
+      // Option 7 in A: the site's block, then a divider and the University's top level
       coreList.append(siteTitleRow());
       cbTop.forEach(addTop);
-      coreList.append(groupHeading('University of Western Australia'));
+      coreList.append(groupDivider());
     }
     topLevel().forEach(addTop);
     if (animate) animateRowChanges(coreList, oldRows, before);
@@ -217,13 +217,13 @@ function init(header: HTMLElement) {
     return li;
   }
 
-  /** A small heading between groups of items (option 7 in A). Not interactive. */
-  function groupHeading(text: string): HTMLLIElement {
+  /** A divider between the site's items and the University's top level (option 7 in A). */
+  function groupDivider(): HTMLLIElement {
     const li = document.createElement('li');
+    li.setAttribute('role', 'separator');
     const el = document.createElement('span');
-    el.className = 'menu-group-heading';
-    el.dataset.path = `~group-${text}`;
-    el.textContent = text;
+    el.className = 'menu-group-divider';
+    el.dataset.path = '~divider';
     li.append(el);
     return li;
   }
