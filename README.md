@@ -20,7 +20,7 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Index page look (colours, font, sizes) | `--index-*` tokens in `src/styles/tokens.css` |
 | Variant names, and which variants are built | `src/variants/a.ts` … `e.ts` (`status: 'ready'` or `'coming-soon'`) |
 | The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below) |
-| A co-branded site's own menu (e.g. Oceans Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the main menu; shown as a bar on the co-branded site's pages. |
+| A co-branded site's own pages (e.g. Oceans Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the main menu; pages are built (reachable by URL) but not in any menu yet. |
 | Header shortcut buttons (Study / Impact / Research) | `src/data/header.json` |
 | Password | `src/config.ts` (see below) |
 | Fonts | Put the files in `public/fonts/` (names in `src/styles/fonts.css`). Novel Pro falls back to Crimson Pro (free). |

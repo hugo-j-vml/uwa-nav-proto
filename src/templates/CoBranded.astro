@@ -1,22 +1,17 @@
 ---
 /**
  * Co-branded site home page (Figma "Co-branded site page template"). Short
- * breadcrumb (UWA › site name), the site's own menu if it has one, then the
- * sage hero with the title.
+ * breadcrumb (UWA › site name), then the sage hero with the title.
  */
 import Placeholder from '../components/Placeholder.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-import SiteNav from '../components/SiteNav.astro';
-import { flatten, type SiteNode } from '../lib/nav';
-interface Props { title: string; home: string; site?: SiteNode[]; variant: string; currentPath: string }
-const { title, home, site, variant, currentPath } = Astro.props;
-const root = flatten().find(n => n.path === currentPath)!;
+interface Props { title: string; home: string }
+const { title, home } = Astro.props;
 ---
 <div class="tpl-cobranded">
   <div class="page-intro">
     <Breadcrumbs home={home} crumbs={[]} current={title} />
   </div>
-  {site?.length ? <SiteNav root={root} site={site} variant={variant} currentPath={currentPath} /> : null}
   <div class="cobranded-hero">
     <Placeholder sage />
     <h1 class="cobranded-title">{title}</h1>
