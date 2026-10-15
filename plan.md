@@ -214,7 +214,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 7d. The Impact and Research header shortcuts don't match any item in the menu, so they have stand-in landing pages. Should Research go to "Our research"?
 
 7e. Reviewed IA (15 Oct), to confirm: "Campus initiatives or Campus development or Campus management" is built as written; which one? "Applicants (or apply portal…)" and "Agents (or International agents)" are built as Applicants and Agents. Students › Academic support has a child also called Academic support.
-7f. Index page, to confirm: the variant names for B ("Static core with level panels") and C ("Sidebar navigation") are stand-ins taken from Section 4a; the intro copy ("UWA main navigation prototype. Choose a concept to explore.") and the "UWA" text mark are placeholders.
+7f. Index page, to confirm: the variant names for B ("Static core with level panels") and C ("Sidebar navigation") are stand-ins taken from Section 4a; the intro copy ("UWA main navigation prototype. Choose a concept to explore.") is a placeholder. (The VML mark is in, from Hugo's SVG.)
 
 **Testing and hosting**
 

@@ -328,7 +328,7 @@ html.is-locked .index-page { display: none; }
   padding-bottom: var(--index-rule-gap);
   border-bottom: var(--index-rule-width) solid var(--index-text);
 }
-.index-mark { display: block; font-weight: 700; font-size: var(--index-mark-size); line-height: 1; letter-spacing: 0.02em; }
+.index-mark { display: block; width: var(--index-mark-size); height: var(--index-mark-size); }
 .index-intro {
   margin: var(--index-gutter) 0 0; max-width: 18em;
   font-size: var(--index-intro-size); line-height: var(--index-intro-line); font-weight: 400;

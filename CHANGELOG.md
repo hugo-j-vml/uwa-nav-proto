@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.7.1 (15 Oct 2026)
+
+- Index page: the VML mark replaces the "UWA" text top left, as in the reference (30px, `--index-mark-size`).
+
 ## 0.7.0 (15 Oct 2026)
 
 Variants: the prototype now hosts several nav concepts, each under its own path.

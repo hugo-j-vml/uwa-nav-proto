@@ -192,11 +192,11 @@
    ========================================================================== */
 :root {
   --index-bg: #1a1a1a;
-  --index-text: #f0f0f0;
+  --index-text: #f1f1f1;              /* also the VML mark colour */
   --index-muted: #6e6e6e;              /* "coming soon" items */
   --index-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --index-gutter: clamp(16px, 2.1vw, 42px);
-  --index-mark-size: 24px;
+  --index-mark-size: 30px;            /* VML mark, top left */
   --index-rule-gap: 16px;              /* mark to rule */
   --index-rule-width: 2px;
   --index-intro-size: clamp(18px, 2vw, 40px);
