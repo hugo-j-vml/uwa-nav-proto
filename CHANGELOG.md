@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.11.1 (15 Oct 2026)
+
+- D and E: the logo is centred in the sidebar.
+- D and E: the drill-down pane is wider, 540px (was 440px, `--drill-pane-width`), so fewer items wrap onto two lines. Labels in the pane also use its full width (they were capped at 330px).
+
 ## 0.11.0 (15 Oct 2026)
 
 Two sidebar variants, and the real UWA logo.

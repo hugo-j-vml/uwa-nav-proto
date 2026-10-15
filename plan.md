@@ -186,10 +186,10 @@ Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is 
 
 Agreed 15 Oct 2026.
 
-- **Shell:** a fixed, full-height sidebar (277px, light grey) replaces the header; the page sits to its right. Top to bottom: vertical UWA logo, a search input (not wired up: Enter shows "not available in this prototype"), then:
+- **Shell:** a fixed, full-height sidebar (277px, light grey) replaces the header; the page sits to its right. Top to bottom: vertical UWA logo (centred), a search input (not wired up: Enter shows "not available in this prototype"), then:
   - **D:** the top-level items.
   - **E:** a Menu button, then the Study / Impact / Research shortcuts.
-- **Drill-down pane:** opens to the right of the sidebar, full height, sliding out from under it. Shows one level at a time: a heading (the item's name, linking to its page) and its children. Children with children have a →; choosing one replaces the pane's contents with the next level, sliding in from the right. A **Back** link at the top steps up a level. All levels are reachable.
+- **Drill-down pane:** 540px wide; opens to the right of the sidebar, full height, sliding out from under it. Shows one level at a time: a heading (the item's name, linking to its page) and its children. Children with children have a →; choosing one replaces the pane's contents with the next level, sliding in from the right. A **Back** link at the top steps up a level. All levels are reachable.
 - **D:** choosing a top-level item opens the pane at its children; that item gets a →. Choosing it again closes the pane; choosing another switches to it.
 - **E:** the Menu button opens the pane at the top-level items (no heading, no Back); choosing one drills down as in D. The Menu button shows its open state as in A.
 - **Closing:** the trigger again, Esc, or a click outside the pane and the trigger. Clicking a page link slides the pane away, then goes to the page. The menu always opens at the top (v0.10).

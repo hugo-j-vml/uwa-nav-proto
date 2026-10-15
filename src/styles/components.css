@@ -180,7 +180,7 @@ a { color: inherit; text-decoration: none; }
   background: var(--sidebar-bg);
   view-transition-name: site-sidebar;
 }
-.sidebar-logo { display: block; width: var(--sidebar-logo-width); }
+.sidebar-logo { display: block; width: var(--sidebar-logo-width); margin: 0 auto; } /* centred in the sidebar */
 .sidebar-logo img { display: block; width: var(--sidebar-logo-width); height: var(--sidebar-logo-height); }
 
 .sidebar-search { position: relative; margin-top: var(--sidebar-logo-to-search); }
