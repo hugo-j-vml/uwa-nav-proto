@@ -195,19 +195,30 @@
   --index-text: #f1f1f1;              /* also the VML mark colour */
   --index-muted: #6e6e6e;              /* "coming soon" items */
   --index-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --index-gutter: clamp(16px, 2.1vw, 42px);
+  --index-gutter: 30px;
   --index-mark-size: 30px;            /* VML mark, top left */
   --index-rule-gap: 16px;              /* mark to rule */
   --index-rule-width: 2px;
-  --index-intro-size: clamp(15px, 1.25vw, 22px);  /* ~18px at 1440px wide */
+  --index-intro-size: 18px;
   --index-intro-line: 1.25;
   --index-list-left: 38%;              /* where the big list starts (desktop) */
   --index-list-top: clamp(32px, 22vh, 280px);  /* space above the list; scales with window height to sit near the middle */
-  --index-item-size: clamp(22px, 2.8vw, 56px);  /* variant links: ~40px at 1440px wide, one line each */
+  --index-item-size: 40px;             /* variant links: one line each at 1440px wide */
   --index-item-line: 1.05;
   --index-item-gap: 0.3em;             /* space between list items */
   --index-letter-gap: 0.35em;          /* letter to label */
-  --index-tag-size: clamp(13px, 1vw, 18px);
+  --index-tag-size: 14px;
+}
+
+/* Index page on phones (below 640px wide): smaller fixed sizes.
+   Text sizes stay fixed while resizing; they only change at this width. */
+@media (max-width: 640px) {
+  :root {
+    --index-gutter: 16px;
+    --index-intro-size: 15px;
+    --index-item-size: 24px;
+    --index-tag-size: 12px;
+  }
 }
 
 /* ==========================================================================
