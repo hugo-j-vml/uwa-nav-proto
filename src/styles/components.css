@@ -342,6 +342,11 @@ a { color: inherit; text-decoration: none; }
 .cobranded-tiles .placeholder { flex: none; width: var(--cobranded-tile-width); height: var(--cobranded-tile-height); }
 .tpl-cobranded .placeholder-stack { margin-top: var(--placeholder-gap); }
 
+/* Side inset for page placeholders (0 in A, B and C; the page gutter in D and E).
+   The landing title moves in by the same amount so it stays over the image. */
+.placeholder-stack, .course-hero, .cobranded-hero, .cobranded-tiles { padding-inline: var(--placeholder-inset); }
+.tpl-landing .page-heading { margin-left: var(--placeholder-inset); }
+
 /* Full-width placeholders keep the Figma 1440 x 808 ratio */
 .placeholder.full { aspect-ratio: 1440 / 808; }
 

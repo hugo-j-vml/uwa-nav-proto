@@ -106,6 +106,7 @@
   --placeholder-stroke-width: 4px;     /* Figma stroke is 4 (half is clipped at the box edges) */
   --placeholder-fill: var(--colour-ironbark-20);
   --placeholder-gap: 60px;             /* space between stacked full-width placeholders */
+  --placeholder-inset: 0px;            /* side inset of page placeholders (D and E: 50px) */
 
   /* Landing template (also the homepage) */
   --landing-title-top: 227px;
@@ -214,6 +215,7 @@
 [data-shell="sidebar"] {
   --breadcrumb-top: 60px;
   --item-label-max-width: none;        /* pane labels use the pane's full width before wrapping */
+  --placeholder-inset: var(--page-gutter); /* placeholders line up with the headings, clear of the menu pane */
 }
 
 /* ==========================================================================
