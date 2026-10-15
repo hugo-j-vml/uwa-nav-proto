@@ -7,19 +7,19 @@
  * The panes are drawn by src/scripts/menu.ts from the sitemap data embedded below.
  */
 import Icon from './Icons.astro';
-import { nodes, shortcuts, href, base } from '../lib/nav';
+import { nodes, shortcuts, href, variantBase } from '../lib/nav';
 
-interface Props { currentPath?: string; transparent?: boolean }
-const { currentPath = '', transparent = false } = Astro.props;
+interface Props { variant: string; currentPath?: string; transparent?: boolean }
+const { variant, currentPath = '', transparent = false } = Astro.props;
 
 // Compact tree for the client: [label, path, children[]]
 type Compact = { l: string; p: string; c: Compact[] };
 const compact = (list: typeof nodes): Compact[] => list.map(n => ({ l: n.label, p: n.path, c: compact(n.children) }));
-const data = JSON.stringify({ base, tree: compact(nodes) }).replace(/</g, '\\u003c');
+const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes) }).replace(/</g, '\\u003c');
 ---
 <header class:list={['primary-nav-header', { 'is-transparent': transparent }]} data-figma="3.1 primary nav header" data-current-path={currentPath}>
   <div class="header-bar">
-    <a class="logo" href={href('')} aria-label="UWA home"><span>UWA Logo</span></a>
+    <a class="logo" href={href('', variant)} aria-label="UWA home"><span>UWA Logo</span></a>
 
     <div class="header-controls">
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-panes" data-menu-toggle>
@@ -41,7 +41,7 @@ const data = JSON.stringify({ base, tree: compact(nodes) }).replace(/</g, '\\u00
     </div>
 
     <nav class="header-shortcuts" aria-label="Shortcuts">
-      {shortcuts.map(s => <a class="shortcut-button" href={href(s.path)}>{s.label}</a>)}
+      {shortcuts.map(s => <a class="shortcut-button" href={href(s.path, variant)}>{s.label}</a>)}
     </nav>
   </div>
 

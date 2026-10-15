@@ -25,7 +25,7 @@
  * their sub-menu; items without children are links to their page.
  */
 
-type MenuNode = { l: string; p: string; c: MenuNode[] };
+import { indexTree, pathForPage, choose, selected, type MenuNode } from '../lib/menu-state';
 
 const header = document.querySelector<HTMLElement>('.primary-nav-header');
 if (header) init(header);
@@ -42,8 +42,7 @@ function init(header: HTMLElement) {
   const arrowTpl = header.querySelector<HTMLTemplateElement>('[data-arrow]')!;
   const search = header.querySelector<HTMLButtonElement>('[data-search]');
 
-  const byPath = new Map<string, MenuNode>();
-  (function index(list: MenuNode[]) { for (const n of list) { byPath.set(n.p, n); index(n.c); } })(tree);
+  const byPath = indexTree(tree);
 
   const href = (p: string) => `${base}${p}/`;
   let open = false;
@@ -82,7 +81,7 @@ function init(header: HTMLElement) {
     if (hasChildren) {
       (el as HTMLButtonElement).type = 'button';
       el.setAttribute('aria-expanded', String(path.includes(node.p)));
-      if (node.p === path[path.length - 1]) el.classList.add('is-selected');
+      if (node.p === selected(path)) el.classList.add('is-selected');
     } else {
       (el as HTMLAnchorElement).href = href(node.p);
     }
@@ -188,7 +187,7 @@ function init(header: HTMLElement) {
 
   /** Update the dynamic pane, sliding the old sub-menu out and the new one in. */
   async function renderDynamic(animate: boolean) {
-    const target = path[path.length - 1] ?? '';
+    const target = selected(path);
     const mine = ++seq; // any earlier, still-running update is now stale
     if (target === shownSubmenu) {
       // Same sub-menu as on screen: stop any slide in progress and refresh in place
@@ -218,19 +217,6 @@ function init(header: HTMLElement) {
     return renderDynamic(animate);
   }
 
-  /** The open path for the page we're on: its ancestors, plus itself if it has children. */
-  function pathForCurrentPage(): string[] {
-    if (!currentPath || !byPath.has(currentPath)) return [];
-    const parts = currentPath.split('/');
-    const result: string[] = [];
-    for (let i = 1; i <= parts.length; i++) {
-      const p = parts.slice(0, i).join('/');
-      const n = byPath.get(p);
-      if (n && n.c.length) result.push(p);
-    }
-    return result;
-  }
-
   // ---------- Open / close ----------
   let closing = false;
   async function setOpen(next: boolean, closeDuration = '--motion-core-duration') {
@@ -240,7 +226,7 @@ function init(header: HTMLElement) {
     seq++; // cancel any sub-menu animation in flight
     if (open) {
       closing = false;
-      path = pathForCurrentPage();
+      path = pathForPage(byPath, currentPath);
       shownSubmenu = '';
       dynamicPane.getAnimations().forEach(a => a.cancel());
       renderCore();
@@ -271,9 +257,8 @@ function init(header: HTMLElement) {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     const p = btn.dataset.path!;
-    const depth = p.split('/').length - 1;
     // Clicking the selected item closes its sub-menu; any other item opens its own.
-    path = p === path[path.length - 1] ? path.slice(0, depth) : [...path.slice(0, depth), p];
+    path = choose(path, p);
     render(true);
     focusPath(p);
   });
@@ -282,7 +267,7 @@ function init(header: HTMLElement) {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     const p = btn.dataset.path!;
-    path = [...path, p];
+    path = choose(path, p);
     render(true);
     focusPath(p);
   });

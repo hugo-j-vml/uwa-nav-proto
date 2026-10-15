@@ -1,7 +1,38 @@
 ---
+/**
+ * Index page: lists the nav concepts (variants) with links. Behind the
+ * password screen. Layout and colours from Hugo's reference (dark page,
+ * rule under the mark, intro top left, large lettered list); the typeface is
+ * a plain stand-in for now (--index-font in tokens.css).
+ */
 import Base from '../layouts/Base.astro';
-import Landing from '../templates/Landing.astro';
+import { variantBase } from '../lib/nav';
+import { variants } from '../variants';
 ---
-<Base title="Homepage" transparentHeader>
-  <Landing title="Homepage" />
+<Base title="Variants">
+  <div class="index-page">
+    <header class="index-header">
+      <span class="index-mark" aria-hidden="true">UWA</span>
+    </header>
+    <main class="index-main">
+      <p class="index-intro">UWA main navigation prototype.<br />Choose a concept to explore.</p>
+      <ol class="index-list">
+        {variants.map(v => (
+          <li class:list={['index-item', { 'is-coming-soon': v.status !== 'ready' }]}>
+            {v.status === 'ready' ? (
+              <a class="index-link" href={variantBase(v.id)}>
+                <span class="index-letter">{v.letter}.</span>
+                <span class="index-name">{v.name}</span>
+              </a>
+            ) : (
+              <span class="index-link" aria-disabled="true">
+                <span class="index-letter">{v.letter}.</span>
+                <span class="index-name">{v.name}<span class="index-tag">Coming soon</span></span>
+              </span>
+            )}
+          </li>
+        ))}
+      </ol>
+    </main>
+  </div>
 </Base>

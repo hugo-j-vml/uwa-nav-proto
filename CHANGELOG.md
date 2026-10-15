@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.7.0 (15 Oct 2026)
+
+Variants: the prototype now hosts several nav concepts, each under its own path.
+
+- Variant A (the prototype so far) has moved to `/a/`, e.g. `/uwa-nav-proto/a/study-at-uwa/`. Nothing else about it has changed: screenshots of the old and new builds match exactly. The old root URLs are gone (no redirects).
+- New index page at `/uwa-nav-proto/` listing the variants: A links to its homepage; B and C are greyed out as "Coming soon". Dark layout from Hugo's reference, with a plain stand-in typeface (`--index-font`). All its values are `--index-*` tokens.
+- Each variant has a config file in `src/variants/` and its own block for token overrides at the end of `tokens.css` (`[data-variant="b"]` etc.).
+- Menu state (open path, step back, reopen at the current page) moved into `src/lib/menu-state.ts`, to be shared by B and C.
+- `plan.md` added to the repo.
+
 ## 0.6.0 (15 Oct 2026)
 
 New IA from the reviewed 2026 Information Architecture spreadsheet.

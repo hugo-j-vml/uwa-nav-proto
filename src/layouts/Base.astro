@@ -7,20 +7,22 @@ import '../styles/components.css';
 import PrimaryNavHeader from '../components/PrimaryNavHeader.astro';
 import PasswordGate from '../components/PasswordGate.astro';
 import { PASSWORD_SHA256, PROTOTYPE_NAME } from '../config';
+import type { Variant } from '../variants';
 
-/** currentPath: sitemap path of this page (e.g. 'study/study-areas'), used to open the menu at the right place */
+/** variant: the nav concept this page belongs to; omit for pages outside the variants (the index page) */
+/** currentPath: sitemap path of this page (e.g. 'study-at-uwa/explore-courses'), used to open the menu at the right place */
 /** transparentHeader: no grey band behind the header (homepage and landing pages, per Figma) */
-interface Props { title: string; currentPath?: string; transparentHeader?: boolean }
-const { title, currentPath = '', transparentHeader = false } = Astro.props;
+interface Props { title: string; variant?: Variant; currentPath?: string; transparentHeader?: boolean }
+const { title, variant, currentPath = '', transparentHeader = false } = Astro.props;
 ---
 <!doctype html>
-<html lang="en-AU">
+<html lang="en-AU" data-variant={variant?.id ?? 'index'}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
     <title>{title} | {PROTOTYPE_NAME}</title>
-    <!-- Lock the page before it paints unless the password was already entered in this browser -->
+    <!-- Lock the page before it paints unless the password was already entered in this browser (shared by all variants) -->
     <script is:inline define:vars={{ hash: PASSWORD_SHA256 }}>
       (function () {
         var ok = false;
@@ -31,11 +33,16 @@ const { title, currentPath = '', transparentHeader = false } = Astro.props;
   </head>
   <body>
     <PasswordGate />
-    <div class="site">
-      <PrimaryNavHeader currentPath={currentPath} transparent={transparentHeader} />
-      <main class="page">
-        <slot />
-      </main>
-    </div>
+    {variant ? (
+      <div class="site">
+        {/* Variant shell: only the header shell exists so far (A); B and C swap theirs in here */}
+        {variant.shell === 'header' && <PrimaryNavHeader variant={variant.id} currentPath={currentPath} transparent={transparentHeader} />}
+        <main class="page">
+          <slot />
+        </main>
+      </div>
+    ) : (
+      <slot />
+    )}
   </body>
 </html>

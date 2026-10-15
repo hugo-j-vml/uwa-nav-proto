@@ -184,3 +184,44 @@
   /* Set any duration to 0ms to switch that motion off. Motion is also off
      when the device asks for reduced motion. */
 }
+
+/* ==========================================================================
+   INDEX PAGE (the variant list at the site root)
+   Layout and colours from Hugo's reference. The typeface is a plain stand-in
+   until the exact one is chosen: change --index-font.
+   ========================================================================== */
+:root {
+  --index-bg: #1a1a1a;
+  --index-text: #f0f0f0;
+  --index-muted: #6e6e6e;              /* "coming soon" items */
+  --index-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --index-gutter: clamp(16px, 2.1vw, 42px);
+  --index-mark-size: 24px;
+  --index-rule-gap: 16px;              /* mark to rule */
+  --index-rule-width: 2px;
+  --index-intro-size: clamp(18px, 2vw, 40px);
+  --index-intro-line: 1.25;
+  --index-list-left: 38%;              /* where the big list starts (desktop) */
+  --index-list-top: clamp(32px, 4vw, 60px);
+  --index-item-size: clamp(34px, 5.6vw, 112px);
+  --index-item-line: 1.05;
+  --index-item-gap: 0.3em;             /* space between list items */
+  --index-letter-gap: 0.35em;          /* letter to label */
+  --index-tag-size: clamp(13px, 1vw, 18px);
+}
+
+/* ==========================================================================
+   VARIANT OVERRIDES
+   Each variant starts from the values above (variant A's). Put a variant's
+   own values in its block; they apply only to that variant's pages.
+   ========================================================================== */
+[data-variant="a"] {
+  /* A uses the base values. */
+}
+[data-variant="b"] {
+  /* B: overrides go here once the designs land. */
+}
+[data-variant="c"] {
+  /* C: overrides go here once the designs land (e.g. --header-height, --breadcrumb-top, --landing-title-top for the sidebar shell). */
+}
+

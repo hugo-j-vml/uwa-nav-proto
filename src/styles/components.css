@@ -313,3 +313,44 @@ html.is-locked .gate {
 @media (prefers-reduced-motion: reduce) {
   @view-transition { navigation: none; }
 }
+
+/* ==========================================================================
+   Index page (variant list)
+   ========================================================================== */
+html[data-variant="index"] body { background: var(--index-bg); color: var(--index-text); }
+html.is-locked .index-page { display: none; }
+.index-page {
+  min-height: 100vh; box-sizing: border-box;
+  padding: var(--index-gutter);
+  font-family: var(--index-font);
+}
+.index-header {
+  padding-bottom: var(--index-rule-gap);
+  border-bottom: var(--index-rule-width) solid var(--index-text);
+}
+.index-mark { display: block; font-weight: 700; font-size: var(--index-mark-size); line-height: 1; letter-spacing: 0.02em; }
+.index-intro {
+  margin: var(--index-gutter) 0 0; max-width: 18em;
+  font-size: var(--index-intro-size); line-height: var(--index-intro-line); font-weight: 400;
+}
+.index-list {
+  list-style: none; margin: var(--index-list-top) 0 0 var(--index-list-left); padding: 0;
+  display: grid; gap: var(--index-item-gap);
+  font-size: var(--index-item-size); line-height: var(--index-item-line); font-weight: 500;
+  letter-spacing: -0.01em;
+}
+/* Letter and label in two columns so wrapped labels hang under the label, not the letter */
+.index-link { display: grid; grid-template-columns: 1.15em 1fr; column-gap: var(--index-letter-gap); }
+.index-letter { text-align: right; }
+a.index-link:hover .index-name,
+a.index-link:focus-visible .index-name { text-decoration: underline; text-decoration-thickness: 0.06em; text-underline-offset: 0.12em; }
+a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0.1em; }
+.index-item.is-coming-soon { color: var(--index-muted); }
+.index-tag {
+  display: block; width: fit-content; margin-top: 0.6em;
+  padding: 0.3em 0.6em; border: 1px solid currentColor; border-radius: 999px;
+  font-size: var(--index-tag-size); line-height: 1; font-weight: 400; letter-spacing: 0.02em; white-space: nowrap;
+}
+@media (max-width: 1024px) {
+  .index-list { margin-left: 0; }
+}
