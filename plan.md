@@ -165,7 +165,7 @@ Agreed 15 Oct 2026. Everything not listed here is as variant A (Section 7).
 - **White pane:** no heading. Lists the chosen section's items. Clicking a parent opens it **inline** (accordion): a ↓ appears after its label and its children appear indented beneath it, one indent per level. **One branch open at a time:** opening a parent closes any other open parent at its level. Clicking an open parent closes it and everything below it.
 - **Arrows:** none, except the ↓ on an open parent (black, as the mockup).
 - **Highlight:** none. *(Changed 15 Oct, v0.9: the black blocks on the chosen section and the current page were removed.)*
-- **Reopen state, closing, Esc, click-outside, page-link motion:** as A.
+- **Closing, Esc, click-outside, page-link motion:** as A. Always opens at the top level (v0.10).
 
 ## 7b. Interaction specification (desktop, variant C)
 
@@ -177,7 +177,7 @@ Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is 
 - **Panel 2:** opens to the right when an L2 parent is chosen; lists its items (L3), one level only. L3 items are always links, even if they have children, so the menu stops at L3. Slides out from under panel 1 (A's sub-menu motion).
 - **Open item:** gets a → after its label, in the core pane and panel 1. No other arrows, no black highlights.
 - **Closing:** clicking an open item closes it and everything to its right. Menu button, Esc and click-outside as A.
-- **Reopen state:** opens at the current page's section and L2, as far as L3.
+- **Opening:** always at the top level with nothing chosen, as on the homepage (v0.10).
 
 ## 8. Motion
 
@@ -217,7 +217,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 1. ~~Is the selected style applied to ancestors too?~~ **Resolved:** only the item whose sub-menu is showing (Section 7).
 2. ~~Esc / click outside?~~ **Resolved:** both close the menu (v0.4).
 3. The dynamic pane heading (e.g. "Study areas" with an arrow): does clicking it go to that section's landing page?
-4. ~~Reopen state?~~ **Resolved:** the menu opens at the current page's section, with its nearest parent selected (v0.4).
+4. ~~Reopen state?~~ **Resolved:** the menu opens at the current page's section, with its nearest parent selected (v0.4). **Changed 15 Oct (v0.10):** the menu always opens at the top level with nothing chosen, as on the homepage, in every variant.
 5. ~~What do the header shortcuts do?~~ **Resolved:** they go to the L1 landing pages (Section 7).
 6. Search button: should it work, or show a static "not available in this prototype" message?
 

@@ -20,8 +20,8 @@
  *   - Dynamic pane: the children of the last item in the open path.
  *   - Selected: only the last item in the open path (its sub-menu is showing).
  *
- * Opening the menu on a page deep in the IA starts with that page's parents
- * open, so the current section is nested and selected.
+ * The menu always opens at the top level with nothing chosen, as on the
+ * homepage, wherever you are in the prototype (all variants).
  *
  * Motion (timings in tokens.css):
  *   - the whole menu slides down from the header's bottom edge on open, and back up on close
@@ -37,7 +37,7 @@
  * their sub-menu; items without children are links to their page.
  */
 
-import { indexTree, pathForPage, choose, toggle as toggleBranch, selected, type MenuNode } from '../lib/menu-state';
+import { indexTree, choose, toggle as toggleBranch, selected, type MenuNode } from '../lib/menu-state';
 
 const header = document.querySelector<HTMLElement>('.primary-nav-header');
 if (header) init(header);
@@ -290,8 +290,7 @@ function init(header: HTMLElement) {
     slots.forEach(s => s.seq++); // cancel any sub-menu animation in flight
     if (open) {
       closing = false;
-      path = pathForPage(byPath, currentPath);
-      if (columns) path = path.slice(0, 2); // C shows down to L3: at most the section and one L2 open
+      path = []; // always open at the top level, as on the homepage
       slots.forEach(s => { s.shown = ''; s.pane.getAnimations().forEach(a => a.cancel()); });
       renderCore();
       await renderDynamic(false);

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.10.0 (15 Oct 2026)
+
+- **All variants:** the menu now always opens at the top level with nothing chosen, as it does on the homepage, wherever you are in the prototype. (Before, it opened at the current page's section with its parents open.) In A, the page you're on is still highlighted if you open its sub-menu.
+
 ## 0.9.2 (15 Oct 2026)
 
 - Index page: intro text sits 12px below the line divider (was 30px), `--index-intro-top`.
