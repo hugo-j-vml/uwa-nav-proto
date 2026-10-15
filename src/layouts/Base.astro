@@ -22,7 +22,7 @@ const { title, variant, currentPath = '', transparentHeader = false } = Astro.pr
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex, nofollow" />
-    <title>{title} | {PROTOTYPE_NAME}</title>
+    <title>{variant ? `${variant.letter} | ${title}` : `${title} | ${PROTOTYPE_NAME}`}</title>
     <!-- Lock the page before it paints unless the password was already entered in this browser (shared by all variants) -->
     <script is:inline define:vars={{ hash: PASSWORD_SHA256 }}>
       (function () {

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.2 (15 Oct 2026)
+
+- Browser tab titles on variant pages start with the variant letter, without the prototype name, for example "A | Homepage" or "C | About us". The index page keeps "Variants | UWA navigation prototype".
+- A, B and C: the horizontal logo is vertically centred in the header band (28.5px above and below), with or without the grey background. It was sitting 8px high, level with the old placeholder's top edge.
+
 ## 0.13.1 (15 Oct 2026)
 
 - D and E: page placeholders (the boxes with a cross) are inset 50px on both sides, so they line up with the breadcrumb and title and sit clear of the sidebar and menu pane. On landing pages the title moves in by the same amount so it stays over the image. Token: `--placeholder-inset` (0 in A, B and C, which are unchanged).
