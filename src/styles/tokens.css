@@ -218,14 +218,16 @@
 
 /* ==========================================================================
    INDEX PAGE (the variant list at the site root)
-   Layout and colours from Hugo's reference. The typeface is a plain stand-in
-   until the exact one is chosen: change --index-font.
+   Layout and colours from Hugo's reference. Typeface: Snowflake Sans
+   (fonts.css), Medium for links, Book for copy.
    ========================================================================== */
 :root {
   --index-bg: #1a1a1a;
   --index-text: #f1f1f1;              /* also the VML mark colour */
   --index-muted: #6e6e6e;              /* "coming soon" items */
-  --index-font: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --index-font: 'Snowflake Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --index-weight-copy: 400;            /* Book: intro, password screen text, tags */
+  --index-weight-link: 500;            /* Medium: variant links, Enter button, password screen title */
   --index-gutter: 30px;
   --index-mark-size: 30px;            /* VML mark, top left */
   --index-rule-gap: 16px;              /* mark to rule */
@@ -244,7 +246,7 @@
   --gate-width: 420px;                 /* form width */
   --gate-padding: 48px;                /* space above and below the form */
   --gate-gap: 20px;                    /* between the form's elements */
-  --gate-title-size: 32px;
+  --gate-title-size: 28px;
   --gate-field-padding: 16px 18px;     /* input and button */
   --gate-error: #ff8a80;               /* readable on the dark background */
 }

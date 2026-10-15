@@ -355,13 +355,14 @@ html.is-locked .gate {
   display: flex; flex-direction: column; min-height: 100vh; box-sizing: border-box;
   padding: var(--index-gutter);
   background: var(--index-bg); color: var(--index-text); font-family: var(--index-font);
+  font-weight: var(--index-weight-copy);
 }
 .gate-form {
   margin: auto; padding: var(--gate-padding) 0;
   width: min(100%, var(--gate-width));
   display: flex; flex-direction: column; gap: var(--gate-gap);
 }
-.gate h1 { font-family: inherit; font-size: var(--gate-title-size); line-height: 1.15; font-weight: 500; margin: 0; }
+.gate h1 { font-family: inherit; font-size: var(--gate-title-size); line-height: 1.15; font-weight: var(--index-weight-link); margin: 0; }
 .gate p { margin: 0; font-size: var(--index-intro-size); line-height: var(--index-intro-line); }
 .gate input {
   font: inherit; font-size: var(--index-intro-size); color: var(--index-text);
@@ -370,7 +371,7 @@ html.is-locked .gate {
 }
 .gate input:focus-visible { outline: var(--index-rule-width) solid var(--index-text); outline-offset: 3px; }
 .gate button {
-  font: inherit; font-size: var(--index-intro-size); font-weight: 500;
+  font: inherit; font-size: var(--index-intro-size); font-weight: var(--index-weight-link);
   padding: var(--gate-field-padding); text-align: center; cursor: pointer;
   background: var(--index-text); color: var(--index-bg); border: 0;
 }
@@ -423,7 +424,7 @@ html.is-locked .index-page { display: none; }
 .index-page {
   min-height: 100vh; box-sizing: border-box;
   padding: var(--index-gutter);
-  font-family: var(--index-font);
+  font-family: var(--index-font); font-weight: var(--index-weight-copy);
 }
 .index-header {
   padding-bottom: var(--index-rule-gap);
@@ -432,12 +433,12 @@ html.is-locked .index-page { display: none; }
 .index-mark { display: block; width: var(--index-mark-size); height: var(--index-mark-size); }
 .index-intro {
   margin: var(--index-intro-top) 0 0; max-width: 18em;
-  font-size: var(--index-intro-size); line-height: var(--index-intro-line); font-weight: 400;
+  font-size: var(--index-intro-size); line-height: var(--index-intro-line); font-weight: var(--index-weight-copy);
 }
 .index-list {
   list-style: none; margin: var(--index-list-top) 0 0 var(--index-list-left); padding: 0;
   display: grid; gap: var(--index-item-gap);
-  font-size: var(--index-item-size); line-height: var(--index-item-line); font-weight: 500;
+  font-size: var(--index-item-size); line-height: var(--index-item-line); font-weight: var(--index-weight-link);
   letter-spacing: -0.01em;
 }
 /* Letter and label in two columns so wrapped labels hang under the label, not the letter */
@@ -450,7 +451,7 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 .index-tag {
   display: block; width: fit-content; margin-top: 0.6em;
   padding: 0.3em 0.6em; border: 1px solid currentColor; border-radius: 999px;
-  font-size: var(--index-tag-size); line-height: 1; font-weight: 400; letter-spacing: 0.02em; white-space: nowrap;
+  font-size: var(--index-tag-size); line-height: 1; font-weight: var(--index-weight-copy); letter-spacing: 0.02em; white-space: nowrap;
 }
 @media (max-width: 1024px) {
   .index-list { margin-left: 0; }

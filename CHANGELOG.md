@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.13.0 (15 Oct 2026)
+
+- Index page and password screen use Snowflake Sans: Medium for the variant links, the Enter button and the password screen title; Book for all other text. Light, Book, Medium and Bold are in `public/fonts/` as `.woff2` (converted from the supplied `.otf` files) and registered in `fonts.css`. Weights are the `--index-weight-copy` and `--index-weight-link` tokens.
+- Password screen title is 28px (was 32px) so it stays on one line in the wider typeface.
+
 ## 0.12.0 (15 Oct 2026)
 
 - Password screen redesigned to match the index page: dark background, VML mark and white rule at the top, and the title, intro text, password field and Enter button centred, with more space around them. The field has a white outline, the button is white with dark text, and the error message is a light red so it reads on the dark background. Same on every page. Sizes and spacing are `--gate-*` tokens in `tokens.css`.

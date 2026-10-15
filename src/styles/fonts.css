@@ -6,6 +6,8 @@
      TTNormsPro-Medium.woff2      (TT Norms Pro Medium, weight 500)
      TTNormsPro-Bold.woff2        (TT Norms Pro Bold, weight 700)
      MelunDisplayUWA-Bold.woff2   (Melun Display UWA Bold, weight 700)
+     SnowflakeSans-*.woff2        (Snowflake Sans Light 300, Book 400, Medium 500, Bold 700:
+                                   index page and password screen, converted from Hugo's .otf files)
    .woff, .otf or .ttf also work: add an extra url() line below if so.
    local() means the fonts show on any machine that has them installed,
    even before the files are added.
@@ -54,6 +56,40 @@
     local('Melun Display UWA Bold'),
     local('MelunDisplayUWA-Bold'),
     url('/uwa-nav-proto/fonts/MelunDisplayUWA-Bold.woff2') format('woff2');
+}
+
+/* Snowflake Sans (VML): index page and password screen. Medium is registered
+   as weight 500 (the file says 600) so it matches the --index-weight-link token. */
+@font-face {
+  font-family: 'Snowflake Sans';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('/uwa-nav-proto/fonts/SnowflakeSans-Light.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Snowflake Sans';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('/uwa-nav-proto/fonts/SnowflakeSans-Book.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Snowflake Sans';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('/uwa-nav-proto/fonts/SnowflakeSans-Medium.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Snowflake Sans';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('/uwa-nav-proto/fonts/SnowflakeSans-Bold.woff2') format('woff2');
 }
 
 /* Novel Pro SemiBold: co-branded site titles. No file supplied yet, so this
