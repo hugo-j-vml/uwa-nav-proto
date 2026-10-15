@@ -3,29 +3,31 @@
  * Controls for the behaviour options (src/options.ts): one row of choice
  * buttons per option, and a line showing the current selection. Used on the
  * index page and in the hidden options panel. reload: reload the page after a
- * change (variant pages, where menus are set up on load).
+ * change (variant pages, where menus are set up on load). compact: just the
+ * headline and the choices (index page); the selected choice shows the current
+ * setting.
  */
 import { OPTIONS } from '../options';
-interface Props { reload?: boolean }
-const { reload = false } = Astro.props;
+interface Props { reload?: boolean; compact?: boolean }
+const { reload = false, compact = false } = Astro.props;
 ---
 <div class="options-controls" data-options-controls data-reload={reload ? '' : undefined}>
   {OPTIONS.map(o => (
     <fieldset class="option">
       <legend class="option-label">{o.label}</legend>
-      <p class="option-description">{o.description}</p>
+      {!compact && <p class="option-description">{o.description}</p>}
       <div class="option-choices">
         {o.choices.map(c => (
           <button type="button" class="option-choice" data-option={o.id} data-choice={c.id} aria-pressed={String(c.id === o.default)}>
-            <span class="option-choice-id">{c.id}</span> {c.label}{c.id === o.default ? ' (default)' : ''}
+            <span class="option-choice-id">{c.id}</span> {c.label}{!compact && c.id === o.default ? ' (default)' : ''}
           </button>
         ))}
       </div>
     </fieldset>
   ))}
-  <p class="options-current" aria-live="polite">
+  {!compact && <p class="options-current" aria-live="polite">
     Current: {OPTIONS.map((o, i) => <>{i > 0 && '; '}{`${o.label}: `}<strong data-option-current={o.id}>{o.default}</strong></>)}
-  </p>
+  </p>}
 </div>
 <script>
   import { getOption, setOption } from '../lib/options';

@@ -36,10 +36,8 @@ import OptionsControls from '../components/OptionsControls.astro';
           </li>
         ))}
       </ol>
-      <section class="index-options" aria-labelledby="index-options-title">
-        <h2 id="index-options-title" class="index-options-title">Options</h2>
-        <p class="index-options-note">Alternative behaviours, applied to every concept in this browser. Shift+O on any concept page opens the same switches.</p>
-        <OptionsControls />
+      <section class="index-options" aria-label="Behaviour options">
+        <OptionsControls compact />
       </section>
     </main>
     <IndexFooter />

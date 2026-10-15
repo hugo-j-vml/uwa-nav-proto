@@ -542,10 +542,11 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 /* ==========================================================================
    Behaviour options (src/options.ts): index page section and hidden panel
    ========================================================================== */
-.index-options { margin: var(--options-top) 0 0 var(--index-list-left); max-width: 640px; }
-.index-options-title { margin: 0; font-size: var(--index-intro-size); line-height: var(--index-intro-line); font-weight: var(--index-weight-link); }
-.index-options-note { margin: 6px 0 0; font-size: var(--options-size); line-height: 1.4; opacity: 0.75; }
-@media (max-width: 1024px) { .index-options { margin-left: 0; } }
+/* Index page: under the last variant link, lined up with the link text (past the letters) */
+.index-options { margin: var(--options-top) 0 0 calc(var(--index-list-left) + var(--options-indent)); max-width: 640px; }
+.index-options .option:first-child { margin-top: 0; }
+.index-options .option-label { font-size: var(--index-intro-size); margin-bottom: 10px; }
+@media (max-width: 1024px) { .index-options { margin-left: var(--options-indent); } }
 
 .options-controls { font-size: var(--options-size); line-height: 1.4; }
 .option { margin: 20px 0 0; padding: 0; border: 0; min-width: 0; }

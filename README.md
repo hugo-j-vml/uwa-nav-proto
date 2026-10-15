@@ -99,7 +99,7 @@ Full specs per variant are in `plan.md` (sections 7–7d). In short:
 
 Alternative behaviours that apply across every variant, without making new variants. Defined in `src/options.ts`; each choice is remembered per browser.
 
-- **Index page:** the Options section, with a "Current:" line.
+- **Index page:** under the variant links, a headline per option and its choices; the filled-in choice is the current setting.
 - **Any variant page:** Shift+O shows a hidden panel (bottom right); choosing reloads the page.
 - **Links:** `?cobrand-menu=7` on any URL sets and remembers a choice (for presetting test sessions).
 
@@ -107,7 +107,7 @@ Current options:
 
 | Option | Choices |
 |---|---|
-| Co-brand menu (`cobrand-menu`) | **1** Menu bar on page (default): a bar under the breadcrumb with the site's sections and dropdowns. **2** Replaces core menu: the menu shows the site's sections, with a "UWA main menu" switch. **7** Alongside core menu: both together (A, E: site block above the top level; B, C: the site as the first core item, pre-chosen; D: the site as the first sidebar item). |
+| Co-brand menu behaviour (`cobrand-menu`) | **1** Menu bar on page (default): a bar under the breadcrumb with the site's sections and dropdowns. **2** Replaces core menu: the menu shows the site's sections, with a "UWA main menu" switch. **7** Alongside core menu: both together (A, E: site block above the top level; B, C: the site as the first core item, pre-chosen; D: the site as the first sidebar item). |
 
 To add an option: add an entry to `src/options.ts`, then branch on it in CSS (`[data-opt-<id>="<choice>"]` on `<html>`) or in scripts (`getOption('<id>')` from `src/lib/options.ts`).
 

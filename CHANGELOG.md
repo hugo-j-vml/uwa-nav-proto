@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.21.2 (15 Oct 2026)
+
+- Index page options simplified: just the headline "Co-brand menu behaviour" and the three choices, directly under the last variant link (40px below, was 72px) and lined up with the link text. The "Options" heading, explanatory note, option description, "(default)" labels and "Current:" line are gone; the filled-in choice shows the current setting. The Shift+O panel on variant pages keeps the fuller version.
+
 ## 0.21.1 (15 Oct 2026)
 
 - Index page: the intro reads "UWA Navigation Prototyping System" (the "Choose a concept" line is gone), in Snowflake Sans Medium, on one line.

@@ -20,7 +20,7 @@ export interface OptionDef {
 export const OPTIONS: OptionDef[] = [
   {
     id: 'cobrand-menu',
-    label: 'Co-brand menu',
+    label: 'Co-brand menu behaviour',
     description: 'How a co-branded site’s own menu (e.g. Oceans Institute) behaves on its pages.',
     choices: [
       { id: '1', label: 'Menu bar on page' },
