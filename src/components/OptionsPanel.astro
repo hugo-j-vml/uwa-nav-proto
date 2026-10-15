@@ -1,0 +1,33 @@
+---
+/**
+ * Hidden options panel on variant pages, for facilitators: Shift+O shows or
+ * hides it (not while typing in a field); Esc or Close hides it. Choosing an
+ * option reloads the page so the menus pick it up. Participants never see it
+ * unless the shortcut is pressed.
+ */
+import OptionsControls from './OptionsControls.astro';
+---
+<aside class="options-panel" aria-label="Prototype options" data-options-panel hidden>
+  <div class="options-panel-head">
+    <p class="options-panel-title">Prototype options</p>
+    <button type="button" class="options-panel-close" data-options-close>Close</button>
+  </div>
+  <OptionsControls reload />
+  <p class="options-panel-hint">Shift+O shows or hides this panel.</p>
+</aside>
+<script>
+  const panel = document.querySelector<HTMLElement>('[data-options-panel]');
+  if (panel) {
+    const toggle = (show = panel.hidden) => {
+      panel.hidden = !show;
+      if (show) panel.querySelector<HTMLElement>('.option-choice[aria-pressed="true"]')?.focus();
+    };
+    document.addEventListener('keydown', (e) => {
+      const t = e.target as HTMLElement;
+      const typing = t.closest('input, textarea, select, [contenteditable="true"]');
+      if (e.key === 'O' && e.shiftKey && !e.metaKey && !e.ctrlKey && !e.altKey && !typing) { e.preventDefault(); toggle(); }
+      else if (e.key === 'Escape' && !panel.hidden) { e.stopImmediatePropagation(); toggle(false); }
+    }, true);
+    panel.querySelector('[data-options-close]')!.addEventListener('click', () => toggle(false));
+  }
+</script>

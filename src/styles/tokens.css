@@ -257,6 +257,11 @@
   --index-wordmark-width: 98px;        /* VML wordmark, bottom left */
   --index-footer-top: 48px;            /* minimum space above the footer */
   --index-build-size: 14px;            /* version and last updated, bottom right */
+  /* Behaviour options: index page section and the hidden panel (Shift+O) */
+  --options-top: 72px;                 /* variant list to the options section */
+  --options-size: 15px;
+  --options-gap: 10px;                 /* between choice buttons */
+  --options-panel-width: 380px;
   /* Password screen (same look as the index page) */
   --gate-width: 420px;                 /* form width */
   --gate-padding: 48px;                /* space above and below the form */

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.18.0 (15 Oct 2026)
+
+- **Behaviour options.** A way to switch alternative behaviours across every variant without making new variants. Options are defined in `src/options.ts`; the first is **Co-brand menu** (1 Menu bar on page, the default; 2 Replaces core menu; 7 Alongside core menu). The behaviours themselves come in the next releases.
+  - **Index page:** an Options section under the variant list, with a button per choice and a "Current:" line showing the selection.
+  - **Hidden panel on variant pages:** Shift+O shows or hides it (not while typing in a field); Esc or Close hides it. Choosing reloads the page.
+  - **Links:** `?cobrand-menu=7` on any URL sets and remembers the choice, for presetting test sessions.
+  - Choices are remembered in the browser and applied before the page paints, as `data-opt-<id>` on `<html>`; scripts read them with `getOption()` from `src/lib/options.ts`.
+
 ## 0.17.1 (15 Oct 2026)
 
 - Co-brand header: back to the normal header band colour (the darker band from 0.17.0 is removed), and twice the space between the UWA logo and the co-brand logo (36px, was 18px).

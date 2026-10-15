@@ -10,6 +10,7 @@ import { variantBase } from '../lib/nav';
 import { variants } from '../variants';
 import VmlMark from '../components/VmlMark.astro';
 import IndexFooter from '../components/IndexFooter.astro';
+import OptionsControls from '../components/OptionsControls.astro';
 ---
 <Base title="Variants">
   <div class="index-page">
@@ -35,6 +36,11 @@ import IndexFooter from '../components/IndexFooter.astro';
           </li>
         ))}
       </ol>
+      <section class="index-options" aria-labelledby="index-options-title">
+        <h2 id="index-options-title" class="index-options-title">Options</h2>
+        <p class="index-options-note">Alternative behaviours, applied to every concept in this browser. Shift+O on any concept page opens the same switches.</p>
+        <OptionsControls />
+      </section>
     </main>
     <IndexFooter />
   </div>

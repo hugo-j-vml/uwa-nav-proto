@@ -8,6 +8,8 @@ import PrimaryNavHeader from '../components/PrimaryNavHeader.astro';
 import Sidebar from '../components/Sidebar.astro';
 import PasswordGate from '../components/PasswordGate.astro';
 import { PASSWORD_SHA256, PROTOTYPE_NAME } from '../config';
+import { OPTIONS, OPTIONS_KEY } from '../options';
+import OptionsPanel from '../components/OptionsPanel.astro';
 import type { Variant } from '../variants';
 
 /** variant: the nav concept this page belongs to; omit for pages outside the variants (the index page) */
@@ -32,6 +34,22 @@ const { title, variant, currentPath = '', transparentHeader = false, cobrand } =
         if (!ok) document.documentElement.classList.add('is-locked');
       })();
     </script>
+    <!-- Behaviour options (src/options.ts): apply the chosen ones before the page paints.
+         A link like ?cobrand-menu=7 sets and remembers a choice. -->
+    <script is:inline define:vars={{ options: OPTIONS.map(o => ({ id: o.id, d: o.default, c: o.choices.map(c => c.id) })), key: OPTIONS_KEY }}>
+      (function () {
+        var saved = {};
+        try { saved = JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch (e) {}
+        var params = new URLSearchParams(location.search), changed = false;
+        options.forEach(function (o) {
+          var fromUrl = params.get(o.id);
+          if (fromUrl && o.c.indexOf(fromUrl) !== -1) { saved[o.id] = fromUrl; changed = true; }
+          var v = o.c.indexOf(saved[o.id]) !== -1 ? saved[o.id] : o.d;
+          document.documentElement.setAttribute('data-opt-' + o.id, v);
+        });
+        if (changed) try { localStorage.setItem(key, JSON.stringify(saved)); } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <PasswordGate />
@@ -43,6 +61,7 @@ const { title, variant, currentPath = '', transparentHeader = false, cobrand } =
         <main class="page">
           <slot />
         </main>
+        <OptionsPanel />
       </div>
     ) : (
       <slot />

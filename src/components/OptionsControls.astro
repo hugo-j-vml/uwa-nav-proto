@@ -1,0 +1,55 @@
+---
+/**
+ * Controls for the behaviour options (src/options.ts): one row of choice
+ * buttons per option, and a line showing the current selection. Used on the
+ * index page and in the hidden options panel. reload: reload the page after a
+ * change (variant pages, where menus are set up on load).
+ */
+import { OPTIONS } from '../options';
+interface Props { reload?: boolean }
+const { reload = false } = Astro.props;
+---
+<div class="options-controls" data-options-controls data-reload={reload ? '' : undefined}>
+  {OPTIONS.map(o => (
+    <fieldset class="option">
+      <legend class="option-label">{o.label}</legend>
+      <p class="option-description">{o.description}</p>
+      <div class="option-choices">
+        {o.choices.map(c => (
+          <button type="button" class="option-choice" data-option={o.id} data-choice={c.id} aria-pressed={String(c.id === o.default)}>
+            <span class="option-choice-id">{c.id}</span> {c.label}{c.id === o.default ? ' (default)' : ''}
+          </button>
+        ))}
+      </div>
+    </fieldset>
+  ))}
+  <p class="options-current" aria-live="polite">
+    Current: {OPTIONS.map((o, i) => <>{i > 0 && '; '}{`${o.label}: `}<strong data-option-current={o.id}>{o.default}</strong></>)}
+  </p>
+</div>
+<script>
+  import { getOption, setOption } from '../lib/options';
+  import { OPTIONS } from '../options';
+
+  const label = (id: string, choice: string) => {
+    const c = OPTIONS.find(o => o.id === id)?.choices.find(c => c.id === choice);
+    return c ? `${c.id} · ${c.label}` : choice;
+  };
+  function sync() {
+    document.querySelectorAll<HTMLButtonElement>('.option-choice').forEach(b =>
+      b.setAttribute('aria-pressed', String(getOption(b.dataset.option!) === b.dataset.choice)));
+    document.querySelectorAll<HTMLElement>('[data-option-current]').forEach(el => {
+      el.textContent = label(el.dataset.optionCurrent!, getOption(el.dataset.optionCurrent!));
+    });
+  }
+  document.querySelectorAll<HTMLElement>('[data-options-controls]').forEach(box => {
+    box.addEventListener('click', (e) => {
+      const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.option-choice');
+      if (!b || b.getAttribute('aria-pressed') === 'true') return;
+      setOption(b.dataset.option!, b.dataset.choice!);
+      if (box.hasAttribute('data-reload')) location.reload();
+    });
+  });
+  document.addEventListener('optionchange', sync);
+  sync();
+</script>
