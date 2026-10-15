@@ -200,7 +200,7 @@ Agreed 15 Oct 2026.
 
 Alternative behaviours are switched across all variants with **behaviour options** (`src/options.ts`), not new variants: on the index page, with the hidden Shift+O panel on any variant page, or with `?<option>=<choice>` in a link (sets and remembers it; use to preset test sessions).
 
-**Co-brand menu** (default 1). Co-branded sites (e.g. Oceans Institute) have their own two-level IA (`data/cobranded/<slug>.csv`), kept out of the core tree; the site is a single link in the core menu. On the site's pages, A–C show a co-brand logo placeholder next to the UWA logo and no shortcuts.
+**Co-brand menu** (default 1). Co-branded sites (e.g. Oceans Institute) have their own two-level IA (`data/cobranded/<slug>.csv`), kept out of the core tree; the site is a single link in the core menu. On the site's pages, A–C show a co-brand logo placeholder next to the UWA logo and no shortcuts; D and E show it under the vertical UWA logo.
 - **1 · Menu bar on page:** a bar under the breadcrumb with the site's sections and dropdowns; Menu stays the core menu.
 - **2 · Replaces core menu:** Menu (D: the sidebar list) shows the site's sections in place of the top level, with a "UWA main menu" switch and back.
 - **7 · Alongside core menu:** both at once. A, E: the site's block above a divider and the top level. B, C: the site's name and sections fill the white pane on open; choosing a top-level item shows that instead, and closing it brings the site back. D: the site's name and sections at the top of the sidebar, above a divider and the top-level items; a section opens the pane at its pages.
@@ -264,7 +264,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 
 7e. Reviewed IA (15 Oct), to confirm: "Campus initiatives or Campus development or Campus management" is built as written; which one? "Applicants (or apply portal…)" and "Agents (or International agents)" are built as Applicants and Agents. Students › Academic support has a child also called Academic support.
 7f. Index page: B is "Static core with dynamic panel" (Hugo, 15 Oct); C's name ("Static core with two panels") and D/E's names are stand-ins. Intro copy: "UWA Navigation Prototyping System" (Hugo, v0.21.1).
-7g. Co-branded sites, open: which Co-brand menu option goes forward (1, 2 or 7, being tested); whether D and E should show the co-brand logo; whether search on co-branded pages covers the site, UWA or both; the co-brand menu's visual design (switch rows, headings and the option 1 bar are wireframe stand-ins).
+7g. Co-branded sites, open: which Co-brand menu option goes forward (1, 2 or 7, being tested); whether search on co-branded pages covers the site, UWA or both; the co-brand menu's visual design (switch rows, headings and the option 1 bar are wireframe stand-ins).
 
 **Testing and hosting**
 

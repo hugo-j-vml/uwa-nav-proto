@@ -220,6 +220,7 @@
   --sidebar-logo-width: 94px;          /* UWA vertical logo (public/logos/uwa-vertical.svg) */
   --sidebar-logo-height: 162px;
   --sidebar-logo-to-search: 32px;
+  --sidebar-logo-to-cobrand-logo: 24px; /* co-branded pages: UWA logo to the co-brand logo placeholder (same size as in the header) */
   --sidebar-search-height: 40px;
   --sidebar-search-to-menu: 40px;      /* search field to the items (D) or the Menu button (E) */
   --sidebar-item-size: var(--type-h5-size);  /* 18px TT Norms Pro Medium */

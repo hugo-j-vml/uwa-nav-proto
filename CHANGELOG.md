@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.24.0 (15 Oct 2026)
+
+- D and E, co-branded site pages only: the co-brand logo placeholder (same size as in the A–C header, links to the site's home) sits centred under the vertical UWA logo, 24px below it.
+
 ## 0.23.1 (15 Oct 2026)
 
 - Co-brand menu option 7 in C now works like B: the site's name is no longer an item in the grey core pane; the white pane shows the site's name (a link to its home) above its sections when the menu opens. A section's pages show in the next panel as before. Choosing a top-level item shows that instead; closing it again brings the site back.

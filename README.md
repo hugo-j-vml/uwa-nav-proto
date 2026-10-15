@@ -73,7 +73,7 @@ Oceans Institute,,,,cobranded,,,
 - **Landing**: placeholder with the title over it. Also used for the homepage.
 - **Content**: breadcrumbs, title, then placeholders.
 - **Course**: hero with eyebrow, title, intro, Enquire/Apply; in-page tabs bar, body copy, 3-column cards.
-- **Co-branded site**: short breadcrumb (UWA › site name), sage hero with the site name (Novel Pro), sage tiles. In A–C the header shows a co-brand logo placeholder next to the UWA logo and no shortcuts.
+- **Co-branded site**: short breadcrumb (UWA › site name), sage hero with the site name (Novel Pro), sage tiles. In A–C the header shows a co-brand logo placeholder next to the UWA logo and no shortcuts; in D and E the placeholder sits under the vertical UWA logo.
 - **Co-branded site pages** (the pages in a site's own IA): breadcrumb from the site (UWA › site › section › page), serif title, placeholders.
 
 ### Changing the password
