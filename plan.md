@@ -34,6 +34,7 @@ From 15 Oct, the prototype hosts **several nav concepts (variants)** side by sid
 | 5 | Font files | ✅ Done 15 Oct | TT Norms Pro, Melun Display UWA and Inter, working in the prototype |
 | 6 | Test tasks | ⏳ Later | Used to set start pages and target pages, not to shape the build |
 | 7 | Variant B designs | ✅ Received 15 Oct | Desktop mockup (labels predate the new IA). Built as v0.8 |
+| 8a | Variant D and E brief | ✅ Received 15 Oct | Sidebar screenshot for D; E described in chat. Vertical and horizontal UWA logo SVGs supplied |
 | 8 | Variant C brief | ✅ Received 15 Oct | Described in chat (no mockup): B's core pane plus two panels to the right, one level each, down to L3 |
 | 9 | Reviewed 2026 IA spreadsheet | ✅ Received 15 Oct | 251 pages, 7 top-level items. Loaded as v0.6 (rows after Login's children are notes; navigation label and URL columns ignored) |
 | 10 | Index page design | ✅ Received 15 Oct | Reference image: dark page, mark and rule, intro top left, large list of variant links. Exact typeface to come |
@@ -79,6 +80,8 @@ One repo, one build, one IA. Each nav concept is a **variant** that builds the f
 | `/uwa-nav-proto/` | Index | A short list of the variants with links. Behind the password screen. Layout and colours from Hugo's reference (see below). | ✅ Built 15 Oct |
 | `/uwa-nav-proto/a/…` | **A** | The current prototype (v0.4): header, indented core pane, dynamic pane, current motion. Behaviour and design unchanged. | ✅ Moved 15 Oct |
 | `/uwa-nav-proto/b/…` | **B** | Same header layout as A. A static core menu on the left with no indents that shows parent nodes; the chosen section opens in the wider white pane, where parents expand inline. | ✅ Built 15 Oct (v0.8, Section 7a) |
+| `/uwa-nav-proto/d/…` | **D** | A fixed sidebar instead of the header (logo, search field, top-level items). Choosing an item opens a drill-down pane to the right. | ✅ Built 15 Oct (v0.11, Section 7c) |
+| `/uwa-nav-proto/e/…` | **E** | A simpler sidebar (logo, search field, Menu button, shortcuts). The Menu button opens the same drill-down pane at the top level. | ✅ Built 15 Oct (v0.11, Section 7c) |
 | `/uwa-nav-proto/c/…` | **C** | A more static version of B: the same header and static core pane, then two panels to the right, one IA level each (L2, then L3). The menu goes down to L3. *(Replaces the earlier sidebar idea, 15 Oct.)* | ✅ Built 15 Oct (v0.9, Section 7b) |
 
 - Paths are **neutral letters** so participants aren't cued by the URL.
@@ -178,6 +181,19 @@ Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is 
 - **Open item:** gets a → after its label, in the core pane and panel 1. No other arrows, no black highlights.
 - **Closing:** clicking an open item closes it and everything to its right. Menu button, Esc and click-outside as A.
 - **Opening:** always at the top level with nothing chosen, as on the homepage (v0.10).
+
+## 7c. Interaction specification (desktop, variants D and E)
+
+Agreed 15 Oct 2026.
+
+- **Shell:** a fixed, full-height sidebar (277px, light grey) replaces the header; the page sits to its right. Top to bottom: vertical UWA logo, a search input (not wired up: Enter shows "not available in this prototype"), then:
+  - **D:** the top-level items.
+  - **E:** a Menu button, then the Study / Impact / Research shortcuts.
+- **Drill-down pane:** opens to the right of the sidebar, full height, sliding out from under it. Shows one level at a time: a heading (the item's name, linking to its page) and its children. Children with children have a →; choosing one replaces the pane's contents with the next level, sliding in from the right. A **Back** link at the top steps up a level. All levels are reachable.
+- **D:** choosing a top-level item opens the pane at its children; that item gets a →. Choosing it again closes the pane; choosing another switches to it.
+- **E:** the Menu button opens the pane at the top-level items (no heading, no Back); choosing one drills down as in D. The Menu button shows its open state as in A.
+- **Closing:** the trigger again, Esc, or a click outside the pane and the trigger. Clicking a page link slides the pane away, then goes to the page. The menu always opens at the top (v0.10).
+- **Logo:** the horizontal UWA logo replaces the header placeholder in A, B and C.
 
 ## 8. Motion
 

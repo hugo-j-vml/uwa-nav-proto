@@ -8,7 +8,7 @@
  * The panes are drawn by src/scripts/menu.ts from the sitemap data embedded below.
  */
 import Icon from './Icons.astro';
-import { nodes, shortcuts, href, variantBase } from '../lib/nav';
+import { nodes, shortcuts, href, variantBase, base } from '../lib/nav';
 
 interface Props { variant: string; menu: string; currentPath?: string; transparent?: boolean }
 const { variant, menu, currentPath = '', transparent = false } = Astro.props;
@@ -20,7 +20,7 @@ const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes) }
 ---
 <header class:list={['primary-nav-header', { 'is-transparent': transparent }]} data-figma="3.1 primary nav header" data-current-path={currentPath} data-menu-layout={menu}>
   <div class="header-bar">
-    <a class="logo" href={href('', variant)} aria-label="UWA home"><span>UWA Logo</span></a>
+    <a class="logo" href={href('', variant)}><img src={`${base}logos/uwa-horizontal.svg`} alt="The University of Western Australia: home" width="216" height="71" /></a>
 
     <div class="header-controls">
       <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-panes" data-menu-toggle>

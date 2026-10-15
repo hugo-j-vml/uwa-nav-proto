@@ -12,10 +12,10 @@ export interface Variant {
   name: string;
   /** 'coming-soon' variants are listed on the index page but not built */
   status: 'ready' | 'coming-soon';
-  /** Page shell: header across the top (all variants so far) */
+  /** Page shell: header across the top (A, B, C) or a fixed sidebar on the left (D, E) */
   shell: 'header' | 'sidebar';
   /** Menu layout inside the shell */
-  menu: 'core-expanding' | 'panels' | 'columns';
+  menu: 'core-expanding' | 'panels' | 'columns' | 'drilldown' | 'menu-button';
   /** Motion preset (timings live in tokens.css); all variants start on 'a' */
   motion: 'a';
 }

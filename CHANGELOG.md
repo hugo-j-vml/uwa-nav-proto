@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.11.0 (15 Oct 2026)
+
+Two sidebar variants, and the real UWA logo.
+
+- **Logo:** the "UWA Logo" placeholder box in the A, B and C headers is now the horizontal UWA logo (`public/logos/uwa-horizontal.svg`, 216 × 71). D and E use the vertical logo (`public/logos/uwa-vertical.svg`).
+- **New: variant D, "Sidebar with drill-down"**, at `/d/`. A fixed sidebar replaces the header: logo, a search field, then the top-level items. Choosing one opens a pane to the right with its children (heading linking to that section's page). Choosing an item with children replaces the pane's contents with the next level, with a Back link at the top; all levels are reachable. The open top-level item gets a →; choosing it again closes the pane.
+- **New: variant E, "Sidebar menu button"**, at `/e/`. A simpler sidebar: logo, search field, a Menu button, then the Study / Impact / Research shortcuts. The Menu button opens the same pane at the top-level items; choosing one drills down as in D.
+- **D and E:** the search field is a real input; pressing Enter shows "not available in this prototype". The pane slides out from under the sidebar (A's menu motion) and each level slides in from the side. Closes on the trigger, Esc or a click outside. Content and co-branded pages start higher (`--breadcrumb-top: 60px`), as there's no header band. Sidebar tokens are in their own block in `tokens.css`. Below 640px wide the sidebar sits above the page (interim).
+- The index page lists all five variants.
+
 ## 0.10.0 (15 Oct 2026)
 
 - **All variants:** the menu now always opens at the top level with nothing chosen, as it does on the homepage, wherever you are in the prototype. (Before, it opened at the current page's section with its parents open.) In A, the page you're on is still highlighted if you open its sub-menu.

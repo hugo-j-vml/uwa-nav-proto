@@ -5,6 +5,7 @@ import '../styles/fonts.css';
 import '../styles/tokens.css';
 import '../styles/components.css';
 import PrimaryNavHeader from '../components/PrimaryNavHeader.astro';
+import Sidebar from '../components/Sidebar.astro';
 import PasswordGate from '../components/PasswordGate.astro';
 import { PASSWORD_SHA256, PROTOTYPE_NAME } from '../config';
 import type { Variant } from '../variants';
@@ -16,7 +17,7 @@ interface Props { title: string; variant?: Variant; currentPath?: string; transp
 const { title, variant, currentPath = '', transparentHeader = false } = Astro.props;
 ---
 <!doctype html>
-<html lang="en-AU" data-variant={variant?.id ?? 'index'}>
+<html lang="en-AU" data-variant={variant?.id ?? 'index'} data-shell={variant?.shell}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -35,8 +36,9 @@ const { title, variant, currentPath = '', transparentHeader = false } = Astro.pr
     <PasswordGate />
     {variant ? (
       <div class="site">
-        {/* Variant shell: header (A, B); C's sidebar shell goes here */}
+        {/* Variant shell: header across the top (A, B, C) or a fixed sidebar (D, E) */}
         {variant.shell === 'header' && <PrimaryNavHeader variant={variant.id} menu={variant.menu} currentPath={currentPath} transparent={transparentHeader} />}
+        {variant.shell === 'sidebar' && <Sidebar variant={variant.id} menu={variant.menu} currentPath={currentPath} />}
         <main class="page">
           <slot />
         </main>

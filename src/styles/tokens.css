@@ -59,8 +59,8 @@
   --header-bg-transparent: transparent; /* homepage and landing pages: no band, the hero shows through */
   --header-padding-top: 20px;
   --header-padding-x: 27px;
-  --logo-width: 135px;
-  --logo-height: 87px;
+  --logo-width: 216px;                 /* UWA horizontal logo (public/logos/uwa-horizontal.svg) */
+  --logo-height: 71px;
   --header-controls-offset-top: 26px;  /* menu + shortcut buttons sit lower than the logo */
   --logo-to-menu-gap: 43px;            /* logo right edge to Menu button */
   --header-button-gap: 12px;           /* between Menu/Search, and between shortcuts */
@@ -183,6 +183,36 @@
   --motion-page-easing: ease;
   /* Set any duration to 0ms to switch that motion off. Motion is also off
      when the device asks for reduced motion. */
+}
+
+/* ==========================================================================
+   SIDEBAR SHELL (variants D and E)
+   A fixed sidebar in place of the header; the drill-down pane opens to its right.
+   ========================================================================== */
+:root {
+  --sidebar-width: 277px;
+  --sidebar-bg: #d9d9d9;               /* a step darker than the page background */
+  --sidebar-padding-x: 22px;
+  --sidebar-padding-top: 30px;
+  --sidebar-logo-width: 94px;          /* UWA vertical logo (public/logos/uwa-vertical.svg) */
+  --sidebar-logo-height: 162px;
+  --sidebar-logo-to-search: 32px;
+  --sidebar-search-height: 40px;
+  --sidebar-search-to-menu: 40px;      /* search field to the items (D) or the Menu button (E) */
+  --sidebar-item-size: var(--type-h5-size);  /* 18px TT Norms Pro Medium */
+  --sidebar-item-gap: 14px;
+  --sidebar-button-height: 40px;       /* E: Menu button and shortcuts */
+  --sidebar-button-gap: 12px;
+  --drill-pane-width: 440px;
+  --drill-pane-bg: var(--colour-dynamic-pane);
+  --drill-pane-padding-top: 50px;
+  --drill-pane-padding-x: 48px;
+  --drill-back-gap: 24px;              /* Back link to the heading */
+  --motion-drill-offset: 24px;         /* how far the next level slides in from */
+}
+/* No header band in the sidebar variants, so content and co-branded pages start higher */
+[data-shell="sidebar"] {
+  --breadcrumb-top: 60px;
 }
 
 /* ==========================================================================

@@ -1,0 +1,66 @@
+---
+/**
+ * Sidebar shell (variants D and E): fixed on the left, in place of the header.
+ * Logo, a search field, then either the top-level items (D) or a Menu button
+ * and the header shortcuts (E). The drill-down pane opens to its right; it is
+ * drawn by src/scripts/sidebar-menu.ts from the sitemap data embedded below.
+ */
+import Icon from './Icons.astro';
+import { nodes, shortcuts, href, variantBase, base } from '../lib/nav';
+
+interface Props { variant: string; menu: string; currentPath?: string }
+const { variant, menu, currentPath = '' } = Astro.props;
+
+type Compact = { l: string; p: string; c: Compact[] };
+const compact = (list: typeof nodes): Compact[] => list.map(n => ({ l: n.label, p: n.path, c: compact(n.children) }));
+const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes) }).replace(/</g, '\\u003c');
+---
+<aside class="sidebar" data-sidebar data-current-path={currentPath} data-menu-layout={menu}>
+  <a class="sidebar-logo" href={href('', variant)}><img src={`${base}logos/uwa-vertical.svg`} alt="The University of Western Australia: home" width="94" height="162" /></a>
+
+  <form class="sidebar-search" role="search" data-sidebar-search>
+    <label class="visually-hidden" for="sidebar-search-input">Search</label>
+    <input id="sidebar-search-input" type="search" placeholder="Search" autocomplete="off" />
+    <button type="submit" aria-label="Search"><Icon name="search" /></button>
+  </form>
+
+  {menu === 'drilldown' ? (
+    <nav aria-label="Main menu">
+      <ul class="sidebar-list" data-sidebar-list>
+        {nodes.map(n => (
+          <li>
+            {n.children.length ? (
+              <button class="sidebar-item" type="button" data-path={n.path} aria-expanded="false" aria-controls="drill-pane">
+                <span>{n.label}</span><Icon name="arrow" />
+              </button>
+            ) : (
+              <a class="sidebar-item" href={href(n.path, variant)}><span>{n.label}</span></a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </nav>
+  ) : (
+    <>
+      <button class="sidebar-menu-button" type="button" aria-expanded="false" aria-controls="drill-pane" data-menu-toggle>
+        <Icon name="menu" />
+        <span>Menu</span>
+      </button>
+      <nav class="sidebar-shortcuts" aria-label="Shortcuts">
+        {shortcuts.map(s => <a class="sidebar-shortcut" href={href(s.path, variant)}>{s.label}</a>)}
+      </nav>
+    </>
+  )}
+</aside>
+
+<nav id="drill-pane" class="drill-pane" aria-label="Main menu" hidden>
+  <button class="drill-back" type="button" data-drill-back hidden><Icon name="arrow" /><span>Back</span></button>
+  <ul class="menu-list" data-drill-list></ul>
+</nav>
+
+<template data-arrow><Icon name="arrow" /></template>
+<script type="application/json" data-nav-data set:html={data}></script>
+
+<script>
+  import '../scripts/sidebar-menu.ts';
+</script>

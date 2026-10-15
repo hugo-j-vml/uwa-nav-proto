@@ -6,6 +6,8 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 - **Variant A:** https://hugo-j-vml.github.io/uwa-nav-proto/a/
 - **Variant B:** https://hugo-j-vml.github.io/uwa-nav-proto/b/
 - **Variant C:** https://hugo-j-vml.github.io/uwa-nav-proto/c/
+- **Variant D:** https://hugo-j-vml.github.io/uwa-nav-proto/d/
+- **Variant E:** https://hugo-j-vml.github.io/uwa-nav-proto/e/
 - **Plan:** `plan.md`
 - **Password:** set in `src/config.ts` (simple screen only; not real security, the site files are public).
 - **Design source:** Figma "THEUVP0058 – IA – Nav Refresh", section *Core menu opens with submenu journey*.
@@ -22,7 +24,8 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Password | `src/config.ts` (see below) |
 | Fonts | Put the files in `public/fonts/` (names in `src/styles/fonts.css`). Novel Pro falls back to Crimson Pro (free). |
 | Layout/structure of components and templates | `src/styles/components.css`, `src/components/` and `src/templates/` |
-| Menu behaviour | `src/scripts/menu.ts` (all variants), shared state in `src/lib/menu-state.ts` |
+| Menu behaviour | `src/scripts/menu.ts` (A, B, C), `src/scripts/sidebar-menu.ts` (D, E), shared state in `src/lib/menu-state.ts` |
+| Logos | `public/logos/` (horizontal: header; vertical: sidebar) |
 
 Every push to `main` rebuilds and republishes the site automatically (see the **Actions** tab). It usually takes 1–2 minutes.
 
