@@ -10,10 +10,11 @@
  *     (L2) fill panel 1; a chosen L2 opens its items (L3) in panel 2, which
  *     slides out to the right from under panel 1. One level per panel; L3
  *     items are always links. Each panel starts with a heading naming the chosen
- *     item, which links to its page (as A's dynamic pane heading; its → shows on
- *     hover only, so → marks the open items). The open item
- *     in the core pane and panel 1 gets a →, lined up on the right as in A.
- *     Clicking an open item closes it.
+ *     item, which links to its page (as A's dynamic pane heading). Clicking an
+ *     open item closes it.
+ *     Arrows: the open item in the core pane and panel 1 has a →, lined up on the
+ *     right as in A; every other item (headings, links, the site's name) shows
+ *     its → only on hover or keyboard focus. The co-brand switch rows have none.
  *   B and C have no black highlights (no selected or current-page block).
  *
  * State is an "open path": the chain of items whose sub-menus are open,
@@ -63,8 +64,9 @@
  *     white pane's behaviour, inline); open items get a ↓.
  *   C: the core pane, panel 1 and panel 2 are full-screen layers: choosing an item
  *     slides the next panel in from the right, over the last; each panel starts
- *     with a Back row, then its heading as on desktop (no →). Items that open a panel get
- *     a →. The menu still stops at L3.
+ *     with a Back row, then its heading as on desktop. Arrows: Back's ←, and a →
+ *     on the open item and on the item you came Back from (no hover arrows).
+ *     The menu still stops at L3.
  *   Option 7 in B and C: the site's block sits above a divider and the top level,
  *   as in A (there's no white pane beside the core pane to fill).
  * Crossing between the compact and desktop layouts closes the menu.
@@ -119,6 +121,7 @@ function init(header: HTMLElement) {
   const href = (p: string) => `${base}${p}/`;
   let open = false;
   let path: string[] = [];
+  let returned = ''; // compact C: the item you last came Back from (it keeps its →)
   /** A pane whose contents slide out and back in when they change. */
   type Slot = { pane: HTMLElement; list: HTMLUListElement; shown: string; seq: number; fill: (target: string) => void };
 
@@ -167,13 +170,20 @@ function init(header: HTMLElement) {
     label.className = 'menu-item-label';
     label.textContent = node.l;
     el.append(label);
-    if (highlight || (opts.heading && columns)) el.append(arrowTpl.content.cloneNode(true)); // C: the panel heading links on, as A's (→ on desktop hover only, components.css)
-    else if (hasChildren && ((path.includes(node.p) && (columns || !opts.core || oneList())) || layers())) {
+    if (highlight) el.append(arrowTpl.content.cloneNode(true));
+    else if (columns) {
+      // C: the open item's → (compact: and the one you came Back from). Desktop: every other item has one too,
+      // hidden until hover (components.css), so its space is kept and nothing moves; compact has no hover
+      const on = hasChildren && (path.includes(node.p) || node.p === returned);
+      if (on || !layers()) {
+        const arrow = arrowTpl.content.cloneNode(true) as DocumentFragment;
+        if (on) arrow.querySelector('svg')?.classList.add('is-open');
+        el.append(arrow);
+      }
+    } else if (hasChildren && path.includes(node.p) && (!opts.core || oneList())) {
       // B: an open parent in the white pane gets a ↓ on the right of its row (compact: in the one list, top level too).
-      // C: the open item in the core pane and panel 1 gets a → (compact: every item that opens a panel).
-      // Nothing else has an arrow.
       const arrow = arrowTpl.content.cloneNode(true) as DocumentFragment;
-      arrow.querySelector('svg')?.classList.add(columns ? 'is-open' : 'is-down');
+      arrow.querySelector('svg')?.classList.add('is-down');
       el.append(arrow);
     }
     li.append(el);
@@ -231,7 +241,8 @@ function init(header: HTMLElement) {
     btn.dataset.switch = toCore ? 'core' : 'cobrand';
     const label = document.createElement('span');
     label.textContent = toCore ? 'UWA main menu' : `${cobrand!.l} menu`;
-    btn.append(label, arrowTpl.content.cloneNode(true));
+    btn.append(label);
+    if (!columns) btn.append(arrowTpl.content.cloneNode(true)); // C: no arrow on the switch
     li.append(btn);
     if (!toCore) return [li];
     return [li, siteTitleRow()];
@@ -249,6 +260,7 @@ function init(header: HTMLElement) {
     label.className = 'menu-item-label';
     label.textContent = cobrand!.l;
     title.append(label);
+    if (columns && !layers()) title.append(arrowTpl.content.cloneNode(true)); // desktop C: → on hover, as other items
     li.append(title);
     return li;
   }
@@ -268,6 +280,7 @@ function init(header: HTMLElement) {
   function switchMode(next: 'core' | 'cobrand') {
     mode = next;
     path = [];
+    returned = '';
     renderCore();
     renderDynamic(true);
     const duration = ms('--motion-submenu-in-duration');
@@ -481,6 +494,7 @@ function init(header: HTMLElement) {
     if (open) {
       closing = false;
       path = []; // always open at the top level, as on the homepage
+      returned = '';
       mode = replaces ? 'cobrand' : 'core'; // option 2: start on the co-branded site's menu
       if (siteInPane()) path = [cbNode!.p]; // option 7 in B and C: the site is already chosen
       document.documentElement.classList.toggle('menu-open', isCompact()); // compact: lock the page behind the takeover
@@ -516,6 +530,7 @@ function init(header: HTMLElement) {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     const p = btn.dataset.path!;
+    returned = '';
     // A: clicking the selected item closes its sub-menu; any other item opens its own.
     // B and C: clicking the chosen section closes it (and everything open under it).
     path = accordion || columns ? toggleBranch(path, p) : choose(path, p);
@@ -529,6 +544,7 @@ function init(header: HTMLElement) {
     if (!(e.target as HTMLElement).closest('button.menu-back')) return;
     const from = path[path.length - 1];
     path = path.slice(0, -1);
+    returned = from ?? '';
     render(true);
     if (from) focusPath(from);
   });
@@ -537,6 +553,7 @@ function init(header: HTMLElement) {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     const p = btn.dataset.path!;
+    returned = '';
     path = accordion || columns ? toggleBranch(path, p) : choose(path, p);
     render(true);
     focusPath(p);

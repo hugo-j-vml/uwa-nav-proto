@@ -179,9 +179,9 @@ Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is 
 
 - **Panes:** core pane 386px (as B), panel 1 481px on light grey (#d4d4d4), panel 2 481px on the white pane colour.
 - **Core pane:** as B: top-level items only, static, no black highlight.
-- **Panel 1:** a heading naming the chosen section, linking to its landing page (as A's dynamic pane heading; Hugo, v0.29.8). Its → shows only on hover or keyboard focus (v0.29.9; none on mobile and tablet, v0.29.10), so in C the → marks the open items, then the section's items (L2), one level only. Option 7's site block keeps the site's name as its heading.
+- **Panel 1:** a heading naming the chosen section, linking to its landing page (as A's dynamic pane heading; Hugo, v0.29.8), then the section's items (L2), one level only. Option 7's site block keeps the site's name as its heading.
 - **Panel 2:** opens to the right when an L2 parent is chosen; a heading linking to the L2's page, as panel 1, then its items (L3), one level only. L3 items are always links, even if they have children, so the menu stops at L3. Slides out from under panel 1 (A's sub-menu motion).
-- **Open item:** gets a → in the core pane and panel 1, lined up on the right edge as in A (v0.27.1; was right after the label). No other arrows, no black highlights.
+- **Arrows** (Hugo, v0.29.11): the → marks the selected (open) item in the core pane and panel 1, lined up on the right edge as in A. Every other clickable item (other items, panel headings, panel 2 links, option 7's site name) shows its → only on hover or keyboard focus; each keeps the arrow's space, so nothing moves on hover (a few long labels, e.g. "Partners and community", wrap a line earlier than before). The co-brand switch rows ("UWA main menu" / "<site> menu") have no arrow. No black highlights.
 - **Closing:** clicking an open item closes it and everything to its right. Menu button, Esc and click-outside as A.
 - **Opening:** always at the top level with nothing chosen, as on the homepage (v0.10).
 - **"In this section"** (v0.28, Hugo's mockup, 19 Oct): the menu stops at L3, so content pages at L3 or deeper that have children show an "In this section:" heading and a grid of boxes under the title, one per **direct child**, each linking to that child's existing page (no new pages). Not shown on pages without children. 19 pages in the current IA (e.g. Study areas, Entry pathways to UWA). Driven by `menuDepth: 3` in `src/variants/c.ts`, so any variant whose menu shows fewer levels gets it the same way. Grid: 4 columns on desktop, 3 on tablet, 2 on phones (`--section-*` tokens).
@@ -234,7 +234,7 @@ Agreed 19 Oct 2026. First versions, built from each variant's desktop behaviour,
 |---|---|---|---|
 | **A** | Header stays; menu takes over the screen under it, sliding down | One list (the core pane). Choosing an item nests the path under its top-level item as on desktop, and its sub-menu (heading link, then children) opens **under the selected item**, inside the list. Black block on the selected item and the current page. | the dynamic pane opening inline instead of to the right |
 | **B** | As A | One list. The chosen section's items open under it as an **accordion** (the white pane, inline); open items get ↓; one branch open at a time. | the white pane opening inline |
-| **C** | As A | The core pane, panel 1 (L2) and panel 2 (L3) are **full-screen layers**: choosing an item slides the next panel in from the right; each panel starts with "← Back", then the panel's heading, as on desktop (v0.29.1). Items that open a panel get →. Stops at L3. Panel colours as desktop. | panels stacking instead of sitting side by side |
+| **C** | As A | The core pane, panel 1 (L2) and panel 2 (L3) are **full-screen layers**: choosing an item slides the next panel in from the right; each panel starts with "← Back", then the panel's heading, as on desktop (v0.29.1). Arrows (v0.29.11): Back's ←, and a → on the selected item and on the item you came Back from, so you can see where you were; nothing else. Stops at L3. Panel colours as desktop. | panels stacking instead of sitting side by side |
 | **D** | Top bar: hamburger, horizontal UWA logo, search icon. Hamburger slides the sidebar in from the left as a **drawer** under the bar, over a scrim. | Drawer: search field and the top-level items (→ on those that drill down). Choosing one slides the drill-down pane in from the right **over the drawer**: heading, children, Back; Back from the first level returns to the drawer. | the sidebar becoming the drawer; the drill-down pane as on desktop |
 | **E** | As D | The hamburger opens the drawer straight on the drill-down pane at the top level (no Menu button step, no Back at the top level, as the hamburger closes it); choosing an item drills down as on desktop. The drawer's Menu button and shortcuts aren't shown. | the sidebar becoming the drawer, Menu button step skipped (v0.29.6) |
 
@@ -303,7 +303,6 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 
 7h. Compact layouts (v0.27), built as assumptions, to confirm:
    - A: the sub-menu's heading row repeats the selected item's name (as desktop's dynamic pane heading does), so the section's page stays reachable.
-   - C: the → on every item that opens a panel.
    - D: the → on every top-level item in the drawer (desktop shows it only on the open one).
    - E: the hamburger goes straight to the top level (Hugo, v0.29.6). The Study / Impact / Research shortcuts don't appear on mobile and tablet; Hugo: fine for now.
    - Co-branded pages on mobile, A–C: the Menu button shows only its icon. Option 7 in B and C uses A's layout.

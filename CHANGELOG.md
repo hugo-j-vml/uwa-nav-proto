@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.29.11 (19 Oct 2026)
+
+- C's arrows, reworked as one set of rules (Hugo):
+  - Desktop: the → marks the selected item (the open item in the core pane and panel 1). Every other clickable item (the other items, the panel headings, the panel 2 links, option 7's site name) shows its → on hover or keyboard focus. Each item keeps the arrow's space, so nothing shifts on hover; a few long labels (e.g. "Partners and community") now wrap a line earlier.
+  - Phones and tablets: Back's ←, and a → on the selected item and on the item you came Back from. Items that open a panel no longer all show a →.
+  - The co-brand switch rows ("UWA main menu" / "<site> menu") have no arrow in C.
+- A and B unchanged (screenshots byte-identical against 0.29.10).
+
 ## 0.29.10 (19 Oct 2026)
 
 - C, phones and tablets: the panel headings no longer show a →, to match desktop. Items that open a panel keep theirs.
