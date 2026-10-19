@@ -182,11 +182,28 @@ a { color: inherit; text-decoration: none; }
 }
 .panel-2[hidden] { display: none; }
 [data-variant="c"] .dynamic-pane { background: var(--panel-1-bg); }
-[data-variant="c"] .menu-item-arrow.is-open { color: var(--c-open-arrow-colour); }
+:is([data-variant="c"], [data-variant="f"]) .menu-item-arrow.is-open { color: var(--c-open-arrow-colour); }
 /* C: the → marks the open item (phones and tablets: and the one you came Back from);
    on desktop every item shows its → on hover or keyboard focus */
-[data-variant="c"] .menu-item .menu-item-arrow:not(.is-open) { visibility: hidden; }
-[data-variant="c"][data-layout="full"] .menu-item:is(:hover, :focus-visible) .menu-item-arrow { visibility: visible; }
+/* F: the same arrow rules as C */
+:is([data-variant="c"], [data-variant="f"]) .menu-item .menu-item-arrow:not(.is-open) { visibility: hidden; }
+:is([data-variant="c"], [data-variant="f"])[data-layout="full"] .menu-item:is(:hover, :focus-visible) .menu-item-arrow { visibility: visible; }
+
+/* Variant F: each panel stacks over the pane before, leaving a strip of it showing (the script sets
+   --stack-count, the number of panes open, and each panel's --stack-depth, its distance from the top) */
+[data-menu-layout="stack"] .pane:not(.core-pane) {
+  width: var(--stack-panel-width);
+  background: color-mix(in srgb, var(--stack-top-bg), var(--stack-far-bg) min(calc(var(--stack-depth, 0) * var(--stack-fade-step)), var(--stack-fade-max)));
+  color: var(--colour-black);
+  transition: background-color var(--motion-stack-duration) ease-out, margin-left var(--motion-stack-duration) ease-out;
+}
+.stack-pane[hidden] { display: none; }
+[data-layout="full"] [data-menu-layout="stack"] .menu-panes {
+  /* Strips narrow when there are too many to fit beside the topmost panel */
+  --stack-peek-fit: min(var(--stack-peek), (100vw - 2 * var(--panes-left) - var(--stack-panel-width)) / max(1, var(--stack-count, 1) - 1));
+}
+[data-layout="full"] [data-menu-layout="stack"] .dynamic-pane { margin-left: calc(var(--stack-peek-fit) - var(--core-pane-width)); }
+[data-layout="full"] [data-menu-layout="stack"] .stack-pane { margin-left: calc(var(--stack-peek-fit) - var(--stack-panel-width)); }
 
 /* ---------- Sidebar shell (variants D and E) ---------- */
 [data-shell="sidebar"] .page { margin-left: var(--sidebar-width); }
@@ -716,11 +733,12 @@ html[data-layout="compact"].menu-open .primary-nav-header.is-transparent::before
 }
 [data-layout="compact"] .core-pane { background: var(--takeover-bg); color: var(--takeover-text); }
 /* A and B: one list. The sub-menu opens inside the core list (A: under the selected item; B: as an accordion) */
-[data-layout="compact"] .primary-nav-header:not([data-menu-layout="columns"]) .dynamic-pane { display: none; }
+[data-layout="compact"] .primary-nav-header:not([data-menu-layout="columns"], [data-menu-layout="stack"]) .dynamic-pane { display: none; }
 [data-layout="compact"] .menu-item-label { max-width: none; }
-/* C: the core pane and the two panels are full-screen layers; each panel slides in over the last, with Back */
-[data-layout="compact"] [data-menu-layout="columns"] .menu-panes { overflow: hidden; }
-[data-layout="compact"] [data-menu-layout="columns"] .menu-panes .pane { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; border-left: 0; }
+/* C (and F, with as many panels as levels): the core pane and the panels are full-screen layers;
+   each panel slides in over the last, with Back (F's script sets each layer's z-index) */
+[data-layout="compact"] :is([data-menu-layout="columns"], [data-menu-layout="stack"]) .menu-panes { overflow: hidden; }
+[data-layout="compact"] :is([data-menu-layout="columns"], [data-menu-layout="stack"]) .menu-panes .pane { position: absolute; inset: 0; width: auto; overflow-y: auto; overscroll-behavior: contain; border-left: 0; }
 [data-layout="compact"] [data-menu-layout="columns"] .core-pane { z-index: 1; }
 [data-layout="compact"] [data-menu-layout="columns"] .dynamic-pane { z-index: 2; }
 [data-layout="compact"] [data-menu-layout="columns"] .panel-2 { z-index: 3; }

@@ -12,10 +12,10 @@ export interface Variant {
   name: string;
   /** 'coming-soon' variants are listed on the index page but not built */
   status: 'ready' | 'coming-soon';
-  /** Page shell: header across the top (A, B, C) or a fixed sidebar on the left (D, E) */
+  /** Page shell: header across the top (A, B, C, F) or a fixed sidebar on the left (D, E) */
   shell: 'header' | 'sidebar';
   /** Menu layout inside the shell */
-  menu: 'core-expanding' | 'panels' | 'columns' | 'drilldown' | 'menu-button';
+  menu: 'core-expanding' | 'panels' | 'columns' | 'stack' | 'drilldown' | 'menu-button';
   /**
    * How many IA levels the menu shows (C: 3). Omit when the menu reaches every
    * level. Pages at this level or deeper that have children get an "In this

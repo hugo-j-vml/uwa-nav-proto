@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.30.0 (19 Oct 2026)
+
+- New variant **F, Stacking panels** (`/f/`, Hugo's mockups): C without the L3 limit. Each chosen item opens its items in a new panel that stacks over the pane before, leaving a strip of each earlier pane showing, so every level of the IA (down to L5) is reachable from the menu. The topmost panel is the lightest; each one further back is darker. Strips narrow to fit when there are too many for the window. New panels fade in from a little to the right. Headings, arrows and closing as C.
+- F on phones and tablets: C's full-screen layers, to any depth.
+- F on co-branded pages: options 1 and 2 as C; option 7 uses A's layout.
+- New tokens in the `[data-variant="f"]` block. C's panel code now handles any number of panels; A, B and C are unchanged (screenshots byte-identical against 0.29.11).
+
 ## 0.29.11 (19 Oct 2026)
 
 - C's arrows, reworked as one set of rules (Hugo):

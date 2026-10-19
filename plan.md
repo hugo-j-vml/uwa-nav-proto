@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype v0.29.5 (19 Oct 2026): five variants (A–E) on desktop, mobile and tablet (Section 7e); behaviour options for co-branded sites (7d); C's "In this section" grid (7b); animated index background. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype v0.30.0 (19 Oct 2026): six variants (A–F) on desktop, mobile and tablet (Section 7e); behaviour options for co-branded sites (7d); C's "In this section" grid (7b); animated index background. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -82,6 +82,7 @@ One repo, one build, one IA. Each nav concept is a **variant** that builds the f
 | `/uwa-nav-proto/b/…` | **B** | Same header layout as A. A static core menu on the left with no indents that shows parent nodes; the chosen section opens in the wider white pane, where parents expand inline. | ✅ Built 15 Oct (v0.8, Section 7a) |
 | `/uwa-nav-proto/d/…` | **D** | A fixed sidebar instead of the header (logo, search field, top-level items). Choosing an item opens a drill-down pane to the right. | ✅ Built 15 Oct (v0.11, Section 7c) |
 | `/uwa-nav-proto/e/…` | **E** | A simpler sidebar (logo, search field, Menu button, shortcuts). The Menu button opens the same drill-down pane at the top level. | ✅ Built 15 Oct (v0.11, Section 7c) |
+| `/uwa-nav-proto/f/…` | **F** | C without the depth limit: each level opens a new panel that stacks over the last, leaving a strip of the earlier ones showing. | ✅ Built 19 Oct (v0.30, Section 7f) |
 | `/uwa-nav-proto/c/…` | **C** | A more static version of B: the same header and static core pane, then two panels to the right, one IA level each (L2, then L3). The menu goes down to L3. *(Replaces the earlier sidebar idea, 15 Oct.)* | ✅ Built 15 Oct (v0.9, Section 7b) |
 
 - Paths are **neutral letters** so participants aren't cued by the URL.
@@ -186,6 +187,19 @@ Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is 
 - **Opening:** always at the top level with nothing chosen, as on the homepage (v0.10).
 - **"In this section"** (v0.28, Hugo's mockup, 19 Oct): the menu stops at L3, so content pages at L3 or deeper that have children show an "In this section:" heading and a grid of boxes under the title, one per **direct child**, each linking to that child's existing page (no new pages). Not shown on pages without children. 19 pages in the current IA (e.g. Study areas, Entry pathways to UWA). Driven by `menuDepth: 3` in `src/variants/c.ts`, so any variant whose menu shows fewer levels gets it the same way. Grid: 4 columns on desktop, 3 on tablet, 2 on phones (`--section-*` tokens).
 
+## 7f. Interaction specification (variant F)
+
+Hugo's mockups, 19 Oct 2026 (two frames: one panel open; three panels open). Behaves as C (7b) except:
+
+- **No depth limit:** every item with children opens a new panel, down to the deepest level of the IA (L5 today, so up to five panes on screen). No "In this section" grid (no `menuDepth`).
+- **Stacking (desktop):** each new panel (481px) sits **over** the pane before it, leaving a 152px strip of each earlier pane showing (their labels are cut off at the strip's edge, as in the mockup). When the strips and the topmost panel don't fit the window (e.g. five panes at 1024px), the strips narrow to fit. At rest only the core pane shows, full width, as in C. Clicking an item in a strip works as in C: the open item closes its panel and those after it; another item opens in its place.
+- **Colour by distance from the top:** the topmost panel is the lightest (`#efeded`); each panel further back is mixed 28% further towards the core pane's grey (mockup: `#cfcfcf`, then `#b5b5b5`), never quite reaching it. Colours change smoothly as panels open and close. The core pane keeps its grey.
+- **Motion:** a new panel is laid on the stack, coming in from a little to the right and fading in (and leaving the same way), rather than sliding out from under the pane before, which looked wrong with panels on top.
+- **Headings, arrows, closing:** as C (headings link to the chosen item's page; → on the selected items, every item shows its → on hover).
+- **Mobile and tablet:** as C's full-screen layers (7e), to any depth: Back, the heading, the items. Every layer is the topmost when you see it, so it's the light colour.
+- **Co-branded pages:** options 1 and 2 as C. **Option 7 uses A's layout** (the site's block above a divider and the top level, in the core pane), as filling the first panel at rest would cover the core pane.
+- Tokens: the `[data-variant="f"]` block (`--stack-peek`, `--stack-panel-width`, `--stack-top-bg`, `--stack-far-bg`, `--stack-fade-step`, `--stack-fade-max`, `--motion-stack-duration`).
+
 ## 7c. Interaction specification (desktop, variants D and E)
 
 Agreed 15 Oct 2026.
@@ -235,6 +249,7 @@ Agreed 19 Oct 2026. First versions, built from each variant's desktop behaviour,
 | **A** | Header stays; menu takes over the screen under it, sliding down | One list (the core pane). Choosing an item nests the path under its top-level item as on desktop, and its sub-menu (heading link, then children) opens **under the selected item**, inside the list. Black block on the selected item and the current page. | the dynamic pane opening inline instead of to the right |
 | **B** | As A | One list. The chosen section's items open under it as an **accordion** (the white pane, inline); open items get ↓; one branch open at a time. | the white pane opening inline |
 | **C** | As A | The core pane, panel 1 (L2) and panel 2 (L3) are **full-screen layers**: choosing an item slides the next panel in from the right; each panel starts with "← Back", then the panel's heading, as on desktop (v0.29.1). Arrows (v0.29.11): Back's ←, and a → on the selected item and on the item you came Back from, so you can see where you were; nothing else. Stops at L3. Panel colours as desktop. | panels stacking instead of sitting side by side |
+| **F** | As A | As C, to any depth (no L3 limit). Each layer is the light colour (it's always the topmost). | as C |
 | **D** | Top bar: hamburger, horizontal UWA logo, search icon. Hamburger slides the sidebar in from the left as a **drawer** under the bar, over a scrim. | Drawer: search field and the top-level items (→ on those that drill down). Choosing one slides the drill-down pane in from the right **over the drawer**: heading, children, Back; Back from the first level returns to the drawer. | the sidebar becoming the drawer; the drill-down pane as on desktop |
 | **E** | As D | The hamburger opens the drawer straight on the drill-down pane at the top level (no Menu button step, no Back at the top level, as the hamburger closes it); choosing an item drills down as on desktop. The drawer's Menu button and shortcuts aren't shown. | the sidebar becoming the drawer, Menu button step skipped (v0.29.6) |
 

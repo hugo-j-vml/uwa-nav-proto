@@ -353,6 +353,20 @@
   --item-label-max-width: none;
   --c-open-arrow-colour: currentColor; /* the → on the open item in the core pane and panel 1 */
 }
+[data-variant="f"] {
+  /* C's core pane, then a panel per level, each stacked over the last */
+  --core-pane-width: 386px;
+  --dynamic-pane-width: 481px;         /* every panel (the dynamic pane is the first) */
+  --stack-panel-width: 481px;
+  --stack-peek: 152px;                 /* strip of each earlier pane left showing; narrows to fit the window */
+  --stack-top-bg: var(--colour-dynamic-pane); /* topmost panel */
+  --stack-far-bg: var(--colour-ironbark-80);  /* panels further back are mixed towards this */
+  --stack-fade-step: 28%;              /* per step back from the top (mockup: #cfcfcf, then #b5b5b5) */
+  --stack-fade-max: 84%;               /* never quite as dark as the core pane */
+  --motion-stack-duration: 300ms;      /* tint and strip width changing as panels open and close */
+  --item-label-max-width: none;
+  --c-open-arrow-colour: currentColor; /* the → on the open items (as C) */
+}
 
 
 /* ==========================================================================

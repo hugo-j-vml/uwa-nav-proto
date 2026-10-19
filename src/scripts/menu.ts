@@ -15,7 +15,14 @@
  *     Arrows: the open item in the core pane and panel 1 has a →, lined up on the
  *     right as in A; every other item (headings, links, the site's name) shows
  *     its → only on hover or keyboard focus. The co-brand switch rows have none.
- *   B and C have no black highlights (no selected or current-page block).
+ *   F (stack): C without the depth limit. Every chosen item opens its items in
+ *     a new panel (made as needed) that stacks over the last, leaving a strip of
+ *     each earlier pane showing (strips narrow to fit the window). Panels are
+ *     tinted by distance from the topmost: lightest on top, darker further back.
+ *     Items with children are always buttons, so every level is reachable.
+ *     A new panel is laid on the stack: it comes in from a little to the right,
+ *     fading in (and leaves the same way). Headings, arrows and closing as C.
+ *   B, C and F have no black highlights (no selected or current-page block).
  *
  * State is an "open path": the chain of items whose sub-menus are open,
  * e.g. ["study", "study/study-areas"].
@@ -62,13 +69,14 @@
  *     children) opens under it, inside the list, instead of in the dynamic pane.
  *   B: one list. The chosen section's items open under it as an accordion (the
  *     white pane's behaviour, inline); open items get a ↓.
- *   C: the core pane, panel 1 and panel 2 are full-screen layers: choosing an item
+ *   C (and F, to any depth): the core pane, panel 1 and panel 2 are full-screen layers: choosing an item
  *     slides the next panel in from the right, over the last; each panel starts
  *     with a Back row, then its heading as on desktop. Arrows: Back's ←, and a →
  *     on the open item and on the item you came Back from (no hover arrows).
  *     The menu still stops at L3.
  *   Option 7 in B and C: the site's block sits above a divider and the top level,
- *   as in A (there's no white pane beside the core pane to fill).
+ *   as in A (there's no white pane beside the core pane to fill). F uses A's
+ *   layout for option 7 at every size, so the core pane isn't covered at rest.
  * Crossing between the compact and desktop layouts closes the menu.
  */
 
@@ -85,7 +93,8 @@ function init(header: HTMLElement) {
   const currentPath = header.dataset.currentPath || '';
   const layout = header.dataset.menuLayout;
   const accordion = layout === 'panels'; // variant B
-  const columns = layout === 'columns';  // variant C
+  const stack = layout === 'stack';      // variant F
+  const columns = layout === 'columns' || stack; // variants C and F (F differs where `stack` is checked)
   const highlight = !accordion && !columns; // black selected / current-page blocks: A only
   const toggle = header.querySelector<HTMLButtonElement>('[data-menu-toggle]')!;
   const panes = header.querySelector<HTMLElement>('#menu-panes')!;
@@ -103,10 +112,10 @@ function init(header: HTMLElement) {
   const alongside = option === '7';
   const cbTop = cobrand ? cobrandTop(cobrand) : [];
   const cbNode = cobrand ? cobrandNode(cobrand) : undefined;
-  // Option 7 in A (and in B and C on compact screens): site block above the top level
-  const stackedBlock = () => alongside && ((!accordion && !columns) || isCompact());
+  // Option 7 in A and F (and in B and C on compact screens): site block above the top level
+  const stackedBlock = () => alongside && ((!accordion && !columns) || stack || isCompact());
   // Option 7 in B and C on desktop: the site fills the white pane by default
-  const siteInPane = () => alongside && (accordion || columns) && !isCompact();
+  const siteInPane = () => alongside && (accordion || columns) && !stack && !isCompact();
   // Compact screens: A and B show everything in one list; C stacks its panels as layers
   const oneList = () => isCompact() && !columns;
   const layers = () => isCompact() && columns;
@@ -392,22 +401,49 @@ function init(header: HTMLElement) {
     return li;
   }
 
-  /** C: panel 2 lists the chosen L2's items, all as links (the menu stops at L3). */
-  function fillPanel2(target: string) {
-    if (!panel2 || !panel2List) return;
+  /**
+   * A panel after the first: a heading linking to the chosen item's page, then its items.
+   * C's panel 2: all links (`leaf`), as the menu stops at L3. F's deeper panels: items with children open the next panel.
+   */
+  function fillLevel(pane: HTMLElement, list: HTMLUListElement, target: string, leaf: boolean) {
     const current = byPath.get(target);
-    panel2List.replaceChildren();
-    if (!current || !current.c.length) { panel2.hidden = true; return; }
-    if (layers()) panel2List.append(backRow()); // compact C: Back first
-    panel2List.append(row(current, { heading: true })); // a heading linking to the L2's page
-    for (const child of current.c) panel2List.append(row(child, { leaf: true }));
-    panel2.setAttribute('aria-label', current.l);
-    panel2.hidden = false;
+    list.replaceChildren();
+    if (!current || !current.c.length) { pane.hidden = true; return; }
+    if (layers()) list.append(backRow()); // compact: Back first
+    list.append(row(current, { heading: true }));
+    for (const child of current.c) list.append(row(child, { leaf }));
+    pane.setAttribute('aria-label', current.l);
+    pane.hidden = false;
   }
 
   const dynamicSlot: Slot = { pane: dynamicPane, list: dynamicList, shown: '', seq: 0, fill: fillDynamic };
-  const panel2Slot: Slot | null = panel2 && panel2List ? { pane: panel2, list: panel2List, shown: '', seq: 0, fill: fillPanel2 } : null;
-  const slots = [dynamicSlot, ...(panel2Slot ? [panel2Slot] : [])];
+  // The panes after the dynamic pane (C: panel 2; F: one per deeper level, added as needed)
+  const levelSlots: Slot[] = [];
+  if (panel2 && panel2List) levelSlots.push({ pane: panel2, list: panel2List, shown: '', seq: 0, fill: t => fillLevel(panel2, panel2List, t, true) });
+  const slots = [dynamicSlot, ...levelSlots];
+  /** F: add a panel for the next level down. */
+  function addLevelSlot() {
+    const pane = document.createElement('div');
+    pane.className = 'pane stack-pane';
+    pane.hidden = true;
+    const list = document.createElement('ul');
+    list.className = 'menu-list';
+    pane.append(list);
+    panes.append(pane);
+    const slot: Slot = { pane, list, shown: '', seq: 0, fill: t => fillLevel(pane, list, t, false) };
+    levelSlots.push(slot);
+    slots.push(slot);
+  }
+  /** F: each pane paints over the one before; panels are tinted by how far they are from the topmost one. */
+  function stackDepths() {
+    const top = path.length; // index of the topmost pane (0: the core pane)
+    panes.style.setProperty('--stack-count', String(top + 1));
+    coreList.parentElement!.style.zIndex = '1';
+    slots.forEach((s, i) => {
+      s.pane.style.zIndex = String(i + 2);
+      s.pane.style.setProperty('--stack-depth', String(Math.max(0, top - (i + 1))));
+    });
+  }
 
   /** Show `target`'s items in a pane, sliding the old contents out and the new ones in. */
   async function slideTo(slot: Slot, target: string, animate: boolean) {
@@ -425,8 +461,9 @@ function init(header: HTMLElement) {
     const slide = animate;
     // The pane is clipped at its resting left edge (the right edge of the pane it slides from under) while it
     // moves, so it seems to come out from behind that pane, as in A, even when it's wider (B, C)
-    const hiddenFrame: Keyframe = { transform: 'translateX(-100%)', clipPath: 'inset(0 0 0 100%)' };
-    const shownFrame: Keyframe = { transform: 'translateX(0)', clipPath: 'inset(0 0 0 0)' };
+    // F: panels sit on top of the pane before, so each one is laid on the stack instead: in from a little to the right, fading in
+    const hiddenFrame: Keyframe = stack ? { transform: `translateX(${token('--motion-drill-offset') || '24px'})`, opacity: 0 } : { transform: 'translateX(-100%)', clipPath: 'inset(0 0 0 100%)' };
+    const shownFrame: Keyframe = stack ? { transform: 'translateX(0)', opacity: 1 } : { transform: 'translateX(0)', clipPath: 'inset(0 0 0 0)' };
     // If a slide is already running (fast clicking), drop it and go straight to the new contents
     const busy = pane.getAnimations().length > 0;
     pane.getAnimations().forEach(a => a.cancel());
@@ -471,11 +508,12 @@ function init(header: HTMLElement) {
   /** Update the panes to the right of the core pane. */
   function renderDynamic(animate: boolean) {
     if (oneList()) { slots.forEach(s => { s.seq++; s.shown = ''; s.pane.hidden = true; }); return Promise.resolve([]); }
-    if (layers()) return Promise.all([layerTo(dynamicSlot, path[0] ?? '', animate), ...(panel2Slot ? [layerTo(panel2Slot, path[1] ?? '', animate)] : [])]);
+    if (stack) { while (slots.length < path.length) addLevelSlot(); stackDepths(); }
+    if (layers()) return Promise.all(slots.map((s, i) => layerTo(s, path[i] ?? '', animate)));
     // A: the selected item's sub-menu. B and C: the chosen section (B's branches open and close in place).
     const target = accordion || columns ? (path[0] ?? '') : selected(path);
     const jobs = [slideTo(dynamicSlot, target, animate)];
-    if (panel2Slot) jobs.push(slideTo(panel2Slot, path[1] ?? '', animate));
+    levelSlots.forEach((s, i) => jobs.push(slideTo(s, path[i + 1] ?? '', animate)));
     return Promise.all(jobs);
   }
 
@@ -549,9 +587,10 @@ function init(header: HTMLElement) {
     if (from) focusPath(from);
   });
 
-  dynamicList.addEventListener('click', (e) => {
+  // Items in the panes to the right of the core pane (F: any of its panels)
+  panes.addEventListener('click', (e) => {
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
-    if (!btn) return;
+    if (!btn || e.composedPath().includes(coreList)) return; // (the core list's own handler may have re-rendered it already)
     const p = btn.dataset.path!;
     returned = '';
     path = accordion || columns ? toggleBranch(path, p) : choose(path, p);

@@ -20,7 +20,7 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Breakpoints (mobile / tablet / desktop widths) and which sizes use the compact menus | `src/breakpoints.ts` (the only place they're set) |
 | Sizes per screen size; compact-layout values (takeover, top bar, drawer, their motion) | `src/styles/tokens.css`: "SCREEN SIZES" blocks (one per band, after the variant blocks) and "COMPACT LAYOUTS" |
 | Index page look (colours, font, sizes, the animated dot background) | `--index-*` tokens in `src/styles/tokens.css` (background: `--index-bg-*`, e.g. dot spacing, facet brightness, wave and pulse speed) |
-| Variant names, and which variants are built | `src/variants/a.ts` … `e.ts` (`status: 'ready'` or `'coming-soon'`; `menuDepth`: how many levels the menu shows, which switches on "In this section" below that, e.g. C: 3) |
+| Variant names, and which variants are built | `src/variants/a.ts` … `f.ts` (`status: 'ready'` or `'coming-soon'`; `menuDepth`: how many levels the menu shows, which switches on "In this section" below that, e.g. C: 3) |
 | The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below) |
 | A co-branded site's own pages (e.g. Oceans Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the core menu tree; how they appear in the menus depends on the Co-brand menu option. |
 | Behaviour options (alternative behaviours switched on the index page, with Shift+O on any variant page, or with `?<option>=<choice>` in a link) | `src/options.ts` (see below) |
@@ -28,7 +28,7 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Password | `src/config.ts` (see below) |
 | Fonts | Put the files in `public/fonts/` (names in `src/styles/fonts.css`). Novel Pro falls back to Crimson Pro (free). Index page and password screen: Snowflake Sans (`--index-font`). |
 | Layout/structure of components and templates | `src/styles/components.css`, `src/components/` and `src/templates/` |
-| Menu behaviour (desktop and compact) | `src/scripts/menu.ts` (A, B, C), `src/scripts/sidebar-menu.ts` (D, E), shared state in `src/lib/menu-state.ts`; option 1's co-brand menu bar: `src/components/SiteNav.astro` + `src/scripts/site-nav.ts` |
+| Menu behaviour (desktop and compact) | `src/scripts/menu.ts` (A, B, C, F), `src/scripts/sidebar-menu.ts` (D, E), shared state in `src/lib/menu-state.ts`; option 1's co-brand menu bar: `src/components/SiteNav.astro` + `src/scripts/site-nav.ts` |
 | Logos | `public/logos/` (horizontal: header; vertical: sidebar). Co-brand logo: a placeholder box (`--cobrand-logo-*` tokens) |
 | Version number on the index page | The latest heading in `CHANGELOG.md` (add an entry for each change). "Last updated" is the build time, in Perth time. |
 
@@ -96,12 +96,13 @@ Full specs per variant are in `plan.md` (sections 7–7d). In short:
 - **C** Static core with two panels: core pane, panel 1 (L2), panel 2 (L3), each panel with a heading linking to the chosen item's page; stops at L3.
 - **D** Sidebar with drill-down: fixed sidebar with the top-level items; a 540px pane drills down one level at a time, with Back.
 - **E** Sidebar menu button: fixed sidebar with a Menu button and shortcuts; Menu opens the same pane at the top level.
+- **F** Stacking panels: C without the L3 limit. Each level opens a panel that stacks over the last, leaving a strip of each earlier one showing; the topmost is lightest, earlier ones darker (`[data-variant="f"]` tokens).
 
 ### Mobile and tablet (compact layouts)
 
 Below 1024px wide (bands in `src/breakpoints.ts`: mobile under 640, tablet 640–1023) each variant keeps its desktop behaviour in a compact form (full spec: `plan.md` 7e):
 
-- **A–C** keep the header; the menu takes over the screen under it. **A**: one list, the selected item's sub-menu opens under it. **B**: one list, the chosen section opens under it as an accordion. **C**: the panels become full-screen layers that slide in from the right, each with Back and a heading linking to the chosen item's page.
+- **A–C, F** keep the header; the menu takes over the screen under it. **A**: one list, the selected item's sub-menu opens under it. **B**: one list, the chosen section opens under it as an accordion. **C**: the panels become full-screen layers that slide in from the right, each with Back and a heading linking to the chosen item's page. **F**: as C, to any depth.
 - **D, E**: a top bar (hamburger, logo, search) replaces the sidebar; the hamburger slides the sidebar in from the left as a drawer. The drill-down pane slides in over the drawer, with Back. D's drawer lists the top-level items; in E the hamburger opens straight on the pane at the top level (no Menu button step).
 
 ## Behaviour options
