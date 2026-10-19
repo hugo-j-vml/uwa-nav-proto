@@ -188,6 +188,8 @@ a { color: inherit; text-decoration: none; }
 /* F: the same arrow rules as C */
 :is([data-variant="c"], [data-variant="f"]) .menu-item .menu-item-arrow:not(.is-open) { visibility: hidden; }
 :is([data-variant="c"], [data-variant="f"])[data-layout="full"] .menu-item:is(:hover, :focus-visible) .menu-item-arrow { visibility: visible; }
+/* Desktop core pane: the → sits in the pane's right padding, so labels get the full width and don't wrap to make room for it */
+:is([data-variant="c"], [data-variant="f"])[data-layout="full"] .core-pane .menu-item > .menu-item-arrow { margin-right: calc(-1 * (var(--item-arrow-size) + 16px)); }
 
 /* Variant F: each panel stacks over the pane before, leaving a strip of it showing (the script sets
    --stack-count, the number of panes open, and each panel's --stack-depth, its distance from the top) */

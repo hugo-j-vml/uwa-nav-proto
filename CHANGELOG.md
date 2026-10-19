@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.30.2 (19 Oct 2026)
+
+- C and F, desktop: the core menu's labels no longer wrap to make room for the → (e.g. "Partners and community" is back on one line). In the core pane the → now sits in the pane's right padding, 16px from its edge (it was 56px). Panels, mobile and tablet unchanged.
+
 ## 0.30.1 (19 Oct 2026)
 
 - F, desktop: the panes under the topmost panel are no longer live menus. Their items don't respond, so a half-hidden label can't take you to a page; clicking anywhere on one goes back to it, closing the panels above it (clicking the core pane's strip goes back to the core menu alone). From the keyboard, each covered pane is a "Back to …" button. Phones and tablets unchanged.
