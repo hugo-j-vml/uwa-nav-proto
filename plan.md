@@ -179,7 +179,7 @@ Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is 
 
 - **Panes:** core pane 386px (as B), panel 1 481px on light grey (#d4d4d4), panel 2 481px on the white pane colour.
 - **Core pane:** as B: top-level items only, static, no black highlight.
-- **Panel 1:** a heading naming the chosen section, linking to its landing page with a → (as A's dynamic pane heading; Hugo, v0.29.8), then the section's items (L2), one level only. Option 7's site block keeps the site's name as its heading.
+- **Panel 1:** a heading naming the chosen section, linking to its landing page (as A's dynamic pane heading; Hugo, v0.29.8). Its → shows only on hover or keyboard focus (v0.29.9), so in C the → marks the open items, then the section's items (L2), one level only. Option 7's site block keeps the site's name as its heading.
 - **Panel 2:** opens to the right when an L2 parent is chosen; a heading linking to the L2's page, as panel 1, then its items (L3), one level only. L3 items are always links, even if they have children, so the menu stops at L3. Slides out from under panel 1 (A's sub-menu motion).
 - **Open item:** gets a → in the core pane and panel 1, lined up on the right edge as in A (v0.27.1; was right after the label). No other arrows, no black highlights.
 - **Closing:** clicking an open item closes it and everything to its right. Menu button, Esc and click-outside as A.

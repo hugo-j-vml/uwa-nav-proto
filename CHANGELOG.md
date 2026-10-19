@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.29.9 (19 Oct 2026)
+
+- C, desktop: the panel headings' → only appears on hover (or keyboard focus), so at rest the → only marks the open items. Mobile and tablet unchanged.
+
 ## 0.29.8 (19 Oct 2026)
 
 - C, desktop: panel 1 and panel 2 now start with a heading naming the chosen item (e.g. Study at UWA, Explore courses) that links to its page, with a →, as A's dynamic pane heading and C's mobile panels already do. The landing pages are now reachable from the menu. On co-branded pages with option 7, the site's block keeps the site's name as its heading. Mobile and tablet C, A and B are unchanged.

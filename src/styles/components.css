@@ -183,6 +183,9 @@ a { color: inherit; text-decoration: none; }
 .panel-2[hidden] { display: none; }
 [data-variant="c"] .dynamic-pane { background: var(--panel-1-bg); }
 [data-variant="c"] .menu-item-arrow.is-open { color: var(--c-open-arrow-colour); }
+/* Desktop C: the → marks the open items; the panel headings only show theirs on hover (or keyboard focus) */
+[data-variant="c"][data-layout="full"] .dynamic-heading .menu-item-arrow { visibility: hidden; }
+[data-variant="c"][data-layout="full"] .dynamic-heading:is(:hover, :focus-visible) .menu-item-arrow { visibility: visible; }
 
 /* ---------- Sidebar shell (variants D and E) ---------- */
 [data-shell="sidebar"] .page { margin-left: var(--sidebar-width); }

@@ -10,7 +10,8 @@
  *     (L2) fill panel 1; a chosen L2 opens its items (L3) in panel 2, which
  *     slides out to the right from under panel 1. One level per panel; L3
  *     items are always links. Each panel starts with a heading naming the chosen
- *     item, which links to its page (as A's dynamic pane heading). The open item
+ *     item, which links to its page (as A's dynamic pane heading; its → shows on
+ *     hover only, so → marks the open items). The open item
  *     in the core pane and panel 1 gets a →, lined up on the right as in A.
  *     Clicking an open item closes it.
  *   B and C have no black highlights (no selected or current-page block).
@@ -166,7 +167,7 @@ function init(header: HTMLElement) {
     label.className = 'menu-item-label';
     label.textContent = node.l;
     el.append(label);
-    if (highlight || (opts.heading && columns)) el.append(arrowTpl.content.cloneNode(true)); // C: the panel heading links on, as A's
+    if (highlight || (opts.heading && columns)) el.append(arrowTpl.content.cloneNode(true)); // C: the panel heading links on, as A's (desktop: → on hover only, components.css)
     else if (hasChildren && ((path.includes(node.p) && (columns || !opts.core || oneList())) || layers())) {
       // B: an open parent in the white pane gets a ↓ on the right of its row (compact: in the one list, top level too).
       // C: the open item in the core pane and panel 1 gets a → (compact: every item that opens a panel).
