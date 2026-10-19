@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.31.2 (19 Oct 2026)
+
+- Co-brand menu option 2: the UWA tab is now always on the left and the site's tab on the right, in every variant. The site's tab is still selected when a co-branded page loads (and each time the menu opens). Lists now slide in from the side of the chosen tab.
+
 ## 0.31.1 (19 Oct 2026)
 
 - Oceans Institute no longer has an abbreviation, so its menu tab (option 2) shows its full name. The `abbreviation` column stays for sites that need one.

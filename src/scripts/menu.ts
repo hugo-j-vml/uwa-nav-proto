@@ -288,10 +288,10 @@ function init(header: HTMLElement) {
     renderDynamic(true);
     const duration = ms('--motion-submenu-in-duration');
     if (duration) {
-      // The list slides in from the side of the chosen tab; the tabs themselves stay put
+      // The list slides in from the side of the chosen tab (UWA: left); the tabs themselves stay put
       const offset = token('--motion-drill-offset') || '24px';
       ([...coreList.children] as HTMLElement[]).slice(1).forEach(li =>
-        li.animate([{ transform: `translateX(${next === 'core' ? offset : `-${offset}`})`, opacity: 0 }, { transform: 'translateX(0)', opacity: 1 }],
+        li.animate([{ transform: `translateX(${next === 'core' ? `-${offset}` : offset})`, opacity: 0 }, { transform: 'translateX(0)', opacity: 1 }],
           { duration, easing: token('--motion-submenu-in-easing') || 'ease-out' }));
     }
     coreList.querySelector<HTMLElement>('.menu-tab[aria-selected="true"]')?.focus();

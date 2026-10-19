@@ -54,8 +54,8 @@ const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes), 
     {/* Option 2: tabs for the site's menu and the UWA main menu (same markup as src/lib/menu-tabs.ts; CSS shows them for option 2 only) */}
     {site && (
       <div class="menu-tabs sidebar-tabs" role="tablist" aria-label="Menus" data-sidebar-tabs>
-        <button class="menu-tab" type="button" role="tab" aria-selected="true" data-switch="cobrand" aria-label={site.abbreviation ? site.label : undefined}>{site.abbreviation || site.label}</button>
         <button class="menu-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-switch="core" aria-label="UWA main menu">UWA</button>
+        <button class="menu-tab" type="button" role="tab" aria-selected="true" data-switch="cobrand" aria-label={site.abbreviation ? site.label : undefined}>{site.abbreviation || site.label}</button>
       </div>
     )}
     <nav aria-label="Main menu">

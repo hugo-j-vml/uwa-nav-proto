@@ -1,7 +1,8 @@
 /**
  * Co-brand menu option 2 ("Replaces core menu"): two tabs at the top of the
- * menu, the co-branded site's (its abbreviation, or its name) and UWA's, to
- * swap between the site's menu and the UWA main menu. Shared by the header
+ * menu, UWA's (always on the left) and the co-branded site's (its abbreviation,
+ * or its name; selected when a co-branded page loads), to
+ * swap between the UWA main menu and the site's menu. Shared by the header
  * menus (menu.ts) and the sidebar menus (sidebar-menu.ts; D's tabs are in
  * Sidebar.astro with the same markup).
  */
@@ -24,7 +25,7 @@ export function menuTabs(siteTab: string, siteName: string, active: MenuMode): H
     if (title && title !== label) b.setAttribute('aria-label', title);
     return b;
   };
-  row.append(tab('cobrand', siteTab, siteName), tab('core', 'UWA', 'UWA main menu'));
+  row.append(tab('core', 'UWA', 'UWA main menu'), tab('cobrand', siteTab, siteName)); // UWA always on the left
   selectTab(row, active);
   return row;
 }

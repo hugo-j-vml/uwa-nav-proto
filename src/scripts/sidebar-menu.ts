@@ -192,7 +192,7 @@ function init(sidebar: HTMLElement) {
     } else {
       path = [];
       fill();
-      slideContents(next === 'core' ? 1 : -1, true);
+      slideContents(next === 'core' ? -1 : 1, true); // from the side of the chosen tab (UWA: left)
       list.querySelector<HTMLElement>('.menu-tab[aria-selected="true"]')?.focus();
     }
   }
