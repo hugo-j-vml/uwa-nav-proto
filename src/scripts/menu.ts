@@ -63,7 +63,7 @@
  *     white pane's behaviour, inline); open items get a ↓.
  *   C: the core pane, panel 1 and panel 2 are full-screen layers: choosing an item
  *     slides the next panel in from the right, over the last; each panel starts
- *     with a Back row, then its heading as on desktop. Items that open a panel get
+ *     with a Back row, then its heading as on desktop (no →). Items that open a panel get
  *     a →. The menu still stops at L3.
  *   Option 7 in B and C: the site's block sits above a divider and the top level,
  *   as in A (there's no white pane beside the core pane to fill).
@@ -167,7 +167,7 @@ function init(header: HTMLElement) {
     label.className = 'menu-item-label';
     label.textContent = node.l;
     el.append(label);
-    if (highlight || (opts.heading && columns)) el.append(arrowTpl.content.cloneNode(true)); // C: the panel heading links on, as A's (desktop: → on hover only, components.css)
+    if (highlight || (opts.heading && columns)) el.append(arrowTpl.content.cloneNode(true)); // C: the panel heading links on, as A's (→ on desktop hover only, components.css)
     else if (hasChildren && ((path.includes(node.p) && (columns || !opts.core || oneList())) || layers())) {
       // B: an open parent in the white pane gets a ↓ on the right of its row (compact: in the one list, top level too).
       // C: the open item in the core pane and panel 1 gets a → (compact: every item that opens a panel).

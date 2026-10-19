@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.29.10 (19 Oct 2026)
+
+- C, phones and tablets: the panel headings no longer show a →, to match desktop. Items that open a panel keep theirs.
+
 ## 0.29.9 (19 Oct 2026)
 
 - C, desktop: the panel headings' → only appears on hover (or keyboard focus), so at rest the → only marks the open items. Mobile and tablet unchanged.
