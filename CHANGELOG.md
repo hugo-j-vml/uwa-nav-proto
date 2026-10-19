@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.27.1 (19 Oct 2026)
+
+- C and D: menu arrows (→) line up on the right edge of their row, as in A, E and the D/E drill-down pane, instead of sitting right after the label. C: the open item in the core pane and panel 1 (desktop), and every item that opens a panel (mobile and tablet). D: the open item in the sidebar (desktop) and the items in the drawer (mobile and tablet). A, B and E are unchanged (checked pixel for pixel).
+
 ## 0.27.0 (19 Oct 2026)
 
 - **Mobile and tablet versions of all five variants.** Below 1024px wide, each variant keeps its desktop behaviour in a compact form (first versions, to iterate on; spec in `plan.md` 7e):

@@ -173,7 +173,7 @@ a { color: inherit; text-decoration: none; }
 [data-variant="b"] .dynamic-pane .menu-item { justify-content: flex-start; gap: var(--b-open-arrow-gap); }
 [data-variant="b"] .menu-item-arrow.is-down { transform: rotate(90deg); color: var(--b-open-arrow-colour); }
 
-/* Variant C: panel 2 (L3) slides out from under panel 1; the open item gets a → right after its label */
+/* Variant C: panel 2 (L3) slides out from under panel 1; the open item gets a →, lined up on the right as in A */
 .panel-2 {
   width: var(--panel-2-width);
   background: var(--panel-2-bg);
@@ -183,7 +183,6 @@ a { color: inherit; text-decoration: none; }
 }
 .panel-2[hidden] { display: none; }
 [data-variant="c"] .dynamic-pane { background: var(--panel-1-bg); }
-[data-variant="c"] .menu-item { justify-content: flex-start; gap: var(--c-open-arrow-gap); }
 [data-variant="c"] .menu-item-arrow.is-open { color: var(--c-open-arrow-colour); }
 
 /* ---------- Sidebar shell (variants D and E) ---------- */
@@ -221,7 +220,7 @@ a { color: inherit; text-decoration: none; }
   display: flex; flex-direction: column; gap: var(--sidebar-item-gap);
 }
 .sidebar-item {
-  display: flex; align-items: center; gap: 10px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; width: 100%; /* → lined up on the right */
   font-family: var(--font-body); font-size: var(--sidebar-item-size);
   line-height: var(--type-h5-line); font-weight: var(--type-h5-weight);
   color: var(--colour-black);

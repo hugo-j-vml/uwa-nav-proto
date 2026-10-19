@@ -329,7 +329,6 @@
   --panel-divider: #d6d4d4;            /* line between panel 1 and panel 2 */
   --item-label-max-width: none;
   --c-open-arrow-colour: currentColor; /* the → on the open item in the core pane and panel 1 */
-  --c-open-arrow-gap: 12px;            /* label to → */
 }
 
 

@@ -179,7 +179,7 @@ Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is 
 - **Core pane:** as B: top-level items only, static, no black highlight.
 - **Panel 1:** the chosen section's items (L2), one level only, no heading.
 - **Panel 2:** opens to the right when an L2 parent is chosen; lists its items (L3), one level only. L3 items are always links, even if they have children, so the menu stops at L3. Slides out from under panel 1 (A's sub-menu motion).
-- **Open item:** gets a → after its label, in the core pane and panel 1. No other arrows, no black highlights.
+- **Open item:** gets a → in the core pane and panel 1, lined up on the right edge as in A (v0.27.1; was right after the label). No other arrows, no black highlights.
 - **Closing:** clicking an open item closes it and everything to its right. Menu button, Esc and click-outside as A.
 - **Opening:** always at the top level with nothing chosen, as on the homepage (v0.10).
 
@@ -191,7 +191,7 @@ Agreed 15 Oct 2026.
   - **D:** the top-level items.
   - **E:** a Menu button, then the Study / Impact / Research shortcuts.
 - **Drill-down pane:** 540px wide; opens to the right of the sidebar, full height, sliding out from under it. Shows one level at a time: a heading (the item's name, linking to its page) and its children. Children with children have a →; choosing one replaces the pane's contents with the next level, sliding in from the right. A **Back** link at the top steps up a level. All levels are reachable.
-- **D:** choosing a top-level item opens the pane at its children; that item gets a →. Choosing it again closes the pane; choosing another switches to it.
+- **D:** choosing a top-level item opens the pane at its children; that item gets a →, lined up on the right of the sidebar (v0.27.1). Choosing it again closes the pane; choosing another switches to it.
 - **E:** the Menu button opens the pane at the top-level items (no heading, no Back); choosing one drills down as in D. The Menu button shows its open state as in A.
 - **Closing:** the trigger again, Esc, or a click outside the pane and the trigger. Clicking a page link slides the pane away, then goes to the page. The menu always opens at the top (v0.10).
 - **Logo:** the horizontal UWA logo replaces the header placeholder in A, B and C.

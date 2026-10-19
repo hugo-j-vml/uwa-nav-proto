@@ -10,7 +10,7 @@
  *     (L2) fill panel 1; a chosen L2 opens its items (L3) in panel 2, which
  *     slides out to the right from under panel 1. One level per panel; L3
  *     items are always links. The open item in the core pane and panel 1 gets
- *     a → after its label. Clicking an open item closes it.
+ *     a →, lined up on the right as in A. Clicking an open item closes it.
  *   B and C have no black highlights (no selected or current-page block).
  *
  * State is an "open path": the chain of items whose sub-menus are open,
