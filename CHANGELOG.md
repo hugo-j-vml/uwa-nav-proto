@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.29.8 (19 Oct 2026)
+
+- C, desktop: panel 1 and panel 2 now start with a heading naming the chosen item (e.g. Study at UWA, Explore courses) that links to its page, with a →, as A's dynamic pane heading and C's mobile panels already do. The landing pages are now reachable from the menu. On co-branded pages with option 7, the site's block keeps the site's name as its heading. Mobile and tablet C, A and B are unchanged.
+
 ## 0.29.7 (19 Oct 2026)
 
 - Co-branded pages, phones: the co-brand logo placeholder in the header (A–C) and top bar (D, E) is now as tall as the UWA logo (42px, was 34px) and as wide as fits beside the buttons (56px at 320, growing to 96px from 360; was 52px), with 16px between it and the UWA logo (was 10px). Its text is 12px. Tablet and desktop unchanged.

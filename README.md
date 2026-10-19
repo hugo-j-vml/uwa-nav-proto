@@ -93,7 +93,7 @@ Full specs per variant are in `plan.md` (sections 7–7d). In short:
 - The menu **always opens at the top level**, as on the homepage, wherever you are (except on co-branded pages with Co-brand menu options 2 and 7).
 - **A** Core with expanding parent nodes: chosen parents nest in the core pane; their children show in the dynamic pane, with a heading linking to the section. Black block on the selected item and the current page.
 - **B** Static core with dynamic panel: static core pane; the white pane shows the chosen section as an accordion.
-- **C** Static core with two panels: core pane, panel 1 (L2), panel 2 (L3); stops at L3.
+- **C** Static core with two panels: core pane, panel 1 (L2), panel 2 (L3), each panel with a heading linking to the chosen item's page; stops at L3.
 - **D** Sidebar with drill-down: fixed sidebar with the top-level items; a 540px pane drills down one level at a time, with Back.
 - **E** Sidebar menu button: fixed sidebar with a Menu button and shortcuts; Menu opens the same pane at the top level.
 

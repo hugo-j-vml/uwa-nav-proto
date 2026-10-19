@@ -9,8 +9,10 @@
  *   C (columns): the same static core pane as B. The chosen section's items
  *     (L2) fill panel 1; a chosen L2 opens its items (L3) in panel 2, which
  *     slides out to the right from under panel 1. One level per panel; L3
- *     items are always links. The open item in the core pane and panel 1 gets
- *     a →, lined up on the right as in A. Clicking an open item closes it.
+ *     items are always links. Each panel starts with a heading naming the chosen
+ *     item, which links to its page (as A's dynamic pane heading). The open item
+ *     in the core pane and panel 1 gets a →, lined up on the right as in A.
+ *     Clicking an open item closes it.
  *   B and C have no black highlights (no selected or current-page block).
  *
  * State is an "open path": the chain of items whose sub-menus are open,
@@ -60,9 +62,8 @@
  *     white pane's behaviour, inline); open items get a ↓.
  *   C: the core pane, panel 1 and panel 2 are full-screen layers: choosing an item
  *     slides the next panel in from the right, over the last; each panel starts
- *     with a Back row, then a heading naming the chosen item, which links to its
- *     page (as A's dynamic pane heading). Items that open a panel get a →. The
- *     menu still stops at L3.
+ *     with a Back row, then its heading as on desktop. Items that open a panel get
+ *     a →. The menu still stops at L3.
  *   Option 7 in B and C: the site's block sits above a divider and the top level,
  *   as in A (there's no white pane beside the core pane to fill).
  * Crossing between the compact and desktop layouts closes the menu.
@@ -165,7 +166,7 @@ function init(header: HTMLElement) {
     label.className = 'menu-item-label';
     label.textContent = node.l;
     el.append(label);
-    if (highlight || (opts.heading && layers())) el.append(arrowTpl.content.cloneNode(true)); // compact C: the panel heading links on, as A's
+    if (highlight || (opts.heading && columns)) el.append(arrowTpl.content.cloneNode(true)); // C: the panel heading links on, as A's
     else if (hasChildren && ((path.includes(node.p) && (columns || !opts.core || oneList())) || layers())) {
       // B: an open parent in the white pane gets a ↓ on the right of its row (compact: in the one list, top level too).
       // C: the open item in the core pane and panel 1 gets a → (compact: every item that opens a panel).
@@ -343,8 +344,9 @@ function init(header: HTMLElement) {
     const current = byPath.get(target);
     dynamicList.replaceChildren();
     if (!current) { dynamicPane.hidden = true; return; }
-    if (layers()) dynamicList.append(backRow(), row(current, { heading: true })); // compact C: Back, then a heading linking to the section's page
+    if (layers()) dynamicList.append(backRow()); // compact C: Back first
     if (siteInPane() && current === cbNode) dynamicList.append(siteTitleRow()); // option 7 in B and C: the site's name on top
+    else if (columns) dynamicList.append(row(current, { heading: true })); // C: a heading linking to the section's page
     if (accordion || columns) {
       // B: the section's items, with the open branch expanded inline. C: the section's items only.
       (function branch(list: MenuNode[], depth: number) {
@@ -382,7 +384,8 @@ function init(header: HTMLElement) {
     const current = byPath.get(target);
     panel2List.replaceChildren();
     if (!current || !current.c.length) { panel2.hidden = true; return; }
-    if (layers()) panel2List.append(backRow(), row(current, { heading: true })); // compact C: Back, then a heading linking to the L2's page
+    if (layers()) panel2List.append(backRow()); // compact C: Back first
+    panel2List.append(row(current, { heading: true })); // a heading linking to the L2's page
     for (const child of current.c) panel2List.append(row(child, { leaf: true }));
     panel2.setAttribute('aria-label', current.l);
     panel2.hidden = false;

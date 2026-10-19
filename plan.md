@@ -179,8 +179,8 @@ Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is 
 
 - **Panes:** core pane 386px (as B), panel 1 481px on light grey (#d4d4d4), panel 2 481px on the white pane colour.
 - **Core pane:** as B: top-level items only, static, no black highlight.
-- **Panel 1:** the chosen section's items (L2), one level only, no heading.
-- **Panel 2:** opens to the right when an L2 parent is chosen; lists its items (L3), one level only. L3 items are always links, even if they have children, so the menu stops at L3. Slides out from under panel 1 (A's sub-menu motion).
+- **Panel 1:** a heading naming the chosen section, linking to its landing page with a → (as A's dynamic pane heading; Hugo, v0.29.8), then the section's items (L2), one level only. Option 7's site block keeps the site's name as its heading.
+- **Panel 2:** opens to the right when an L2 parent is chosen; a heading linking to the L2's page, as panel 1, then its items (L3), one level only. L3 items are always links, even if they have children, so the menu stops at L3. Slides out from under panel 1 (A's sub-menu motion).
 - **Open item:** gets a → in the core pane and panel 1, lined up on the right edge as in A (v0.27.1; was right after the label). No other arrows, no black highlights.
 - **Closing:** clicking an open item closes it and everything to its right. Menu button, Esc and click-outside as A.
 - **Opening:** always at the top level with nothing chosen, as on the homepage (v0.10).
@@ -234,7 +234,7 @@ Agreed 19 Oct 2026. First versions, built from each variant's desktop behaviour,
 |---|---|---|---|
 | **A** | Header stays; menu takes over the screen under it, sliding down | One list (the core pane). Choosing an item nests the path under its top-level item as on desktop, and its sub-menu (heading link, then children) opens **under the selected item**, inside the list. Black block on the selected item and the current page. | the dynamic pane opening inline instead of to the right |
 | **B** | As A | One list. The chosen section's items open under it as an **accordion** (the white pane, inline); open items get ↓; one branch open at a time. | the white pane opening inline |
-| **C** | As A | The core pane, panel 1 (L2) and panel 2 (L3) are **full-screen layers**: choosing an item slides the next panel in from the right; each panel starts with "← Back", then a heading naming the chosen item that links to its page, as in A (v0.29.1). Items that open a panel get →. Stops at L3. Panel colours as desktop. | panels stacking instead of sitting side by side |
+| **C** | As A | The core pane, panel 1 (L2) and panel 2 (L3) are **full-screen layers**: choosing an item slides the next panel in from the right; each panel starts with "← Back", then the panel's heading, as on desktop (v0.29.1). Items that open a panel get →. Stops at L3. Panel colours as desktop. | panels stacking instead of sitting side by side |
 | **D** | Top bar: hamburger, horizontal UWA logo, search icon. Hamburger slides the sidebar in from the left as a **drawer** under the bar, over a scrim. | Drawer: search field and the top-level items (→ on those that drill down). Choosing one slides the drill-down pane in from the right **over the drawer**: heading, children, Back; Back from the first level returns to the drawer. | the sidebar becoming the drawer; the drill-down pane as on desktop |
 | **E** | As D | The hamburger opens the drawer straight on the drill-down pane at the top level (no Menu button step, no Back at the top level, as the hamburger closes it); choosing an item drills down as on desktop. The drawer's Menu button and shortcuts aren't shown. | the sidebar becoming the drawer, Menu button step skipped (v0.29.6) |
 
