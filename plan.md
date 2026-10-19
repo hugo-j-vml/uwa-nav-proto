@@ -166,7 +166,7 @@ Agreed 15 Oct 2026. Everything not listed here is as variant A (Section 7).
 
 - **Panes:** same total width as A (964px), split about 40/60: core pane 386px, white pane 578px, so the white pane has room for indents. The core pane keeps its own height; the white pane grows with the open branch.
 - **Core pane:** top-level items only, static (never nested or indented), no arrows. Clicking the chosen item again closes the white pane.
-- **White pane:** no heading. Lists the chosen section's items. Clicking a parent opens it **inline** (accordion): a ↓ appears after its label and its children appear indented beneath it, one indent per level. **One branch open at a time:** opening a parent closes any other open parent at its level. Clicking an open parent closes it and everything below it.
+- **White pane:** no heading. Lists the chosen section's items. Clicking a parent opens it **inline** (accordion): a ↓ appears on the right of its row (v0.27.2; was right after the label) and its children appear indented beneath it, one indent per level. **One branch open at a time:** opening a parent closes any other open parent at its level. Clicking an open parent closes it and everything below it.
 - **Arrows:** none, except the ↓ on an open parent (black, as the mockup).
 - **Highlight:** none. *(Changed 15 Oct, v0.9: the black blocks on the chosen section and the current page were removed.)*
 - **Closing, Esc, click-outside, page-link motion:** as A. Always opens at the top level (v0.10).

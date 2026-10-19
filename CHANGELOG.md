@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.27.2 (19 Oct 2026)
+
+- B: the ↓ on an open item lines up on the right edge of its row, like the → arrows in the other variants, instead of sitting right after the label. Desktop (white pane) and mobile and tablet (the one list). A, C, D and E are unchanged (checked pixel for pixel).
+
 ## 0.27.1 (19 Oct 2026)
 
 - C and D: menu arrows (→) line up on the right edge of their row, as in A, E and the D/E drill-down pane, instead of sitting right after the label. C: the open item in the core pane and panel 1 (desktop), and every item that opens a panel (mobile and tablet). D: the open item in the sidebar (desktop) and the items in the drawer (mobile and tablet). A, B and E are unchanged (checked pixel for pixel).

@@ -166,7 +166,7 @@ function init(header: HTMLElement) {
     el.append(label);
     if (highlight) el.append(arrowTpl.content.cloneNode(true));
     else if (hasChildren && ((path.includes(node.p) && (columns || !opts.core || oneList())) || layers())) {
-      // B: an open parent in the white pane gets a ↓ next to its label (compact: in the one list, top level too).
+      // B: an open parent in the white pane gets a ↓ on the right of its row (compact: in the one list, top level too).
       // C: the open item in the core pane and panel 1 gets a → (compact: every item that opens a panel).
       // Nothing else has an arrow.
       const arrow = arrowTpl.content.cloneNode(true) as DocumentFragment;

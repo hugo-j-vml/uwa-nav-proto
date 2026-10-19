@@ -169,8 +169,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Variant B: the core pane keeps its own height; only the white pane grows with an open branch */
 [data-variant="b"] .menu-panes { align-items: flex-start; }
-/* Variant B: the ↓ on an open parent sits right after its label (no → arrows anywhere) */
-[data-variant="b"] .dynamic-pane .menu-item { justify-content: flex-start; gap: var(--b-open-arrow-gap); }
+/* Variant B: the ↓ on an open parent lines up on the right, as the → arrows do elsewhere (B has no →) */
 [data-variant="b"] .menu-item-arrow.is-down { transform: rotate(90deg); color: var(--b-open-arrow-colour); }
 
 /* Variant C: panel 2 (L3) slides out from under panel 1; the open item gets a →, lined up on the right as in A */
@@ -651,8 +650,6 @@ html[data-layout="compact"].menu-open .primary-nav-header.is-transparent::before
 /* A and B: one list. The sub-menu opens inside the core list (A: under the selected item; B: as an accordion) */
 [data-layout="compact"] .primary-nav-header:not([data-menu-layout="columns"]) .dynamic-pane { display: none; }
 [data-layout="compact"] .menu-item-label { max-width: none; }
-/* B: the ↓ on an open item sits right after its label, in the one list */
-[data-layout="compact"][data-variant="b"] .core-pane .menu-item { justify-content: flex-start; gap: var(--b-open-arrow-gap); }
 /* C: the core pane and the two panels are full-screen layers; each panel slides in over the last, with Back */
 [data-layout="compact"] [data-menu-layout="columns"] .menu-panes { overflow: hidden; }
 [data-layout="compact"] [data-menu-layout="columns"] .menu-panes .pane { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; border-left: 0; }
