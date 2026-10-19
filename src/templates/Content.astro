@@ -2,14 +2,17 @@
 /** Content page template (Figma "Content page template"). */
 import Placeholder from '../components/Placeholder.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
-interface Props { title: string; home: string; crumbs: { label: string; href: string }[] }
-const { title, home, crumbs } = Astro.props;
+import InThisSection from '../components/InThisSection.astro';
+/** section: this page's children, when the variant's menu doesn't reach them (see Variant.menuDepth) */
+interface Props { title: string; home: string; crumbs: { label: string; href: string }[]; section?: { label: string; href: string }[] }
+const { title, home, crumbs, section = [] } = Astro.props;
 ---
 <div class="tpl-content">
   <div class="page-intro">
     <Breadcrumbs home={home} crumbs={crumbs} current={title} />
     <h1 class="page-title">{title}</h1>
   </div>
+  {section.length > 0 && <InThisSection links={section} />}
   <div class="placeholder-stack">
     <Placeholder full />
     <Placeholder full />

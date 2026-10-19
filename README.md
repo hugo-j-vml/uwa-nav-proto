@@ -20,7 +20,7 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Breakpoints (mobile / tablet / desktop widths) and which sizes use the compact menus | `src/breakpoints.ts` (the only place they're set) |
 | Sizes per screen size; compact-layout values (takeover, top bar, drawer, their motion) | `src/styles/tokens.css`: "SCREEN SIZES" blocks (one per band, after the variant blocks) and "COMPACT LAYOUTS" |
 | Index page look (colours, font, sizes) | `--index-*` tokens in `src/styles/tokens.css` |
-| Variant names, and which variants are built | `src/variants/a.ts` … `e.ts` (`status: 'ready'` or `'coming-soon'`) |
+| Variant names, and which variants are built | `src/variants/a.ts` … `e.ts` (`status: 'ready'` or `'coming-soon'`; `menuDepth`: how many levels the menu shows, which switches on "In this section" below that, e.g. C: 3) |
 | The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below) |
 | A co-branded site's own pages (e.g. Oceans Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the core menu tree; how they appear in the menus depends on the Co-brand menu option. |
 | Behaviour options (alternative behaviours switched on the index page, with Shift+O on any variant page, or with `?<option>=<choice>` in a link) | `src/options.ts` (see below) |
@@ -73,7 +73,7 @@ Oceans Institute,,,,cobranded,,,
 ### Page templates (Figma section *Page templates*)
 
 - **Landing**: placeholder with the title over it. Also used for the homepage.
-- **Content**: breadcrumbs, title, then placeholders.
+- **Content**: breadcrumbs, title, then placeholders. In variants whose menu stops short of the page's children (C, below L3), an "In this section" grid of boxes linking to the page's children sits under the title (`src/components/InThisSection.astro`, `--section-*` tokens).
 - **Course**: hero with eyebrow, title, intro, Enquire/Apply; in-page tabs bar, body copy, 3-column cards.
 - **Co-branded site**: short breadcrumb (UWA › site name), sage hero with the site name (Novel Pro), sage tiles. In A–C the header shows a co-brand logo placeholder next to the UWA logo (shortcuts per the option below); in D and E the placeholder sits under the vertical UWA logo.
 - **Co-branded site pages** (the pages in a site's own IA): breadcrumb from the site (UWA › site › section › page), serif title, placeholders.

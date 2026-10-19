@@ -44,10 +44,14 @@ const home = href('', variant.id);
 const cobrandRoot = template === 'cobranded' ? node : sitePage?.root;
 const cobrand = cobrandRoot ? { label: cobrandRoot.label, path: cobrandRoot.path, href: href(cobrandRoot.path, variant.id), site: cobrandRoot.site ?? [] } : undefined;
 const crumbs = node ? ancestors(node.path).map(a => ({ label: a.label, href: href(a.path, variant.id) })) : [];
+// "In this section": the page's children, when they're deeper than the variant's menu goes (e.g. C stops at L3)
+const section = node && variant.menuDepth && node.level >= variant.menuDepth
+  ? node.children.map(c => ({ label: c.label, href: href(c.path, variant.id) }))
+  : [];
 ---
 <Base title={title} variant={variant} currentPath={node?.path ?? sitePage?.page.path ?? ''} transparentHeader={template === 'landing'} cobrand={cobrand}>
   {template === 'landing' && <Landing title={title} note={note} />}
-  {template === 'content' && <Content title={title} home={home} crumbs={crumbs} />}
+  {template === 'content' && <Content title={title} home={home} crumbs={crumbs} section={section} />}
   {template === 'course' && <Course title={title} eyebrow={node?.eyebrow} intro={node?.intro} body={node?.body} />}
   {template === 'cobranded' && <CoBranded title={title} home={home} root={node!} variant={variant.id} />}
   {sitePage && <CoBrandedPage title={title} home={home} variant={variant.id} {...sitePage} />}

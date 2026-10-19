@@ -127,6 +127,20 @@
   /* Content template */
   --content-title-to-image: 55px;      /* gap between the title block and the first placeholder */
 
+  /* "In this section" (content pages whose children the menu can't reach; C below L3). Hugo's mockup, 19 Oct */
+  --section-title-to-heading: 50px;    /* page title to "In this section:" */
+  --section-heading-size: var(--type-h3-size); /* TT Norms Pro Medium */
+  --section-heading-to-grid: 36px;
+  --section-columns: 4;
+  --section-gap-x: 20px;
+  --section-gap-y: 20px;
+  --section-box-height: 100px;         /* minimum; grows if a label wraps onto more lines */
+  --section-box-padding: 12px 20px;
+  --section-box-bg: #a7a7a7;
+  --section-box-text: var(--colour-black);
+  --section-box-text-size: 24px;       /* TT Norms Pro Medium, centred */
+  --section-to-image: 50px;            /* grid to the first placeholder */
+
   /* Course template */
   --course-hero-height: 808px;
   --course-eyebrow-top: 221px;
@@ -385,6 +399,8 @@
   --course-hero-height: 640px;
   --cobranded-hero-height: 400px;
   --cobranded-tile-height: 400px;
+  --section-columns: 3;
+  --section-box-text-size: 20px;
 }
 
 /* Mobile (below 640px; must work down to 320px) */
@@ -442,6 +458,15 @@
   --site-nav-name-size: 22px;
   --site-nav-name-gap: 24px;
   --site-nav-gap: 16px;
+  --section-title-to-heading: 32px;
+  --section-heading-to-grid: 20px;
+  --section-columns: 2;
+  --section-gap-x: 12px;
+  --section-gap-y: 12px;
+  --section-box-height: 80px;
+  --section-box-padding: 10px 12px;
+  --section-box-text-size: 17px;
+  --section-to-image: 32px;
 }
 
 /* D and E on compact screens: the top bar sits above the page (not over it), so pages start just below it */

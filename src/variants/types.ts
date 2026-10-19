@@ -16,6 +16,13 @@ export interface Variant {
   shell: 'header' | 'sidebar';
   /** Menu layout inside the shell */
   menu: 'core-expanding' | 'panels' | 'columns' | 'drilldown' | 'menu-button';
+  /**
+   * How many IA levels the menu shows (C: 3). Omit when the menu reaches every
+   * level. Pages at this level or deeper that have children get an "In this
+   * section" area linking to them, so deeper pages stay reachable.
+   * (The menu script stops at this depth on its own; keep the two in step.)
+   */
+  menuDepth?: number;
   /** Motion preset (timings live in tokens.css); all variants start on 'a' */
   motion: 'a';
 }

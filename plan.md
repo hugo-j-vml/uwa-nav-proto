@@ -182,6 +182,7 @@ Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is 
 - **Open item:** gets a → in the core pane and panel 1, lined up on the right edge as in A (v0.27.1; was right after the label). No other arrows, no black highlights.
 - **Closing:** clicking an open item closes it and everything to its right. Menu button, Esc and click-outside as A.
 - **Opening:** always at the top level with nothing chosen, as on the homepage (v0.10).
+- **"In this section"** (v0.28, Hugo's mockup, 19 Oct): the menu stops at L3, so content pages at L3 or deeper that have children show an "In this section:" heading and a grid of boxes under the title, one per **direct child**, each linking to that child's existing page (no new pages). Not shown on pages without children. 19 pages in the current IA (e.g. Study areas, Entry pathways to UWA). Driven by `menuDepth: 3` in `src/variants/c.ts`, so any variant whose menu shows fewer levels gets it the same way. Grid: 4 columns on desktop, 3 on tablet, 2 on phones (`--section-*` tokens).
 
 ## 7c. Interaction specification (desktop, variants D and E)
 

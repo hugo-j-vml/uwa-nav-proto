@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.28.0 (19 Oct 2026)
+
+- **C: "In this section".** C's menu stops at L3, so content pages at L3 or deeper that have children now show an "In this section:" heading and a grid of grey boxes under the title (Hugo's mockup), one per direct child, each linking to that child's existing page. No pages are added or duplicated. Not shown on pages without children. 19 pages in the current IA, e.g. Study areas (11 areas), Entry pathways to UWA (13 pathways), International students. Grid: 4 columns on desktop, 3 on tablet, 2 on phones.
+- Driven by a new variant setting, `menuDepth` (C: 3; omitted where the menu reaches every level), so any variant whose menu shows fewer levels gets the same area. Sizes and colours are `--section-*` tokens. A, B, D and E are unchanged.
+
 ## 0.27.2 (19 Oct 2026)
 
 - B: the ↓ on an open item lines up on the right edge of its row, like the → arrows in the other variants, instead of sitting right after the label. Desktop (white pane) and mobile and tablet (the one list). A, C, D and E are unchanged (checked pixel for pixel).

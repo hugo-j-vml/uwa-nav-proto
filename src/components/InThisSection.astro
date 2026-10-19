@@ -1,0 +1,16 @@
+---
+/**
+ * "In this section" (Hugo's mockup, 19 Oct): a grid of boxes, one per child
+ * page, each linking to that page. Shown on content pages whose children the
+ * variant's menu can't reach (Variant.menuDepth; currently C, below L3).
+ * Sizes and colours: --section-* tokens.
+ */
+interface Props { links: { label: string; href: string }[] }
+const { links } = Astro.props;
+---
+<nav class="in-this-section" aria-labelledby="in-this-section-heading">
+  <h2 class="in-this-section-heading" id="in-this-section-heading">In this section:</h2>
+  <ul class="in-this-section-grid">
+    {links.map(l => <li><a class="in-this-section-link" href={l.href}>{l.label}</a></li>)}
+  </ul>
+</nav>

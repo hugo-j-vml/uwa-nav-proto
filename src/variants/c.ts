@@ -12,5 +12,6 @@ export const c: Variant = {
   status: 'ready',
   shell: 'header',
   menu: 'columns',
+  menuDepth: 3,
   motion: 'a',
 };
