@@ -299,7 +299,7 @@
   --index-bg-grid: 7px;                /* dot spacing */
   --index-bg-dot: rgb(255 255 255 / 0.035); /* the base dots, everywhere */
   --index-bg-dot-size: 0.8px;          /* base dot radius */
-  --index-bg-facet: rgb(255 255 255 / 0.2);  /* the brighter dots inside a facet, at its strongest */
+  --index-bg-facet: rgb(255 255 255 / 0.12);  /* the brighter dots inside a facet, at its strongest */
   --index-bg-facet-dot-size: 1.5px;    /* facet dot radius (a touch bigger, so facets read as halftone) */
   --index-bg-facet-angle: 135deg;      /* diagonal, bottom left to top right */
   --index-bg-wave-duration: 18s;       /* one slow drift across and back; the second facet runs at 1.6x */
