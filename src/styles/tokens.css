@@ -302,7 +302,7 @@
   --index-bg-facet: rgb(255 255 255 / 0.2);  /* the brighter dots inside a facet, at its strongest */
   --index-bg-facet-dot-size: 1.5px;    /* facet dot radius (a touch bigger, so facets read as halftone) */
   --index-bg-facet-angle: 135deg;      /* diagonal, bottom left to top right */
-  --index-bg-wave-duration: 38s;       /* one slow drift across and back; the second facet runs at 1.6x */
+  --index-bg-wave-duration: 18s;       /* one slow drift across and back; the second facet runs at 1.6x */
   --index-bg-pulse-duration: 11s;      /* brightness swell */
   /* Password screen (same look as the index page) */
   --gate-width: 420px;                 /* form width */
