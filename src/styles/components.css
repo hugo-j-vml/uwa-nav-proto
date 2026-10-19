@@ -493,6 +493,51 @@ html.is-locked .gate {
    Index page (variant list)
    ========================================================================== */
 html[data-variant="index"] body { background: var(--index-bg); color: var(--index-text); }
+
+/* ---------- Index background (index page and password screen; IndexBackground.astro) ----------
+   A fixed layer behind the content: a fine dot grid, plus "facets" — soft diagonal bands
+   that only show through a slightly bigger dot mask, so they read as brighter halftone.
+   The bands drift and pulse very slowly (still for reduced motion). */
+.index-page, html.is-locked .gate { position: relative; isolation: isolate; }
+.index-bg {
+  position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none;
+  background-image: radial-gradient(circle, var(--index-bg-dot) var(--index-bg-dot-size), transparent calc(var(--index-bg-dot-size) + 0.6px));
+  background-size: var(--index-bg-grid) var(--index-bg-grid);
+}
+.index-bg-facets {
+  position: absolute; inset: 0;
+  -webkit-mask-image: radial-gradient(circle, #000 var(--index-bg-facet-dot-size), transparent calc(var(--index-bg-facet-dot-size) + 0.6px));
+  mask-image: radial-gradient(circle, #000 var(--index-bg-facet-dot-size), transparent calc(var(--index-bg-facet-dot-size) + 0.6px));
+  -webkit-mask-size: var(--index-bg-grid) var(--index-bg-grid);
+  mask-size: var(--index-bg-grid) var(--index-bg-grid);
+  animation: index-bg-pulse var(--index-bg-pulse-duration) ease-in-out infinite alternate;
+}
+/* Two facets: a crisp leading edge fading out behind it, like light across a cut surface */
+.index-bg-facets::before,
+.index-bg-facets::after {
+  content: ''; position: absolute; inset: -60%;
+  will-change: transform;
+}
+.index-bg-facets::before {
+  background: linear-gradient(var(--index-bg-facet-angle), transparent 36%, var(--index-bg-facet) 40%, transparent 68%);
+  animation: index-bg-drift var(--index-bg-wave-duration) ease-in-out infinite alternate;
+}
+.index-bg-facets::after {
+  background: linear-gradient(calc(var(--index-bg-facet-angle) + 22deg), transparent 43%, var(--index-bg-facet) 46%, transparent 62%);
+  opacity: 0.6;
+  animation: index-bg-drift calc(var(--index-bg-wave-duration) * 1.6) ease-in-out infinite alternate-reverse;
+}
+@keyframes index-bg-drift {
+  from { transform: translate(-14%, 9%); }
+  to { transform: translate(14%, -9%); }
+}
+@keyframes index-bg-pulse {
+  from { opacity: 0.55; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .index-bg-facets, .index-bg-facets::before, .index-bg-facets::after { animation: none; }
+}
 html.is-locked .index-page { display: none; }
 .index-page {
   display: flex; flex-direction: column;

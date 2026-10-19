@@ -19,7 +19,7 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Spacing, sizes, colours, type, indent, selected style | `src/styles/tokens.css` (all values in one place; per-variant overrides in the blocks at the end) |
 | Breakpoints (mobile / tablet / desktop widths) and which sizes use the compact menus | `src/breakpoints.ts` (the only place they're set) |
 | Sizes per screen size; compact-layout values (takeover, top bar, drawer, their motion) | `src/styles/tokens.css`: "SCREEN SIZES" blocks (one per band, after the variant blocks) and "COMPACT LAYOUTS" |
-| Index page look (colours, font, sizes) | `--index-*` tokens in `src/styles/tokens.css` |
+| Index page look (colours, font, sizes, the animated dot background) | `--index-*` tokens in `src/styles/tokens.css` (background: `--index-bg-*`, e.g. dot spacing, facet brightness, wave and pulse speed) |
 | Variant names, and which variants are built | `src/variants/a.ts` … `e.ts` (`status: 'ready'` or `'coming-soon'`; `menuDepth`: how many levels the menu shows, which switches on "In this section" below that, e.g. C: 3) |
 | The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below) |
 | A co-branded site's own pages (e.g. Oceans Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the core menu tree; how they appear in the menus depends on the Co-brand menu option. |
