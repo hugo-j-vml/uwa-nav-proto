@@ -61,7 +61,7 @@ Optional columns, in any order:
 | `eyebrow` | text | Course pages: small heading above the title (e.g. Undergraduate) |
 | `intro` | text | Course pages: line under the title |
 | `body` | text | Course pages: paragraph under the in-page tabs |
-| `abbreviation` | text | Co-branded pages: short name for the site's tab in the menu (Co-brand menu option 2), e.g. OI, so it doesn't wrap. Blank = the full name |
+| `abbreviation` | text | Co-branded pages: short name for the site's tab in the menu (Co-brand menu option 2), for a long name, so it doesn't wrap. Blank = the full name |
 
 Blank course fields fall back to the Landscape Architecture Studies copy from Figma.
 

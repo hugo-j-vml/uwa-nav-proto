@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-19T08:34:07.943Z",
+  "generated": "2026-10-19T08:38:57.260Z",
   "source": "data/sitemap.csv",
   "columns": [
     "L1",
@@ -1534,7 +1534,6 @@
                   "level": 4,
                   "template": "cobranded",
                   "children": [],
-                  "abbreviation": "OI",
                   "site": [
                     {
                       "label": "About the OI",

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.31.1 (19 Oct 2026)
+
+- Oceans Institute no longer has an abbreviation, so its menu tab (option 2) shows its full name. The `abbreviation` column stays for sites that need one.
+
 ## 0.31.0 (19 Oct 2026)
 
 - Co-brand menu option 2 (Replaces core menu): two tabs at the top of the menu, the site's and UWA, replace the "UWA main menu" / "<site> menu" switch, in every variant and at every size. The site's tab is selected when the menu opens; the tabs stay put while the list under them changes; Left / Right arrow keys move between them. The site's full name stays as a heading link under the tabs (for now).
