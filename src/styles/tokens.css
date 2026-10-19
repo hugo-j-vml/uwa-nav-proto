@@ -9,7 +9,7 @@
   /* ---------- Colour (Figma variables) ---------- */
   --colour-black: #0a0a0a;          /* Primary/Black */
   --colour-white: #ffffff;          /* Primary/White */
-  --colour-vivid-blue: #0032ff;     /* Primary/Vivid Blue (menu arrows) */
+  --colour-vivid-blue: #0032ff;     /* Primary/Vivid Blue (page titles, links, focus) */
   --colour-ironbark-20: #e0e1e0;    /* Secondary/Neutrals/Ironbark 20 (page background) */
   --colour-ironbark-80: #848585;    /* Secondary/Neutrals/Ironbark 80 (core pane, open menu button) */
   --colour-dynamic-pane: #efeded;   /* Dynamic pane background (raw hex in Figma, no variable) */
@@ -91,6 +91,7 @@
   /* ---------- Menu items ---------- */
   --item-gap: 8px;                     /* vertical space between items */
   --item-arrow-size: 24px;
+  --item-arrow-colour: var(--colour-black); /* menu arrows (were Vivid Blue until v0.29.2); white on a selected black row (below) */
   --item-label-max-width: 330px;       /* label wraps beyond this */
   --item-indent: 27px;                 /* indent per nesting level in the core pane (was 18px, +50%) */
   --dynamic-heading-height: 45px;      /* heading row in the dynamic pane */
@@ -106,7 +107,7 @@
   --page-bg: var(--colour-ironbark-20);
   --page-gutter: 50px;                 /* left inset of breadcrumbs and titles */
   --page-title-width: 610px;
-  --page-title-colour: var(--colour-vivid-blue); /* page headings (H1), same blue as the menu arrows */
+  --page-title-colour: var(--colour-vivid-blue); /* page headings (H1) */
   --placeholder-stroke: var(--colour-black);
   --placeholder-stroke-width: 4px;     /* Figma stroke is 4 (half is clipped at the box edges) */
   --placeholder-fill: var(--colour-ironbark-20);

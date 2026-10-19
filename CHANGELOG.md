@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.29.2 (19 Oct 2026)
+
+- Menu arrows are black instead of Vivid Blue, in every variant and at every screen size (A's core and dynamic panes, the D/E drill-down pane, the C panel headings, the Back arrows). On a selected black row they stay white. New token `--item-arrow-colour`.
+
 ## 0.29.1 (19 Oct 2026)
 
 - C on mobile and tablet: each panel's Back row now just says "← Back" (was "Main menu" or the section's name). Under it, a heading names the chosen item (e.g. "Study at UWA", then "Explore courses") and links to its page, as the dynamic pane heading does in A, so a section's own page is reachable from the menu. Desktop C is unchanged.
