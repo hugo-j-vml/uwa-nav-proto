@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.29.5 (19 Oct 2026)
+
+- B and C, desktop: the sub-menu panes now come out from behind the pane to their left exactly as in A. B's white pane and C's panel 1 are wider than the core pane, so while sliding they're clipped at the core pane's right edge and never show in the strip to the menu's left (the 0.29.4 fade didn't hide it and is removed, with its `--motion-submenu-fade` token). Same for C's panel 2 behind panel 1. A looks the same as before.
+
 ## 0.29.4 (19 Oct 2026)
 
 - B, desktop: the white pane fades in from 0% opacity as it slides out from under the core pane (and fades out as it retreats). It's wider than the core pane, so it used to be seen crossing the strip to the left of the menu. New token `--motion-submenu-fade` (1 in B, 0 elsewhere). A and C are unchanged.

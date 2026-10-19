@@ -406,11 +406,10 @@ function init(header: HTMLElement) {
       return;
     }
     const slide = animate;
-    // --motion-submenu-fade: 1 (B) also fades the pane in from 0% as it slides out, and back out as it retreats,
-    // so a pane wider than the core pane isn't seen crossing the strip to its left
-    const fade = token('--motion-submenu-fade') === '1';
-    const hiddenFrame: Keyframe = fade ? { transform: 'translateX(-100%)', opacity: 0 } : { transform: 'translateX(-100%)' };
-    const shownFrame: Keyframe = fade ? { transform: 'translateX(0)', opacity: 1 } : { transform: 'translateX(0)' };
+    // The pane is clipped at its resting left edge (the right edge of the pane it slides from under) while it
+    // moves, so it seems to come out from behind that pane, as in A, even when it's wider (B, C)
+    const hiddenFrame: Keyframe = { transform: 'translateX(-100%)', clipPath: 'inset(0 0 0 100%)' };
+    const shownFrame: Keyframe = { transform: 'translateX(0)', clipPath: 'inset(0 0 0 0)' };
     // If a slide is already running (fast clicking), drop it and go straight to the new contents
     const busy = pane.getAnimations().length > 0;
     pane.getAnimations().forEach(a => a.cancel());

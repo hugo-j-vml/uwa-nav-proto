@@ -208,7 +208,6 @@
   --motion-submenu-out-easing: ease-in;
   --motion-submenu-in-duration: 300ms;
   --motion-submenu-in-easing: ease-out;
-  --motion-submenu-fade: 0;            /* 1: the sub-menu pane also fades in from 0% opacity as it slides out (and out as it retreats); on in B */
   /* Core pane: a parent newly nested under its section opens up and its text slides down into place */
   --motion-core-item-duration: 300ms;
   --motion-core-item-easing: ease-out;
@@ -342,7 +341,6 @@
   --dynamic-pane-width: 578px;
   --item-label-max-width: none;        /* labels use the full width of the white pane before wrapping */
   --b-open-arrow-colour: currentColor; /* the ↓ on an open parent in the white pane (black in the mockup) */
-  --motion-submenu-fade: 1;            /* the white pane is wider than the core pane, so it fades in rather than being seen crossing the strip to its left */
 }
 [data-variant="c"] {
   /* Panes: B's narrow core pane, then two panels of one IA level each (L2, then L3) */
