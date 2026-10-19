@@ -1,4 +1,4 @@
-L1,L2,L3,L4,L5,template,eyebrow,intro,body
+L1,L2,L3,L4,L5,template,eyebrow,intro,body,abbreviation
 Study at UWA,,,,,,,,
 ,Explore courses,,,,,,,
 ,,Find a course,,,,,,
@@ -163,7 +163,7 @@ Our research,,,,,,,,
 ,,,WA Zebrafish Experimental Research Centre,,,,,
 ,Institutes and centres,,,,,,,
 ,,Centres and other entities,,,,,,
-,,,Oceans Institute,,cobranded,,,
+,,,Oceans Institute,,cobranded,,,,OI
 ,Connect,,,,,,,
 ,,Find a researcher,,,,,,
 ,,Collaborate with us,,,,,,

@@ -14,7 +14,7 @@
  *     open item closes it.
  *     Arrows: the open item in the core pane and panel 1 has a →, lined up on the
  *     right as in A; every other item (headings, links, the site's name) shows
- *     its → only on hover or keyboard focus. The co-brand switch rows have none.
+ *     its → only on hover or keyboard focus. The co-brand tabs have none.
  *   F (stack): C without the depth limit. Every chosen item opens its items in
  *     a new panel (made as needed) that stacks over the last, leaving a strip of
  *     each earlier pane showing (strips narrow to fit the window). Panels are
@@ -55,9 +55,9 @@
  * (src/options.ts):
  *   1 (menu bar on page): the menu is unchanged; the site's menu is a bar on the page.
  *   2 (replaces core menu): the menu opens on the site's sections in place of the
- *     top-level items, under a "UWA main menu" switch and the site's name (a link
- *     to its home). The switch swaps to the normal top level, which then has an
- *     "<site> menu" switch back. Each opening starts on the site's sections.
+ *     top-level items, under two tabs (the site's abbreviation or name, and UWA)
+ *     and the site's name (a link to its home). The UWA tab swaps to the normal
+ *     top level; the tabs stay put. Each opening starts on the site's tab.
  *     The sections behave like top-level items in each variant.
  *   7 (alongside core menu): both menus at once.
  *     A: the site's name and sections in a block above a divider and the
@@ -87,6 +87,7 @@
 import { indexTree, choose, toggle as toggleBranch, selected, pagePath, cobrandTop, cobrandNode, type MenuNode, type CobrandData } from '../lib/menu-state';
 import { getOption } from '../lib/options';
 import { isCompact, onLayoutChange } from '../lib/breakpoints';
+import { menuTabs, tabArrowKeys, type MenuMode } from '../lib/menu-tabs';
 
 const header = document.querySelector<HTMLElement>('.primary-nav-header');
 if (header) init(header);
@@ -123,7 +124,7 @@ function init(header: HTMLElement) {
   // Compact screens: A and B show everything in one list; C stacks its panels as layers
   const oneList = () => isCompact() && !columns;
   const layers = () => isCompact() && columns;
-  let mode: 'core' | 'cobrand' = 'core';
+  let mode: MenuMode = 'core';
   const topLevel = (): MenuNode[] => {
     if (mode === 'cobrand') return cbTop;
     return tree;
@@ -241,24 +242,13 @@ function init(header: HTMLElement) {
   }
 
   /**
-   * Option 2: the switch between the site's menu and the UWA main menu, and (in
-   * the site's menu) the site's name linking to its home.
+   * Option 2: tabs for the site's menu and the UWA main menu (src/lib/menu-tabs.ts),
+   * and (in the site's menu) the site's name linking to its home.
    */
   function switchRows(): HTMLLIElement[] {
-    const toCore = mode === 'cobrand';
     const li = document.createElement('li');
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'menu-switch' + (toCore ? '' : ' is-back');
-    btn.dataset.path = `~switch-${mode}`;
-    btn.dataset.switch = toCore ? 'core' : 'cobrand';
-    const label = document.createElement('span');
-    label.textContent = toCore ? 'UWA main menu' : `${cobrand!.l} menu`;
-    btn.append(label);
-    if (!columns) btn.append(arrowTpl.content.cloneNode(true)); // C: no arrow on the switch
-    li.append(btn);
-    if (!toCore) return [li];
-    return [li, siteTitleRow()];
+    li.append(menuTabs(cobrand!.s, cobrand!.l, mode));
+    return mode === 'cobrand' ? [li, siteTitleRow()] : [li];
   }
 
   /** The co-branded site's name, linking to its home (options 2 and 7). */
@@ -290,7 +280,7 @@ function init(header: HTMLElement) {
   }
 
   /** Option 2: swap between the site's menu and the UWA main menu. */
-  function switchMode(next: 'core' | 'cobrand') {
+  function switchMode(next: MenuMode) {
     mode = next;
     path = [];
     returned = '';
@@ -298,11 +288,13 @@ function init(header: HTMLElement) {
     renderDynamic(true);
     const duration = ms('--motion-submenu-in-duration');
     if (duration) {
+      // The list slides in from the side of the chosen tab; the tabs themselves stay put
       const offset = token('--motion-drill-offset') || '24px';
-      coreList.animate([{ transform: `translateX(${next === 'core' ? offset : `-${offset}`})`, opacity: 0 }, { transform: 'translateX(0)', opacity: 1 }],
-        { duration, easing: token('--motion-submenu-in-easing') || 'ease-out' });
+      ([...coreList.children] as HTMLElement[]).slice(1).forEach(li =>
+        li.animate([{ transform: `translateX(${next === 'core' ? offset : `-${offset}`})`, opacity: 0 }, { transform: 'translateX(0)', opacity: 1 }],
+          { duration, easing: token('--motion-submenu-in-easing') || 'ease-out' }));
     }
-    coreList.querySelector<HTMLElement>('.menu-switch')?.focus();
+    coreList.querySelector<HTMLElement>('.menu-tab[aria-selected="true"]')?.focus();
   }
 
   /** Clip a row while its height animates, keeping the selected block's side bleed visible. */
@@ -607,10 +599,11 @@ function init(header: HTMLElement) {
 
   // ---------- Events ----------
   toggle.addEventListener('click', () => setOpen(!open));
+  tabArrowKeys(coreList, (next) => { if (next !== mode) switchMode(next); }); // option 2's tabs
 
   coreList.addEventListener('click', (e) => {
-    const sw = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-switch');
-    if (sw) { switchMode(sw.dataset.switch as 'core' | 'cobrand'); return; }
+    const tab = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-tab');
+    if (tab) { if (tab.dataset.switch !== mode) switchMode(tab.dataset.switch as MenuMode); return; }
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     const p = btn.dataset.path!;

@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype v0.30.0 (19 Oct 2026): six variants (A–F) on desktop, mobile and tablet (Section 7e); behaviour options for co-branded sites (7d); C's "In this section" grid (7b); animated index background. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype v0.31.0 (19 Oct 2026): six variants (A–F) on desktop, mobile and tablet (Section 7e); behaviour options for co-branded sites (7d); C's "In this section" grid (7b); animated index background. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -182,7 +182,7 @@ Agreed 15 Oct 2026. "A more static version of B." Everything not listed here is 
 - **Core pane:** as B: top-level items only, static, no black highlight.
 - **Panel 1:** a heading naming the chosen section, linking to its landing page (as A's dynamic pane heading; Hugo, v0.29.8), then the section's items (L2), one level only. Option 7's site block keeps the site's name as its heading.
 - **Panel 2:** opens to the right when an L2 parent is chosen; a heading linking to the L2's page, as panel 1, then its items (L3), one level only. L3 items are always links, even if they have children, so the menu stops at L3. Slides out from under panel 1 (A's sub-menu motion).
-- **Arrows** (Hugo, v0.29.11): the → marks the selected (open) item in the core pane and panel 1, lined up on the right edge as in A. Every other clickable item (other items, panel headings, panel 2 links, option 7's site name) shows its → only on hover or keyboard focus; each keeps the arrow's space, so nothing moves on hover. In the core pane the → sits in the pane's right padding (16px from its edge, v0.30.2), so core labels never wrap to make room for it; in the panels a few long labels wrap a line earlier. The co-brand switch rows ("UWA main menu" / "<site> menu") have no arrow. No black highlights.
+- **Arrows** (Hugo, v0.29.11): the → marks the selected (open) item in the core pane and panel 1, lined up on the right edge as in A. Every other clickable item (other items, panel headings, panel 2 links, option 7's site name) shows its → only on hover or keyboard focus; each keeps the arrow's space, so nothing moves on hover. In the core pane the → sits in the pane's right padding (16px from its edge, v0.30.2), so core labels never wrap to make room for it; in the panels a few long labels wrap a line earlier. The co-brand tabs have no arrow. No black highlights.
 - **Closing:** clicking an open item closes it and everything to its right. Menu button, Esc and click-outside as A.
 - **Opening:** always at the top level with nothing chosen, as on the homepage (v0.10).
 - **"In this section"** (v0.28, Hugo's mockup, 19 Oct): the menu stops at L3, so content pages at L3 or deeper that have children show an "In this section:" heading and a grid of boxes under the title, one per **direct child**, each linking to that child's existing page (no new pages). Not shown on pages without children. 19 pages in the current IA (e.g. Study areas, Entry pathways to UWA). Driven by `menuDepth: 3` in `src/variants/c.ts`, so any variant whose menu shows fewer levels gets it the same way. Grid: 4 columns on desktop, 3 on tablet, 2 on phones (`--section-*` tokens).
@@ -220,7 +220,7 @@ Alternative behaviours are switched across all variants with **behaviour options
 
 **Co-brand menu** (default 1). Co-branded sites (e.g. Oceans Institute) have their own two-level IA (`data/cobranded/<slug>.csv`), kept out of the core tree; the site is a single link in the core menu. On the site's pages, A–C show a co-brand logo placeholder next to the UWA logo; D and E show it under the vertical UWA logo.
 - **1 · Menu bar on page:** a bar under the breadcrumb with the site's sections and dropdowns; Menu stays the core menu.
-- **2 · Replaces core menu:** Menu (D: the sidebar list) shows the site's sections in place of the top level, with a "UWA main menu" switch and back.
+- **2 · Replaces core menu:** Menu (D: the sidebar list) shows the site's sections in place of the top level. Two **tabs** at the top (Hugo, v0.31.0; replaced the "UWA main menu" / "<site> menu" switch): the site's (its `abbreviation` from the sitemap CSV, e.g. OI, or its name) and **UWA**. The site's tab is selected each time the menu opens; the UWA tab swaps to the normal top level. The tabs stay put while the list beneath changes; arrow keys move between them. A–C, F: at the top of the core pane (compact C and F: on the first layer only). D: above the sidebar list (and in the drawer). E: at the top of the pane's first level. The site's full name stays as a heading link under the tabs on the site's tab (to review once seen, Hugo).
 - **7 · Alongside core menu:** both at once. A, E: the site's block above a divider and the top level. B, C: the site's name and sections fill the white pane on open; choosing a top-level item shows that instead, and closing it brings the site back. D: the site's name and sections at the top of the sidebar, above a divider and the top-level items; a section opens the pane at its pages.
 
 **Breadcrumbs on co-branded pages** (default Show): Show or Hide the breadcrumb on the site's pages.
@@ -315,7 +315,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 
 7e. Reviewed IA (15 Oct), to confirm: "Campus initiatives or Campus development or Campus management" is built as written; which one? "Applicants (or apply portal…)" and "Agents (or International agents)" are built as Applicants and Agents. Students › Academic support has a child also called Academic support.
 7f. Index page: B is "Static core with dynamic panel" (Hugo, 15 Oct); C's name ("Static core with two panels") and D/E's names are stand-ins. Intro copy: "UWA Navigation Prototyping System" (Hugo, v0.21.1).
-7g. Co-branded sites, open: which Co-brand menu option goes forward (1, 2 or 7, being tested); whether search on co-branded pages covers the site, UWA or both; the co-brand menu's visual design (switch rows, headings and the option 1 bar are wireframe stand-ins).
+7g. Co-branded sites, open: which Co-brand menu option goes forward (1, 2 or 7, being tested); whether search on co-branded pages covers the site, UWA or both; the co-brand menu's visual design (option 2's tabs, headings and the option 1 bar are wireframe stand-ins); whether option 2 keeps the site's full name under the tabs.
 
 7h. Compact layouts (v0.27), built as assumptions, to confirm:
    - A: the sub-menu's heading row repeats the selected item's name (as desktop's dynamic pane heading does), so the section's page stays reachable.

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-15T07:15:38.167Z",
+  "generated": "2026-10-19T08:34:07.943Z",
   "source": "data/sitemap.csv",
   "columns": [
     "L1",
@@ -10,7 +10,8 @@
     "template",
     "eyebrow",
     "intro",
-    "body"
+    "body",
+    "abbreviation"
   ],
   "nodes": [
     {
@@ -1533,6 +1534,7 @@
                   "level": 4,
                   "template": "cobranded",
                   "children": [],
+                  "abbreviation": "OI",
                   "site": [
                     {
                       "label": "About the OI",

@@ -17,13 +17,13 @@
  * Motion timings come from tokens.css (same tokens as the header variants).
  *
  * Co-branded site pages, behaviour option "Co-brand menu" = 2 (replaces core menu):
- *   D: the sidebar lists the site's sections (under a "UWA main menu" switch and
- *     the site's name) in place of the top-level items; the switch swaps them,
- *     and the top-level list then has an "<site> menu" switch back. Sections
+ *   D: the sidebar lists the site's sections (under two tabs, the site's
+ *     abbreviation or name and UWA, then the site's name) in place of the
+ *     top-level items; the UWA tab swaps them for the top level. Sections
  *     open the pane like top-level items. The sidebar starts on the site's list
  *     on every page load (CSS shows the right list before this script runs).
- *   E: Menu opens the pane on the site's sections, under the same switch and
- *     site name; the switch swaps the pane to the top level and back.
+ *   E: Menu opens the pane on the site's sections, under the same tabs and
+ *     site name; the tabs swap the pane between them and the top level.
  * Option 7 (alongside core menu):
  *   D: the sidebar list starts with the site's name and sections, then a
  *     divider and the top-level items. A section opens the pane at its pages.
@@ -46,6 +46,7 @@
 import { indexTree, pagePath, cobrandTop, cobrandNode, type MenuNode, type CobrandData } from '../lib/menu-state';
 import { getOption } from '../lib/options';
 import { isCompact, onLayoutChange } from '../lib/breakpoints';
+import { menuTabs, selectTab, tabArrowKeys, type MenuMode } from '../lib/menu-tabs';
 
 const sidebar = document.querySelector<HTMLElement>('[data-sidebar]');
 if (sidebar) init(sidebar);
@@ -62,7 +63,8 @@ function init(sidebar: HTMLElement) {
   const sideList = sidebar.querySelector<HTMLUListElement>('[data-sidebar-list]');   // D
   const toggle = sidebar.querySelector<HTMLButtonElement>('[data-menu-toggle]');      // E
   // D: the item lists (top level and, on co-branded pages, the site's list); E: the Menu button
-  const triggers: HTMLElement[] = sideList ? [...sidebar.querySelectorAll<HTMLElement>('.sidebar-list, [data-sidebar-switch]')] : [toggle!];
+  const sideTabs = sidebar.querySelector<HTMLElement>('[data-sidebar-tabs]'); // D, option 2
+  const triggers: HTMLElement[] = sideList ? [...sidebar.querySelectorAll<HTMLElement>('.sidebar-list, [data-sidebar-tabs]')] : [toggle!];
 
   // Co-brand menu option 2: the site's sections stand in for the top level (see above)
   const option = cobrand ? getOption('cobrand-menu') : '';
@@ -70,7 +72,7 @@ function init(sidebar: HTMLElement) {
   const alongside = option === '7';
   const cbTop = cobrand ? cobrandTop(cobrand) : [];
   const cbNode = cobrand ? cobrandNode(cobrand) : undefined;
-  let mode: 'core' | 'cobrand' = replaces ? 'cobrand' : 'core';
+  let mode: MenuMode = replaces ? 'cobrand' : 'core';
   const topLevel = () => (mode === 'cobrand' ? cbTop : tree);
 
   const byPath = indexTree([...tree, ...cbTop, ...(cbNode ? [cbNode] : [])]);
@@ -124,7 +126,7 @@ function init(sidebar: HTMLElement) {
       for (const child of node.c) list.append(row(child));
       pane.setAttribute('aria-label', node.l);
     } else {
-      // E: the top level (option 2: the site's sections, or the top level, under the switch)
+      // E: the top level (option 2: the site's sections, or the top level, under the tabs)
       if (replaces) list.append(...switchRows());
       if (alongside) {
         // Option 7: the site's block, then a divider and the University's top level
@@ -147,20 +149,11 @@ function init(sidebar: HTMLElement) {
     toggle?.setAttribute('aria-expanded', String(open));
   }
 
-  /** E, option 2: the switch between the site's menu and the top level, and the site's name. */
+  /** E, option 2: tabs for the site's menu and the top level (src/lib/menu-tabs.ts), and the site's name. */
   function switchRows(): HTMLLIElement[] {
-    const toCore = mode === 'cobrand';
     const li = document.createElement('li');
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'menu-switch' + (toCore ? '' : ' is-back');
-    btn.dataset.switch = toCore ? 'core' : 'cobrand';
-    const label = document.createElement('span');
-    label.textContent = toCore ? 'UWA main menu' : `${cobrand!.l} menu`;
-    btn.append(label, arrowTpl.content.cloneNode(true));
-    li.append(btn);
-    if (!toCore) return [li];
-    return [li, siteTitleRow()];
+    li.append(menuTabs(cobrand!.s, cobrand!.l, mode));
+    return mode === 'cobrand' ? [li, siteTitleRow()] : [li];
   }
 
   /** The co-branded site's name, linking to its home (options 2 and 7). */
@@ -189,30 +182,32 @@ function init(sidebar: HTMLElement) {
   }
 
   /** Option 2: swap between the site's menu and the top level (D: the sidebar list; E: the pane). */
-  function switchMode(next: 'core' | 'cobrand') {
+  function switchMode(next: MenuMode) {
+    if (next === mode) return;
     mode = next;
     if (sideList) {
       sidebar.dataset.mode = next;
+      if (sideTabs) { selectTab(sideTabs, next); sideTabs.querySelector<HTMLElement>('[aria-selected="true"]')?.focus(); }
       if (open) setOpen(false);
-      const first = sidebar.querySelector<HTMLElement>(next === 'core' ? '[data-sidebar-switch="cobrand"]' : '[data-sidebar-switch="core"]');
-      first?.focus();
     } else {
       path = [];
       fill();
-      slideContents(next === 'core' ? 1 : -1);
-      list.querySelector<HTMLElement>('.menu-switch')?.focus();
+      slideContents(next === 'core' ? 1 : -1, true);
+      list.querySelector<HTMLElement>('.menu-tab[aria-selected="true"]')?.focus();
     }
   }
 
-  /** Slide the pane's contents in from the right (deeper) or the left (Back). */
-  function slideContents(dir: 1 | -1) {
+  /** Slide the pane's contents in from the right (deeper) or the left (Back). `keepTabs`: option 2's tabs stay put. */
+  function slideContents(dir: 1 | -1, keepTabs = false) {
     const duration = ms('--motion-submenu-in-duration');
     if (!duration) return;
     const offset = token('--motion-drill-offset') || '24px';
     const from = dir === 1 ? offset : `-${offset}`;
-    list.getAnimations().forEach(a => a.cancel());
-    list.animate([{ transform: `translateX(${from})`, opacity: 0 }, { transform: 'translateX(0)', opacity: 1 }],
-      { duration, easing: token('--motion-submenu-in-easing') || 'ease-out' });
+    const frames = [{ transform: `translateX(${from})`, opacity: 0 }, { transform: 'translateX(0)', opacity: 1 }];
+    const opts = { duration, easing: token('--motion-submenu-in-easing') || 'ease-out' };
+    list.getAnimations({ subtree: true }).forEach(a => a.cancel());
+    if (keepTabs) { ([...list.children] as HTMLElement[]).slice(1).forEach(li => li.animate(frames, opts)); return; }
+    list.animate(frames, opts);
   }
 
   function focusFirst() {
@@ -249,9 +244,11 @@ function init(sidebar: HTMLElement) {
   }
 
   // ---------- Events ----------
-  // D, option 2: the sidebar switches between the site's list and the top level
-  sidebar.querySelectorAll<HTMLButtonElement>('[data-sidebar-switch]').forEach(b =>
-    b.addEventListener('click', () => switchMode(b.dataset.sidebarSwitch as 'core' | 'cobrand')));
+  // D, option 2: the tabs switch the sidebar between the site's list and the top level
+  sideTabs?.querySelectorAll<HTMLButtonElement>('.menu-tab').forEach(b =>
+    b.addEventListener('click', () => switchMode(b.dataset.switch as MenuMode)));
+  if (sideTabs) tabArrowKeys(sideTabs, switchMode);
+  tabArrowKeys(list, switchMode); // E
 
   // D: a top-level item (or a co-branded site's section) opens the pane at its children; the open one closes it
   if (sideList) sidebar.addEventListener('click', (e) => {
@@ -274,8 +271,8 @@ function init(sidebar: HTMLElement) {
 
   // Drill down (E, option 2: or switch menus)
   list.addEventListener('click', (e) => {
-    const sw = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-switch');
-    if (sw) { switchMode(sw.dataset.switch as 'core' | 'cobrand'); return; }
+    const tab = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-tab');
+    if (tab) { switchMode(tab.dataset.switch as MenuMode); return; }
     const btn = (e.target as HTMLElement).closest<HTMLButtonElement>('button.menu-item');
     if (!btn) return;
     path = [...path, btn.dataset.path!];

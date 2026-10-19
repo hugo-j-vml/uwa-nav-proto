@@ -187,8 +187,16 @@
   --site-nav-name-gap: 48px;           /* site name to the first item */
   --site-nav-dropdown-width: 320px;
   --site-nav-dropdown-bg: var(--colour-white);
-  /* Co-brand menu option 2: switch between the site's menu and the UWA main menu */
-  --menu-switch-gap: 16px;             /* below the switch row */
+  /* Co-brand menu option 2: tabs for the site's menu and the UWA main menu */
+  --menu-switch-gap: 16px;             /* D: the site's name to its list */
+  --menu-tabs-gap-below: 24px;         /* below the tabs */
+  --menu-tab-size: 18px;
+  --menu-tab-gap: 32px;                /* between the two tabs */
+  --menu-tab-padding-bottom: 8px;      /* label to the selected bar */
+  --menu-tab-indicator: 3px;           /* the selected tab's bar */
+  --menu-tab-selected-weight: 400;    /* same as unselected, so the labels don't shift; the bar marks the selected tab */
+  --menu-tab-unselected-opacity: 0.7;
+  --menu-tab-line-strength: 40%;       /* the hairline under both tabs (share of the text colour) */
   --menu-site-title-size: 26px;        /* the site's name above its sections, co-branded serif */
   --menu-group-gap: 16px;              /* option 7: space either side of the divider between the site's items and the top level */
   --cobranded-page-title-size: 48px;   /* page title inside a co-branded site */

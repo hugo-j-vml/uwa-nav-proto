@@ -11,7 +11,7 @@ export type MenuNode = { l: string; p: string; c: MenuNode[]; h?: string };
 export const pagePath = (n: MenuNode) => n.h ?? n.p;
 
 /** A co-branded site's IA as sent to the menu scripts (h = page path). */
-export type CobrandData = { l: string; h: string; c: { l: string; h: string; c: { l: string; h: string }[] }[] };
+export type CobrandData = { l: string; h: string; s: string; c: { l: string; h: string; c: { l: string; h: string }[] }[] };
 
 /*
  * Co-brand menu items get their own keys, starting with "~" so they never clash

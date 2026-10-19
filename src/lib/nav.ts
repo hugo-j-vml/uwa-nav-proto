@@ -11,6 +11,8 @@ export interface NavNode {
   eyebrow?: string;
   intro?: string;
   body?: string;
+  /** Co-branded pages only: short name for the site's menu tab (sitemap CSV column "abbreviation") */
+  abbreviation?: string;
   children: NavNode[];
   /** Co-branded pages only: the site's own two-level menu (not in the main menu) */
   site?: SiteNode[];
@@ -66,10 +68,10 @@ export function standalonePages(): { path: string; label: string }[] {
 }
 
 /** A co-branded site, for the pages that belong to it (its home and the pages in its own IA). */
-export interface Cobrand { label: string; path: string; href: string; site: SiteNode[] }
+export interface Cobrand { label: string; path: string; href: string; site: SiteNode[]; abbreviation?: string }
 
-/** Compact co-brand data for the menu scripts: l = label, h = page path, c = children. */
+/** Compact co-brand data for the menu scripts: l = label, h = page path, c = children, s = tab label (abbreviation or label). */
 export const cobrandData = (cb: Cobrand) => ({
-  l: cb.label, h: cb.path,
+  l: cb.label, h: cb.path, s: cb.abbreviation || cb.label,
   c: cb.site.map(s => ({ l: s.label, h: s.path, c: s.children.map(x => ({ l: x.label, h: x.path, c: [] })) })),
 });

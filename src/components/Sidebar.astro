@@ -6,8 +6,8 @@
  * and the header shortcuts (E). The drill-down pane opens to its right; it is
  * drawn by src/scripts/sidebar-menu.ts from the sitemap data embedded below.
  * On a co-branded site's pages, D also gets the site's own list (shown in place
- * of the top-level items for behaviour option "Co-brand menu" = 2, with a
- * switch between the two; CSS decides which shows), and the site's name and
+ * of the top-level items for behaviour option "Co-brand menu" = 2, with tabs
+ * to swap between the two; CSS decides which shows), and the site's name and
  * sections at the top of the top-level list, above a divider (option 7; also
  * shown by CSS).
  * Compact layouts (mobile and tablet): a top bar (hamburger, horizontal logo,
@@ -51,8 +51,14 @@ const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes), 
 
   {menu === 'drilldown' ? (
     <>
+    {/* Option 2: tabs for the site's menu and the UWA main menu (same markup as src/lib/menu-tabs.ts; CSS shows them for option 2 only) */}
+    {site && (
+      <div class="menu-tabs sidebar-tabs" role="tablist" aria-label="Menus" data-sidebar-tabs>
+        <button class="menu-tab" type="button" role="tab" aria-selected="true" data-switch="cobrand" aria-label={site.abbreviation ? site.label : undefined}>{site.abbreviation || site.label}</button>
+        <button class="menu-tab" type="button" role="tab" aria-selected="false" tabindex="-1" data-switch="core" aria-label="UWA main menu">UWA</button>
+      </div>
+    )}
     <nav aria-label="Main menu">
-      {site && <button class="sidebar-switch is-back" type="button" data-sidebar-switch="cobrand"><Icon name="arrow" /><span>{site.label} menu</span></button>}
       <ul class="sidebar-list" data-sidebar-list>
         {site && (
           <>
@@ -82,7 +88,6 @@ const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes), 
     </nav>
     {site && (
       <nav class="sidebar-cobrand" aria-label={`${site.label} menu`}>
-        <button class="sidebar-switch" type="button" data-sidebar-switch="core"><span>UWA main menu</span><Icon name="arrow" /></button>
         <a class="sidebar-site-title" href={site.href} aria-current={currentPath === site.path ? 'page' : undefined}>{site.label}</a>
         <ul class="sidebar-list">
           {site.site.map((sec, i) => (

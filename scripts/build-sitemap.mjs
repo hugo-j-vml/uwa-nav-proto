@@ -17,6 +17,7 @@
  *   eyebrow   course pages: small heading above the title (e.g. Undergraduate)
  *   intro     course pages: intro line under the title
  *   body      course pages: paragraph under the in-page tabs
+ *   abbreviation  co-branded pages: short name for the site's menu tab (e.g. OI), so it doesn't wrap
  *
  * Co-branded sites: a page with the cobranded template can have its own menu,
  * separate from the main menu. Put it in data/cobranded/<page slug>.csv with
@@ -63,7 +64,7 @@ const rows = parseCsv(readFileSync(csvPath, 'utf8').replace(/^\uFEFF/, ''));
 const [header, ...body] = rows;
 const errors = [], warnings = [];
 const TEMPLATES = ['landing', 'content', 'course', 'cobranded'];
-const META = ['template', 'eyebrow', 'intro', 'body'];
+const META = ['template', 'eyebrow', 'intro', 'body', 'abbreviation'];
 
 // Work out which columns are levels (L1, L2, ...) and which are extra fields
 const levelCols = [], metaCols = {};
@@ -114,7 +115,7 @@ body.forEach((cells, i) => {
       if (template === 'cobrandedsite') template = 'cobranded';
       if (template && !TEMPLATES.includes(template)) errors.push(`Row ${line}: template "${meta.template}" isn't one of ${TEMPLATES.join(', ')}`);
       else if (template) node.template = template;
-      for (const k of ['eyebrow', 'intro', 'body']) if (meta[k]) node[k] = meta[k];
+      for (const k of ['eyebrow', 'intro', 'body', 'abbreviation']) if (meta[k]) node[k] = meta[k];
     }
     stack[level] = node;
     stack.length = level + 1;

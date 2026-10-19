@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.31.0 (19 Oct 2026)
+
+- Co-brand menu option 2 (Replaces core menu): two tabs at the top of the menu, the site's and UWA, replace the "UWA main menu" / "<site> menu" switch, in every variant and at every size. The site's tab is selected when the menu opens; the tabs stay put while the list under them changes; Left / Right arrow keys move between them. The site's full name stays as a heading link under the tabs (for now).
+- New optional sitemap CSV column `abbreviation`: a co-branded site's short name for its tab (Oceans Institute: OI). Blank = the full name.
+- Other options and pages unchanged (screenshots byte-identical against 0.30.2).
+
 ## 0.30.2 (19 Oct 2026)
 
 - C and F, desktop: the core menu's labels no longer wrap to make room for the → (e.g. "Partners and community" is back on one line). In the core pane the → now sits in the pane's right padding, 16px from its edge (it was 56px). Panels, mobile and tablet unchanged.
