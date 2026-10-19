@@ -31,10 +31,12 @@ Clickable, wireframe-fidelity Astro prototype of the proposed UWA website naviga
 
 ## Verifying in a browser
 
-Chromium is pre-installed. Use Playwright from the project:
+Chromium is pre-installed.
+
+Playwright isn't a project dependency: install it in the scratchpad (`PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 npm i playwright`) and import it from there.
 
 ```js
-import { chromium } from '/home/user/uwa-nav-proto/node_modules/playwright/index.mjs';
+import { chromium } from '<scratchpad>/node_modules/playwright/index.mjs';
 const b = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
 const ctx = await b.newContext({ viewport: { width: 1440, height: 900 }, reducedMotion: 'reduce' });
 // Skip the password screen:
@@ -42,5 +44,9 @@ await ctx.addInitScript(() => localStorage.setItem('uwa-nav-proto-auth', '32b508
 ```
 
 Serve `dist/` under the base path, e.g. a folder containing a symlink `uwa-nav-proto -> /home/user/uwa-nav-proto/dist`, then `python3 -m http.server 4402` in that folder and open `http://localhost:4402/uwa-nav-proto/`. Keep scripts and screenshots in the session scratchpad, not the repo.
+
+Check every change at **phone, tablet and desktop widths** (e.g. 320 and 390, 768, 1440): the compact layouts (`plan.md` 7e) take over below 1024px. Breakpoints are in `src/breakpoints.ts`; per-size tokens in the "SCREEN SIZES" blocks of `tokens.css`.
+
+Playwright's full-page screenshots briefly resize the window; the menus ignore brief layout flips (they react 150ms after a change settles), so take the screenshot after the menu state is set.
 
 For changes that shouldn't affect other variants, compare full-page screenshots against the previous commit: `git worktree add <dir> HEAD`, symlink `node_modules`, build there, serve on another port, and check the screenshots are byte-identical. Remove the worktree afterwards.

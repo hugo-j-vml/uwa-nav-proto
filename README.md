@@ -17,6 +17,8 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | To change… | Edit… |
 |---|---|
 | Spacing, sizes, colours, type, indent, selected style | `src/styles/tokens.css` (all values in one place; per-variant overrides in the blocks at the end) |
+| Breakpoints (mobile / tablet / desktop widths) and which sizes use the compact menus | `src/breakpoints.ts` (the only place they're set) |
+| Sizes per screen size; compact-layout values (takeover, top bar, drawer, their motion) | `src/styles/tokens.css`: "SCREEN SIZES" blocks (one per band, after the variant blocks) and "COMPACT LAYOUTS" |
 | Index page look (colours, font, sizes) | `--index-*` tokens in `src/styles/tokens.css` |
 | Variant names, and which variants are built | `src/variants/a.ts` … `e.ts` (`status: 'ready'` or `'coming-soon'`) |
 | The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below) |
@@ -26,7 +28,7 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Password | `src/config.ts` (see below) |
 | Fonts | Put the files in `public/fonts/` (names in `src/styles/fonts.css`). Novel Pro falls back to Crimson Pro (free). Index page and password screen: Snowflake Sans (`--index-font`). |
 | Layout/structure of components and templates | `src/styles/components.css`, `src/components/` and `src/templates/` |
-| Menu behaviour | `src/scripts/menu.ts` (A, B, C), `src/scripts/sidebar-menu.ts` (D, E), shared state in `src/lib/menu-state.ts`; option 1's co-brand menu bar: `src/components/SiteNav.astro` + `src/scripts/site-nav.ts` |
+| Menu behaviour (desktop and compact) | `src/scripts/menu.ts` (A, B, C), `src/scripts/sidebar-menu.ts` (D, E), shared state in `src/lib/menu-state.ts`; option 1's co-brand menu bar: `src/components/SiteNav.astro` + `src/scripts/site-nav.ts` |
 | Logos | `public/logos/` (horizontal: header; vertical: sidebar). Co-brand logo: a placeholder box (`--cobrand-logo-*` tokens) |
 | Version number on the index page | The latest heading in `CHANGELOG.md` (add an entry for each change). "Last updated" is the build time, in Perth time. |
 
@@ -94,6 +96,13 @@ Full specs per variant are in `plan.md` (sections 7–7d). In short:
 - **C** Static core with two panels: core pane, panel 1 (L2), panel 2 (L3); stops at L3.
 - **D** Sidebar with drill-down: fixed sidebar with the top-level items; a 540px pane drills down one level at a time, with Back.
 - **E** Sidebar menu button: fixed sidebar with a Menu button and shortcuts; Menu opens the same pane at the top level.
+
+### Mobile and tablet (compact layouts)
+
+Below 1024px wide (bands in `src/breakpoints.ts`: mobile under 640, tablet 640–1023) each variant keeps its desktop behaviour in a compact form (full spec: `plan.md` 7e):
+
+- **A–C** keep the header; the menu takes over the screen under it. **A**: one list, the selected item's sub-menu opens under it. **B**: one list, the chosen section opens under it as an accordion. **C**: the panels become full-screen layers that slide in from the right, each with Back.
+- **D, E**: a top bar (hamburger, logo, search) replaces the sidebar; the hamburger slides the sidebar in from the left as a drawer. The drill-down pane slides in over the drawer, with Back. D's drawer lists the top-level items; E's keeps the Menu button and shortcuts.
 
 ## Behaviour options
 

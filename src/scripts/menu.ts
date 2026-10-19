@@ -50,10 +50,26 @@
  *     B and C: the site's name and sections fill the white pane when the menu
  *       opens; choosing a top-level item shows that instead, and closing it
  *       again brings the site back.
+ *
+ * Compact layouts (mobile and tablet, src/breakpoints.ts): the menu takes over
+ * the screen under the header (the header stays at the top), sliding down as on
+ * desktop. Each variant keeps its desktop behaviour in one screen:
+ *   A: one list, the core pane. The selected item's sub-menu (its heading link and
+ *     children) opens under it, inside the list, instead of in the dynamic pane.
+ *   B: one list. The chosen section's items open under it as an accordion (the
+ *     white pane's behaviour, inline); open items get a ↓.
+ *   C: the core pane, panel 1 and panel 2 are full-screen layers: choosing an item
+ *     slides the next panel in from the right, over the last; each panel starts
+ *     with a Back row (named after where it goes back to). Items that open a
+ *     panel get a →. The menu still stops at L3.
+ *   Option 7 in B and C: the site's block sits above a divider and the top level,
+ *   as in A (there's no white pane beside the core pane to fill).
+ * Crossing between the compact and desktop layouts closes the menu.
  */
 
 import { indexTree, choose, toggle as toggleBranch, selected, pagePath, cobrandTop, cobrandNode, type MenuNode, type CobrandData } from '../lib/menu-state';
 import { getOption } from '../lib/options';
+import { isCompact, onLayoutChange } from '../lib/breakpoints';
 
 const header = document.querySelector<HTMLElement>('.primary-nav-header');
 if (header) init(header);
@@ -82,8 +98,13 @@ function init(header: HTMLElement) {
   const alongside = option === '7';
   const cbTop = cobrand ? cobrandTop(cobrand) : [];
   const cbNode = cobrand ? cobrandNode(cobrand) : undefined;
-  const stackedBlock = alongside && !accordion && !columns; // option 7 in A: site block above the top level
-  const siteInPane = alongside && (accordion || columns); // option 7 in B and C: the site fills the white pane by default
+  // Option 7 in A (and in B and C on compact screens): site block above the top level
+  const stackedBlock = () => alongside && ((!accordion && !columns) || isCompact());
+  // Option 7 in B and C on desktop: the site fills the white pane by default
+  const siteInPane = () => alongside && (accordion || columns) && !isCompact();
+  // Compact screens: A and B show everything in one list; C stacks its panels as layers
+  const oneList = () => isCompact() && !columns;
+  const layers = () => isCompact() && columns;
   let mode: 'core' | 'cobrand' = 'core';
   const topLevel = (): MenuNode[] => {
     if (mode === 'cobrand') return cbTop;
@@ -100,7 +121,6 @@ function init(header: HTMLElement) {
 
   // ---------- Motion helpers ----------
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const stacked = window.matchMedia('(max-width: 1024px)'); // interim small-screen layout: panes stack
   function token(name: string): string {
     return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   }
@@ -119,7 +139,7 @@ function init(header: HTMLElement) {
   }
 
   // ---------- Rendering ----------
-  function row(node: MenuNode, opts: { depth?: number; heading?: boolean; core?: boolean; leaf?: boolean } = {}): HTMLLIElement {
+  function row(node: MenuNode, opts: { depth?: number; heading?: boolean; core?: boolean; leaf?: boolean; inline?: boolean } = {}): HTMLLIElement {
     const li = document.createElement('li');
     const hasChildren = node.c.length > 0 && !opts.heading && !opts.leaf;
     const el = hasChildren ? document.createElement('button') : document.createElement('a');
@@ -138,16 +158,17 @@ function init(header: HTMLElement) {
       el.setAttribute('aria-current', 'page');
       // Highlight the page you're on in the sub-menu; in the core pane only when nothing
       // else is selected there, so the core pane never shows two black blocks
-      if (highlight && !opts.heading && (!opts.core || path.length === 0)) el.classList.add('is-current');
+      if (highlight && !opts.heading && (!opts.core || opts.inline || path.length === 0)) el.classList.add('is-current');
     }
     const label = document.createElement('span');
     label.className = 'menu-item-label';
     label.textContent = node.l;
     el.append(label);
     if (highlight) el.append(arrowTpl.content.cloneNode(true));
-    else if (hasChildren && path.includes(node.p) && (columns || !opts.core)) {
-      // B: an open parent in the white pane gets a ↓ next to its label.
-      // C: the open item in the core pane and panel 1 gets a →. Nothing else has an arrow.
+    else if (hasChildren && ((path.includes(node.p) && (columns || !opts.core || oneList())) || layers())) {
+      // B: an open parent in the white pane gets a ↓ next to its label (compact: in the one list, top level too).
+      // C: the open item in the core pane and panel 1 gets a → (compact: every item that opens a panel).
+      // Nothing else has an arrow.
       const arrow = arrowTpl.content.cloneNode(true) as DocumentFragment;
       arrow.querySelector('svg')?.classList.add(columns ? 'is-open' : 'is-down');
       el.append(arrow);
@@ -166,9 +187,24 @@ function init(header: HTMLElement) {
       coreList.append(row(top, { core: true }));
       if (highlight && path[0] === top.p) {
         path.slice(1).forEach((p, i) => { const n = byPath.get(p); if (n) coreList.append(row(n, { depth: i + 1, core: true })); });
+        // Compact A: the selected item's sub-menu (heading link, then children) opens under it
+        const sel = oneList() ? byPath.get(selected(path)) : undefined;
+        if (sel) {
+          coreList.append(row(sel, { depth: path.length, heading: true, inline: true }));
+          sel.c.forEach(child => coreList.append(row(child, { depth: path.length, inline: true })));
+        }
+      }
+      // Compact B: the chosen section's items open under it as an accordion
+      if (accordion && oneList() && path[0] === top.p) {
+        (function branch(list: MenuNode[], depth: number) {
+          for (const n of list) {
+            coreList.append(row(n, { depth, inline: true }));
+            if (path.includes(n.p)) branch(n.c, depth + 1);
+          }
+        })(top.c, 1);
       }
     };
-    if (stackedBlock) {
+    if (stackedBlock()) {
       // Option 7 in A: the site's block, then a divider and the University's top level
       coreList.append(siteTitleRow());
       cbTop.forEach(addTop);
@@ -306,7 +342,8 @@ function init(header: HTMLElement) {
     const current = byPath.get(target);
     dynamicList.replaceChildren();
     if (!current) { dynamicPane.hidden = true; return; }
-    if (siteInPane && current === cbNode) dynamicList.append(siteTitleRow()); // option 7 in B and C: the site's name on top
+    if (layers()) dynamicList.append(backRow(mode === 'cobrand' ? `${cobrand!.l} menu` : 'Main menu')); // compact C: back to the core list
+    if (siteInPane() && current === cbNode) dynamicList.append(siteTitleRow()); // option 7 in B and C: the site's name on top
     if (accordion || columns) {
       // B: the section's items, with the open branch expanded inline. C: the section's items only.
       (function branch(list: MenuNode[], depth: number) {
@@ -323,12 +360,28 @@ function init(header: HTMLElement) {
     dynamicPane.hidden = false;
   }
 
+  /** Compact C: the Back row at the top of a panel, named after where it goes back to. */
+  function backRow(label: string): HTMLLIElement {
+    const li = document.createElement('li');
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'menu-back';
+    btn.dataset.back = '';
+    btn.dataset.path = '~back';
+    const text = document.createElement('span');
+    text.textContent = label;
+    btn.append(arrowTpl.content.cloneNode(true), text);
+    li.append(btn);
+    return li;
+  }
+
   /** C: panel 2 lists the chosen L2's items, all as links (the menu stops at L3). */
   function fillPanel2(target: string) {
     if (!panel2 || !panel2List) return;
     const current = byPath.get(target);
     panel2List.replaceChildren();
     if (!current || !current.c.length) { panel2.hidden = true; return; }
+    if (layers()) panel2List.append(backRow(byPath.get(path[0])?.l ?? 'Back')); // compact C: back to panel 1
     for (const child of current.c) panel2List.append(row(child, { leaf: true }));
     panel2.setAttribute('aria-label', current.l);
     panel2.hidden = false;
@@ -351,7 +404,7 @@ function init(header: HTMLElement) {
       if (accordion && animate) animateRowChanges(list, oldRows, before);
       return;
     }
-    const slide = animate && !stacked.matches;
+    const slide = animate;
     // If a slide is already running (fast clicking), drop it and go straight to the new contents
     const busy = pane.getAnimations().length > 0;
     pane.getAnimations().forEach(a => a.cancel());
@@ -368,8 +421,35 @@ function init(header: HTMLElement) {
     }
   }
 
+  /**
+   * Compact C: show `target`'s items in a full-screen layer. A layer that opens
+   * slides in from the right over the one before; one that closes slides back out.
+   */
+  async function layerTo(slot: Slot, target: string, animate: boolean) {
+    const { pane } = slot;
+    const mine = ++slot.seq;
+    pane.getAnimations().forEach(a => a.cancel());
+    const frames = [{ transform: 'translateX(100%)' }, { transform: 'translateX(0)' }];
+    if (!target) {
+      if (animate && slot.shown && !pane.hidden) {
+        await play(pane, [...frames].reverse(), '--motion-layer-duration', '--motion-layer-easing');
+        if (mine !== slot.seq) return;
+      }
+      slot.shown = '';
+      slot.fill('');
+      return;
+    }
+    const opening = !slot.shown;
+    slot.shown = target;
+    slot.fill(target);
+    if (opening) pane.scrollTop = 0;
+    if (animate && opening) await play(pane, frames, '--motion-layer-duration', '--motion-layer-easing');
+  }
+
   /** Update the panes to the right of the core pane. */
   function renderDynamic(animate: boolean) {
+    if (oneList()) { slots.forEach(s => { s.seq++; s.shown = ''; s.pane.hidden = true; }); return Promise.resolve([]); }
+    if (layers()) return Promise.all([layerTo(dynamicSlot, path[0] ?? '', animate), ...(panel2Slot ? [layerTo(panel2Slot, path[1] ?? '', animate)] : [])]);
     // A: the selected item's sub-menu. B and C: the chosen section (B's branches open and close in place).
     const target = accordion || columns ? (path[0] ?? '') : selected(path);
     const jobs = [slideTo(dynamicSlot, target, animate)];
@@ -393,7 +473,8 @@ function init(header: HTMLElement) {
       closing = false;
       path = []; // always open at the top level, as on the homepage
       mode = replaces ? 'cobrand' : 'core'; // option 2: start on the co-branded site's menu
-      if (alongside && !stackedBlock) path = [cbNode!.p]; // option 7 in B and C: the site is already chosen
+      if (siteInPane()) path = [cbNode!.p]; // option 7 in B and C: the site is already chosen
+      document.documentElement.classList.toggle('menu-open', isCompact()); // compact: lock the page behind the takeover
       slots.forEach(s => { s.shown = ''; s.pane.getAnimations().forEach(a => a.cancel()); });
       renderCore();
       await renderDynamic(false);
@@ -406,6 +487,7 @@ function init(header: HTMLElement) {
         closeDuration, '--motion-core-easing');
       if (!closing) return; // reopened mid-close
       panes.hidden = true;
+      document.documentElement.classList.remove('menu-open');
       path = [];
       slots.forEach(s => { s.shown = ''; });
       closing = false;
@@ -428,9 +510,18 @@ function init(header: HTMLElement) {
     // A: clicking the selected item closes its sub-menu; any other item opens its own.
     // B and C: clicking the chosen section closes it (and everything open under it).
     path = accordion || columns ? toggleBranch(path, p) : choose(path, p);
-    if (siteInPane && !path.length) path = [cbNode!.p]; // option 7 in B and C: closing a section brings the site back
+    if (siteInPane() && !path.length) path = [cbNode!.p]; // option 7 in B and C: closing a section brings the site back
     render(true);
     focusPath(p);
+  });
+
+  // Compact C: Back closes the top layer
+  panes.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('button.menu-back')) return;
+    const from = path[path.length - 1];
+    path = path.slice(0, -1);
+    render(true);
+    if (from) focusPath(from);
   });
 
   dynamicList.addEventListener('click', (e) => {
@@ -461,6 +552,19 @@ function init(header: HTMLElement) {
   });
   // Coming back with the browser's Back button can restore this page from cache: reset
   window.addEventListener('pageshow', () => { leaving = false; });
+
+  // Crossing between the compact and desktop layouts: close the menu straight away, without motion
+  onLayoutChange(() => {
+    if (!open) return;
+    open = false;
+    closing = false;
+    toggle.setAttribute('aria-expanded', 'false');
+    slots.forEach(s => { s.seq++; s.shown = ''; s.pane.getAnimations().forEach(a => a.cancel()); s.pane.hidden = true; });
+    panes.getAnimations().forEach(a => a.cancel());
+    panes.hidden = true;
+    document.documentElement.classList.remove('menu-open');
+    path = [];
+  });
 
   // Click anywhere outside the menu panes (and not on the Menu button) closes the menu
   document.addEventListener('click', (e) => {

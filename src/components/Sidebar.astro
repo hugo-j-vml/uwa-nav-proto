@@ -10,6 +10,11 @@
  * switch between the two; CSS decides which shows), and the site's name and
  * sections at the top of the top-level list, above a divider (option 7; also
  * shown by CSS).
+ * Compact layouts (mobile and tablet): a top bar (hamburger, horizontal logo,
+ * the co-brand logo placeholder on co-branded pages, search) replaces the
+ * sidebar's logos, and the sidebar becomes a drawer that slides in from the
+ * left under the bar, over a scrim. The drill-down pane then opens over the
+ * drawer, a level deeper.
  */
 import Icon from './Icons.astro';
 import { nodes, shortcuts, href, variantBase, base, cobrandData, type Cobrand } from '../lib/nav';
@@ -22,7 +27,19 @@ type Compact = { l: string; p: string; c: Compact[] };
 const compact = (list: typeof nodes): Compact[] => list.map(n => ({ l: n.label, p: n.path, c: compact(n.children) }));
 const data = JSON.stringify({ base: variantBase(variant), tree: compact(nodes), cobrand: site ? cobrandData(site) : undefined }).replace(/</g, '\\u003c');
 ---
-<aside class:list={['sidebar', { 'has-cobrand': site }]} data-sidebar data-current-path={currentPath} data-menu-layout={menu}>
+{/* Compact layouts only (hidden on desktop by CSS) */}
+<div class="mobile-bar" data-mobile-bar>
+  <button class="mobile-bar-button" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Menu" data-drawer-toggle>
+    <span class="icon-closed"><Icon name="menu" /></span>
+    <span class="icon-open"><Icon name="menu-open" /></span>
+  </button>
+  <a class="mobile-bar-logo" href={href('', variant)}><img src={`${base}logos/uwa-horizontal.svg`} alt="The University of Western Australia: home" width="216" height="71" /></a>
+  {cobrand && <a class="cobrand-logo" href={cobrand.href} aria-label={`${cobrand.label}: home`}><span aria-hidden="true">Co-brand<br />Logo</span></a>}
+  <button class="mobile-bar-button mobile-bar-search" type="button" aria-label="Search (not available in this prototype)" data-bar-search><Icon name="search" /></button>
+</div>
+<div class="drawer-scrim" data-drawer-scrim hidden></div>
+
+<aside id="sidebar" class:list={['sidebar', { 'has-cobrand': site }]} data-sidebar data-current-path={currentPath} data-menu-layout={menu}>
   <a class="sidebar-logo" href={href('', variant)}><img src={`${base}logos/uwa-vertical.svg`} alt="The University of Western Australia: home" width="94" height="162" /></a>
   {cobrand && <a class="cobrand-logo sidebar-cobrand-logo" href={cobrand.href} aria-label={`${cobrand.label}: home`}><span aria-hidden="true">Co-brand<br />Logo</span></a>}
 

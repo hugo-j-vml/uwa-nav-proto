@@ -56,7 +56,7 @@ a { color: inherit; text-decoration: none; }
   width: var(--cobrand-logo-width); height: var(--cobrand-logo-height);
   margin: calc((var(--header-height) - var(--cobrand-logo-height)) / 2 - var(--header-padding-top)) 0 0 var(--cobrand-logo-gap);
   background: var(--colour-white); color: var(--colour-black);
-  font-family: var(--font-ui); font-size: var(--type-ui-size); line-height: 1.3;
+  font-family: var(--font-ui); font-size: var(--cobrand-logo-text-size); line-height: 1.3;
 }
 
 .header-controls,
@@ -258,14 +258,6 @@ a { color: inherit; text-decoration: none; }
 .drill-back[hidden] { display: none; }
 .drill-back .menu-item-arrow { transform: rotate(180deg); }
 
-/* Narrow screens (interim): the sidebar sits on top of the page instead of beside it */
-@media (max-width: 640px) {
-  [data-shell="sidebar"] .page { margin-left: 0; }
-  .sidebar { position: relative; inset: auto; width: auto; }
-  .sidebar-logo img { width: 47px; height: 81px; }
-  .drill-pane { left: 0; width: 100%; }
-}
-
 /* ---------- Page templates (wireframe) ---------- */
 .page { position: relative; }
 
@@ -459,25 +451,9 @@ html.is-locked .gate {
 .gate button:focus-visible { outline: var(--index-rule-width) solid var(--index-text); outline-offset: 3px; }
 .gate .gate-error { color: var(--gate-error); min-height: 1.25em; }
 
-/* ---------- Smaller screens (interim, until tablet/mobile designs exist) ----------
-   Keeps the desktop system usable on narrow screens without inventing a
-   mobile design: panes stack and fill the width, header controls wrap. */
-@media (max-width: 1024px) {
-  .menu-panes { right: var(--panes-left); flex-direction: column; }
-  .core-pane, .dynamic-pane, .panel-2 { width: auto; min-height: 0; }
-  .header-bar { flex-wrap: wrap; row-gap: 12px; }
-  .course-cards .placeholder, .course-cards .placeholder.short { height: auto; aspect-ratio: 357 / 746; }
-}
-/* Header shortcuts (Study / Impact / Research) hide below 800px wide */
+/* Header shortcuts (Study / Impact / Research) hide below 800px wide, where they don't fit beside the Menu button */
 @media (max-width: 799.98px) {
   .header-shortcuts { display: none; }
-}
-@media (max-width: 640px) {
-  .page-title { font-size: calc(var(--type-h1-size) * 0.6); }
-  .course-actions { flex-direction: column; gap: 12px; }
-  .course-cards { flex-direction: column; }
-  .course-cards .col { width: 100%; }
-  :root { --pane-padding-left: 24px; --pane-padding-right: 24px; --pane-padding-top: 24px; --pane-padding-bottom: 24px; --panes-left: 12px; --header-padding-x: 12px; }
 }
 
 /* ---------- Page transitions (cross-document view transitions) ----------
@@ -628,3 +604,111 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 [data-opt-cobrand-menu="7"] .sidebar-cobrand-item { display: block; }
 .sidebar-cobrand-item .sidebar-site-title { margin-top: 0; }
 .sidebar-divider { margin: var(--menu-group-gap) 0; border-top: 1px solid var(--colour-black); }
+
+/* ==========================================================================
+   COMPACT LAYOUTS (mobile and tablet: html[data-layout="compact"], set from
+   src/breakpoints.ts). Values are tokens (tokens.css, "COMPACT LAYOUTS" and
+   "SCREEN SIZES"). Behaviour: src/scripts/menu.ts (A–C) and
+   src/scripts/sidebar-menu.ts (D, E).
+   ========================================================================== */
+
+/* ---------- Page content ---------- */
+[data-bp="mobile"] .course-actions { flex-direction: column; }
+[data-bp="mobile"] .course-cards { flex-direction: column; }
+[data-bp="mobile"] .course-cards .col { width: 100%; }
+[data-layout="compact"] .course-cards .placeholder,
+[data-layout="compact"] .course-cards .placeholder.short { height: auto; aspect-ratio: 357 / 746; }
+[data-bp="mobile"] .course-cards .placeholder,
+[data-bp="mobile"] .course-cards .placeholder.short { aspect-ratio: 4 / 3; }
+/* Co-branded tiles share the width (same 937:503 split as at 1440) instead of running off the right */
+[data-layout="compact"] .cobranded-tiles .placeholder { flex: 503 1 0; width: auto; }
+[data-layout="compact"] .cobranded-tiles .placeholder:first-child { flex-grow: 937; }
+
+/* ---------- A–C: header ---------- */
+/* Mobile: logo left, Menu and Search right, all on one row */
+[data-bp="mobile"] .header-controls { margin-left: auto; }
+/* Mobile, co-branded pages: the Menu button shows just its icon, to leave room for the co-brand logo (fits at 320px) */
+[data-bp="mobile"] .primary-nav-header.is-cobrand .menu-button { width: var(--button-height); padding: 0; justify-content: center; }
+[data-bp="mobile"] .primary-nav-header.is-cobrand .menu-button-label {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+/* While the menu is open the header stays at the top of the screen, with its band, over the page */
+html[data-layout="compact"].menu-open { overflow: hidden; }
+html[data-layout="compact"].menu-open .primary-nav-header { position: fixed; }
+html[data-layout="compact"].menu-open .primary-nav-header.is-transparent::before { background: var(--header-bg); }
+
+/* ---------- A–C: full-screen takeover under the header ---------- */
+[data-layout="compact"] .menu-panes {
+  position: fixed; top: var(--header-height); right: 0; bottom: 0; left: 0;
+  display: block; overflow-y: auto; overscroll-behavior: contain;
+  background: var(--takeover-bg);
+}
+[data-layout="compact"] .menu-panes[hidden] { display: none; }
+[data-layout="compact"] .menu-panes .pane {
+  width: auto; min-height: 100%;
+  padding: var(--takeover-padding-top) var(--takeover-padding-x) var(--takeover-padding-bottom);
+}
+[data-layout="compact"] .core-pane { background: var(--takeover-bg); color: var(--takeover-text); }
+/* A and B: one list. The sub-menu opens inside the core list (A: under the selected item; B: as an accordion) */
+[data-layout="compact"] .primary-nav-header:not([data-menu-layout="columns"]) .dynamic-pane { display: none; }
+[data-layout="compact"] .menu-item-label { max-width: none; }
+/* B: the ↓ on an open item sits right after its label, in the one list */
+[data-layout="compact"][data-variant="b"] .core-pane .menu-item { justify-content: flex-start; gap: var(--b-open-arrow-gap); }
+/* C: the core pane and the two panels are full-screen layers; each panel slides in over the last, with Back */
+[data-layout="compact"] [data-menu-layout="columns"] .menu-panes { overflow: hidden; }
+[data-layout="compact"] [data-menu-layout="columns"] .menu-panes .pane { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior: contain; border-left: 0; }
+[data-layout="compact"] [data-menu-layout="columns"] .core-pane { z-index: 1; }
+[data-layout="compact"] [data-menu-layout="columns"] .dynamic-pane { z-index: 2; }
+[data-layout="compact"] [data-menu-layout="columns"] .panel-2 { z-index: 3; }
+.menu-back {
+  display: flex; align-items: center; gap: 8px; margin-bottom: calc(var(--takeover-back-gap) - var(--item-gap));
+  font-family: var(--font-ui); font-size: var(--type-ui-size); color: inherit;
+}
+.menu-back .menu-item-arrow { transform: rotate(180deg); color: currentColor; }
+
+/* ---------- D, E: top bar and drawer ---------- */
+.mobile-bar, .drawer-scrim { display: none; }
+[data-layout="compact"] .mobile-bar {
+  display: flex; align-items: center; gap: var(--bar-logo-gap);
+  position: sticky; top: 0; z-index: 40;
+  height: var(--bar-height); padding: 0 var(--bar-padding-x);
+  background: var(--bar-bg);
+}
+.mobile-bar-button {
+  flex: none; width: var(--bar-button-size); height: var(--bar-button-size);
+  display: flex; align-items: center; justify-content: center; color: var(--colour-black);
+}
+.mobile-bar-button svg { width: var(--menu-icon-size); height: var(--menu-icon-size); }
+.mobile-bar-search { margin-left: auto; }
+.mobile-bar-search svg { width: 36px; height: 36px; }
+.mobile-bar-button .icon-open { display: none; }
+.mobile-bar-button[aria-expanded='true'] .icon-open { display: block; }
+.mobile-bar-button[aria-expanded='true'] .icon-closed { display: none; }
+.mobile-bar-logo { flex: none; display: block; }
+.mobile-bar-logo img { display: block; width: var(--bar-logo-width); height: var(--bar-logo-height); }
+.mobile-bar .cobrand-logo { margin: 0 0 0 var(--cobrand-logo-gap); }
+
+[data-layout="compact"][data-shell="sidebar"] .page { margin-left: 0; }
+[data-layout="compact"] .sidebar {
+  top: var(--bar-height); width: var(--drawer-width);
+  padding: var(--drawer-padding-top) var(--drawer-padding-x);
+  visibility: hidden; transform: translateX(-100%);
+}
+[data-layout="compact"] .sidebar.is-open { visibility: visible; transform: none; }
+[data-layout="compact"] :is(.sidebar-logo, .sidebar-cobrand-logo) { display: none; } /* the logos are in the top bar */
+[data-layout="compact"] .sidebar-search { margin-top: 0; }
+[data-layout="compact"] .sidebar-list { gap: var(--drawer-item-gap); }
+[data-layout="compact"] .sidebar-item { font-size: var(--drawer-item-size); }
+[data-layout="compact"] .sidebar-item .menu-item-arrow { display: block; } /* D: every item that drills down shows its → */
+/* The drill-down pane covers the drawer, sliding in from the right as a level deeper */
+[data-layout="compact"] .drill-pane {
+  top: var(--bar-height); left: 0; z-index: 35;
+  width: var(--drawer-width);
+  padding: var(--drawer-padding-top) var(--drawer-padding-x);
+}
+[data-layout="compact"] .drawer-scrim {
+  display: block; position: fixed; inset: var(--bar-height) 0 0 0; z-index: 25;
+  background: var(--scrim);
+}
+[data-layout="compact"] .drawer-scrim[hidden] { display: none; }
+html[data-layout="compact"].menu-open { overflow: hidden; }

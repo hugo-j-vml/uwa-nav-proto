@@ -29,9 +29,21 @@
  *     divider and the top-level items. A section opens the pane at its pages.
  *   E: Menu opens the pane on the site's name and sections, above a divider
  *     and the normal top level.
+ *
+ * Compact layouts (mobile and tablet, src/breakpoints.ts): a top bar with a
+ * hamburger replaces the sidebar's logos. The hamburger slides the sidebar in
+ * from the left as a drawer, under the bar and over a scrim; it shows the
+ * sidebar's contents as on desktop (D: search and the top-level items; E: search,
+ * the Menu button and the shortcuts). The drill-down pane opens over the
+ * drawer, sliding in from the right as a level deeper, and always has Back:
+ * from its first level, Back slides it away to the drawer again. The hamburger
+ * again, Esc or a tap outside the drawer closes everything; a page link closes
+ * the drawer first, then navigates. Crossing between the compact and desktop
+ * layouts closes the menu.
  */
 import { indexTree, pagePath, cobrandTop, cobrandNode, type MenuNode, type CobrandData } from '../lib/menu-state';
 import { getOption } from '../lib/options';
+import { isCompact, onLayoutChange } from '../lib/breakpoints';
 
 const sidebar = document.querySelector<HTMLElement>('[data-sidebar]');
 if (sidebar) init(sidebar);
@@ -121,8 +133,9 @@ function init(sidebar: HTMLElement) {
       for (const top of topLevel()) list.append(row(top));
       pane.setAttribute('aria-label', mode === 'cobrand' ? `${cobrand!.l} menu` : 'Main menu');
     }
-    // D starts the pane at a top-level item's children, so Back appears from the second level
-    back.hidden = menuButton ? path.length === 0 : path.length <= 1;
+    // D starts the pane at a top-level item's children, so Back appears from the second level.
+    // Compact: always, as the pane covers the drawer (Back from the first level returns to it).
+    back.hidden = isCompact() ? false : menuButton ? path.length === 0 : path.length <= 1;
     // D: mark the open top-level item in the sidebar
     sidebar.querySelectorAll<HTMLElement>('.sidebar-item').forEach(item => {
       const on = open && item.dataset.path === path[0];
@@ -205,22 +218,27 @@ function init(sidebar: HTMLElement) {
   }
 
   // ---------- Open / close ----------
+  // Desktop: the pane slides out from under the sidebar. Compact: it slides in from the right
+  // over the drawer, clipped to the drawer's width so it never shows over the page.
+  const paneIn = (): [Keyframe[], string, string] => isCompact()
+    ? [[{ transform: 'translateX(100%)', clipPath: 'inset(0 100% 0 0)' }, { transform: 'translateX(0)', clipPath: 'inset(0 0 0 0)' }], '--motion-layer-duration', '--motion-layer-easing']
+    : [[{ transform: 'translateX(-100%)' }, { transform: 'translateX(0)' }], '--motion-core-duration', '--motion-core-easing'];
   let closing = false;
-  async function setOpen(next: boolean, closeDuration = '--motion-core-duration') {
+  async function setOpen(next: boolean, closeDuration?: string) {
     if (next === open) return;
     open = next;
+    const [frames, duration, easing] = paneIn();
     if (open) {
       closing = false;
       pane.getAnimations().forEach(a => a.cancel());
       fill();
       pane.hidden = false;
-      await play(pane, [{ transform: 'translateX(-100%)' }, { transform: 'translateX(0)' }],
-        '--motion-core-duration', '--motion-core-easing');
+      pane.scrollTop = 0;
+      await play(pane, frames, duration, easing);
     } else {
       closing = true;
       fill(); // drop the sidebar's open marker straight away
-      await play(pane, [{ transform: 'translateX(0)' }, { transform: 'translateX(-100%)' }],
-        closeDuration, '--motion-core-easing');
+      await play(pane, [...frames].reverse(), closeDuration ?? duration, easing);
       if (!closing) return; // reopened mid-close
       pane.hidden = true;
       path = [];
@@ -265,6 +283,13 @@ function init(sidebar: HTMLElement) {
   });
 
   back.addEventListener('click', () => {
+    // Compact, at the pane's first level: slide the pane away, back to the drawer
+    if (isCompact() && path.length <= (menuButton ? 0 : 1)) {
+      const returnTo = menuButton ? toggle : sidebar.querySelector<HTMLElement>(`.sidebar-item[data-path="${CSS.escape(path[0] ?? '')}"]`);
+      setOpen(false);
+      returnTo?.focus();
+      return;
+    }
     path = path.slice(0, -1);
     fill();
     slideContents(-1);
@@ -280,13 +305,77 @@ function init(sidebar: HTMLElement) {
     e.preventDefault();
     if (leaving) return;
     leaving = true;
-    await setOpen(false, '--motion-menu-exit-duration');
+    await (isCompact() ? setDrawer(false, '--motion-menu-exit-duration') : setOpen(false, '--motion-menu-exit-duration'));
     window.location.href = link.href;
   });
   window.addEventListener('pageshow', () => { leaving = false; });
 
-  // Click anywhere outside the pane and the trigger closes the menu
+  // ---------- Compact: the drawer ----------
+  const barToggle = document.querySelector<HTMLButtonElement>('[data-drawer-toggle]');
+  const scrim = document.querySelector<HTMLElement>('[data-drawer-scrim]');
+  let drawer = false;
+  async function setDrawer(next: boolean, closeDuration = '--motion-drawer-duration') {
+    if (next === drawer) return;
+    drawer = next;
+    barToggle?.setAttribute('aria-expanded', String(drawer));
+    const frames = [{ transform: 'translateX(-100%)' }, { transform: 'translateX(0)' }];
+    if (drawer) {
+      sidebar.getAnimations().forEach(a => a.cancel());
+      sidebar.classList.add('is-open');
+      if (scrim) scrim.hidden = false;
+      document.documentElement.classList.add('menu-open');
+      sidebar.scrollTop = 0;
+      await play(sidebar, frames, '--motion-drawer-duration', '--motion-drawer-easing');
+    } else {
+      const out = [...frames].reverse();
+      const jobs = [play(sidebar, out, closeDuration, '--motion-drawer-easing')];
+      if (open) jobs.push(play(pane, out, closeDuration, '--motion-drawer-easing')); // the pane leaves with the drawer
+      await Promise.all(jobs);
+      if (drawer) return; // reopened mid-close
+      resetDrawer();
+    }
+  }
+  /** Close the drawer and the pane at once, without motion. */
+  function resetDrawer() {
+    drawer = false;
+    barToggle?.setAttribute('aria-expanded', 'false');
+    sidebar.classList.remove('is-open');
+    if (scrim) scrim.hidden = true;
+    document.documentElement.classList.remove('menu-open');
+    [sidebar, pane].forEach(el => el.getAnimations().forEach(a => a.cancel()));
+    open = false;
+    closing = false;
+    pane.hidden = true;
+    path = [];
+    fill();
+  }
+  barToggle?.addEventListener('click', () => setDrawer(!drawer));
+  document.querySelector<HTMLButtonElement>('[data-bar-search]')?.addEventListener('click', () => {
+    window.alert('Search is not available in this prototype.');
+  });
+  // Page links in the drawer itself (D: items without children; E: shortcuts; the site's name): close it first
+  sidebar.addEventListener('click', async (e) => {
+    const link = (e.target as HTMLElement).closest<HTMLAnchorElement>('a[href]');
+    if (!link || !drawer) return;
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    if (leaving) return;
+    leaving = true;
+    await setDrawer(false, '--motion-menu-exit-duration');
+    window.location.href = link.href;
+  });
+  // Crossing between the compact and desktop layouts closes everything straight away
+  onLayoutChange(() => resetDrawer());
+
+  // Click anywhere outside the pane and the trigger closes the menu (compact: outside the drawer closes the drawer)
   document.addEventListener('click', (e) => {
+    if (isCompact()) {
+      if (!drawer) return;
+      const where = e.composedPath();
+      if (where.includes(sidebar) || where.includes(pane) || (barToggle && where.includes(barToggle))) return;
+      setDrawer(false);
+      return;
+    }
     if (!open) return;
     const where = e.composedPath();
     if (where.includes(pane) || triggers.some(t => where.includes(t))) return;
@@ -294,6 +383,7 @@ function init(sidebar: HTMLElement) {
   });
 
   document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isCompact() && drawer) { setDrawer(false); barToggle?.focus(); return; }
     if (e.key !== 'Escape' || !open) return;
     // D: the sidebar item that opened the pane (the visible one: a site's section can be in both lists)
     const returnTo = sideList ? [...sidebar.querySelectorAll<HTMLElement>(`.sidebar-item[data-path="${CSS.escape(path[0] ?? '')}"]`)].find(el => el.offsetParent) : toggle;

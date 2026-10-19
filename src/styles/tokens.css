@@ -67,6 +67,7 @@
   --cobrand-logo-width: 135px;         /* placeholder box until the entity's logo is supplied */
   --cobrand-logo-height: 86px;
   --cobrand-logo-gap: 36px;            /* UWA logo to co-brand logo */
+  --cobrand-logo-text-size: var(--type-ui-size); /* "Co-brand Logo" placeholder text */
   --header-button-gap: 12px;           /* between Menu/Search, and between shortcuts */
   --shortcuts-margin-right: 19px;      /* extra inset of shortcut buttons from the right */
   --button-height: 36px;
@@ -178,12 +179,10 @@
   --cobranded-page-title-size: 48px;   /* page title inside a co-branded site */
   --cobranded-page-title-gap: 48px;    /* breadcrumb (or menu bar) to title, and title to the first placeholder */
 
-  /* ---------- Breakpoints (placeholders until tablet/mobile designs exist) ---------- */
-  /* CSS can't use variables inside @media, so these are for reference;
-     the matching @media rules are in components.css. */
-  --bp-tablet: 1024px;
-  --bp-hide-shortcuts: 800px;          /* header shortcuts hide below this width */
-  --bp-mobile: 640px;
+  /* ---------- Breakpoints ---------- */
+  /* The bands (mobile < 640, tablet 640–1023, desktop 1024+) and which of them
+     use the compact menu layouts are set in src/breakpoints.ts. Values for each
+     band are in the "SCREEN SIZES" blocks near the end of this file. */
 
   /* ---------- Motion ---------- */
   /* Core menu: slides down from under the header band on open, back up on close */
@@ -293,17 +292,15 @@
 
 /* Index page on phones (below 640px wide): smaller fixed sizes.
    Text sizes stay fixed while resizing; they only change at this width. */
-@media (max-width: 640px) {
-  :root {
-    --index-gutter: 16px;
-    --index-intro-size: 15px;
-    --index-item-size: 24px;
-    --index-tag-size: 12px;
-    --index-wordmark-width: 72px;
-    --index-build-size: 12px;
-    --gate-title-size: 24px;
-    --gate-gap: 16px;
-  }
+[data-bp="mobile"] {
+  --index-gutter: 16px;
+  --index-intro-size: 15px;
+  --index-item-size: 24px;
+  --index-tag-size: 12px;
+  --index-wordmark-width: 72px;
+  --index-build-size: 12px;
+  --gate-title-size: 24px;
+  --gate-gap: 16px;
 }
 
 /* ==========================================================================
@@ -335,3 +332,124 @@
   --c-open-arrow-gap: 12px;            /* label to → */
 }
 
+
+/* ==========================================================================
+   COMPACT LAYOUTS (mobile and tablet; which bands use them is set in
+   src/breakpoints.ts). Mirror each variant's desktop behaviour:
+   A–C keep the header and the menu takes over the screen under it;
+   D and E get a top bar with a hamburger that slides a drawer in from the left.
+   ========================================================================== */
+:root {
+  /* A–C: full-screen takeover under the header */
+  --takeover-bg: var(--colour-ironbark-80);  /* A and B: one list (the core pane's colours) */
+  --takeover-text: var(--colour-white);
+  --takeover-padding-top: 24px;
+  --takeover-padding-x: 24px;
+  --takeover-padding-bottom: 48px;
+  --takeover-back-gap: 16px;           /* C: Back row to the first item in a panel */
+  /* D, E: top bar (hamburger, logo, search) and the drawer */
+  --bar-height: 64px;
+  --bar-bg: var(--sidebar-bg);
+  --bar-padding-x: 4px;
+  --bar-button-size: 48px;             /* hamburger and search tap targets */
+  --bar-logo-width: 122px;             /* UWA horizontal logo in the bar */
+  --bar-logo-height: 40px;
+  --bar-logo-gap: 4px;                 /* hamburger to logo */
+  --drawer-width: min(85vw, 360px);
+  --drawer-padding-top: 24px;
+  --drawer-padding-x: 24px;
+  --drawer-item-size: 18px;            /* D: top-level items in the drawer */
+  --drawer-item-gap: 20px;
+  --scrim: rgb(0 0 0 / 0.4);           /* over the page while the drawer is open */
+  /* Motion: the drawer slides in from the left; C's panels and D/E's levels slide in from the right */
+  --motion-drawer-duration: 300ms;
+  --motion-drawer-easing: ease-out;
+  --motion-layer-duration: 300ms;
+  --motion-layer-easing: ease-out;
+}
+
+/* ==========================================================================
+   SCREEN SIZES: overrides per band (src/breakpoints.ts sets data-bp on <html>).
+   Desktop uses the values above. These blocks come after the variant blocks,
+   so they win over them; add a variant to the selector to tune one variant
+   at one size, e.g. [data-bp="mobile"][data-variant="c"].
+   ========================================================================== */
+
+/* Tablet (640–1023px): desktop header, compact menus, slightly smaller type */
+[data-bp="tablet"] {
+  --type-h1-size: 48px;
+  --type-cobranded-h1-size: 48px;
+  --page-gutter: 32px;
+  --takeover-padding-top: 40px;
+  --takeover-padding-x: 40px;
+  --bar-height: 72px;
+  --drawer-width: 400px;
+  --course-hero-height: 640px;
+  --cobranded-hero-height: 400px;
+  --cobranded-tile-height: 400px;
+}
+
+/* Mobile (below 640px; must work down to 320px) */
+[data-bp="mobile"] {
+  /* Header (A–C): logo, Menu and Search on one row */
+  --header-height: 72px;
+  --header-padding-top: 0px;
+  --header-padding-x: 16px;
+  --logo-width: 128px;
+  --logo-height: 42px;
+  --header-controls-offset-top: 18px;  /* (header height - button height) / 2 */
+  --header-button-gap: 8px;
+  --menu-button-width: 92px;
+  --cobrand-logo-width: 52px;          /* co-branded pages: placeholder next to UWA's logo */
+  --cobrand-logo-height: 34px;
+  --cobrand-logo-gap: 10px;
+  --cobrand-logo-text-size: 10px;
+  /* Type */
+  --type-h1-size: 36px;
+  --type-h3-size: 22px;
+  --type-h4-size: 20px;
+  --type-h5-size: 16px;
+  --type-eyebrow-size: 16px;
+  --type-body-intro-size: 18px;
+  --type-cobranded-h1-size: 34px;
+  /* Menus */
+  --item-indent: 16px;
+  --item-gap: 12px;
+  --takeover-padding-x: 16px;
+  --drawer-padding-x: 20px;
+  /* Pages */
+  --page-gutter: 16px;
+  --breadcrumb-top: 96px;              /* header height + 24 */
+  --breadcrumb-to-title: 20px;
+  --landing-title-top: 96px;
+  --content-title-to-image: 32px;
+  --placeholder-gap: 32px;
+  --course-hero-height: 560px;
+  --course-eyebrow-top: 112px;
+  --course-intro-to-buttons: 32px;
+  --course-button-width: 100%;
+  --course-button-height: 56px;
+  --course-button-gap: 12px;
+  --course-hero-to-tabs: 32px;
+  --course-tabs-height: 56px;
+  --course-tabs-to-body: 32px;
+  --course-body-to-cards: 32px;
+  --course-card-gap-y: 32px;
+  --cobranded-hero-top: 144px;         /* 24px under the breadcrumb */
+  --cobranded-hero-height: 240px;
+  --cobranded-title-top: 24px;
+  --cobranded-tile-height: 200px;
+  --cobranded-page-title-size: 32px;
+  --cobranded-page-title-gap: 32px;
+  --site-nav-name-size: 22px;
+  --site-nav-name-gap: 24px;
+  --site-nav-gap: 16px;
+}
+
+/* D and E on compact screens: the top bar sits above the page (not over it), so pages start just below it */
+[data-layout="compact"][data-shell="sidebar"] {
+  --breadcrumb-top: 32px;
+  --landing-title-top: 32px;
+  --cobranded-hero-top: calc(var(--breadcrumb-top) + 48px); /* 24px under the breadcrumb */
+  --placeholder-inset: 0px;            /* no sidebar beside the page */
+}

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.27.0 (19 Oct 2026)
+
+- **Mobile and tablet versions of all five variants.** Below 1024px wide, each variant keeps its desktop behaviour in a compact form (first versions, to iterate on; spec in `plan.md` 7e):
+  - **A**: the header stays; the menu takes over the screen under it. One list: the selected item's sub-menu (heading link and children) opens under it, with the black selected and current-page blocks.
+  - **B**: as A, with the chosen section's items opening under it as an accordion (↓ on open items).
+  - **C**: as A, with the core pane and the two panels as full-screen layers; each panel slides in from the right, with a Back row ("Main menu", then the section). Still stops at L3.
+  - **D**: a top bar (hamburger, horizontal UWA logo, search) replaces the sidebar; the hamburger slides the sidebar in from the left as a drawer, over a scrim. The drill-down pane slides in over the drawer, with Back (from its first level, back to the drawer).
+  - **E**: as D; the drawer keeps the Menu button and shortcuts, and Menu opens the drill-down pane at the top level.
+  - Co-branded pages: the co-brand logo placeholder shrinks to fit (A–C header; D and E top bar); on mobile, A–C's Menu button shows just its icon. Option 7 in B and C uses A's layout on these sizes.
+- **Breakpoints in one place**: `src/breakpoints.ts` (mobile under 640px, tablet 640–1023px, desktop from 1024px; the Tailwind CSS scale). An early script sets `data-bp` and `data-layout` on `<html>` and keeps them up to date on resize; `tokens.css` has an override block per screen size and the compact-layout values (takeover, top bar, drawer, motion). Crossing between desktop and compact closes any open menu.
+- Removed the interim small-screen layout (stacked panes, sidebar on top of the page). Pages (titles, course and co-branded templates) are sized for phones and tablets.
+- Desktop (1024px and up) is unchanged; checked pixel for pixel against 0.26.1 at 1100 and 1440px. At exactly 1024px the desktop layout now applies (it was the interim stacked layout).
+
 ## 0.26.1 (15 Oct 2026)
 
 - Breadcrumbs hidden on co-branded pages: the gap closes up. The first thing on the page (the option 1 menu bar, the hero or the page title) now starts where the breadcrumb was: 37px under the header in A–C, 60px from the top in D and E (was about 60px lower). With breadcrumbs shown, nothing changes.

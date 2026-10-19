@@ -30,7 +30,7 @@ From 15 Oct, the prototype hosts **several nav concepts (variants)** side by sid
 | 1 | Desktop menu states | ✅ Received | Figma section "Core menu opens with submenu journey" (`606:11615`), 5 frames at 1440px. Frame numbering fixed by Hugo. |
 | 2 | Content page templates | ✅ Received | Figma section "Page templates" (`607:11926`): landing, content, course, co-branded site |
 | 3 | Proposed sitemap / IA tree | ✅ Received 8 Oct | 137 pages, 5 levels. Built as v0.3 with a template column added; Figma extras (Current students, News, Events, Library, Staff) kept as top-level items |
-| 4 | Tablet and mobile frames | ⏳ To come | Hugo designing soon |
+| 4 | Tablet and mobile frames | ⏳ Not needed to start | 19 Oct: Hugo asked for first versions built from each variant's desktop behaviour (Section 7e), to iterate on; frames to follow only where needed |
 | 5 | Font files | ✅ Done 15 Oct | TT Norms Pro, Melun Display UWA and Inter, working in the prototype |
 | 6 | Test tasks | ⏳ Later | Used to set start pages and target pages, not to shape the build |
 | 7 | Variant B designs | ✅ Received 15 Oct | Desktop mockup (labels predate the new IA). Built as v0.8 |
@@ -135,7 +135,7 @@ All values Hugo will want to iterate on live in `src/styles/tokens.css` as comme
 | **Panes** | Core pane width (483px), dynamic pane width (481px), pane padding (50px / 57px), pane top offset, dynamic pane min-height |
 | **Menu items** | Item gap (8px), item height, row padding, arrow size (24px), **indent per nesting level** (starting value measured from the frame, ~18px) |
 | **Selected state** | Selected row background (black) and text colour (white) |
-| **Breakpoints** | Placeholders until tablet and mobile designs exist |
+| **Breakpoints** | Bands in `src/breakpoints.ts`; values per band in the "SCREEN SIZES" blocks of `tokens.css` (Section 7e) |
 | **Motion** | Durations and easing per preset (Section 8) |
 
 Nesting indent is applied as real padding per level, not with spaces in the text, so it's controlled by a single value.
@@ -211,6 +211,36 @@ Alternative behaviours are switched across all variants with **behaviour options
 
 Options 2 and 7 break "the menu always opens at the top level", on co-branded pages only.
 
+## 7e. Compact layouts: mobile and tablet (all variants)
+
+Agreed 19 Oct 2026. First versions, built from each variant's desktop behaviour, to iterate on. Hugo's brief: keep the variants distinct and close to their desktop partners; keep configuration to a minimum; A–C keep the header with a full-screen takeover; D and E get a sliding drawer from the left with a hamburger, as on the Material Design site.
+
+**Breakpoints** (`src/breakpoints.ts`, the only place they're set). Hugo proposed mobile up to 400px; that would put common large phones (Pixel 412px, iPhone Plus/Pro Max 430–440px) in the tablet band, so we use the standard Tailwind CSS scale (sm 640, lg 1024), which the code already used:
+
+| Band | Width | Examples | Menus |
+|------|-------|----------|-------|
+| Mobile | below 640px (works at 320px) | all phones in portrait | compact |
+| Tablet | 640–1023px | iPad mini portrait (744/768), phones in landscape | compact |
+| Desktop | 1024px and up | iPads in landscape (1024–1180), laptops | desktop (Sections 7–7c) |
+
+`COMPACT` in the same file lists which bands use the compact layouts. An early script sets `data-bp` (band) and `data-layout` (`compact`/`full`) on `<html>`; `tokens.css` has an override block per band ("SCREEN SIZES"), and compact-only values in "COMPACT LAYOUTS". Crossing between the layouts closes any open menu.
+
+**Per variant:**
+
+| Variant | Shell | Menu (compact) | Mirrors desktop by… |
+|---|---|---|---|
+| **A** | Header stays; menu takes over the screen under it, sliding down | One list (the core pane). Choosing an item nests the path under its top-level item as on desktop, and its sub-menu (heading link, then children) opens **under the selected item**, inside the list. Black block on the selected item and the current page. | the dynamic pane opening inline instead of to the right |
+| **B** | As A | One list. The chosen section's items open under it as an **accordion** (the white pane, inline); open items get ↓; one branch open at a time. | the white pane opening inline |
+| **C** | As A | The core pane, panel 1 (L2) and panel 2 (L3) are **full-screen layers**: choosing an item slides the next panel in from the right; each panel starts with a Back row named after where it goes ("Main menu", then the section). Items that open a panel get →. Stops at L3. Panel colours as desktop. | panels stacking instead of sitting side by side |
+| **D** | Top bar: hamburger, horizontal UWA logo, search icon. Hamburger slides the sidebar in from the left as a **drawer** under the bar, over a scrim. | Drawer: search field and the top-level items (→ on those that drill down). Choosing one slides the drill-down pane in from the right **over the drawer**: heading, children, Back; Back from the first level returns to the drawer. | the sidebar becoming the drawer; the drill-down pane as on desktop |
+| **E** | As D | Drawer: search field, Menu button, shortcuts. Menu slides the drill-down pane in at the top level; Back returns to the drawer. | the sidebar becoming the drawer, Menu button kept |
+
+**Common:** the hamburger again (D, E), the Menu button again (A–C), Esc, or a tap outside closes; a page link closes the menu first, then navigates; the page behind doesn't scroll while a menu is open.
+
+**Co-branded pages:** A–C header: the co-brand logo placeholder shrinks to 52 × 34 next to a smaller UWA logo, and on mobile the Menu button shows just its icon so it all fits at 320px. D, E: the placeholder sits in the top bar after the UWA logo. Option 1's menu bar wraps onto more rows. Options 2 and 7 work as on desktop, except **option 7 in B and C** uses A's layout (the site's block above a divider and the top level), as there's no white pane beside the core pane to fill.
+
+**Tablet** uses the same compact menus, with the desktop header (A–C) and a 400px drawer (D, E); only sizes differ (tokens).
+
 ## 8. Motion
 
 Built in v0.4 for variant A, and saved as preset "A":
@@ -223,10 +253,8 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 ## 9. Responsive behaviour
 
 - The prototype responds live to the browser width, so the same build shows the desktop, tablet and mobile behaviour on real devices and by resizing a browser.
-- **v1:** desktop layout only (1440px frames), scaling sensibly on smaller screens without dedicated layouts.
-- **Tablet and mobile layouts** will be added once Hugo's designs are ready, with breakpoints held in the tokens file.
-- **Decided 12 Oct:** the interim stacked panes on small screens don't work. They'll be replaced by a **single menu pane that combines the core and dynamic menus**; Hugo is designing it first, so don't build yet.
-- **Built 12 Oct:** header shortcuts hide below 800px wide.
+- **Built 19 Oct (v0.27):** compact layouts for mobile and tablet in all five variants (Section 7e). The interim stacked panes (rejected 12 Oct) are gone.
+- Header shortcuts (A–C) still hide below 800px wide, where they don't fit beside the Menu button.
 
 ## 10. Phases
 
@@ -236,7 +264,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 | **1. Data model** | `sitemap.json` and validation report | Hugo checks it against the sitemap |
 | **2. Desktop nav** | Header, core pane and dynamic pane in all states, click-only, with selected states and the tokens file | ✅ v0.1 built 8 Oct with stand-in sitemap (Figma labels only); awaiting Hugo review |
 | **3. Content pages** | Generated pages for every node, with breadcrumbs and current-state indicators | ✅ v0.2 (8 Oct): landing, content, course and co-branded templates from Figma section *Page templates* (`607:11926`), assigned via a `template` column in the sitemap CSV |
-| **4. Tablet and mobile** | Responsive layouts and breakpoints | Hugo reviews against Figma |
+| **4. Tablet and mobile** | Responsive layouts and breakpoints | ✅ First versions built 19 Oct (v0.27, Section 7e); Hugo reviews and iterates |
 | **5. Motion** | Transitions per Section 8 | ✅ v0.4 (9 Oct): menu slides down/up 500ms ease-out; sub-menu retreats left under the core pane (200ms) and slides back out (300ms) |
 | **5a. Variants** | Variant setup, index page, A moved to `/a/`, then B–E | ✅ All five built 15 Oct (v0.7–v0.11); behaviour options for cross-variant experiments (v0.18) |
 | **6. Test readiness** | Deep links, hosting, and a pilot run in Maze/Lyssna | A pilot task completes cleanly in the testing tool |
@@ -270,6 +298,15 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 7f. Index page: B is "Static core with dynamic panel" (Hugo, 15 Oct); C's name ("Static core with two panels") and D/E's names are stand-ins. Intro copy: "UWA Navigation Prototyping System" (Hugo, v0.21.1).
 7g. Co-branded sites, open: which Co-brand menu option goes forward (1, 2 or 7, being tested); whether search on co-branded pages covers the site, UWA or both; the co-brand menu's visual design (switch rows, headings and the option 1 bar are wireframe stand-ins).
 
+7h. Compact layouts (v0.27), built as assumptions, to confirm:
+   - A: the sub-menu's heading row repeats the selected item's name (as desktop's dynamic pane heading does), so the section's page stays reachable.
+   - C: the → on every item that opens a panel, and the Back labels ("Main menu", then the section's name).
+   - D: the → on every top-level item in the drawer (desktop shows it only on the open one).
+   - E: the drawer keeps the Menu button (one extra tap to reach the top level), to stay true to desktop E.
+   - Co-branded pages on mobile, A–C: the Menu button shows only its icon. Option 7 in B and C uses A's layout.
+   - Tablet uses the compact menus; landscape iPads (1024px and up) get desktop.
+   - The Shift+O options panel needs a keyboard; on phones, preset options with a link (e.g. `?cobrand-menu=7`).
+
 **Testing and hosting**
 
 7. Which testing tool is primary for the unmoderated round: Maze or Lyssna?
@@ -296,7 +333,6 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 
 ## 13. Out of scope (v1)
 
-- Tablet and mobile layouts (Phase 4)
 - Visual or brand design beyond wireframe, real content and imagery
 - Any IA or labelling recommendations from Claude
 - Analytics beyond what the testing tools capture

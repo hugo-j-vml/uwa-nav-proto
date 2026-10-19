@@ -9,6 +9,7 @@ import Sidebar from '../components/Sidebar.astro';
 import PasswordGate from '../components/PasswordGate.astro';
 import { PASSWORD_SHA256, PROTOTYPE_NAME } from '../config';
 import { OPTIONS, OPTIONS_KEY } from '../options';
+import { BREAKPOINTS, COMPACT } from '../breakpoints';
 import OptionsPanel from '../components/OptionsPanel.astro';
 import type { Variant } from '../variants';
 import type { Cobrand } from '../lib/nav';
@@ -52,6 +53,34 @@ const { title, variant, currentPath = '', transparentHeader = false, cobrand } =
         if (changed) try { localStorage.setItem(key, JSON.stringify(saved)); } catch (e) {}
         // Drop the option from the address once remembered, so a later change (e.g. in the Shift+O panel) isn't undone on reload
         if (changed) { var q = params.toString(); history.replaceState(history.state, '', location.pathname + (q ? '?' + q : '') + location.hash); }
+      })();
+    </script>
+    <!-- Breakpoints (src/breakpoints.ts): data-bp (mobile / tablet / desktop) and data-layout
+         (compact / full) on <html>, set before the page paints and kept up to date on resize.
+         A change of layout fires "layoutchange" on document (once settled), so the menus can reset. -->
+    <script is:inline define:vars={{ bps: BREAKPOINTS, compact: COMPACT }}>
+      (function () {
+        var html = document.documentElement;
+        var tablet = matchMedia('(min-width: ' + bps.tablet + 'px)');
+        var desktop = matchMedia('(min-width: ' + bps.desktop + 'px)');
+        var announced, timer;
+        function apply() {
+          var bp = desktop.matches ? 'desktop' : tablet.matches ? 'tablet' : 'mobile';
+          var layout = compact.indexOf(bp) !== -1 ? 'compact' : 'full';
+          html.dataset.bp = bp;
+          html.dataset.layout = layout;
+          if (!announced) { announced = layout; return; }
+          // Tell the menus once the size has settled (a brief flip, e.g. while a window is dragged, is ignored)
+          clearTimeout(timer);
+          timer = setTimeout(function () {
+            if (html.dataset.layout === announced) return;
+            announced = html.dataset.layout;
+            document.dispatchEvent(new CustomEvent('layoutchange'));
+          }, 150);
+        }
+        apply();
+        tablet.addEventListener('change', apply);
+        desktop.addEventListener('change', apply);
       })();
     </script>
   </head>
