@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** v0.9. Prototype v0.7 (15 Oct 2026): reviewed 2026 IA loaded, variant A moved to `/a/`, variant index page built (Section 4a)
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype v0.29.5 (19 Oct 2026): five variants (A–E) on desktop, mobile and tablet (Section 7e); behaviour options for co-branded sites (7d); C's "In this section" grid (7b); animated index background. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -249,7 +249,7 @@ Agreed 19 Oct 2026. First versions, built from each variant's desktop behaviour,
 Built in v0.4 for variant A, and saved as preset "A":
 
 - The menu slides down to open and up to close (500ms, ease-out).
-- Sub-menus close by retreating to the left, sliding underneath the core menu (200ms), and slide back out to open (300ms).
+- Sub-menus close by retreating to the left, sliding underneath the core menu (200ms), and slide back out to open (300ms). A pane wider than the one it slides from (B's white pane, C's panels) is clipped at that pane's right edge while it moves, so it always seems to come from behind it (v0.29.5).
 
 All variants start on preset A. Per-variant tweaks come as Figma notes.
 
