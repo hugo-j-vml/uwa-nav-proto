@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.29.3 (19 Oct 2026)
+
+- Menu arrows now match their label's colour: white on the grey core pane (A, and A and B on phones and tablets) and on selected rows, black on the light panes. `--item-arrow-colour` is `currentColor`.
+
 ## 0.29.2 (19 Oct 2026)
 
 - Menu arrows are black instead of Vivid Blue, in every variant and at every screen size (A's core and dynamic panes, the D/E drill-down pane, the C panel headings, the Back arrows). On a selected black row they stay white. New token `--item-arrow-colour`.

@@ -290,7 +290,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
    - Clicking the selected item closes its sub-menu, stepping back one level.
    - Closing the menu resets it; reopening starts at the top level.
    - Esc closes the menu.
-   - Menu arrows are black (`--item-arrow-colour`, v0.29.2; were Vivid Blue); on a selected black row they are white (`--item-selected-arrow`).
+   - Menu arrows match their label colour (`--item-arrow-colour`, v0.29.3; were Vivid Blue): white on the grey core pane and on selected rows, black on light panes.
 7c. The closed-state frame (1) has a hidden 11th top-level item, **Giving**, that isn't in the open frames. Should it be in or out? (Currently out.)
 7c-ii. ~~Co-branded breadcrumb~~ **Resolved (v0.15.1):** co-branded pages use the short form, UWA › site name; pages in the site's own IA continue from there.
 7c-iii. Course page Enquire/Apply buttons and the in-page tabs bar are static (no action). Should they do anything in testing?

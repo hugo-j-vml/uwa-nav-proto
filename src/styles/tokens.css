@@ -91,7 +91,7 @@
   /* ---------- Menu items ---------- */
   --item-gap: 8px;                     /* vertical space between items */
   --item-arrow-size: 24px;
-  --item-arrow-colour: var(--colour-black); /* menu arrows (were Vivid Blue until v0.29.2); white on a selected black row (below) */
+  --item-arrow-colour: currentColor;   /* menu arrows match their label (v0.29.3; black in 0.29.2, Vivid Blue before) */
   --item-label-max-width: 330px;       /* label wraps beyond this */
   --item-indent: 27px;                 /* indent per nesting level in the core pane (was 18px, +50%) */
   --dynamic-heading-height: 45px;      /* heading row in the dynamic pane */
