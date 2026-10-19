@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.29.6 (19 Oct 2026)
+
+- E, phones and tablets: the hamburger now opens the drawer straight on the menu's top level, skipping the drawer with the Menu button. There's no Back at the top level (the hamburger closes the menu); Back appears from the second level as on desktop. The drawer's Menu button and shortcuts no longer show at these sizes. D and desktop E are unchanged.
+
 ## 0.29.5 (19 Oct 2026)
 
 - B and C, desktop: the sub-menu panes now come out from behind the pane to their left exactly as in A. B's white pane and C's panel 1 are wider than the core pane, so while sliding they're clipped at the core pane's right edge and never show in the strip to the menu's left (the 0.29.4 fade didn't hide it and is removed, with its `--motion-submenu-fade` token). Same for C's panel 2 behind panel 1. A looks the same as before.

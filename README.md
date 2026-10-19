@@ -102,7 +102,7 @@ Full specs per variant are in `plan.md` (sections 7–7d). In short:
 Below 1024px wide (bands in `src/breakpoints.ts`: mobile under 640, tablet 640–1023) each variant keeps its desktop behaviour in a compact form (full spec: `plan.md` 7e):
 
 - **A–C** keep the header; the menu takes over the screen under it. **A**: one list, the selected item's sub-menu opens under it. **B**: one list, the chosen section opens under it as an accordion. **C**: the panels become full-screen layers that slide in from the right, each with Back and a heading linking to the chosen item's page.
-- **D, E**: a top bar (hamburger, logo, search) replaces the sidebar; the hamburger slides the sidebar in from the left as a drawer. The drill-down pane slides in over the drawer, with Back. D's drawer lists the top-level items; E's keeps the Menu button and shortcuts.
+- **D, E**: a top bar (hamburger, logo, search) replaces the sidebar; the hamburger slides the sidebar in from the left as a drawer. The drill-down pane slides in over the drawer, with Back. D's drawer lists the top-level items; in E the hamburger opens straight on the pane at the top level (no Menu button step).
 
 ## Behaviour options
 

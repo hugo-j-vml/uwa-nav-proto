@@ -33,10 +33,12 @@
  * Compact layouts (mobile and tablet, src/breakpoints.ts): a top bar with a
  * hamburger replaces the sidebar's logos. The hamburger slides the sidebar in
  * from the left as a drawer, under the bar and over a scrim; it shows the
- * sidebar's contents as on desktop (D: search and the top-level items; E: search,
- * the Menu button and the shortcuts). The drill-down pane opens over the
- * drawer, sliding in from the right as a level deeper, and always has Back:
- * from its first level, Back slides it away to the drawer again. The hamburger
+ * sidebar's contents as on desktop (D: search and the top-level items). The
+ * drill-down pane opens over the drawer, sliding in from the right as a level
+ * deeper, and always has Back: from its first level, Back slides it away to the
+ * drawer again. E skips its Menu button step: the hamburger opens the drawer
+ * with the pane already on it at the top level (no Back there, as the hamburger
+ * closes it), and the pane drills down as on desktop. The hamburger
  * again, Esc or a tap outside the drawer closes everything; a page link closes
  * the drawer first, then navigates. Crossing between the compact and desktop
  * layouts closes the menu.
@@ -134,8 +136,8 @@ function init(sidebar: HTMLElement) {
       pane.setAttribute('aria-label', mode === 'cobrand' ? `${cobrand!.l} menu` : 'Main menu');
     }
     // D starts the pane at a top-level item's children, so Back appears from the second level.
-    // Compact: always, as the pane covers the drawer (Back from the first level returns to it).
-    back.hidden = isCompact() ? false : menuButton ? path.length === 0 : path.length <= 1;
+    // Compact D: always, as the pane covers the drawer (Back from the first level returns to it).
+    back.hidden = menuButton ? path.length === 0 : !isCompact() && path.length <= 1;
     // D: mark the open top-level item in the sidebar
     sidebar.querySelectorAll<HTMLElement>('.sidebar-item').forEach(item => {
       const on = open && item.dataset.path === path[0];
@@ -283,9 +285,9 @@ function init(sidebar: HTMLElement) {
   });
 
   back.addEventListener('click', () => {
-    // Compact, at the pane's first level: slide the pane away, back to the drawer
-    if (isCompact() && path.length <= (menuButton ? 0 : 1)) {
-      const returnTo = menuButton ? toggle : sidebar.querySelector<HTMLElement>(`.sidebar-item[data-path="${CSS.escape(path[0] ?? '')}"]`);
+    // Compact D, at the pane's first level: slide the pane away, back to the drawer
+    if (isCompact() && !menuButton && path.length <= 1) {
+      const returnTo = sidebar.querySelector<HTMLElement>(`.sidebar-item[data-path="${CSS.escape(path[0] ?? '')}"]`);
       setOpen(false);
       returnTo?.focus();
       return;
@@ -325,6 +327,19 @@ function init(sidebar: HTMLElement) {
       if (scrim) scrim.hidden = false;
       document.documentElement.classList.add('menu-open');
       sidebar.scrollTop = 0;
+      if (menuButton) {
+        // E: the pane is already on the drawer at the top level, and slides in with it
+        path = [];
+        mode = replaces ? 'cobrand' : 'core';
+        open = true;
+        closing = false;
+        pane.getAnimations().forEach(a => a.cancel());
+        fill();
+        pane.hidden = false;
+        pane.scrollTop = 0;
+        await Promise.all([sidebar, pane].map(el => play(el, frames, '--motion-drawer-duration', '--motion-drawer-easing')));
+        return;
+      }
       await play(sidebar, frames, '--motion-drawer-duration', '--motion-drawer-easing');
     } else {
       const out = [...frames].reverse();
