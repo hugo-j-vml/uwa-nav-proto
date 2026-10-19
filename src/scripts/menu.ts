@@ -60,8 +60,9 @@
  *     white pane's behaviour, inline); open items get a ↓.
  *   C: the core pane, panel 1 and panel 2 are full-screen layers: choosing an item
  *     slides the next panel in from the right, over the last; each panel starts
- *     with a Back row (named after where it goes back to). Items that open a
- *     panel get a →. The menu still stops at L3.
+ *     with a Back row, then a heading naming the chosen item, which links to its
+ *     page (as A's dynamic pane heading). Items that open a panel get a →. The
+ *     menu still stops at L3.
  *   Option 7 in B and C: the site's block sits above a divider and the top level,
  *   as in A (there's no white pane beside the core pane to fill).
  * Crossing between the compact and desktop layouts closes the menu.
@@ -164,7 +165,7 @@ function init(header: HTMLElement) {
     label.className = 'menu-item-label';
     label.textContent = node.l;
     el.append(label);
-    if (highlight) el.append(arrowTpl.content.cloneNode(true));
+    if (highlight || (opts.heading && layers())) el.append(arrowTpl.content.cloneNode(true)); // compact C: the panel heading links on, as A's
     else if (hasChildren && ((path.includes(node.p) && (columns || !opts.core || oneList())) || layers())) {
       // B: an open parent in the white pane gets a ↓ on the right of its row (compact: in the one list, top level too).
       // C: the open item in the core pane and panel 1 gets a → (compact: every item that opens a panel).
@@ -342,7 +343,7 @@ function init(header: HTMLElement) {
     const current = byPath.get(target);
     dynamicList.replaceChildren();
     if (!current) { dynamicPane.hidden = true; return; }
-    if (layers()) dynamicList.append(backRow(mode === 'cobrand' ? `${cobrand!.l} menu` : 'Main menu')); // compact C: back to the core list
+    if (layers()) dynamicList.append(backRow(), row(current, { heading: true })); // compact C: Back, then a heading linking to the section's page
     if (siteInPane() && current === cbNode) dynamicList.append(siteTitleRow()); // option 7 in B and C: the site's name on top
     if (accordion || columns) {
       // B: the section's items, with the open branch expanded inline. C: the section's items only.
@@ -360,8 +361,8 @@ function init(header: HTMLElement) {
     dynamicPane.hidden = false;
   }
 
-  /** Compact C: the Back row at the top of a panel, named after where it goes back to. */
-  function backRow(label: string): HTMLLIElement {
+  /** Compact C: the Back row at the top of a panel. */
+  function backRow(): HTMLLIElement {
     const li = document.createElement('li');
     const btn = document.createElement('button');
     btn.type = 'button';
@@ -369,7 +370,7 @@ function init(header: HTMLElement) {
     btn.dataset.back = '';
     btn.dataset.path = '~back';
     const text = document.createElement('span');
-    text.textContent = label;
+    text.textContent = 'Back';
     btn.append(arrowTpl.content.cloneNode(true), text);
     li.append(btn);
     return li;
@@ -381,7 +382,7 @@ function init(header: HTMLElement) {
     const current = byPath.get(target);
     panel2List.replaceChildren();
     if (!current || !current.c.length) { panel2.hidden = true; return; }
-    if (layers()) panel2List.append(backRow(byPath.get(path[0])?.l ?? 'Back')); // compact C: back to panel 1
+    if (layers()) panel2List.append(backRow(), row(current, { heading: true })); // compact C: Back, then a heading linking to the L2's page
     for (const child of current.c) panel2List.append(row(child, { leaf: true }));
     panel2.setAttribute('aria-label', current.l);
     panel2.hidden = false;

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.29.1 (19 Oct 2026)
+
+- C on mobile and tablet: each panel's Back row now just says "← Back" (was "Main menu" or the section's name). Under it, a heading names the chosen item (e.g. "Study at UWA", then "Explore courses") and links to its page, as the dynamic pane heading does in A, so a section's own page is reachable from the menu. Desktop C is unchanged.
+
 ## 0.29.0 (19 Oct 2026)
 
 - Index page and password screen: the flat black background now has a fine halftone dot grid, with soft diagonal "facets" of slightly brighter dots that drift across and pulse very slowly (after the VML presentation template reference). CSS only, no effect on the content; still when the device asks for reduced motion. Tunable with the `--index-bg-*` tokens (dot spacing and size, facet brightness and angle, wave and pulse speed).

@@ -233,7 +233,7 @@ Agreed 19 Oct 2026. First versions, built from each variant's desktop behaviour,
 |---|---|---|---|
 | **A** | Header stays; menu takes over the screen under it, sliding down | One list (the core pane). Choosing an item nests the path under its top-level item as on desktop, and its sub-menu (heading link, then children) opens **under the selected item**, inside the list. Black block on the selected item and the current page. | the dynamic pane opening inline instead of to the right |
 | **B** | As A | One list. The chosen section's items open under it as an **accordion** (the white pane, inline); open items get ↓; one branch open at a time. | the white pane opening inline |
-| **C** | As A | The core pane, panel 1 (L2) and panel 2 (L3) are **full-screen layers**: choosing an item slides the next panel in from the right; each panel starts with a Back row named after where it goes ("Main menu", then the section). Items that open a panel get →. Stops at L3. Panel colours as desktop. | panels stacking instead of sitting side by side |
+| **C** | As A | The core pane, panel 1 (L2) and panel 2 (L3) are **full-screen layers**: choosing an item slides the next panel in from the right; each panel starts with "← Back", then a heading naming the chosen item that links to its page, as in A (v0.29.1). Items that open a panel get →. Stops at L3. Panel colours as desktop. | panels stacking instead of sitting side by side |
 | **D** | Top bar: hamburger, horizontal UWA logo, search icon. Hamburger slides the sidebar in from the left as a **drawer** under the bar, over a scrim. | Drawer: search field and the top-level items (→ on those that drill down). Choosing one slides the drill-down pane in from the right **over the drawer**: heading, children, Back; Back from the first level returns to the drawer. | the sidebar becoming the drawer; the drill-down pane as on desktop |
 | **E** | As D | Drawer: search field, Menu button, shortcuts. Menu slides the drill-down pane in at the top level; Back returns to the drawer. | the sidebar becoming the drawer, Menu button kept |
 
@@ -302,7 +302,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 
 7h. Compact layouts (v0.27), built as assumptions, to confirm:
    - A: the sub-menu's heading row repeats the selected item's name (as desktop's dynamic pane heading does), so the section's page stays reachable.
-   - C: the → on every item that opens a panel, and the Back labels ("Main menu", then the section's name).
+   - C: the → on every item that opens a panel.
    - D: the → on every top-level item in the drawer (desktop shows it only on the open one).
    - E: the drawer keeps the Menu button (one extra tap to reach the top level), to stay true to desktop E.
    - Co-branded pages on mobile, A–C: the Menu button shows only its icon. Option 7 in B and C uses A's layout.
