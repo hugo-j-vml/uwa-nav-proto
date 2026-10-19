@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.30.1 (19 Oct 2026)
+
+- F, desktop: the panes under the topmost panel are no longer live menus. Their items don't respond, so a half-hidden label can't take you to a page; clicking anywhere on one goes back to it, closing the panels above it (clicking the core pane's strip goes back to the core menu alone). From the keyboard, each covered pane is a "Back to …" button. Phones and tablets unchanged.
+
 ## 0.30.0 (19 Oct 2026)
 
 - New variant **F, Stacking panels** (`/f/`, Hugo's mockups): C without the L3 limit. Each chosen item opens its items in a new panel that stacks over the pane before, leaving a strip of each earlier pane showing, so every level of the IA (down to L5) is reachable from the menu. The topmost panel is the lightest; each one further back is darker. Strips narrow to fit when there are too many for the window. New panels fade in from a little to the right. Headings, arrows and closing as C.

@@ -21,7 +21,11 @@
  *     tinted by distance from the topmost: lightest on top, darker further back.
  *     Items with children are always buttons, so every level is reachable.
  *     A new panel is laid on the stack: it comes in from a little to the right,
- *     fading in (and leaves the same way). Headings, arrows and closing as C.
+ *     fading in (and leaves the same way). Headings and arrows as C.
+ *     The panes under the topmost one aren't menus any more: their items don't
+ *     respond, and clicking anywhere on one (or Enter on it from the keyboard)
+ *     goes back to it, closing the panels above it (the core pane: back to the
+ *     core menu alone).
  *   B, C and F have no black highlights (no selected or current-page block).
  *
  * State is an "open path": the chain of items whose sub-menus are open,
@@ -434,14 +438,55 @@ function init(header: HTMLElement) {
     levelSlots.push(slot);
     slots.push(slot);
   }
-  /** F: each pane paints over the one before; panels are tinted by how far they are from the topmost one. */
+  /**
+   * F: each pane paints over the one before; panels are tinted by how far they are from the topmost one.
+   * Desktop: the panes under the topmost one become "go back here" targets (their items stop responding).
+   */
+  const corePane = coreList.parentElement!;
+  const stackPanes = () => [corePane, ...slots.map(s => s.pane)];
   function stackDepths() {
     const top = path.length; // index of the topmost pane (0: the core pane)
     panes.style.setProperty('--stack-count', String(top + 1));
-    coreList.parentElement!.style.zIndex = '1';
-    slots.forEach((s, i) => {
-      s.pane.style.zIndex = String(i + 2);
-      s.pane.style.setProperty('--stack-depth', String(Math.max(0, top - (i + 1))));
+    stackPanes().forEach((pane, i) => {
+      pane.style.zIndex = String(i + 1);
+      if (i) pane.style.setProperty('--stack-depth', String(Math.max(0, top - i)));
+      const under = i < top && !layers();
+      pane.classList.toggle('is-under', under);
+      pane.querySelector('ul')!.inert = under;
+      if (under) {
+        pane.tabIndex = 0;
+        pane.setAttribute('role', 'button');
+        pane.setAttribute('aria-label', `Back to ${i ? byPath.get(path[i - 1])?.l : 'the main menu'}`);
+      } else if (pane.hasAttribute('role')) {
+        pane.removeAttribute('tabindex');
+        pane.removeAttribute('role');
+        if (i) pane.setAttribute('aria-label', byPath.get(path[i - 1])?.l ?? '');
+        else pane.removeAttribute('aria-label');
+      }
+    });
+  }
+  /** F: go back to a pane under the topmost one, closing the panels above it. */
+  function backToPane(pane: HTMLElement) {
+    const i = stackPanes().indexOf(pane);
+    returned = '';
+    path = path.slice(0, i);
+    render(true);
+    pane.querySelector<HTMLElement>('.menu-item')?.focus();
+  }
+  if (stack) {
+    // Capture phase, so the click never reaches the (inert) items or the other handlers
+    panes.addEventListener('click', (e) => {
+      const pane = (e.target as HTMLElement).closest<HTMLElement>('.pane.is-under');
+      if (!pane) return;
+      e.preventDefault();
+      e.stopPropagation();
+      backToPane(pane);
+    }, true);
+    panes.addEventListener('keydown', (e) => {
+      const pane = e.target as HTMLElement;
+      if (!pane.classList?.contains('is-under') || (e.key !== 'Enter' && e.key !== ' ')) return;
+      e.preventDefault();
+      backToPane(pane);
     });
   }
 
@@ -508,12 +553,13 @@ function init(header: HTMLElement) {
   /** Update the panes to the right of the core pane. */
   function renderDynamic(animate: boolean) {
     if (oneList()) { slots.forEach(s => { s.seq++; s.shown = ''; s.pane.hidden = true; }); return Promise.resolve([]); }
-    if (stack) { while (slots.length < path.length) addLevelSlot(); stackDepths(); }
-    if (layers()) return Promise.all(slots.map((s, i) => layerTo(s, path[i] ?? '', animate)));
+    if (stack) while (slots.length < path.length) addLevelSlot();
+    if (layers()) { const jobs = Promise.all(slots.map((s, i) => layerTo(s, path[i] ?? '', animate))); if (stack) stackDepths(); return jobs; }
     // A: the selected item's sub-menu. B and C: the chosen section (B's branches open and close in place).
     const target = accordion || columns ? (path[0] ?? '') : selected(path);
     const jobs = [slideTo(dynamicSlot, target, animate)];
     levelSlots.forEach((s, i) => jobs.push(slideTo(s, path[i + 1] ?? '', animate)));
+    if (stack) stackDepths(); // after the panes have refreshed their contents (which resets their labels)
     return Promise.all(jobs);
   }
 

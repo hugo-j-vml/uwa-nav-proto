@@ -198,6 +198,8 @@ a { color: inherit; text-decoration: none; }
   transition: background-color var(--motion-stack-duration) ease-out, margin-left var(--motion-stack-duration) ease-out;
 }
 .stack-pane[hidden] { display: none; }
+/* The panes under the topmost one: clicking one goes back to it (its items don't respond) */
+[data-menu-layout="stack"] .pane.is-under { cursor: pointer; }
 [data-layout="full"] [data-menu-layout="stack"] .menu-panes {
   /* Strips narrow when there are too many to fit beside the topmost panel */
   --stack-peek-fit: min(var(--stack-peek), (100vw - 2 * var(--panes-left) - var(--stack-panel-width)) / max(1, var(--stack-count, 1) - 1));
