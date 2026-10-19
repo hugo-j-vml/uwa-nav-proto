@@ -406,18 +406,23 @@ function init(header: HTMLElement) {
       return;
     }
     const slide = animate;
+    // --motion-submenu-fade: 1 (B) also fades the pane in from 0% as it slides out, and back out as it retreats,
+    // so a pane wider than the core pane isn't seen crossing the strip to its left
+    const fade = token('--motion-submenu-fade') === '1';
+    const hiddenFrame: Keyframe = fade ? { transform: 'translateX(-100%)', opacity: 0 } : { transform: 'translateX(-100%)' };
+    const shownFrame: Keyframe = fade ? { transform: 'translateX(0)', opacity: 1 } : { transform: 'translateX(0)' };
     // If a slide is already running (fast clicking), drop it and go straight to the new contents
     const busy = pane.getAnimations().length > 0;
     pane.getAnimations().forEach(a => a.cancel());
     if (slide && slot.shown && !busy) {
-      await play(pane, [{ transform: 'translateX(0)' }, { transform: 'translateX(-100%)' }],
+      await play(pane, [shownFrame, hiddenFrame],
         '--motion-submenu-out-duration', '--motion-submenu-out-easing');
       if (mine !== slot.seq) return; // a newer click has taken over
     }
     slot.shown = target;
     slot.fill(target);
     if (slide && target) {
-      await play(pane, [{ transform: 'translateX(-100%)' }, { transform: 'translateX(0)' }],
+      await play(pane, [hiddenFrame, shownFrame],
         '--motion-submenu-in-duration', '--motion-submenu-in-easing');
     }
   }

@@ -171,6 +171,7 @@ Agreed 15 Oct 2026. Everything not listed here is as variant A (Section 7).
 - **Arrows:** none, except the ↓ on an open parent (black, as the mockup).
 - **Highlight:** none. *(Changed 15 Oct, v0.9: the black blocks on the chosen section and the current page were removed.)*
 - **Closing, Esc, click-outside, page-link motion:** as A. Always opens at the top level (v0.10).
+- **White pane motion:** slides out from under the core pane as in A, fading in from 0% opacity as it goes (v0.29.4, `--motion-submenu-fade`), as it's wider than the core pane and would otherwise be seen crossing the strip to the menu's left.
 
 ## 7b. Interaction specification (desktop, variant C)
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.29.4 (19 Oct 2026)
+
+- B, desktop: the white pane fades in from 0% opacity as it slides out from under the core pane (and fades out as it retreats). It's wider than the core pane, so it used to be seen crossing the strip to the left of the menu. New token `--motion-submenu-fade` (1 in B, 0 elsewhere). A and C are unchanged.
+
 ## 0.29.3 (19 Oct 2026)
 
 - Menu arrows now match their label's colour: white on the grey core pane (A, and A and B on phones and tablets) and on selected rows, black on the light panes. `--item-arrow-colour` is `currentColor`.
