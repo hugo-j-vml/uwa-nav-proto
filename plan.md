@@ -240,7 +240,7 @@ Agreed 19 Oct 2026. First versions, built from each variant's desktop behaviour,
 
 **Common:** the hamburger again (D, E), the Menu button again (A–C), Esc, or a tap outside closes; a page link closes the menu first, then navigates; the page behind doesn't scroll while a menu is open.
 
-**Co-branded pages:** A–C header: the co-brand logo placeholder shrinks to 52 × 34 next to a smaller UWA logo, and on mobile the Menu button shows just its icon so it all fits at 320px. D, E: the placeholder sits in the top bar after the UWA logo. Option 1's menu bar wraps onto more rows. Options 2 and 7 work as on desktop, except **option 7 in B and C** uses A's layout (the site's block above a divider and the top level), as there's no white pane beside the core pane to fill.
+**Co-branded pages:** A–C header: the co-brand logo placeholder is as tall as the smaller UWA logo (42px) and as wide as fits (56px at 320, up to 96px from 360), 16px from it (v0.29.7; same in D and E's top bar), and on mobile the Menu button shows just its icon so it all fits at 320px. D, E: the placeholder sits in the top bar after the UWA logo. Option 1's menu bar wraps onto more rows. Options 2 and 7 work as on desktop, except **option 7 in B and C** uses A's layout (the site's block above a divider and the top level), as there's no white pane beside the core pane to fill.
 
 **Tablet** uses the same compact menus, with the desktop header (A–C) and a 400px drawer (D, E); only sizes differ (tokens).
 
@@ -305,7 +305,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
    - A: the sub-menu's heading row repeats the selected item's name (as desktop's dynamic pane heading does), so the section's page stays reachable.
    - C: the → on every item that opens a panel.
    - D: the → on every top-level item in the drawer (desktop shows it only on the open one).
-   - E: the hamburger goes straight to the top level (Hugo, v0.29.6), so the Study / Impact / Research shortcuts don't appear on mobile and tablet.
+   - E: the hamburger goes straight to the top level (Hugo, v0.29.6). The Study / Impact / Research shortcuts don't appear on mobile and tablet; Hugo: fine for now.
    - Co-branded pages on mobile, A–C: the Menu button shows only its icon. Option 7 in B and C uses A's layout.
    - Tablet uses the compact menus; landscape iPads (1024px and up) get desktop.
    - The Shift+O options panel needs a keyboard; on phones, preset options with a link (e.g. `?cobrand-menu=7`).

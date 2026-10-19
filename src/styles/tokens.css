@@ -424,10 +424,12 @@
   --header-controls-offset-top: 18px;  /* (header height - button height) / 2 */
   --header-button-gap: 8px;
   --menu-button-width: 92px;
-  --cobrand-logo-width: 52px;          /* co-branded pages: placeholder next to UWA's logo */
-  --cobrand-logo-height: 34px;
-  --cobrand-logo-gap: 10px;
-  --cobrand-logo-text-size: 10px;
+  /* Co-branded pages: placeholder next to UWA's logo (A–C header, D/E top bar). As tall as UWA's
+     logo; as wide as fits beside the Menu and Search buttons (56px at 320, 96px from 360) */
+  --cobrand-logo-width: clamp(56px, 100vw - 264px, 96px);
+  --cobrand-logo-height: 42px;
+  --cobrand-logo-gap: 16px;
+  --cobrand-logo-text-size: 12px;
   /* Type */
   --type-h1-size: 36px;
   --type-h3-size: 22px;

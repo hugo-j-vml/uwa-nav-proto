@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.29.7 (19 Oct 2026)
+
+- Co-branded pages, phones: the co-brand logo placeholder in the header (A–C) and top bar (D, E) is now as tall as the UWA logo (42px, was 34px) and as wide as fits beside the buttons (56px at 320, growing to 96px from 360; was 52px), with 16px between it and the UWA logo (was 10px). Its text is 12px. Tablet and desktop unchanged.
+
 ## 0.29.6 (19 Oct 2026)
 
 - E, phones and tablets: the hamburger now opens the drawer straight on the menu's top level, skipping the drawer with the Menu button. There's no Back at the top level (the hamburger closes the menu); Back appears from the second level as on desktop. The drawer's Menu button and shortcuts no longer show at these sizes. D and desktop E are unchanged.
