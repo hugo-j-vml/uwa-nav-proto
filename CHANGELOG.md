@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.31.3 (19 Oct 2026)
+
+- Co-brand menu option 1 with breadcrumbs hidden: the site's menu bar now sits straight under the header, with no gap, in every variant and at every size. In D and E it starts at the top of the page on desktop and straight under the top bar on mobile and tablet. The gap is set by `--site-nav-top-no-crumbs`.
+
 ## 0.31.2 (19 Oct 2026)
 
 - Co-brand menu option 2: the UWA tab is now always on the left and the site's tab on the right, in every variant. The site's tab is still selected when a co-branded page loads (and each time the menu opens). Lists now slide in from the side of the chosen tab.

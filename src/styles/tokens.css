@@ -178,6 +178,7 @@
   /* Co-branded site menu bar (behaviour option "Co-brand menu" = 1) */
   --site-nav-bg: #8fa197;              /* a darker sage than the hero, so the bar reads as separate */
   --site-nav-text: var(--colour-black);
+  --site-nav-top-no-crumbs: var(--header-height); /* bar's top with breadcrumbs hidden: straight under the header */
   --site-nav-height: 64px;
   --site-nav-padding-y: 10px;          /* bar padding; the bar can wrap onto more rows in narrow spaces */
   --site-nav-button-height: 44px;
@@ -262,6 +263,7 @@
 /* No header band in the sidebar variants, so content and co-branded pages start higher */
 [data-shell="sidebar"] {
   --breadcrumb-top: 60px;
+  --site-nav-top-no-crumbs: 0px;       /* no header above, so the bar starts at the top of the page (or under the compact top bar) */
   --item-label-max-width: none;        /* pane labels use the pane's full width before wrapping */
   --placeholder-inset: var(--page-gutter); /* placeholders line up with the headings, clear of the menu pane */
   --cobranded-hero-top: 122px;         /* breadcrumb to hero gap as in A, B and C (60px higher, as the breadcrumb is) */

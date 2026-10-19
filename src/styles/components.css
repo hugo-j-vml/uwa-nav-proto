@@ -325,6 +325,8 @@ a { color: inherit; text-decoration: none; }
 [data-opt-cobrand-breadcrumbs="hide"] .tpl-cobranded .page-intro nav { display: none; }
 [data-opt-cobrand-breadcrumbs="hide"] .tpl-cobranded :is(.site-nav, .cobranded-hero) { margin-top: 0; }
 html:not([data-opt-cobrand-menu="1"])[data-opt-cobrand-breadcrumbs="hide"] .cobranded-page-title { margin-top: 0; }
+/* With option 1's menu bar, the bar joins the header instead (no gap above it) */
+[data-opt-cobrand-menu="1"][data-opt-cobrand-breadcrumbs="hide"] .tpl-cobranded .page-intro { padding-top: var(--site-nav-top-no-crumbs); }
 .tpl-content .page-title { margin-top: var(--breadcrumb-to-title); width: var(--page-title-width); max-width: 100%; }
 .tpl-content .placeholder-stack { margin-top: var(--content-title-to-image); }
 

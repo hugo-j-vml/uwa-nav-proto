@@ -223,7 +223,7 @@ Alternative behaviours are switched across all variants with **behaviour options
 - **2 · Replaces core menu:** Menu (D: the sidebar list) shows the site's sections in place of the top level. Two **tabs** at the top (Hugo, v0.31.0; replaced the "UWA main menu" / "<site> menu" switch): **UWA** always on the left, then the site's (its name, or its `abbreviation` from the sitemap CSV if one is set; Oceans Institute has none) on the right (Hugo, v0.31.2). The site's tab is selected on a co-branded page, each time the menu opens; the UWA tab swaps to the normal top level. The tabs stay put while the list beneath changes; arrow keys move between them. A–C, F: at the top of the core pane (compact C and F: on the first layer only). D: above the sidebar list (and in the drawer). E: at the top of the pane's first level. The site's full name stays as a heading link under the tabs on the site's tab (to review once seen, Hugo).
 - **7 · Alongside core menu:** both at once. A, E: the site's block above a divider and the top level. B, C: the site's name and sections fill the white pane on open; choosing a top-level item shows that instead, and closing it brings the site back. D: the site's name and sections at the top of the sidebar, above a divider and the top-level items; a section opens the pane at its pages.
 
-**Breadcrumbs on co-branded pages** (default Show): Show or Hide the breadcrumb on the site's pages.
+**Breadcrumbs on co-branded pages** (default Show): Show or Hide the breadcrumb on the site's pages. Hidden with option 1, the menu bar joins the header (or the top of the page in D and E) with no gap.
 
 **Shortcuts on co-branded pages** (default Hide): Show or Hide the shortcut links on the site's pages (A–C header, E sidebar; D has none).
 
