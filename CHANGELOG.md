@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1 (20 Oct 2026)
+
+- Index page fits a laptop window without scrolling (checked at 1440 x 720, 1280 x 720 and 1470 x 760, both phases): on screens 1280px and wider the options column now starts level with the intro line instead of the variant list (`--options-top-wide`). Below 1280px the options still sit under the list. The gap above the Phases control is 10px (was 14px).
+- Option choice buttons (index page and Shift+O panel): unselected choices have a solid black background, so the dot background no longer shows through (`--options-choice-bg`, hover `--options-choice-hover-bg`), and all button text is Medium.
+
 ## 1.0.0 (20 Oct 2026)
 
 - **Version 1.** The client has validated the approach (phase 2: G and H with the single menu pane).

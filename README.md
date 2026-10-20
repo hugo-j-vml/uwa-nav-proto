@@ -117,7 +117,7 @@ Below 1024px wide (bands in `src/breakpoints.ts`: mobile under 640, tablet 640â€
 
 Alternative behaviours that apply across every variant, without making new variants. Defined in `src/options.ts`; each choice is remembered per browser.
 
-- **Index page:** in a column to the right of the variant links (under them below 1280px wide), a headline per option and its choices; the filled-in choice is the current setting. Each phase's screen lists its own options.
+- **Index page:** in a column to the right of the variant links, starting level with the intro (under the links below 1280px wide), a headline per option and its choices; the filled-in choice is the current setting. Each phase's screen lists its own options.
 - **Any variant page:** Shift+O shows a hidden panel (bottom right) with that variant's phase's options; choosing reloads the page.
 - **Links:** `?cobrand-menu=7` (or `?cobrand-menu=7&cobrand-shortcuts=show`) on any URL sets and remembers a choice (for presetting test sessions); it's then dropped from the address.
 
