@@ -236,7 +236,7 @@
    A fixed sidebar in place of the header; the drill-down pane opens to its right.
    ========================================================================== */
 :root {
-  --sidebar-width: 277px;
+  --sidebar-width: 180px;
   --sidebar-bg: #d9d9d9;               /* a step darker than the page background */
   --sidebar-padding-x: 22px;
   --sidebar-padding-top: 30px;
