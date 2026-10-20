@@ -102,7 +102,7 @@ Full specs per variant are in `plan.md` (sections 7–7d). In short:
 
 - **G** Header with menu pane: A–C's header; Menu opens one pane under it that shows one level at a time, as E's: the chosen item as a heading (a link to its page), its children, and Back. Search opens the same pane with a search field.
 - **H** Sidebar with menu pane: E's sidebar and pane, with search in the pane (the sidebar's search button looks like E's field).
-- A promo placeholder sits at the bottom of the pane, at its top level only (design to come; `--pane-promo-*` tokens).
+- A promo placeholder sits at the bottom of the pane, at its top level only, and on co-branded pages only under the UWA tab (design to come; `--pane-promo-*` tokens).
 - Search lists the pages whose names contain every word typed (IA and co-branded sites' pages), with their trail; each links to its page.
 - Co-branded pages always use the tabs (co-brand menu option 2).
 

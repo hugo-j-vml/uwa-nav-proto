@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5 (20 Oct 2026)
+
+- G and H, co-branded pages: the promo placeholder no longer shows under the site's tab (e.g. Oceans Institute); it still shows under the UWA tab, at the top level. Other pages unchanged.
+
 ## 1.0.4 (20 Oct 2026)
 
 - Index page: 50px less space above the variant list and the options (`--index-list-top`: 22vh less 50px, between 32px and 230px), so both phases fit a 1440 x 720 laptop window without scrolling.

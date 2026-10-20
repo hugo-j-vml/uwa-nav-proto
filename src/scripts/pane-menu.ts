@@ -19,7 +19,8 @@
  * Search swap the pane between the two; the button that's showing closes it.
  *
  * Promo: a placeholder at the bottom of the pane, shown at the menu's top level
- * only (on a co-branded page, under either tab); not with search or deeper levels.
+ * only, and on a co-branded page only under the UWA tab (not the site's); not with
+ * search or deeper levels.
  *
  * Behaviour options (src/options.ts):
  *   "Back button in the menu": Back, or the name of the level it goes back to
@@ -140,7 +141,7 @@ function init(pane: HTMLElement) {
     form.hidden = !searching;
     status.hidden = !searching;
     list.classList.toggle('is-results', searching);
-    promo.hidden = searching || path.length > 0;
+    promo.hidden = searching || path.length > 0 || tab === 'cobrand';
     if (searching) {
       back.hidden = true;
       results();

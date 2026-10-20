@@ -393,12 +393,12 @@ Phase 1 (A–F, their options and the index screen) stays as it was, for referen
 - **Search:** the Search button opens the pane on a search field (focused); Menu and Search swap the pane between the two; the one showing closes it. Typing lists the pages whose names contain every word typed (case ignored), names starting with the text first, then in IA order, with a count; each result shows its trail and links to its page; Enter goes to the first. Covers the IA and the co-branded sites' own pages. No arrows on results. Built as a stand-in for Hugo's Figma design.
 - **Co-branded pages:** the top level shows the tabs (UWA left, the site's abbreviation or name right; the site's tab selected), then the site's name as a heading link, then its sections.
 - **Closing:** the button that opened it, Esc, or a click outside; a page link slides the pane away, then navigates.
-- **Promo** (placeholder, v1.0.0): a wireframe box labelled "Promo area" at the bottom of the pane, at the top level only (both tabs on co-branded pages), not in search. Height `--pane-promo-height` (220px). It sits at the bottom of the pane, or under the list when the list is longer.
+- **Promo** (placeholder, v1.0.0): a wireframe box labelled "Promo area" at the bottom of the pane, at the top level only, not in search. On co-branded pages it shows under the UWA tab only, not the site's tab (Hugo, v1.0.5). Height `--pane-promo-height` (220px). It sits at the bottom of the pane, or under the list when the list is longer.
 - **Options:** Shortcuts, Search, Back button, Arrows, Breadcrumbs on co-branded pages (Section 7d; shared with phase 1). Shift+O on G and H shows these.
 
 ### Phase 2 open questions
 
-1. Promo area: placeholder in (v1.0.0); waiting on Hugo's Figma design. Shown on co-branded pages' site tab too: right?
+1. Promo area: placeholder in (v1.0.0); waiting on Hugo's Figma design. Co-branded pages: UWA tab only (v1.0.5).
 2. Search design (Figma to come): field, results layout, whether results show the trail, and what happens with no matches.
 3. ~~Back from a top-level item: wording?~~ **Resolved (v1.0.2):** "All UWA".
 4. G's pane: 540px wide and full window height under the header, as E's. Narrower/wider, or as tall as its contents (as A's panes)?
