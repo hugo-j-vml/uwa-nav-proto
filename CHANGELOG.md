@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.2.0 (20 Oct 2026)
+
+- CONTROL-1: **section headers**, as on the live site. The menu bar with the mega menus is now on the homepage only. Every other page shows the header of the section it's in (the top-level item's own page included), the way co-branded pages already worked: the section's name under UWA's logo, All UWA (the mega menu of the core's top two levels) and Search, then a row with the section's L2 pages. An L2 page with pages of its own opens a dropdown (its name linking to it, then its L3 pages; two columns from 5 pages, as live); one without is a plain link. Buttons that don't fit hide behind » (About us has 11 L2 pages, so some do even at 1440px). Mobile: the section's name in a strip under the header; the menu lists the section's L2 pages, then All UWA.
+- Co-branded pages unchanged. A–H unchanged.
+
 ## 1.1.0 (20 Oct 2026)
 
 - **New: CONTROL-1, Current site navigation** (phase 2), the control for testing G and H in Lyssna. The live www.uwa.edu.au navigation, recorded 20 Oct, at wireframe fidelity, on our IA and pages, so only the navigation pattern differs (`plan.md` 14.6):

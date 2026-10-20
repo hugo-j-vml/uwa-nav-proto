@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.1.0** (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.2.0** (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -424,6 +424,7 @@ Recorded behaviour, copied:
 
 | | Live site (20 Oct 2026) | CONTROL-1 |
 |---|---|---|
+| Where | The menu bar is on the homepage only; every other page has its section's header (below) | Same (v1.2.0; Hugo, from /about/campus-services and /life-at-uwa/accommodation) |
 | Menu bar (768px and wider) | Logo; section buttons with a chevron; More; search button | Same, with our sections |
 | Opening | Hover opens a menu after ~250ms (moving on to another button within that time opens that one); click toggles; a click just after hover opened it keeps it open; Enter opens it with focus on its title link | Same (`--control-hover-open-delay`, `--control-click-guard`) |
 | Closing | Leaving an open menu (after being in it) closes it after ~2s; moving off the button without entering it leaves it open; Esc, ×, a click outside, or the button | Same (`--control-hover-close-delay`); Esc also puts focus back on the button (live drops it) |
@@ -434,6 +435,7 @@ Recorded behaviour, copied:
 | Search | Panel: "How can we help you?", field, Search button, Popular searches, "Did you mean..." suggestions; goes to the search results page | Same panel; suggestions are pages matching what's typed (G and H's matching); Search or Enter goes to the first; a popular search fills in the field |
 | Mobile (below 768px) | Menu (hamburger) opens a panel under the header (the page shows below it): "UWA →", the sections and More with ›; a section slides in (100ms) its panel: title link, L2 pages with an accordion (one open at a time) for their L3 pages; the button becomes ‹ (back), and × at the top level | Same |
 | Co-branded header | UWA's logo with the site's logo (Oceans Institute) or its name under UWA's logo (the institutes); All UWA and Search at the top right; the site's sections below: dropdowns (the section's name with an arrow, then its pages) or plain links | Same (`mega.lockups` in `control-1.ts`: Oceans Institute) |
+| Section header (every page in a section, the section's own page included) | The co-branded header's layout: the section's name under UWA's logo; All UWA and Search; the section's L2 pages in a row: a dropdown (its name with an arrow, then its L3 pages; two columns when there are 5 or more) or a plain link. Study and Life at UWA also show Login and English (language) links | Same, without Login and English. About us has 11 L2 pages (live: 7), so the row hides some behind » even at 1440px |
 | All UWA | Mega menu: "The University of Western Australia", the core's top two levels in columns, then the utility links | Same, with our sections and More pages |
 | Co-branded mobile | The site's name in a strip under the header; the menu lists the site's sections, a divider, then All UWA (the core's top level with accordions) | Same |
 

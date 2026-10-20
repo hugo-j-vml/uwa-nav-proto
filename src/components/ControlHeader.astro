@@ -9,16 +9,22 @@
  * small "More" dropdown (the variant's `mega.more` pages), and Search. Items
  * that don't fit on one row are hidden behind a » button that shows them all.
  *
- * Co-branded sites (their own header on the live site, no UWA menu bar): the
- * site's logo next to UWA's (Oceans Institute) or its name under UWA's logo
- * (the institutes); "All UWA" (a mega menu of the core IA's top two levels) and
- * Search; then a row with the site's sections: a dropdown (the section's name,
- * then its pages) for a section with pages, a plain link for one without.
+ * The menu bar is only on the homepage. Every other page has a local header,
+ * as on the live site: the section it's in (any page under a top-level item,
+ * that item's own page included) or its co-branded site. Its name under UWA's
+ * logo (or, for a co-branded site in `mega.lockups`, its logo next to UWA's, as
+ * Oceans Institute), "All UWA" (a mega menu of the core IA's top two levels) and
+ * Search; then a row with the section's L2 pages (a co-branded site's sections):
+ * a dropdown (the page's name, then its own pages; two columns from
+ * WIDE_FROM pages, sections only) for one with pages, a plain link for one
+ * without. That row also hides what doesn't fit behind ».
  *
  * Mobile menu (below 768px): a Menu button opens the top level under the header
- * (UWA, or the site's name, with its sections). Choosing a section shows that
- * section's panel (the same panels as the bar's), with each L2 page's L3 pages
- * behind an accordion; the Menu button turns into Back (‹) and then Close (×).
+ * (homepage: UWA and the top-level items; elsewhere: the section's or site's
+ * name, its row's pages, then All UWA). Choosing an item shows its panel (the
+ * same panels as the bar's), with L3 pages behind accordions in the mega menus;
+ * the Menu button turns into Back (‹) and then Close (×). Local headers put the
+ * name in a strip under the header.
  *
  * All panels are rendered here; src/scripts/control-menu.ts shows, hides and
  * positions them. No behaviour options apply.
@@ -34,6 +40,14 @@ const byPath = new Map(flatten().map(n => [n.path, n]));
 const sections = nodes.filter(n => !more.includes(n.path));
 const moreItems = more.map(p => byPath.get(p)).filter((n): n is NavNode => !!n);
 const lockup = !!cobrand && lockups.includes(cobrand.path);
+// The local header's section or co-branded site (none on the homepage)
+type Item = { label: string; path: string; children: { label: string; path: string }[] };
+const section = nodes.find(n => currentPath === n.path || currentPath.startsWith(n.path + '/'));
+const local: { label: string; href: string; path: string; items: Item[]; kind: 'cobrand' | 'section' } | undefined = cobrand
+  ? { label: cobrand.label, href: cobrand.href, path: cobrand.path, items: cobrand.site, kind: 'cobrand' }
+  : section ? { label: section.label, href: href(section.path, variant), path: section.path, items: section.children, kind: 'section' } : undefined;
+// A section's dropdown with this many pages or more uses two columns (live: Leadership and governance, 5)
+const WIDE_FROM = 5;
 const link = (path: string) => href(path, variant);
 const current = (path: string) => (currentPath === path ? 'page' : undefined);
 const data = JSON.stringify({ base: variantBase(variant), search: searchIndex() }).replace(/</g, '\\u003c');
@@ -54,17 +68,17 @@ const popular = ['Courses', 'Admissions', 'Research'];
     mq.addEventListener('change', set);
   })();
 </script>
-<header class:list={['control-header', { 'is-transparent': transparent, 'is-cobrand': cobrand, 'has-lockup': lockup }]} data-control-header>
+<header class:list={['control-header', { 'is-transparent': transparent && !local, 'is-local': local, 'has-lockup': lockup }]} data-control-header>
   <div class="control-bar">
     <div class="control-brand">
       <a class="logo" href={link('')}><img src={`${base}logos/uwa-horizontal.svg`} alt="The University of Western Australia: home" width="216" height="71" /></a>
       {lockup && <a class="cobrand-logo" href={cobrand!.href} aria-label={`${cobrand!.label}: home`}><span aria-hidden="true">Co-brand<br />Logo</span></a>}
-      {/* The site's name: under UWA's logo (no lockup), or in a strip under the header on mobile (all sites) */}
-      {cobrand && <a class="control-site-name" href={cobrand.href}>{cobrand.label}</a>}
+      {/* The section's or site's name: under UWA's logo (no lockup), or in a strip under the header on mobile */}
+      {local && <a class="control-site-name" href={local.href} aria-current={current(local.path)}>{local.label}</a>}
     </div>
 
     <div class="control-top">
-      {cobrand ? (
+      {local ? (
         <ul class="control-items control-all-uwa">
           <li><button class="control-item" type="button" aria-expanded="false" aria-controls="cm-all" data-opens="cm-all">All UWA<svg class="control-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button></li>
         </ul>
@@ -92,10 +106,10 @@ const popular = ['Courses', 'Admissions', 'Research'];
       </button>
     </div>
 
-    {cobrand && (
-      <nav class="control-site" aria-label={`${cobrand.label} menu`}>
-        <ul class="control-items">
-          {cobrand.site.map((s, i) => (
+    {local && (
+      <nav class="control-nav control-site" aria-label={`${local.label} menu`} data-control-nav>
+        <ul class="control-items" data-control-items>
+          {local.items.map((s, i) => (
             <li>{s.children.length ? (
               <button class="control-item" type="button" aria-expanded="false" aria-controls={`cs-${i}`} data-opens={`cs-${i}`}>{s.label}<svg class="control-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button>
             ) : (
@@ -103,6 +117,9 @@ const popular = ['Courses', 'Admissions', 'Research'];
             )}</li>
           ))}
         </ul>
+        <button class="control-overflow" type="button" aria-expanded="false" aria-label="Show all menu items" data-control-overflow hidden>
+          <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3.5l4.5 4.5L3 12.5M8.5 3.5L13 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+        </button>
       </nav>
     )}
   </div>
@@ -110,15 +127,15 @@ const popular = ['Courses', 'Admissions', 'Research'];
   <div class="control-panels">
     {/* Mobile menu's top level */}
     <div class="control-panel control-root" id="cm-root" data-panel hidden>
-      {cobrand ? (
-        <p class="control-title">{cobrand.label}</p>
+      {local ? (
+        <p class="control-title">{local.label}</p>
       ) : (
         <p class="control-title"><a href={link('')}>UWA<Icon name="arrow" /></a></p>
       )}
       <ul class="control-rows">
-        {cobrand ? (
+        {local ? (
           <>
-            {cobrand.site.map((s, i) => (
+            {local.items.map((s, i) => (
               <li>{s.children.length
                 ? <button class="control-row" type="button" data-drill={`cs-${i}`}>{s.label}<svg class="control-chevron-right" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button>
                 : <a class="control-row" href={link(s.path)} aria-current={current(s.path)}>{s.label}</a>}</li>
@@ -136,8 +153,8 @@ const popular = ['Courses', 'Admissions', 'Research'];
       </ul>
     </div>
 
-    {/* A mega menu per section (not on co-branded pages, whose bar has the site's sections) */}
-    {!cobrand && sections.map((s, i) => (
+    {/* Homepage: a mega menu per top-level item */}
+    {!local && sections.map((s, i) => (
       <div class="control-panel control-mega" id={`cm-${i}`} data-panel hidden>
         <p class="control-title"><a href={link(s.path)} aria-current={current(s.path)}>{s.label}<Icon name="arrow" /></a></p>
         <ul class="control-groups">
@@ -163,8 +180,8 @@ const popular = ['Courses', 'Admissions', 'Research'];
       </div>
     ))}
 
-    {/* More: a small dropdown under its button */}
-    {!cobrand && (
+    {/* Homepage: More, a small dropdown under its button */}
+    {!local && (
       <div class="control-panel control-dropdown" id="cm-more" data-panel hidden>
         <ul class="control-links">
           {moreItems.map(n => <li><a href={link(n.path)} aria-current={current(n.path)}>{n.label}</a></li>)}
@@ -172,8 +189,8 @@ const popular = ['Courses', 'Admissions', 'Research'];
       </div>
     )}
 
-    {/* Co-branded pages: All UWA (the core IA's top two levels, then the More pages) and the site's section dropdowns */}
-    {cobrand && (
+    {/* Local headers: All UWA (the core IA's top two levels, then the More pages) and the row's dropdowns */}
+    {local && (
       <div class="control-panel control-mega control-all" id="cm-all" data-panel hidden>
         <p class="control-title"><a href={link('')}>The University of Western Australia<Icon name="arrow" /></a></p>
         <ul class="control-groups">
@@ -197,8 +214,8 @@ const popular = ['Courses', 'Admissions', 'Research'];
         <button class="control-close" type="button" aria-label="Close menu" data-control-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button>
       </div>
     )}
-    {cobrand && cobrand.site.map((s, i) => s.children.length > 0 && (
-      <div class="control-panel control-dropdown control-site-dropdown" id={`cs-${i}`} data-panel hidden>
+    {local && local.items.map((s, i) => s.children.length > 0 && (
+      <div class:list={['control-panel control-dropdown control-site-dropdown', { 'is-wide': local.kind === 'section' && s.children.length >= WIDE_FROM }]} id={`cs-${i}`} data-panel hidden>
         <p class="control-title"><a href={link(s.path)} aria-current={current(s.path)}>{s.label}<Icon name="arrow" /></a></p>
         <ul class="control-links">
           {s.children.map(c => <li><a href={link(c.path)} aria-current={current(c.path)}>{c.label}</a></li>)}

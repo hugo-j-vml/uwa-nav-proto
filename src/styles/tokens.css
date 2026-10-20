@@ -418,6 +418,7 @@
   --control-link-gap: 12px;            /* between links in a list (live: 32px line pitch) */
   --control-link-size: 16px;
   --control-dropdown-width: 300px;     /* More and the co-branded sites' sections (live: 298) */
+  --control-dropdown-wide-width: 572px; /* a section's dropdown with many pages, two columns (live: 572) */
   --control-dropdown-padding: 24px;
   --control-dropdown-inset: 24px;      /* dropdown's left edge sits this far left of its button */
   --control-close-size: 24px;
