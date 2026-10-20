@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.3 (20 Oct 2026)
+
+- Index page layout back as it was before 1.0.1: the options column starts level with the variant list again, and the gap above the Phases control is 14px again. The black, Medium-weight choice buttons from 1.0.1 stay.
+- Short options (Show / Hide) that follow each other now sit side by side and wrap when there's no room. Phase 2: Shortcuts, Search and Breadcrumbs on co-branded pages share a row; Breadcrumbs moves up to join them, so Back button and Arrows come after. Phase 1: Shortcuts on co-branded pages and Breadcrumbs share a row (they wrap in the narrow column at 1440px). The same applies in the Shift+O panel. Marked with `short: true` in `src/options.ts`; gaps `--options-row-gap` (side by side) and `--options-wrap-gap` (between rows).
+- Phase 2's screen fits a 1440 x 720 laptop window without scrolling.
+
 ## 1.0.2 (20 Oct 2026)
 
 - G and H, Back button option "Previous level's name": from a top-level item's level, Back now says "← All UWA" (was "Main menu"). Deeper levels still name the previous level; a co-branded site's tab still names the site. "Back" (the default) is unchanged.

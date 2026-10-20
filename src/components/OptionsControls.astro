@@ -1,27 +1,37 @@
 ---
 /**
  * Controls for the behaviour options (src/options.ts): a headline and a row of
- * choice buttons per option; the selected choice shows the current setting.
+ * choice buttons per option (short options next to each other share a row); the selected choice shows the current setting.
  * Used on the index page and in the hidden options panel. reload: reload the
  * page after a change (variant pages, where menus are set up on load).
  * phase: list only that prototyping phase's options.
  */
-import { optionsFor } from '../options';
+import { optionsFor, type OptionDef } from '../options';
 interface Props { reload?: boolean; phase: 1 | 2 }
 const { reload = false, phase } = Astro.props;
+// Short options next to each other in the list share a row (side by side, wrapping); others get a row each
+const groups: OptionDef[][] = [];
+for (const o of optionsFor(phase)) {
+  const last = groups[groups.length - 1];
+  if (o.short && last?.[0].short) last.push(o); else groups.push([o]);
+}
 ---
 <div class="options-controls" data-options-controls data-reload={reload ? '' : undefined}>
-  {optionsFor(phase).map(o => (
-    <fieldset class="option">
-      <legend class="option-label">{o.label}</legend>
-      <div class="option-choices">
-        {o.choices.map(c => (
-          <button type="button" class="option-choice" data-option={o.id} data-choice={c.id} aria-pressed={String(c.id === o.default)}>
-            {c.tag && <><span class="option-choice-id">{c.tag}</span> </>}{c.label}
-          </button>
-        ))}
-      </div>
-    </fieldset>
+  {groups.map(group => (
+    <div class="option-row">
+      {group.map(o => (
+        <fieldset class="option">
+          <legend class="option-label">{o.label}</legend>
+          <div class="option-choices">
+            {o.choices.map(c => (
+              <button type="button" class="option-choice" data-option={o.id} data-choice={c.id} aria-pressed={String(c.id === o.default)}>
+                {c.tag && <><span class="option-choice-id">{c.tag}</span> </>}{c.label}
+              </button>
+            ))}
+          </div>
+        </fieldset>
+      ))}
+    </div>
   ))}
 </div>
 <script>

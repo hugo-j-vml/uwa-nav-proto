@@ -315,7 +315,7 @@
   --index-footer-top: 24px;            /* minimum space above the footer */
   --index-build-size: 14px;            /* version and last updated, bottom right */
   /* Phases control (under the intro) and the slide between phases */
-  --index-phase-top: 10px;             /* intro to the Phases control (10px keeps phase 1 within a 1440 x 720 laptop window) */
+  --index-phase-top: 14px;             /* intro to the Phases control */
   --index-phase-size: var(--index-intro-size);
   --index-phase-button-size: 36px;     /* the ← and → buttons */
   --index-phase-arrow-size: 20px;
@@ -324,12 +324,13 @@
   --index-phase-easing: cubic-bezier(0.65, 0, 0.35, 1);
   /* Behaviour options: index page section and the hidden panel (Shift+O) */
   --options-top: 48px;                 /* narrow screens: last variant link to the options (stacked) */
-  --options-top-wide: var(--index-intro-top); /* wide screens (1280px and up): the options column starts level with the intro */
   --options-choice-bg: #000;           /* unselected choice buttons (selected: off-white) */
   --options-choice-hover-bg: #262626;
   --options-indent: calc(var(--index-item-size) * 1.5); /* past the list letters (letter column 1.15em + gap 0.35em) */
   --options-size: 15px;
   --options-gap: 10px;                 /* between choice buttons */
+  --options-row-gap: 40px;             /* between short options sitting side by side */
+  --options-wrap-gap: 20px;            /* between options (rows, and short options wrapping onto their own line) */
   --options-id-gap: 0.58em;            /* extra space after a choice's number (on top of the word space; 3x in total) */
   --options-pad-top: 10px;             /* 2px more than the bottom so Snowflake Sans sits in the vertical centre */
   --options-radius: 8px;               /* choice button corners */

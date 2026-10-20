@@ -92,7 +92,7 @@ One repo, one build, one IA. Each nav concept is a **variant** that builds the f
 
 ### Index page (added to scope 15 Oct 2026)
 
-- **Layout and colours** follow Hugo's reference: dark page (`#1a1a1a`), off-white text, a mark top left with a full-width rule under it, a short intro top left, and a large lettered list on the left, with the behaviour options in a column to its right, starting level with the intro so the page fits a laptop window without scrolling (v1.0.1; below 1280px wide the options sit under the list). Unselected option buttons are solid black, all button text Medium (v1.0.1).
+- **Layout and colours** follow Hugo's reference: dark page (`#1a1a1a`), off-white text, a mark top left with a full-width rule under it, a short intro top left, and a large lettered list on the left, with the behaviour options in a column to its right, tops aligned (below 1280px wide the options sit under the list). Short options (Show / Hide) next to each other share a row (v1.0.3). Unselected option buttons are solid black, all button text Medium (v1.0.1).
 - **Each list item is a variant link**, e.g. "A. Core with expanding parent nodes". Variants not built yet are greyed out with a "Coming soon" tag and aren't links.
 - **Typeface:** Snowflake Sans (Medium for the intro and links, Book for other copy), `--index-font`. The password screen uses the same layout and font.
 - **Background** (v0.29, from Hugo's VML template reference): a fine halftone dot grid with soft diagonal facets of brighter dots that drift and pulse very slowly (CSS only; still for reduced motion). Index page and password screen. `--index-bg-*` tokens.

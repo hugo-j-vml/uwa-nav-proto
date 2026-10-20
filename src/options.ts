@@ -20,6 +20,8 @@ export interface OptionDef {
   choices: OptionChoice[];
   default: string;
   phases: (1 | 2)[];
+  /** Short option (e.g. Show / Hide): sits side by side with the short options next to it in the list */
+  short?: boolean;
 }
 
 export const OPTIONS: OptionDef[] = [
@@ -45,8 +47,9 @@ export const OPTIONS: OptionDef[] = [
     ],
     default: 'hide',
     phases: [1],
+    short: true,
   },
-  // ---------- Phase 2 (G, H); the last one is in both phases ----------
+  // ---------- Phase 2 (G, H); Breadcrumbs on co-branded pages is in both phases ----------
   {
     id: 'shortcuts',
     label: 'Shortcuts',
@@ -57,6 +60,7 @@ export const OPTIONS: OptionDef[] = [
     ],
     default: 'show',
     phases: [2],
+    short: true,
   },
   {
     id: 'search',
@@ -68,6 +72,19 @@ export const OPTIONS: OptionDef[] = [
     ],
     default: 'show',
     phases: [2],
+    short: true,
+  },
+  {
+    id: 'cobrand-breadcrumbs',
+    label: 'Breadcrumbs on co-branded pages',
+    description: 'Whether the breadcrumb shows on a co-branded site’s pages.',
+    choices: [
+      { id: 'show', label: 'Show' },
+      { id: 'hide', label: 'Hide' },
+    ],
+    default: 'show',
+    phases: [1, 2],
+    short: true,
   },
   {
     id: 'menu-back',
@@ -92,17 +109,6 @@ export const OPTIONS: OptionDef[] = [
     ],
     default: 'none',
     phases: [2],
-  },
-  {
-    id: 'cobrand-breadcrumbs',
-    label: 'Breadcrumbs on co-branded pages',
-    description: 'Whether the breadcrumb shows on a co-branded site’s pages.',
-    choices: [
-      { id: 'show', label: 'Show' },
-      { id: 'hide', label: 'Hide' },
-    ],
-    default: 'show',
-    phases: [1, 2],
   },
 ];
 

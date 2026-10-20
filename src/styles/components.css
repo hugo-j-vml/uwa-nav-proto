@@ -635,19 +635,21 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 /* ==========================================================================
    Behaviour options (src/options.ts): index page section and hidden panel
    ========================================================================== */
-/* Index page: a column to the right of the variant list, starting level with the intro, so it fits a laptop
-   screen without scrolling (narrow screens: under the list, lined up with the link text) */
+/* Index page: a column to the right of the variant list, tops aligned (narrow screens: under the list, lined up with the link text) */
 @media (min-width: 1280px) {
   .index-main { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--index-columns-gap); align-items: start; }
-  .index-intro, .index-phase, .index-list { grid-column: 1; }
-  .index-options { grid-column: 2; grid-row: 1 / span 3; margin-top: var(--options-top-wide); }
+  .index-intro, .index-phase { grid-column: 1 / -1; }
+  .index-options { margin-top: var(--index-list-top); }
 }
-.index-options .option:first-child { margin-top: 0; }
 .index-options .option-label { font-size: var(--index-intro-size); }
 @media (max-width: 1279px) { .index-options { margin: var(--options-top) 0 0 var(--options-indent); } }
 
 .options-controls { font-size: var(--options-size); line-height: 1.4; }
-.option { margin: 20px 0 0; padding: 0; border: 0; min-width: 0; }
+.option { margin: 0; padding: 0; border: 0; min-width: 0; }
+/* One row per option; short options (Show / Hide) that follow each other share a row, side by side,
+   wrapping when there's no room (wrapped lines keep the usual space between options) */
+.option-row { display: flex; flex-wrap: wrap; gap: var(--options-wrap-gap) var(--options-row-gap); margin-top: var(--options-wrap-gap); }
+.index-options .option-row:first-child { margin-top: 0; }
 .option-label { padding: 0; margin-bottom: 10px; font-weight: var(--index-weight-link); }
 .option-choices { display: flex; flex-wrap: wrap; gap: var(--options-gap); }
 .option-choice {
@@ -673,7 +675,7 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 .options-panel-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
 .options-panel-title { margin: 0; font-size: var(--index-intro-size); font-weight: var(--index-weight-link); }
 .options-panel-close { font: inherit; font-size: var(--options-size); color: inherit; text-decoration: underline; cursor: pointer; }
-.options-panel .option:first-child { margin-top: 12px; }
+.options-panel .option-row:first-child { margin-top: 12px; }
 
 /* ==========================================================================
    Co-brand menu option 2 ("Replaces core menu"): tabs and the site's name
