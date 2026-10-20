@@ -38,9 +38,9 @@
 import { indexTree, pagePath, cobrandTop, type MenuNode, type CobrandData } from '../lib/menu-state';
 import { getOption } from '../lib/options';
 import { isCompact, onLayoutChange } from '../lib/breakpoints';
+import { matchPages, type SearchEntry } from '../lib/search';
 import { menuTabs, tabArrowKeys, type MenuMode } from '../lib/menu-tabs';
 
-type SearchEntry = { l: string; h: string; t: string };
 type Mode = 'menu' | 'search';
 
 const pane = document.querySelector<HTMLElement>('[data-menu-pane]');
@@ -177,19 +177,12 @@ function init(pane: HTMLElement) {
   function results() {
     list.replaceChildren();
     const typed = input.value.trim();
-    const q = typed.toLowerCase().replace(/\s+/g, ' ');
-    if (!q) { status.textContent = 'Type to find a page.'; return; }
-    const words = q.split(' ');
-    const startsWord = (label: string) => label.split(/[^a-z0-9]+/).some(w => w.startsWith(words[0]));
-    const found = search
-      .map((e, i) => ({ e, i, l: e.l.toLowerCase() }))
-      .filter(x => words.every(w => x.l.includes(w)))
-      .map(x => ({ ...x, score: x.l.startsWith(q) ? 0 : startsWord(x.l) ? 1 : 2 }))
-      .sort((a, b) => a.score - b.score || a.i - b.i);
+    if (!typed) { status.textContent = 'Type to find a page.'; return; }
+    const found = matchPages(search, typed);
     status.textContent = found.length
       ? `${found.length} ${found.length === 1 ? 'page' : 'pages'}`
       : `No pages match “${typed}”.`;
-    for (const { e } of found) {
+    for (const e of found) {
       const li = document.createElement('li');
       const a = document.createElement('a');
       a.className = 'search-result';

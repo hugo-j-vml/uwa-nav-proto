@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.1.0 (20 Oct 2026)
+
+- **New: CONTROL-1, Current site navigation** (phase 2), the control for testing G and H in Lyssna. The live www.uwa.edu.au navigation, recorded 20 Oct, at wireframe fidelity, on our IA and pages, so only the navigation pattern differs (`plan.md` 14.6):
+  - Menu bar with a mega menu per section (the section's name, then its L2 pages with their L3 pages, in three columns) and a small More dropdown (Students, Login, News). Hover opens after 250ms; leaving an open menu closes it after 2s; click toggles; Esc, × or a click outside closes. Buttons that don't fit hide behind ».
+  - Below 768px (the live site's switch): the live mobile menu, drilling into a section with its L3 pages behind accordions; the Menu button turns into Back, then Close.
+  - The live search panel, with suggestions from the same page matching as G and H.
+  - Co-branded pages: the live co-brand header (logo lockup or the site's name, All UWA, Search, the site's sections).
+  - The menu reaches L3, as live; deeper pages via "In this section". No behaviour options and no Shift+O panel. No footer (no variant has one yet).
+- **IA:** two co-branded sites added next to Oceans Institute (Our research › Institutes and centres › Centres and other entities), with their own menus from the live sites: The UWA Institute of Agriculture (`data/cobranded/the-uwa-institute-of-agriculture.csv`) and UWA Public Policy Institute (`data/cobranded/uwa-public-policy-institute.csv`). They appear in every variant.
+- Index page: a longer label such as "CONTROL-1" runs on with its name.
+- G and H unchanged (their search matching moved to `src/lib/search.ts`, shared with CONTROL-1). A–H checked unchanged against 1.0.5.
+
 ## 1.0.5 (20 Oct 2026)
 
 - G and H, co-branded pages: the promo placeholder no longer shows under the site's tab (e.g. Oceans Institute); it still shows under the UWA tab, at the top level. Other pages unchanged.

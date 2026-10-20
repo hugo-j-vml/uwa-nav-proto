@@ -1,0 +1,242 @@
+---
+/**
+ * CONTROL-1's header: the live UWA site's navigation (www.uwa.edu.au, recorded
+ * 20 Oct 2026) at wireframe fidelity, filled with the prototype's IA.
+ *
+ * Menu bar (768px and wider): logo, then a button per top-level section, each
+ * opening a mega menu under the header (the section's name linking to its page,
+ * then its L2 pages as headings with their L3 pages under them, in columns), a
+ * small "More" dropdown (the variant's `mega.more` pages), and Search. Items
+ * that don't fit on one row are hidden behind a » button that shows them all.
+ *
+ * Co-branded sites (their own header on the live site, no UWA menu bar): the
+ * site's logo next to UWA's (Oceans Institute) or its name under UWA's logo
+ * (the institutes); "All UWA" (a mega menu of the core IA's top two levels) and
+ * Search; then a row with the site's sections: a dropdown (the section's name,
+ * then its pages) for a section with pages, a plain link for one without.
+ *
+ * Mobile menu (below 768px): a Menu button opens the top level under the header
+ * (UWA, or the site's name, with its sections). Choosing a section shows that
+ * section's panel (the same panels as the bar's), with each L2 page's L3 pages
+ * behind an accordion; the Menu button turns into Back (‹) and then Close (×).
+ *
+ * All panels are rendered here; src/scripts/control-menu.ts shows, hides and
+ * positions them. No behaviour options apply.
+ */
+import Icon from './Icons.astro';
+import { nodes, flatten, href, base, variantBase, searchIndex, type Cobrand, type NavNode } from '../lib/nav';
+import { CONTROL_BAR_FROM } from '../breakpoints';
+
+interface Props { variant: string; currentPath?: string; transparent?: boolean; cobrand?: Cobrand; more: string[]; lockups: string[] }
+const { variant, currentPath = '', transparent = false, cobrand, more, lockups } = Astro.props;
+
+const byPath = new Map(flatten().map(n => [n.path, n]));
+const sections = nodes.filter(n => !more.includes(n.path));
+const moreItems = more.map(p => byPath.get(p)).filter((n): n is NavNode => !!n);
+const lockup = !!cobrand && lockups.includes(cobrand.path);
+const link = (path: string) => href(path, variant);
+const current = (path: string) => (currentPath === path ? 'page' : undefined);
+const data = JSON.stringify({ base: variantBase(variant), search: searchIndex() }).replace(/</g, '\\u003c');
+// Popular searches in the search panel (as on the live site); each fills in the field
+const popular = ['Courses', 'Admissions', 'Research'];
+---
+<!-- Before the header paints: menu bar or mobile menu (the live site's width, not the prototype's bands) -->
+<script is:inline define:vars={{ from: CONTROL_BAR_FROM }}>
+  (function () {
+    var html = document.documentElement, mq = matchMedia('(min-width: ' + from + 'px)');
+    function set() {
+      var v = mq.matches ? 'bar' : 'mobile', was = html.dataset.controlBar;
+      if (was === v) return;
+      html.dataset.controlBar = v;
+      if (was) document.dispatchEvent(new CustomEvent('controllayoutchange'));
+    }
+    set();
+    mq.addEventListener('change', set);
+  })();
+</script>
+<header class:list={['control-header', { 'is-transparent': transparent, 'is-cobrand': cobrand, 'has-lockup': lockup }]} data-control-header>
+  <div class="control-bar">
+    <div class="control-brand">
+      <a class="logo" href={link('')}><img src={`${base}logos/uwa-horizontal.svg`} alt="The University of Western Australia: home" width="216" height="71" /></a>
+      {lockup && <a class="cobrand-logo" href={cobrand!.href} aria-label={`${cobrand!.label}: home`}><span aria-hidden="true">Co-brand<br />Logo</span></a>}
+      {/* The site's name: under UWA's logo (no lockup), or in a strip under the header on mobile (all sites) */}
+      {cobrand && <a class="control-site-name" href={cobrand.href}>{cobrand.label}</a>}
+    </div>
+
+    <div class="control-top">
+      {cobrand ? (
+        <ul class="control-items control-all-uwa">
+          <li><button class="control-item" type="button" aria-expanded="false" aria-controls="cm-all" data-opens="cm-all">All UWA<svg class="control-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button></li>
+        </ul>
+      ) : (
+        <nav class="control-nav" aria-label="Main menu" data-control-nav>
+          <ul class="control-items" data-control-items>
+            {sections.map((s, i) => (
+              <li><button class="control-item" type="button" aria-expanded="false" aria-controls={`cm-${i}`} data-opens={`cm-${i}`}>{s.label}<svg class="control-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button></li>
+            ))}
+            <li><button class="control-item" type="button" aria-expanded="false" aria-controls="cm-more" data-opens="cm-more">More<svg class="control-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button></li>
+          </ul>
+          <button class="control-overflow" type="button" aria-expanded="false" aria-label="Show all menu items" data-control-overflow hidden>
+            <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 3.5l4.5 4.5L3 12.5M8.5 3.5L13 8l-4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+          </button>
+        </nav>
+      )}
+      <button class="control-menu-button" type="button" aria-expanded="false" aria-controls="cm-root" aria-label="Open the menu" data-control-menu>
+        <span class="control-icon-menu"><Icon name="menu" /></span>
+        <svg class="control-icon-back" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+        <svg class="control-icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+      </button>
+      <button class="search-button control-search-button" type="button" aria-expanded="false" aria-controls="cm-search" aria-label="Search" data-opens="cm-search">
+        <span class="control-icon-search"><Icon name="search" /></span>
+        <svg class="control-icon-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+      </button>
+    </div>
+
+    {cobrand && (
+      <nav class="control-site" aria-label={`${cobrand.label} menu`}>
+        <ul class="control-items">
+          {cobrand.site.map((s, i) => (
+            <li>{s.children.length ? (
+              <button class="control-item" type="button" aria-expanded="false" aria-controls={`cs-${i}`} data-opens={`cs-${i}`}>{s.label}<svg class="control-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button>
+            ) : (
+              <a class="control-item" href={link(s.path)} aria-current={current(s.path)}>{s.label}</a>
+            )}</li>
+          ))}
+        </ul>
+      </nav>
+    )}
+  </div>
+
+  <div class="control-panels">
+    {/* Mobile menu's top level */}
+    <div class="control-panel control-root" id="cm-root" data-panel hidden>
+      {cobrand ? (
+        <p class="control-title">{cobrand.label}</p>
+      ) : (
+        <p class="control-title"><a href={link('')}>UWA<Icon name="arrow" /></a></p>
+      )}
+      <ul class="control-rows">
+        {cobrand ? (
+          <>
+            {cobrand.site.map((s, i) => (
+              <li>{s.children.length
+                ? <button class="control-row" type="button" data-drill={`cs-${i}`}>{s.label}<svg class="control-chevron-right" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button>
+                : <a class="control-row" href={link(s.path)} aria-current={current(s.path)}>{s.label}</a>}</li>
+            ))}
+            <li class="control-rows-divider"><button class="control-row" type="button" data-drill="cm-all">All UWA<svg class="control-chevron-right" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button></li>
+          </>
+        ) : (
+          <>
+            {sections.map((s, i) => (
+              <li><button class="control-row" type="button" data-drill={`cm-${i}`}>{s.label}<svg class="control-chevron-right" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button></li>
+            ))}
+            <li><button class="control-row" type="button" data-drill="cm-more">More<svg class="control-chevron-right" viewBox="0 0 8 12" aria-hidden="true"><path d="M1.5 1l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button></li>
+          </>
+        )}
+      </ul>
+    </div>
+
+    {/* A mega menu per section (not on co-branded pages, whose bar has the site's sections) */}
+    {!cobrand && sections.map((s, i) => (
+      <div class="control-panel control-mega" id={`cm-${i}`} data-panel hidden>
+        <p class="control-title"><a href={link(s.path)} aria-current={current(s.path)}>{s.label}<Icon name="arrow" /></a></p>
+        <ul class="control-groups">
+          {s.children.map((l2, j) => (
+            <li class="control-group">
+              <div class="control-group-head">
+                <a class="control-group-link" href={link(l2.path)} aria-current={current(l2.path)}>{l2.label}</a>
+                {l2.children.length > 0 && (
+                  <button class="control-accordion" type="button" aria-expanded="false" aria-controls={`cm-${i}-${j}`} aria-label={`${l2.label}: show pages`}>
+                    <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+                  </button>
+                )}
+              </div>
+              {l2.children.length > 0 && (
+                <ul class="control-sublist" id={`cm-${i}-${j}`}>
+                  {l2.children.map(l3 => <li><a href={link(l3.path)} aria-current={current(l3.path)}>{l3.label}</a></li>)}
+                </ul>
+              )}
+            </li>
+          ))}
+        </ul>
+        <button class="control-close" type="button" aria-label="Close menu" data-control-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button>
+      </div>
+    ))}
+
+    {/* More: a small dropdown under its button */}
+    {!cobrand && (
+      <div class="control-panel control-dropdown" id="cm-more" data-panel hidden>
+        <ul class="control-links">
+          {moreItems.map(n => <li><a href={link(n.path)} aria-current={current(n.path)}>{n.label}</a></li>)}
+        </ul>
+      </div>
+    )}
+
+    {/* Co-branded pages: All UWA (the core IA's top two levels, then the More pages) and the site's section dropdowns */}
+    {cobrand && (
+      <div class="control-panel control-mega control-all" id="cm-all" data-panel hidden>
+        <p class="control-title"><a href={link('')}>The University of Western Australia<Icon name="arrow" /></a></p>
+        <ul class="control-groups">
+          {sections.map((s, i) => (
+            <li class="control-group">
+              <div class="control-group-head">
+                <a class="control-group-link" href={link(s.path)}>{s.label}</a>
+                <button class="control-accordion" type="button" aria-expanded="false" aria-controls={`cm-all-${i}`} aria-label={`${s.label}: show pages`}>
+                  <svg viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1.5l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.5" /></svg>
+                </button>
+              </div>
+              <ul class="control-sublist" id={`cm-all-${i}`}>
+                {s.children.map(l2 => <li><a href={link(l2.path)}>{l2.label}</a></li>)}
+              </ul>
+            </li>
+          ))}
+          {moreItems.map(n => (
+            <li class="control-group"><div class="control-group-head"><a class="control-group-link" href={link(n.path)}>{n.label}</a></div></li>
+          ))}
+        </ul>
+        <button class="control-close" type="button" aria-label="Close menu" data-control-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button>
+      </div>
+    )}
+    {cobrand && cobrand.site.map((s, i) => s.children.length > 0 && (
+      <div class="control-panel control-dropdown control-site-dropdown" id={`cs-${i}`} data-panel hidden>
+        <p class="control-title"><a href={link(s.path)} aria-current={current(s.path)}>{s.label}<Icon name="arrow" /></a></p>
+        <ul class="control-links">
+          {s.children.map(c => <li><a href={link(c.path)} aria-current={current(c.path)}>{c.label}</a></li>)}
+        </ul>
+      </div>
+    ))}
+
+    {/* Search: the live panel; suggestions come from phase 2's basic page search */}
+    <div class="control-panel control-mega control-search" id="cm-search" role="dialog" aria-label="Search" data-panel hidden>
+      <p class="control-title">How can we help you?</p>
+      <form class="control-search-form" role="search" data-control-search>
+        <label class="visually-hidden" for="control-search-input">Search the site’s pages</label>
+        <span class="control-search-field">
+          <Icon name="search" />
+          <input id="control-search-input" type="search" placeholder="Search courses, news, people" autocomplete="off" />
+        </span>
+        <button class="control-search-submit" type="submit">Search</button>
+      </form>
+      <div class="control-search-lists">
+        <div>
+          <p class="control-search-heading">Popular searches</p>
+          <ul class="control-links">
+            {popular.map(p => <li><button type="button" data-popular={p}>{p}</button></li>)}
+          </ul>
+        </div>
+        <div class="control-search-suggestions" aria-live="polite" data-control-suggestions hidden>
+          <p class="control-search-heading">Did you mean...</p>
+          <ul class="control-links" data-control-results></ul>
+          <p class="control-search-none" data-control-none hidden></p>
+        </div>
+      </div>
+      <button class="control-close" type="button" aria-label="Close search" data-control-close><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" /></svg></button>
+    </div>
+  </div>
+
+  <script type="application/json" data-control-data set:html={data}></script>
+</header>
+
+<script>
+  import '../scripts/control-menu.ts';
+</script>

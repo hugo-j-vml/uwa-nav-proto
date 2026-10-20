@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.0.0** (20 Oct 2026; the client validated the phase 2 approach): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options; the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.1.0** (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -85,6 +85,7 @@ One repo, one build, one IA. Each nav concept is a **variant** that builds the f
 | `/uwa-nav-proto/f/…` | **F** | C without the depth limit: each level opens a new panel that stacks over the last, leaving a strip of the earlier ones showing. | ✅ Built 19 Oct (v0.30, Section 7f) |
 | `/uwa-nav-proto/g/…` | **G** | Phase 2: A–C's header with one menu pane (E's behaviour) under it; search in the pane. | ✅ Built 20 Oct (v0.32, Section 14) |
 | `/uwa-nav-proto/h/…` | **H** | Phase 2: E's sidebar and pane, with search in the pane. | ✅ Built 20 Oct (v0.32, Section 14) |
+| `/uwa-nav-proto/control-1/…` | **CONTROL-1** | Phase 2's testing control: the live www.uwa.edu.au navigation (menu bar with mega menus, mobile menu, search, co-brand headers) at wireframe fidelity, with our IA. | ✅ Built 20 Oct (v1.1.0, Section 14.6) |
 | `/uwa-nav-proto/c/…` | **C** | A more static version of B: the same header and static core pane, then two panels to the right, one IA level each (L2, then L3). The menu goes down to L3. *(Replaces the earlier sidebar idea, 15 Oct.)* | ✅ Built 15 Oct (v0.9, Section 7b) |
 
 - Paths are **neutral letters** so participants aren't cued by the URL.
@@ -402,6 +403,37 @@ Phase 1 (A–F, their options and the index screen) stays as it was, for referen
 2. Search design (Figma to come): field, results layout, whether results show the trail, and what happens with no matches.
 3. ~~Back from a top-level item: wording?~~ **Resolved (v1.0.2):** "All UWA".
 4. G's pane: 540px wide and full window height under the header, as E's. Narrower/wider, or as tall as its contents (as A's panes)?
-5. Index names for G and H ("Header with menu pane", "Sidebar with menu pane") are stand-ins.
+5. Index names for G and H ("Header with menu pane", "Sidebar with menu pane") are stand-ins. CONTROL-1's is "Current site navigation".
 6. Reviewed IA label still to confirm: "Campus initiatives or Campus development or Campus management" (About us › Locations and campuses) is one item whose label lists three alternatives; which one should it be? (Section 11, 7e.)
+7. CONTROL-1 leaves out the live mega menus' call-to-action buttons (Study: "Search for a course", "Apply now"; About us: "Visit UWA"): they're content, not navigation, and our IA has no direct equivalent. Add them (or placeholders) for parity with G and H's promo area?
+8. The two new institutes' full names don't fit G and H's site tab at 320px wide (the tab is cut off). They need an abbreviation (`abbreviation` column in `data/sitemap.csv`), e.g. "Agriculture" and "Public Policy"; Hugo to choose.
+9. The live site has no menu at exactly 768px wide (neither the bar nor the Menu button shows; a live bug). CONTROL-1 shows the bar from 768px rather than copy that.
+
+### 14.6 CONTROL-1: the control (from v1.1.0)
+
+Testing in Lyssna uses a control to benchmark G and H against. The live site would bring its content, images and IA into the test, so differences couldn't be put down to the navigation, and its IA differs from ours (a task's answer isn't in the same place). CONTROL-1 copies the live site's navigation (recorded from www.uwa.edu.au on 20 Oct 2026) at the prototype's wireframe fidelity, on the same IA and pages as G and H, so only the navigation pattern differs. Hugo, 20 Oct:
+
+- **IA:** ours (trimmed, so shallower than the live site). The menu reaches L3, as live (`menuDepth: 3`; deeper pages via "In this section").
+- **Top level:** the live bar has five sections and a small "More" dropdown of utility links (News, Events, Library, Current students, Staff, Giving). Ours: Study at UWA, Life at UWA, Partners and community, Our research, About us; More: Students, Login, News (About us › News). (`mega.more` in `src/variants/control-1.ts`.)
+- **Co-branded sites:** on the live site they have their own header and menus, no UWA menu bar. Examples: Oceans Institute, plus two added to the IA beside it (Our research › Institutes and centres › Centres and other entities): **The UWA Institute of Agriculture** and **UWA Public Policy Institute**, their menus taken from the live sites' top two levels. They also appear in every other variant.
+- **Footer:** not included (no variant has a footer yet; Hugo's new footers will be tested against the live site's).
+- **Index:** in phase 2, called "CONTROL-1". When a later phase adds visual design, the control can be lifted to the same fidelity.
+- **No behaviour options** apply, and there's no Shift+O panel.
+
+Recorded behaviour, copied:
+
+| | Live site (20 Oct 2026) | CONTROL-1 |
+|---|---|---|
+| Menu bar (768px and wider) | Logo; section buttons with a chevron; More; search button | Same, with our sections |
+| Opening | Hover opens a menu after ~250ms (moving on to another button within that time opens that one); click toggles; a click just after hover opened it keeps it open; Enter opens it with focus on its title link | Same (`--control-hover-open-delay`, `--control-click-guard`) |
+| Closing | Leaving an open menu (after being in it) closes it after ~2s; moving off the button without entering it leaves it open; Esc, ×, a click outside, or the button | Same (`--control-hover-close-delay`); Esc also puts focus back on the button (live drops it) |
+| Mega menu | Under the header, nearly full width; the section's name with an arrow (links to it) on the left; L2 pages as headings with their L3 pages under them, in three columns; some sections add call-to-action buttons | Same, without the buttons (open question 7) |
+| More | Small dropdown under its button, plain links | Same |
+| Narrow bar | Buttons that don't fit are hidden; » shows them all on extra rows | Same |
+| Motion | The menu's title slides in (400ms); no panel animation | Title fades and slides down (`--control-title-*`) |
+| Search | Panel: "How can we help you?", field, Search button, Popular searches, "Did you mean..." suggestions; goes to the search results page | Same panel; suggestions are pages matching what's typed (G and H's matching); Search or Enter goes to the first; a popular search fills in the field |
+| Mobile (below 768px) | Menu (hamburger) opens a panel under the header (the page shows below it): "UWA →", the sections and More with ›; a section slides in (100ms) its panel: title link, L2 pages with an accordion (one open at a time) for their L3 pages; the button becomes ‹ (back), and × at the top level | Same |
+| Co-branded header | UWA's logo with the site's logo (Oceans Institute) or its name under UWA's logo (the institutes); All UWA and Search at the top right; the site's sections below: dropdowns (the section's name with an arrow, then its pages) or plain links | Same (`mega.lockups` in `control-1.ts`: Oceans Institute) |
+| All UWA | Mega menu: "The University of Western Australia", the core's top two levels in columns, then the utility links | Same, with our sections and More pages |
+| Co-branded mobile | The site's name in a strip under the header; the menu lists the site's sections, a divider, then All UWA (the core's top level with accordions) | Same |
 

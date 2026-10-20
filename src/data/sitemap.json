@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-19T08:38:57.260Z",
+  "generated": "2026-10-20T06:45:50.794Z",
   "source": "data/sitemap.csv",
   "columns": [
     "L1",
@@ -1765,6 +1765,127 @@
                           "label": "Elizabeth Pearce Marine Science Award",
                           "slug": "elizabeth-pearce-marine-science-award",
                           "path": "our-research/institutes-and-centres/centres-and-other-entities/oceans-institute/awards/elizabeth-pearce-marine-science-award",
+                          "children": []
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "id": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture",
+                  "label": "The UWA Institute of Agriculture",
+                  "slug": "the-uwa-institute-of-agriculture",
+                  "path": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture",
+                  "level": 4,
+                  "template": "cobranded",
+                  "children": [],
+                  "site": [
+                    {
+                      "label": "About",
+                      "slug": "about",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture/about",
+                      "children": []
+                    },
+                    {
+                      "label": "Events",
+                      "slug": "events",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture/events",
+                      "children": []
+                    },
+                    {
+                      "label": "News",
+                      "slug": "news",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture/news",
+                      "children": []
+                    },
+                    {
+                      "label": "Publications",
+                      "slug": "publications",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture/publications",
+                      "children": []
+                    },
+                    {
+                      "label": "Research",
+                      "slug": "research",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture/research",
+                      "children": [
+                        {
+                          "label": "Research Themes",
+                          "slug": "research-themes",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture/research/research-themes",
+                          "children": []
+                        },
+                        {
+                          "label": "Plant Growth Facility",
+                          "slug": "plant-growth-facility",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture/research/plant-growth-facility",
+                          "children": []
+                        },
+                        {
+                          "label": "Shenton Park Research Facility",
+                          "slug": "shenton-park-research-facility",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture/research/shenton-park-research-facility",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "label": "UWA Farm Ridgefield",
+                      "slug": "uwa-farm-ridgefield",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/the-uwa-institute-of-agriculture/uwa-farm-ridgefield",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "our-research/institutes-and-centres/centres-and-other-entities/uwa-public-policy-institute",
+                  "label": "UWA Public Policy Institute",
+                  "slug": "uwa-public-policy-institute",
+                  "path": "our-research/institutes-and-centres/centres-and-other-entities/uwa-public-policy-institute",
+                  "level": 4,
+                  "template": "cobranded",
+                  "children": [],
+                  "site": [
+                    {
+                      "label": "Past Events",
+                      "slug": "past-events",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/uwa-public-policy-institute/past-events",
+                      "children": []
+                    },
+                    {
+                      "label": "Publications",
+                      "slug": "publications",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/uwa-public-policy-institute/publications",
+                      "children": [
+                        {
+                          "label": "Real Costs Real Impacts",
+                          "slug": "real-costs-real-impacts",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/uwa-public-policy-institute/publications/real-costs-real-impacts",
+                          "children": []
+                        },
+                        {
+                          "label": "SDG Report",
+                          "slug": "sdg-report",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/uwa-public-policy-institute/publications/sdg-report",
+                          "children": []
+                        }
+                      ]
+                    },
+                    {
+                      "label": "Our Team",
+                      "slug": "our-team",
+                      "path": "our-research/institutes-and-centres/centres-and-other-entities/uwa-public-policy-institute/our-team",
+                      "children": [
+                        {
+                          "label": "International Advisory Board",
+                          "slug": "international-advisory-board",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/uwa-public-policy-institute/our-team/international-advisory-board",
+                          "children": []
+                        },
+                        {
+                          "label": "Our Fellows",
+                          "slug": "our-fellows",
+                          "path": "our-research/institutes-and-centres/centres-and-other-entities/uwa-public-policy-institute/our-team/our-fellows",
                           "children": []
                         }
                       ]

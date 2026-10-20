@@ -3,7 +3,7 @@
 A coded, clickable prototype of the proposed UWA main website navigation, for user testing (Maze/Lyssna and 1:1 sessions). Wireframe fidelity. **Not a production build.**
 
 - **Live site:** https://hugo-j-vml.github.io/uwa-nav-proto/ (index of variants: opens on phase 2; phase 1 is https://hugo-j-vml.github.io/uwa-nav-proto/#phase-1)
-- **Phase 2:** **G** https://hugo-j-vml.github.io/uwa-nav-proto/g/ · **H** https://hugo-j-vml.github.io/uwa-nav-proto/h/
+- **Phase 2:** **G** https://hugo-j-vml.github.io/uwa-nav-proto/g/ · **H** https://hugo-j-vml.github.io/uwa-nav-proto/h/ · **CONTROL-1** (the live site's navigation, for benchmarking) https://hugo-j-vml.github.io/uwa-nav-proto/control-1/
 - **Phase 1 (for reference):** [A](https://hugo-j-vml.github.io/uwa-nav-proto/a/) · [B](https://hugo-j-vml.github.io/uwa-nav-proto/b/) · [C](https://hugo-j-vml.github.io/uwa-nav-proto/c/) · [D](https://hugo-j-vml.github.io/uwa-nav-proto/d/) · [E](https://hugo-j-vml.github.io/uwa-nav-proto/e/) · [F](https://hugo-j-vml.github.io/uwa-nav-proto/f/)
 - **Plan:** `plan.md`
 - **Password:** set in `src/config.ts` (simple screen only; not real security, the site files are public).
@@ -17,9 +17,9 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Breakpoints (mobile / tablet / desktop widths) and which sizes use the compact menus | `src/breakpoints.ts` (the only place they're set) |
 | Sizes per screen size; compact-layout values (takeover, top bar, drawer, their motion) | `src/styles/tokens.css`: "SCREEN SIZES" blocks (one per band, after the variant blocks) and "COMPACT LAYOUTS" |
 | Index page look (colours, font, sizes, the animated dot background) | `--index-*` tokens in `src/styles/tokens.css` (background: `--index-bg-*`, e.g. dot spacing, facet brightness, wave and pulse speed) |
-| Variant names, and which variants are built | `src/variants/a.ts` … `h.ts` (`phase`: which index screen lists it, 1 or 2; `status: 'ready'` or `'coming-soon'`; `menuDepth`: how many levels the menu shows, which switches on "In this section" below that, e.g. C: 3; `fixedOptions`: options fixed for that variant, e.g. G and H's co-brand tabs) |
+| Variant names, and which variants are built | `src/variants/a.ts` … `h.ts`, `control-1.ts` (`phase`: which index screen lists it, 1 or 2; `status: 'ready'` or `'coming-soon'`; `menuDepth`: how many levels the menu shows, which switches on "In this section" below that, e.g. C: 3; `fixedOptions`: options fixed for that variant, e.g. G and H's co-brand tabs; `noOptions`: none at all, CONTROL-1; `mega`: CONTROL-1's "More" pages and which co-branded sites show a logo lockup) |
 | The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below) |
-| A co-branded site's own pages (e.g. Oceans Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the core menu tree; how they appear in the menus depends on the Co-brand menu option. |
+| A co-branded site's own pages (Oceans Institute, The UWA Institute of Agriculture, UWA Public Policy Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the core menu tree; how they appear in the menus depends on the Co-brand menu option. |
 | Behaviour options (alternative behaviours switched on the index page, with Shift+O on any variant page, or with `?<option>=<choice>` in a link) | `src/options.ts` (see below) |
 | Header shortcut buttons (Study / Impact / Research) | `src/data/header.json` |
 | Password | `src/config.ts` (see below) |
@@ -27,6 +27,7 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Layout/structure of components and templates | `src/styles/components.css`, `src/components/` and `src/templates/` |
 | Menu behaviour (desktop and compact) | `src/scripts/menu.ts` (A, B, C, F), `src/scripts/sidebar-menu.ts` (D, E), `src/scripts/pane-menu.ts` (G, H: the menu pane and its search), shared state in `src/lib/menu-state.ts`; option 1's co-brand menu bar: `src/components/SiteNav.astro` + `src/scripts/site-nav.ts` |
 | G and H's shells and pane | `src/components/PaneHeader.astro` (G), `PaneSidebar.astro` (H), `MenuPane.astro` (the pane, shared); sizes in the "Phase 2" tokens in `tokens.css` |
+| CONTROL-1 (the live site's navigation) | `src/components/ControlHeader.astro` (header and every panel), `src/scripts/control-menu.ts` (behaviour), `src/lib/search.ts` (search matching, shared with G and H); `--control-*` tokens in the `[data-variant="control-1"]` block of `tokens.css`; its menu bar / mobile menu switch is `CONTROL_BAR_FROM` (768) in `src/breakpoints.ts` |
 | Index page phases (the Phases control and the slide between phases) | `src/pages/index.astro`; `--index-phase-*` tokens |
 | Logos | `public/logos/` (horizontal: header; vertical: sidebar). Co-brand logo: a placeholder box (`--cobrand-logo-*` tokens) |
 | Version number on the index page | The latest heading in `CHANGELOG.md` (add an entry for each change). "Last updated" is the build time, in Perth time. |
@@ -89,7 +90,7 @@ Generate the SHA-256 hash of the new password and paste it into `PASSWORD_SHA256
 
 Full specs per variant are in `plan.md` (sections 7–7d). In short:
 
-- Click only, no hover; the whole row is the click target. **Esc**, the trigger again, or a click outside closes the menu. Page links slide the menu away, then navigate.
+- Click only, no hover (except CONTROL-1, which copies the live site); the whole row is the click target. **Esc**, the trigger again, or a click outside closes the menu. Page links slide the menu away, then navigate.
 - The menu **always opens at the top level**, as on the homepage, wherever you are (except on co-branded pages with Co-brand menu options 2 and 7).
 - **A** Core with expanding parent nodes: chosen parents nest in the core pane; their children show in the dynamic pane, with a heading linking to the section. Black block on the selected item and the current page.
 - **B** Static core with dynamic panel: static core pane; the white pane shows the chosen section as an accordion.
@@ -105,6 +106,12 @@ Full specs per variant are in `plan.md` (sections 7–7d). In short:
 - A promo placeholder sits at the bottom of the pane, at its top level only, and on co-branded pages only under the UWA tab (design to come; `--pane-promo-*` tokens).
 - Search lists the pages whose names contain every word typed (IA and co-branded sites' pages), with their trail; each links to its page.
 - Co-branded pages always use the tabs (co-brand menu option 2).
+- **CONTROL-1** Current site navigation: the control for testing. The live www.uwa.edu.au navigation (recorded 20 Oct 2026) at wireframe fidelity, with our IA, so G and H can be benchmarked against it on the same pages and tasks (`plan.md` 14.6):
+  - **Menu bar** (768px and wider): Study at UWA, Life at UWA, Partners and community, Our research, About us, each opening a **mega menu** under the header (the section's name linking to it, then its L2 pages as headings with their L3 pages, in three columns), and **More**, a small dropdown with Students, Login and News (the live More holds Current students, Staff, News and similar). The menu reaches L3, as live; deeper pages via "In this section". Hover opens a menu after 250ms; once the pointer has been in it, leaving closes it after 2s; click toggles; Esc, × or a click outside closes. Buttons that don't fit hide behind », which shows them all.
+  - **Mobile menu** (below 768px, the live site's switch): Menu opens the top level under the header; a section slides in its panel, with L3 pages behind accordions (one open at a time); the Menu button becomes Back (‹), then Close (×).
+  - **Search**: the live panel ("How can we help you?", field, Search, Popular searches); typing lists matching pages under "Did you mean..." (the same matching as G and H); Search or Enter goes to the first.
+  - **Co-branded pages**: the live co-brand header, no UWA menu bar: the site's logo next to UWA's (Oceans Institute) or its name under UWA's logo (the two institutes), **All UWA** (a mega menu of the IA's top two levels and the More pages), Search, and a row of the site's sections (a dropdown for a section with pages, a link for one without). Mobile: the site's name in a strip under the header; the menu lists the site's sections, then All UWA.
+  - No behaviour options, and no Shift+O panel.
 
 ### Mobile and tablet (compact layouts)
 
@@ -121,7 +128,7 @@ Alternative behaviours that apply across every variant, without making new varia
 - **Any variant page:** Shift+O shows a hidden panel (bottom right) with that variant's phase's options; choosing reloads the page.
 - **Links:** `?cobrand-menu=7` (or `?cobrand-menu=7&cobrand-shortcuts=show`) on any URL sets and remembers a choice (for presetting test sessions); it's then dropped from the address.
 
-Each option belongs to a phase (`phases` in `src/options.ts`) and only applies to that phase's variants. Current options:
+Each option belongs to a phase (`phases` in `src/options.ts`) and only applies to that phase's variants (none apply to CONTROL-1). Current options:
 
 **Phase 1 (A–F)**
 

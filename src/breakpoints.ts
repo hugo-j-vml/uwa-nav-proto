@@ -29,3 +29,11 @@ export type Breakpoint = 'mobile' | 'tablet' | 'desktop';
  * the desktop layouts.
  */
 export const COMPACT: Breakpoint[] = ['mobile', 'tablet'];
+
+/**
+ * CONTROL-1 copies the live UWA site, whose header switches between its menu
+ * bar (mega menus) and its mobile menu at its own width, not at the bands above:
+ * the bar from this width (px), the mobile menu below it. The header's early
+ * script sets data-control-bar="bar" | "mobile" on <html> from it.
+ */
+export const CONTROL_BAR_FROM = 768;

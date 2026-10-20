@@ -398,6 +398,49 @@
 [data-variant="h"] {
   /* Phase 2: E's sidebar and pane. Uses the sidebar values (SIDEBAR block) */
 }
+[data-variant="control-1"] {
+  /* CONTROL-1: the live UWA site's navigation, at wireframe fidelity (ControlHeader.astro).
+     Sizes follow the live site; colours and type are the prototype's wireframe ones. */
+  --control-item-gap: 24px;            /* between the menu bar's buttons (live: 24) */
+  --control-chevron-gap: 8px;          /* label to its chevron */
+  --control-site-name-size: 20px;      /* co-branded site's name under UWA's logo (no lockup) */
+  --control-site-name-gap: 2px;        /* logo to the name */
+  --control-row-gap: 12px;             /* co-branded header: top row (All UWA, Search) to the site's sections */
+  --control-panel-bg: var(--colour-white);
+  --control-panel-inset: 24px;         /* mega menus stop short of the window's edges (live: 24) */
+  --control-panel-padding: 32px 96px 40px; /* live: content in a 1200px column on a 1392px panel */
+  --control-title-size: var(--type-h3-size);
+  --control-title-width: 280px;        /* title column beside the groups (live: ~300) */
+  --control-columns: 3;                /* L2 groups flow down 3 columns (live) */
+  --control-column-gap: 24px;
+  --control-group-gap: 28px;           /* between L2 groups in a column */
+  --control-group-weight: 600;         /* L2 headings (live: medium-bold) */
+  --control-link-gap: 12px;            /* between links in a list (live: 32px line pitch) */
+  --control-link-size: 16px;
+  --control-dropdown-width: 300px;     /* More and the co-branded sites' sections (live: 298) */
+  --control-dropdown-padding: 24px;
+  --control-dropdown-inset: 24px;      /* dropdown's left edge sits this far left of its button */
+  --control-close-size: 24px;
+  --control-search-width: 600px;       /* field (live: 472 + Search button) */
+  --control-search-height: 48px;
+  --control-trail-size: 14px;          /* trail under a search suggestion */
+  --control-trail-colour: #5c5c5c;
+  /* Mobile menu (below 768px) */
+  --control-strip-height: 44px;        /* co-branded pages: the site's name under the header */
+  --control-strip-size: 20px;
+  --control-mobile-padding: 24px 24px 32px;
+  --control-mobile-row-height: 52px;   /* top-level rows and L2 rows (live: 52) */
+  --control-mobile-title-size: 28px;
+  --control-divider: #c4c4c4;          /* accordion separators and the All UWA divider */
+  /* Motion (live): hover opens after a short delay; leaving an open panel closes it after a longer one */
+  --control-hover-open-delay: 250ms;
+  --control-hover-close-delay: 2000ms;
+  --control-click-guard: 500ms;        /* a click this soon after hover opened a panel keeps it open */
+  --control-title-duration: 400ms;     /* the panel's title slides down as it opens */
+  --control-title-offset: 8px;
+  --control-slide-duration: 100ms;     /* mobile: panels slide in from the side */
+  --control-slide-offset: 16px;
+}
 [data-variant="f"] {
   /* C's core pane, then a panel per level, each stacked over the last */
   --core-pane-width: 386px;

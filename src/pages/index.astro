@@ -3,7 +3,8 @@
  * Index page: lists the nav concepts (variants) with links, one screen per
  * prototyping phase. Behind the password screen. Layout and colours from
  * Hugo's reference (dark page, rule under the mark, intro top left, large
- * lettered list), with each phase's behaviour options beside its list.
+ * lettered list), with each phase's behaviour options beside its list. A variant
+ * with a longer label than a letter (CONTROL-1) runs label and name together.
  *
  * Phases: the latest phase shows by default; the Phases control under the
  * intro (← and →) slides the whole screen sideways to the phase before or
@@ -47,7 +48,7 @@ const latest = phases[phases.length - 1];
             {variants.filter(v => v.phase === phase).map(v => (
               <li class:list={['index-item', { 'is-coming-soon': v.status !== 'ready' }]}>
                 {v.status === 'ready' ? (
-                  <a class="index-link" href={variantBase(v.id)} target="_blank" rel="noopener">
+                  <a class:list={['index-link', { 'is-long-letter': v.letter.length > 1 }]} href={variantBase(v.id)} target="_blank" rel="noopener">
                     <span class="index-letter">{v.letter}.</span>
                     <span class="index-name">{v.name}</span>
                   </a>
