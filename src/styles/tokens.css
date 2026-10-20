@@ -305,7 +305,7 @@
   --index-intro-size: 18px;
   --index-intro-line: 1.25;
   --index-columns-gap: 96px;           /* variant list to the options column (desktop) */
-  --index-list-top: clamp(32px, 22vh, 280px);  /* space above the list and the options; scales with window height */
+  --index-list-top: clamp(32px, calc(22vh - 50px), 230px);  /* space above the list and the options; scales with window height (50px less than 22vh, v1.0.4) */
   --index-item-size: 40px;             /* variant links: one line each at 1440px wide */
   --index-item-line: 1.05;
   --index-item-gap: 0.3em;             /* space between list items */

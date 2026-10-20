@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.4 (20 Oct 2026)
+
+- Index page: 50px less space above the variant list and the options (`--index-list-top`: 22vh less 50px, between 32px and 230px), so both phases fit a 1440 x 720 laptop window without scrolling.
+
 ## 1.0.3 (20 Oct 2026)
 
 - Index page layout back as it was before 1.0.1: the options column starts level with the variant list again, and the gap above the Phases control is 14px again. The black, Medium-weight choice buttons from 1.0.1 stay.
