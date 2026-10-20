@@ -388,7 +388,7 @@ Phase 1 (A–F, their options and the index screen) stays as it was, for referen
 | Phones and tablets | The pane takes over the screen under the header | E's top bar and drawer: the hamburger opens the drawer on the pane at the top level; the bar's search icon opens it on search |
 
 - **Menu** (both): top level (no heading, no Back); choosing an item with children shows it as a heading (a link to its page) above its children, sliding in from the right; Back steps up a level and focuses the item you came from. Items without children are links. Opens at the top level each time.
-- **Back** (option): "Back", or the previous level's name: from Explore courses, "← Study at UWA"; from a top-level item, "Main menu"; on a co-branded site's tab, the site's name.
+- **Back** (option): "Back", or the previous level's name: from Explore courses, "← Study at UWA"; from a top-level item, "All UWA" (Hugo, v1.0.2); on a co-branded site's tab, the site's name.
 - **Arrows** (option): All (every item and the heading), Only items with children, All except headings, None (default).
 - **Search:** the Search button opens the pane on a search field (focused); Menu and Search swap the pane between the two; the one showing closes it. Typing lists the pages whose names contain every word typed (case ignored), names starting with the text first, then in IA order, with a count; each result shows its trail and links to its page; Enter goes to the first. Covers the IA and the co-branded sites' own pages. No arrows on results. Built as a stand-in for Hugo's Figma design.
 - **Co-branded pages:** the top level shows the tabs (UWA left, the site's abbreviation or name right; the site's tab selected), then the site's name as a heading link, then its sections.
@@ -400,7 +400,7 @@ Phase 1 (A–F, their options and the index screen) stays as it was, for referen
 
 1. Promo area: placeholder in (v1.0.0); waiting on Hugo's Figma design. Shown on co-branded pages' site tab too: right?
 2. Search design (Figma to come): field, results layout, whether results show the trail, and what happens with no matches.
-3. Back with the previous level's name: from a top-level item it says "Main menu". Right wording?
+3. ~~Back from a top-level item: wording?~~ **Resolved (v1.0.2):** "All UWA".
 4. G's pane: 540px wide and full window height under the header, as E's. Narrower/wider, or as tall as its contents (as A's panes)?
 5. Index names for G and H ("Header with menu pane", "Sidebar with menu pane") are stand-ins.
 6. Reviewed IA label still to confirm: "Campus initiatives or Campus development or Campus management" (About us › Locations and campuses) is one item whose label lists three alternatives; which one should it be? (Section 11, 7e.)

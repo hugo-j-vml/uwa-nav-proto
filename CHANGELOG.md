@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.2 (20 Oct 2026)
+
+- G and H, Back button option "Previous level's name": from a top-level item's level, Back now says "← All UWA" (was "Main menu"). Deeper levels still name the previous level; a co-branded site's tab still names the site. "Back" (the default) is unchanged.
+
 ## 1.0.1 (20 Oct 2026)
 
 - Index page fits a laptop window without scrolling (checked at 1440 x 720, 1280 x 720 and 1470 x 760, both phases): on screens 1280px and wider the options column now starts level with the intro line instead of the variant list (`--options-top-wide`). Below 1280px the options still sit under the list. The gap above the Phases control is 10px (was 14px).

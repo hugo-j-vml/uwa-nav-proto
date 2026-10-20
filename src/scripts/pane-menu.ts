@@ -23,7 +23,7 @@
  *
  * Behaviour options (src/options.ts):
  *   "Back button in the menu": Back, or the name of the level it goes back to
- *     ("Main menu" at the top level; the site's name on a co-branded site's tab).
+ *     ("All UWA" at the top level; the site's name on a co-branded site's tab).
  *   "Arrows in the menu": which items show a → (CSS, components.css).
  *   "Shortcuts", "Search": hide those buttons (CSS).
  * Co-branded site pages always use the tabs (co-brand menu option 2): the pane
@@ -128,10 +128,10 @@ function init(pane: HTMLElement) {
     return li;
   }
 
-  /** Where Back goes: the previous level's name ("Main menu", or the site's name, at the top). */
+  /** Where Back goes: the previous level's name ("All UWA", or the site's name, at the top). */
   function previousName(): string {
     if (path.length >= 2) return byPath.get(path[path.length - 2])?.l ?? 'Back';
-    return tab === 'cobrand' ? cobrand!.l : 'Main menu';
+    return tab === 'cobrand' ? cobrand!.l : 'All UWA';
   }
 
   function fill() {

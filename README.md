@@ -137,7 +137,7 @@ Each option belongs to a phase (`phases` in `src/options.ts`) and only applies t
 |---|---|
 | Shortcuts (`shortcuts`) | **Show** (default) or **Hide** the shortcut links (Study, Impact, Research) on every page: G header, H sidebar. |
 | Search (`search`) | **Show** (default) or **Hide** the search buttons. |
-| Back button in the menu (`menu-back`) | **Back** (default) or **Previous level's name**: the name of the level Back goes to, e.g. "← Study at UWA" above the Explore courses heading ("Main menu" from a top-level item; the site's name on a co-branded site's tab). |
+| Back button in the menu (`menu-back`) | **Back** (default) or **Previous level's name**: the name of the level Back goes to, e.g. "← Study at UWA" above the Explore courses heading ("All UWA" from a top-level item; the site's name on a co-branded site's tab). |
 | Arrows in the menu (`menu-arrows`) | **All** (every item and the heading), **Only items with children**, **All except headings**, **None** (default). Back always keeps its arrow. |
 | Breadcrumbs on co-branded pages (`cobrand-breadcrumbs`) | As phase 1 (shared). |
 
