@@ -837,6 +837,18 @@ html[data-layout="compact"].menu-open { overflow: hidden; }
 }
 .header-pane[hidden] { display: none; }
 
+/* The pane's contents in a column, so the promo placeholder sits at the bottom of the pane (or under the list, if that's longer) */
+.pane-menu:not([hidden]) { display: flex; flex-direction: column; }
+.pane-menu > * { flex-shrink: 0; }
+.pane-menu .drill-back { align-self: flex-start; }
+.pane-promo { position: relative; margin-top: auto; padding-top: var(--pane-promo-gap); }
+.pane-promo[hidden] { display: none; }
+.pane-promo .placeholder { height: var(--pane-promo-height); }
+.pane-promo-label {
+  position: absolute; left: 50%; top: calc(var(--pane-promo-gap) + var(--pane-promo-height) / 2); transform: translate(-50%, -50%);
+  padding: 4px 10px; background: var(--colour-white); font-family: var(--font-ui); font-size: var(--search-result-trail-size);
+}
+
 /* Search buttons (G header, H sidebar and top bar): open state while the pane shows search, as the Menu button's */
 :is(.search-button, .sidebar-search-button, .mobile-bar-search)[aria-expanded='true'] { background: var(--search-button-open-bg); color: var(--search-button-open-text); }
 :is(.search-button, .sidebar-search-button, .mobile-bar-search)[aria-expanded='true'] svg path { fill: currentColor; }

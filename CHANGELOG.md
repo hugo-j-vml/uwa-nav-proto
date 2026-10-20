@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.0 (20 Oct 2026)
+
+- **Version 1.** The client has validated the approach (phase 2: G and H with the single menu pane).
+- G and H: a **promo placeholder** at the bottom of the menu pane, at the top level only (a wireframe box labelled "Promo area", for the promotional / secondary area, which may be personalised, e.g. by UTM campaign; design to come). It sits at the bottom of the pane, or under the list when the list is longer (phones). Not shown in search or at deeper levels. Tokens `--pane-promo-height`, `--pane-promo-gap`.
+- A–F unchanged.
+
 ## 0.32.0 (20 Oct 2026)
 
 - **Phase 2.** The index page now has a screen per prototyping phase. It opens on phase 2; the Phases control under the intro (← Phase 2 →) slides the whole screen sideways to phase 1 (the screen leaves to the right) and back. Phase 1 keeps A–F and their options, unchanged, for reference; the address remembers it (`#phase-1`). URLs are unchanged.

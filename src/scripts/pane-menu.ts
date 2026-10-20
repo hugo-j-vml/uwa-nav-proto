@@ -18,6 +18,9 @@
  * page, with its trail under it. Enter goes to the first result. Menu and
  * Search swap the pane between the two; the button that's showing closes it.
  *
+ * Promo: a placeholder at the bottom of the pane, shown at the menu's top level
+ * only (on a co-branded page, under either tab); not with search or deeper levels.
+ *
  * Behaviour options (src/options.ts):
  *   "Back button in the menu": Back, or the name of the level it goes back to
  *     ("Main menu" at the top level; the site's name on a co-branded site's tab).
@@ -53,6 +56,7 @@ function init(pane: HTMLElement) {
   const form = pane.querySelector<HTMLFormElement>('[data-pane-search]')!;
   const input = form.querySelector<HTMLInputElement>('input')!;
   const status = pane.querySelector<HTMLElement>('[data-pane-search-status]')!;
+  const promo = pane.querySelector<HTMLElement>('[data-pane-promo]')!;
   const arrowTpl = document.querySelector<HTMLTemplateElement>('[data-arrow]')!;
   const menuToggles = [...document.querySelectorAll<HTMLButtonElement>('[data-menu-toggle]')];
   const searchToggles = [...document.querySelectorAll<HTMLButtonElement>('[data-search-toggle]')];
@@ -136,6 +140,7 @@ function init(pane: HTMLElement) {
     form.hidden = !searching;
     status.hidden = !searching;
     list.classList.toggle('is-results', searching);
+    promo.hidden = searching || path.length > 0;
     if (searching) {
       back.hidden = true;
       results();

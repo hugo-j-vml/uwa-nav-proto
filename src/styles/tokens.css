@@ -273,6 +273,8 @@
   --search-result-trail-size: 14px;    /* the trail under it */
   --search-result-trail-colour: var(--colour-ironbark-80);
   --search-result-gap: 16px;           /* between results */
+  --pane-promo-height: 220px;          /* promo placeholder at the bottom of the pane (top level only) */
+  --pane-promo-gap: 40px;              /* minimum space between the menu and the promo */
 }
 /* No header band in the sidebar variants, so content and co-branded pages start higher */
 [data-shell="sidebar"] {

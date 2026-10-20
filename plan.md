@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype v0.32.0 (20 Oct 2026): **phase 2** started (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options; the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.0.0** (20 Oct 2026; the client validated the phase 2 approach): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options; the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -368,7 +368,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 4. Shortcuts may be dropped from both: a new option shows or hides them on **every** page.
 5. Menu behaviour: **E's single pane**, one level at a time, with the chosen item as the heading, and Back. New option: Back says "Back" or the previous level's name.
 6. Search in the menu pane rather than as a field in the header or sidebar. Hugo designs it in Figma; meanwhile a basic working search that matches typed text to page names. It may be switched off.
-7. A promotional / secondary area at the bottom of the pane at the top level, possibly personalised (e.g. by UTM campaign). Hugo designs it in Figma. **Not built yet.**
+7. A promotional / secondary area at the bottom of the pane at the top level, possibly personalised (e.g. by UTM campaign). Hugo designs it in Figma. **Placeholder built (v1.0.0).**
 8. Arrows: an option for all, only items with children, all except headings, or none. Back keeps its arrow. Likely outcome: none.
 
 Phase 1 (A–F, their options and the index screen) stays as it was, for reference. Same URLs.
@@ -393,11 +393,12 @@ Phase 1 (A–F, their options and the index screen) stays as it was, for referen
 - **Search:** the Search button opens the pane on a search field (focused); Menu and Search swap the pane between the two; the one showing closes it. Typing lists the pages whose names contain every word typed (case ignored), names starting with the text first, then in IA order, with a count; each result shows its trail and links to its page; Enter goes to the first. Covers the IA and the co-branded sites' own pages. No arrows on results. Built as a stand-in for Hugo's Figma design.
 - **Co-branded pages:** the top level shows the tabs (UWA left, the site's abbreviation or name right; the site's tab selected), then the site's name as a heading link, then its sections.
 - **Closing:** the button that opened it, Esc, or a click outside; a page link slides the pane away, then navigates.
+- **Promo** (placeholder, v1.0.0): a wireframe box labelled "Promo area" at the bottom of the pane, at the top level only (both tabs on co-branded pages), not in search. Height `--pane-promo-height` (220px). It sits at the bottom of the pane, or under the list when the list is longer.
 - **Options:** Shortcuts, Search, Back button, Arrows, Breadcrumbs on co-branded pages (Section 7d; shared with phase 1). Shift+O on G and H shows these.
 
 ### Phase 2 open questions
 
-1. Promo area at the bottom of the pane (top level): waiting on Hugo's Figma design. A placeholder can go in first if useful.
+1. Promo area: placeholder in (v1.0.0); waiting on Hugo's Figma design. Shown on co-branded pages' site tab too: right?
 2. Search design (Figma to come): field, results layout, whether results show the trail, and what happens with no matches.
 3. Back with the previous level's name: from a top-level item it says "Main menu". Right wording?
 4. G's pane: 540px wide and full window height under the header, as E's. Narrower/wider, or as tall as its contents (as A's panes)?

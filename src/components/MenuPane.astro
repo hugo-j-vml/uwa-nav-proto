@@ -8,8 +8,11 @@
  *     behaviour option "Back button in the menu"), the chosen item as a heading
  *     linking to its page, then its children.
  *   Search: a search field, then the pages whose names match what's typed.
+ *   Promo: a placeholder for a promotional / secondary area (design to come),
+ *     at the bottom of the pane, at the menu's top level only.
  */
 import Icon from './Icons.astro';
+import Placeholder from './Placeholder.astro';
 import { nodes, variantBase, cobrandData, searchIndex, type Cobrand } from '../lib/nav';
 
 interface Props { variant: string; currentPath?: string; cobrand?: Cobrand; class: string }
@@ -33,6 +36,10 @@ const data = JSON.stringify({
   </form>
   <p class="pane-search-status" data-pane-search-status aria-live="polite" hidden></p>
   <ul class="menu-list" data-pane-list></ul>
+  <aside class="pane-promo" aria-label="Promotion" data-pane-promo hidden>
+    <Placeholder />
+    <span class="pane-promo-label">Promo area</span>
+  </aside>
 </nav>
 
 <template data-arrow><Icon name="arrow" /></template>
