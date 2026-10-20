@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.32.0 (20 Oct 2026)
+
+- **Phase 2.** The index page now has a screen per prototyping phase. It opens on phase 2; the Phases control under the intro (← Phase 2 →) slides the whole screen sideways to phase 1 (the screen leaves to the right) and back. Phase 1 keeps A–F and their options, unchanged, for reference; the address remembers it (`#phase-1`). URLs are unchanged.
+- **New variants G and H** (phase 2), from the client meeting: one menu pane that handles every level, as in E (the chosen item as a heading linking to its page, its children, Back to step up).
+  - **G, Header with menu pane**: A–C's header; Menu opens the pane under it. Phones and tablets: the pane takes over the screen under the header.
+  - **H, Sidebar with menu pane**: E's sidebar and pane. Phones and tablets: E's top bar and drawer.
+  - **Search** opens in the pane: type, and the pages whose names match are listed with their trail, each linking to its page (Enter goes to the first). G: the header's search button. H: the sidebar's search button (still looks like E's field), and the top bar's search icon.
+  - Co-branded pages always use the tabs (co-brand menu option 2), with the abbreviation and site name as before.
+- **Phase 2 options** (index page and Shift+O on G and H): Shortcuts (show/hide on every page), Search (show/hide), Back button in the menu ("Back" or the previous level's name, e.g. "← Study at UWA" above Explore courses), Arrows in the menu (All, Only items with children, All except headings, None; default None; Back keeps its arrow), Breadcrumbs on co-branded pages (shared with phase 1).
+- Header shortcuts, all variants: Impact now goes to News (About us › News), so its stand-in page is gone. Research already went to Our research.
+- A–F unchanged (screenshots byte-identical against 0.31.3, menus open, desktop and phone).
+
 ## 0.31.3 (19 Oct 2026)
 
 - Co-brand menu option 1 with breadcrumbs hidden: the site's menu bar now sits straight under the header, with no gap, in every variant and at every size. In D and E it starts at the top of the page on desktop and straight under the top bar on mobile and tablet. The gap is set by `--site-nav-top-no-crumbs`.

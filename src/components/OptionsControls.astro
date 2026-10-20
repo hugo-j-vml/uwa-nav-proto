@@ -4,13 +4,14 @@
  * choice buttons per option; the selected choice shows the current setting.
  * Used on the index page and in the hidden options panel. reload: reload the
  * page after a change (variant pages, where menus are set up on load).
+ * phase: list only that prototyping phase's options.
  */
-import { OPTIONS } from '../options';
-interface Props { reload?: boolean }
-const { reload = false } = Astro.props;
+import { optionsFor } from '../options';
+interface Props { reload?: boolean; phase: 1 | 2 }
+const { reload = false, phase } = Astro.props;
 ---
 <div class="options-controls" data-options-controls data-reload={reload ? '' : undefined}>
-  {OPTIONS.map(o => (
+  {optionsFor(phase).map(o => (
     <fieldset class="option">
       <legend class="option-label">{o.label}</legend>
       <div class="option-choices">

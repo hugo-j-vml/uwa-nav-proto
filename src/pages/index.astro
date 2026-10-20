@@ -1,9 +1,15 @@
 ---
 /**
- * Index page: lists the nav concepts (variants) with links. Behind the
- * password screen. Layout and colours from Hugo's reference (dark page,
- * rule under the mark, intro top left, large lettered list); the typeface is
- * a plain stand-in for now (--index-font in tokens.css).
+ * Index page: lists the nav concepts (variants) with links, one screen per
+ * prototyping phase. Behind the password screen. Layout and colours from
+ * Hugo's reference (dark page, rule under the mark, intro top left, large
+ * lettered list), with each phase's behaviour options beside its list.
+ *
+ * Phases: the latest phase shows by default; the Phases control under the
+ * intro (← and →) slides the whole screen sideways to the phase before or
+ * after (going back to phase 1, the screen slides away to the right). The
+ * address remembers an earlier phase (#phase-1), so links and the browser's
+ * Back land on it. The dot background stays put.
  */
 import Base from '../layouts/Base.astro';
 import { variantBase } from '../lib/nav';
@@ -12,36 +18,107 @@ import VmlMark from '../components/VmlMark.astro';
 import IndexFooter from '../components/IndexFooter.astro';
 import OptionsControls from '../components/OptionsControls.astro';
 import IndexBackground from '../components/IndexBackground.astro';
+import Icon from '../components/Icons.astro';
+
+const phases = [1, 2] as const;
+const latest = phases[phases.length - 1];
 ---
 <Base title="Variants">
-  <div class="index-page">
+  <!-- Show the phase in the address (#phase-1) before the page paints; otherwise the latest -->
+  <script is:inline define:vars={{ latest }}>
+    var m = /^#phase-(\d+)$/.exec(location.hash);
+    document.documentElement.dataset.indexPhase = m ? m[1] : String(latest);
+  </script>
+  <div class="index-phases" data-index-phases data-latest={latest}>
     <IndexBackground />
-    <header class="index-header">
-      <VmlMark />
-    </header>
-    <main class="index-main">
-      <p class="index-intro">UWA Navigation Prototyping System</p>
-      <ol class="index-list">
-        {variants.map(v => (
-          <li class:list={['index-item', { 'is-coming-soon': v.status !== 'ready' }]}>
-            {v.status === 'ready' ? (
-              <a class="index-link" href={variantBase(v.id)} target="_blank" rel="noopener">
-                <span class="index-letter">{v.letter}.</span>
-                <span class="index-name">{v.name}</span>
-              </a>
-            ) : (
-              <span class="index-link" aria-disabled="true">
-                <span class="index-letter">{v.letter}.</span>
-                <span class="index-name">{v.name}<span class="index-tag">Coming soon</span></span>
-              </span>
-            )}
-          </li>
-        ))}
-      </ol>
-      <section class="index-options" aria-label="Behaviour options">
-        <OptionsControls />
-      </section>
-    </main>
-    <IndexFooter />
+    {phases.map(phase => (
+      <div class="index-page" data-phase-panel={phase} aria-label={`Phase ${phase}`} role="region">
+        <header class="index-header">
+          <VmlMark />
+        </header>
+        <main class="index-main">
+          <p class="index-intro">UWA Navigation Prototyping System</p>
+          <nav class="index-phase" aria-label="Phases">
+            <button class="index-phase-button" type="button" data-go={phase - 1} disabled={phase === phases[0]} aria-label={phase > phases[0] ? `Phase ${phase - 1}` : 'No earlier phase'}><Icon name="arrow" /></button>
+            <span class="index-phase-label" aria-current="step">Phase {phase}</span>
+            <button class="index-phase-button" type="button" data-go={phase + 1} disabled={phase === latest} aria-label={phase < latest ? `Phase ${phase + 1}` : 'No later phase'}><Icon name="arrow" /></button>
+          </nav>
+          <ol class="index-list">
+            {variants.filter(v => v.phase === phase).map(v => (
+              <li class:list={['index-item', { 'is-coming-soon': v.status !== 'ready' }]}>
+                {v.status === 'ready' ? (
+                  <a class="index-link" href={variantBase(v.id)} target="_blank" rel="noopener">
+                    <span class="index-letter">{v.letter}.</span>
+                    <span class="index-name">{v.name}</span>
+                  </a>
+                ) : (
+                  <span class="index-link" aria-disabled="true">
+                    <span class="index-letter">{v.letter}.</span>
+                    <span class="index-name">{v.name}<span class="index-tag">Coming soon</span></span>
+                  </span>
+                )}
+              </li>
+            ))}
+          </ol>
+          <section class="index-options" aria-label="Behaviour options">
+            <OptionsControls phase={phase} />
+          </section>
+        </main>
+        <IndexFooter />
+      </div>
+    ))}
   </div>
 </Base>
+
+<script>
+  const box = document.querySelector<HTMLElement>('[data-index-phases]');
+  if (box) {
+    const html = document.documentElement;
+    const latest = box.dataset.latest!;
+    const panel = (n: string) => box.querySelector<HTMLElement>(`[data-phase-panel="${n}"]`);
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const token = (name: string) => getComputedStyle(html).getPropertyValue(name).trim();
+    let busy = false;
+
+    /** Slide the whole screen to phase `to`: an earlier phase comes in from the left (the screen leaves to the right). */
+    async function go(to: string, focusDir?: string) {
+      const from = html.dataset.indexPhase!;
+      const incoming = panel(to), outgoing = panel(from);
+      if (busy || to === from || !incoming || !outgoing) return;
+      busy = true;
+      const dir = Number(to) < Number(from) ? 1 : -1; // 1: the screen moves right
+      window.scrollTo(0, 0);
+      outgoing.classList.add('is-leaving'); // kept on screen, over the incoming one's place, while it slides away
+      html.dataset.indexPhase = to;
+      history.replaceState(history.state, '', to === latest ? location.pathname + location.search : `#phase-${to}`);
+      const v = token('--index-phase-duration');
+      const duration = reducedMotion.matches ? 0 : (v.endsWith('ms') ? parseFloat(v) : parseFloat(v) * 1000) || 0;
+      if (duration) {
+        const opts = { duration, easing: token('--index-phase-easing') || 'ease-in-out' };
+        await Promise.all([
+          outgoing.animate([{ transform: 'translateX(0)' }, { transform: `translateX(${dir * 100}%)` }], opts).finished,
+          incoming.animate([{ transform: `translateX(${-dir * 100}%)` }, { transform: 'translateX(0)' }], opts).finished,
+        ]).catch(() => {});
+      }
+      outgoing.classList.remove('is-leaving');
+      // Keep focus on the Phases control: the same arrow if there's somewhere further to go, otherwise the other one
+      const buttons = [...incoming.querySelectorAll<HTMLButtonElement>('.index-phase-button')];
+      const same = buttons.find(b => b.dataset.go === focusDir);
+      (same && !same.disabled ? same : buttons.find(b => !b.disabled))?.focus({ preventScroll: true });
+      busy = false;
+    }
+
+    box.addEventListener('click', (e) => {
+      const b = (e.target as HTMLElement).closest<HTMLButtonElement>('.index-phase-button');
+      if (!b || b.disabled) return;
+      const to = b.dataset.go!;
+      const dir = Number(to) < Number(html.dataset.indexPhase) ? -1 : 1;
+      go(to, String(Number(to) + dir));
+    });
+    // The address changed by hand (or the browser's Back/Forward between #phase-1 and none)
+    window.addEventListener('hashchange', () => {
+      const m = /^#phase-(\d+)$/.exec(location.hash);
+      go(m ? m[1] : latest);
+    });
+  }
+</script>

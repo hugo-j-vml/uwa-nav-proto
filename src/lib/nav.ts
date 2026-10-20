@@ -75,3 +75,17 @@ export const cobrandData = (cb: Cobrand) => ({
   l: cb.label, h: cb.path, s: cb.abbreviation || cb.label,
   c: cb.site.map(s => ({ l: s.label, h: s.path, c: s.children.map(x => ({ l: x.label, h: x.path, c: [] })) })),
 });
+
+/**
+ * Phase 2's search (G, H): every page in the IA and in the co-branded sites' own
+ * menus, for a simple text match on the label. l = label, h = page path,
+ * t = the trail above it (e.g. "Study at UWA › Explore courses").
+ */
+export function searchIndex(): { l: string; h: string; t: string }[] {
+  const core = flatten().map(n => ({ l: n.label, h: n.path, t: ancestors(n.path).map(a => a.label).join(' › ') }));
+  const sites = sitePages().map(({ page, root, parent }) => {
+    const trail = [...ancestors(root.path).map(a => a.label), root.label, ...(parent ? [parent.label] : [])];
+    return { l: page.label, h: page.path, t: trail.join(' › ') };
+  });
+  return [...core, ...sites];
+}

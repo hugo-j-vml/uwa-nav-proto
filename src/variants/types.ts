@@ -10,12 +10,14 @@ export interface Variant {
   letter: string;
   /** Shown on the index page */
   name: string;
+  /** Prototyping phase: which index page lists it (1: A–F, kept for reference; 2: G, H) and which behaviour options apply to it */
+  phase: 1 | 2;
   /** 'coming-soon' variants are listed on the index page but not built */
   status: 'ready' | 'coming-soon';
-  /** Page shell: header across the top (A, B, C, F) or a fixed sidebar on the left (D, E) */
+  /** Page shell: header across the top (A, B, C, F, G) or a fixed sidebar on the left (D, E, H) */
   shell: 'header' | 'sidebar';
-  /** Menu layout inside the shell */
-  menu: 'core-expanding' | 'panels' | 'columns' | 'stack' | 'drilldown' | 'menu-button';
+  /** Menu layout inside the shell (pane: phase 2's single drill-down pane, G and H) */
+  menu: 'core-expanding' | 'panels' | 'columns' | 'stack' | 'drilldown' | 'menu-button' | 'pane';
   /**
    * How many IA levels the menu shows (C: 3). Omit when the menu reaches every
    * level. Pages at this level or deeper that have children get an "In this
@@ -23,6 +25,8 @@ export interface Variant {
    * (The menu script stops at this depth on its own; keep the two in step.)
    */
   menuDepth?: number;
+  /** Behaviour options fixed for this variant (not switchable), e.g. { 'cobrand-menu': '2' } */
+  fixedOptions?: Record<string, string>;
   /** Motion preset (timings live in tokens.css); all variants start on 'a' */
   motion: 'a';
 }

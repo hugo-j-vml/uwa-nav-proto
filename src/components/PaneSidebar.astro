@@ -1,0 +1,47 @@
+---
+/**
+ * Variant H's sidebar (phase 2): E's sidebar (logo, Search, Menu button,
+ * shortcuts) with phase 2's menu pane (MenuPane.astro) beside it. Search is a
+ * button (it still looks like E's field) that opens the pane with a search
+ * field; Menu opens the pane at the top level.
+ * Compact layouts (mobile and tablet): E's top bar and drawer. The hamburger
+ * opens the drawer with the pane on it at the top level; the bar's search icon
+ * opens it on the search field.
+ * Behaviour: src/scripts/pane-menu.ts.
+ */
+import Icon from './Icons.astro';
+import MenuPane from './MenuPane.astro';
+import { shortcuts, href, base, type Cobrand } from '../lib/nav';
+
+interface Props { variant: string; currentPath?: string; cobrand?: Cobrand }
+const { variant, currentPath = '', cobrand } = Astro.props;
+---
+{/* Compact layouts only (hidden on desktop by CSS) */}
+<div class="mobile-bar" data-mobile-bar>
+  <button class="mobile-bar-button" type="button" aria-expanded="false" aria-controls="sidebar" aria-label="Menu" data-drawer-toggle>
+    <span class="icon-closed"><Icon name="menu" /></span>
+    <span class="icon-open"><Icon name="menu-open" /></span>
+  </button>
+  <a class="mobile-bar-logo" href={href('', variant)}><img src={`${base}logos/uwa-horizontal.svg`} alt="The University of Western Australia: home" width="216" height="71" /></a>
+  {cobrand && <a class="cobrand-logo" href={cobrand.href} aria-label={`${cobrand.label}: home`}><span aria-hidden="true">Co-brand<br />Logo</span></a>}
+  <button class="mobile-bar-button mobile-bar-search" type="button" aria-label="Search" aria-expanded="false" data-bar-search><Icon name="search" /></button>
+</div>
+<div class="drawer-scrim" data-drawer-scrim hidden></div>
+
+<aside id="sidebar" class="sidebar" data-sidebar data-menu-layout="pane">
+  <a class="sidebar-logo" href={href('', variant)}><img src={`${base}logos/uwa-vertical.svg`} alt="The University of Western Australia: home" width="94" height="162" /></a>
+  {cobrand && <a class="cobrand-logo sidebar-cobrand-logo" href={cobrand.href} aria-label={`${cobrand.label}: home`}><span aria-hidden="true">Co-brand<br />Logo</span></a>}
+
+  <button class="sidebar-search-button" type="button" aria-expanded="false" aria-controls="menu-pane" data-search-toggle>
+    <span>Search</span><Icon name="search" />
+  </button>
+  <button class="sidebar-menu-button" type="button" aria-expanded="false" aria-controls="menu-pane" data-menu-toggle>
+    <Icon name="menu" />
+    <span>Menu</span>
+  </button>
+  <nav class="sidebar-shortcuts" aria-label="Shortcuts">
+    {shortcuts.map(s => <a class="sidebar-shortcut" href={href(s.path, variant)}>{s.label}</a>)}
+  </nav>
+</aside>
+
+<MenuPane variant={variant} currentPath={currentPath} cobrand={cobrand} class="drill-pane" />

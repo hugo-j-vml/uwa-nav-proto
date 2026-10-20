@@ -565,7 +565,13 @@ html[data-variant="index"] body { background: var(--index-bg); color: var(--inde
 @media (prefers-reduced-motion: reduce) {
   .index-bg-facets, .index-bg-facets::before, .index-bg-facets::after { animation: none; }
 }
-html.is-locked .index-page { display: none; }
+html.is-locked :is(.index-page, .index-phases) { display: none; }
+/* Phases: one screen per phase; only the current one shows (data-index-phase on <html>), plus the
+   one leaving while the screens slide (index.astro). The dot background stays put behind them. */
+.index-phases { position: relative; isolation: isolate; overflow-x: clip; }
+html:not([data-index-phase="1"]) [data-phase-panel="1"]:not(.is-leaving),
+html:not([data-index-phase="2"]) [data-phase-panel="2"]:not(.is-leaving) { display: none; }
+.index-page.is-leaving { position: absolute; inset: 0 0 auto 0; }
 .index-page {
   display: flex; flex-direction: column;
   min-height: 100vh; box-sizing: border-box;
@@ -581,6 +587,21 @@ html.is-locked .index-page { display: none; }
   margin: var(--index-intro-top) 0 0;
   font-size: var(--index-intro-size); line-height: var(--index-intro-line); font-weight: var(--index-weight-link); /* Medium */
 }
+/* Phases control: ← Phase n →, under the intro */
+.index-phase {
+  display: flex; align-items: center; gap: var(--index-phase-gap); margin-top: var(--index-phase-top);
+  font-size: var(--index-phase-size); line-height: 1; font-weight: var(--index-weight-link);
+}
+.index-phase-button {
+  display: flex; align-items: center; justify-content: center;
+  width: var(--index-phase-button-size); height: var(--index-phase-button-size);
+  border: 1px solid currentColor; border-radius: 50%;
+}
+.index-phase-button svg { width: var(--index-phase-arrow-size); height: var(--index-phase-arrow-size); color: currentColor; }
+.index-phase-button:first-child svg { transform: rotate(180deg); }
+.index-phase-button:hover:not(:disabled) { background: rgb(255 255 255 / 0.1); }
+.index-phase-button:disabled { opacity: 0.3; cursor: default; }
+.index-phase-button:focus-visible { outline: 2px solid var(--index-text); outline-offset: 3px; }
 .index-list {
   list-style: none; margin: var(--index-list-top) 0 0; padding: 0;
   display: grid; gap: var(--index-item-gap);
@@ -617,7 +638,7 @@ a.index-link:focus-visible { outline-color: var(--index-text); outline-offset: 0
 /* Index page: a column to the right of the variant list, tops aligned (narrow screens: under the list, lined up with the link text) */
 @media (min-width: 1280px) {
   .index-main { display: grid; grid-template-columns: max-content minmax(0, 1fr); column-gap: var(--index-columns-gap); align-items: start; }
-  .index-intro { grid-column: 1 / -1; }
+  .index-intro, .index-phase { grid-column: 1 / -1; }
   .index-options { margin-top: var(--index-list-top); }
 }
 .index-options .option:first-child { margin-top: 0; }
@@ -800,3 +821,69 @@ html[data-layout="compact"].menu-open .primary-nav-header.is-transparent::before
 }
 [data-layout="compact"] .drawer-scrim[hidden] { display: none; }
 html[data-layout="compact"].menu-open { overflow: hidden; }
+
+/* ==========================================================================
+   PHASE 2: the menu pane (variants G and H; MenuPane.astro,
+   src/scripts/pane-menu.ts). H's pane is E's drill-down pane (.drill-pane);
+   G's sits under the header (.header-pane).
+   ========================================================================== */
+/* G: under the header band, full height to the bottom of the window; slides down from under the band */
+.header-pane {
+  position: absolute; z-index: 0; top: var(--panes-top); left: var(--panes-left);
+  width: var(--pane-menu-width); height: calc(100vh - var(--panes-top));
+  overflow-y: auto; overscroll-behavior: contain;
+  padding: var(--drill-pane-padding-top) var(--drill-pane-padding-x);
+  background: var(--drill-pane-bg); color: var(--colour-black);
+}
+.header-pane[hidden] { display: none; }
+
+/* Search buttons (G header, H sidebar and top bar): open state while the pane shows search, as the Menu button's */
+:is(.search-button, .sidebar-search-button, .mobile-bar-search)[aria-expanded='true'] { background: var(--search-button-open-bg); color: var(--search-button-open-text); }
+:is(.search-button, .sidebar-search-button, .mobile-bar-search)[aria-expanded='true'] svg path { fill: currentColor; }
+/* H: the sidebar's search button looks like E's search field; it opens search in the pane */
+.sidebar-search-button {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; height: var(--sidebar-search-height); margin-top: var(--sidebar-logo-to-search); padding: 0 2px 0 12px;
+  border: 1px solid var(--colour-ironbark-80); background: var(--colour-white); color: var(--search-status-colour);
+  font-family: var(--font-ui); font-size: var(--type-ui-size);
+}
+.sidebar-search-button svg { width: 36px; height: 36px; flex: none; }
+
+/* Behaviour options (phase 2): Shortcuts and Search can be hidden */
+[data-opt-shortcuts="hide"] :is(.header-shortcuts, .sidebar-shortcuts) { display: none; }
+[data-opt-search="hide"] :is([data-search-toggle], [data-bar-search]) { display: none; }
+
+/* Behaviour option "Arrows in the menu" (Back keeps its arrow: it's outside the list) */
+[data-opt-menu-arrows="children"] .pane-menu .menu-list a .menu-item-arrow,
+[data-opt-menu-arrows="no-headings"] .pane-menu .menu-list :is(.dynamic-heading, .menu-site-title) .menu-item-arrow,
+[data-opt-menu-arrows="none"] .pane-menu .menu-list .menu-item-arrow { display: none; }
+
+/* Search in the pane: the field, the result count, then the results (name, with its trail under it) */
+.pane-search { position: relative; margin-bottom: var(--pane-search-gap); }
+.pane-search[hidden], .pane-search-status[hidden] { display: none; }
+.pane-search input {
+  width: 100%; height: var(--pane-search-height); padding: 0 var(--pane-search-height) 0 14px;
+  border: 1px solid var(--colour-ironbark-80); border-radius: 0; background: var(--colour-white);
+  font-family: var(--font-ui); font-size: var(--pane-search-text-size); color: var(--colour-black);
+}
+.pane-search input::-webkit-search-cancel-button { display: none; }
+.pane-search svg { position: absolute; top: 50%; right: 6px; width: 36px; height: 36px; transform: translateY(-50%); pointer-events: none; }
+.pane-search-status { margin: 0 0 var(--pane-search-gap); font-family: var(--font-ui); font-size: var(--search-result-trail-size); color: var(--search-status-colour); }
+.pane-menu .menu-list.is-results { gap: var(--search-result-gap); }
+.search-result { display: flex; flex-direction: column; gap: 2px; }
+.search-result-label {
+  font-family: var(--font-body); font-size: var(--search-result-size);
+  line-height: var(--type-h5-line); font-weight: var(--type-h5-weight);
+}
+.search-result-trail { font-family: var(--font-ui); font-size: var(--search-result-trail-size); line-height: 1.3; color: var(--search-result-trail-colour); }
+.search-result:is(:hover, :focus-visible) .search-result-label { text-decoration: underline; }
+
+/* ---------- Compact layouts ---------- */
+/* G: the pane takes over the screen under the header */
+[data-layout="compact"] .header-pane {
+  position: fixed; top: var(--header-height); right: 0; bottom: 0; left: 0;
+  width: auto; height: auto;
+  padding: var(--takeover-padding-top) var(--takeover-padding-x) var(--takeover-padding-bottom);
+}
+/* H: the drawer's search button sits at the top, as E's field does */
+[data-layout="compact"] .sidebar-search-button { margin-top: 0; }

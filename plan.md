@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype v0.31.0 (19 Oct 2026): six variants (A–F) on desktop, mobile and tablet (Section 7e); behaviour options for co-branded sites (7d); C's "In this section" grid (7b); animated index background. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype v0.32.0 (20 Oct 2026): **phase 2** started (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options; the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -83,6 +83,8 @@ One repo, one build, one IA. Each nav concept is a **variant** that builds the f
 | `/uwa-nav-proto/d/…` | **D** | A fixed sidebar instead of the header (logo, search field, top-level items). Choosing an item opens a drill-down pane to the right. | ✅ Built 15 Oct (v0.11, Section 7c) |
 | `/uwa-nav-proto/e/…` | **E** | A simpler sidebar (logo, search field, Menu button, shortcuts). The Menu button opens the same drill-down pane at the top level. | ✅ Built 15 Oct (v0.11, Section 7c) |
 | `/uwa-nav-proto/f/…` | **F** | C without the depth limit: each level opens a new panel that stacks over the last, leaving a strip of the earlier ones showing. | ✅ Built 19 Oct (v0.30, Section 7f) |
+| `/uwa-nav-proto/g/…` | **G** | Phase 2: A–C's header with one menu pane (E's behaviour) under it; search in the pane. | ✅ Built 20 Oct (v0.32, Section 14) |
+| `/uwa-nav-proto/h/…` | **H** | Phase 2: E's sidebar and pane, with search in the pane. | ✅ Built 20 Oct (v0.32, Section 14) |
 | `/uwa-nav-proto/c/…` | **C** | A more static version of B: the same header and static core pane, then two panels to the right, one IA level each (L2, then L3). The menu goes down to L3. *(Replaces the earlier sidebar idea, 15 Oct.)* | ✅ Built 15 Oct (v0.9, Section 7b) |
 
 - Paths are **neutral letters** so participants aren't cued by the URL.
@@ -298,24 +300,24 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 3. The dynamic pane heading (e.g. "Study areas" with an arrow): does clicking it go to that section's landing page?
 4. ~~Reopen state?~~ **Resolved:** the menu opens at the current page's section, with its nearest parent selected (v0.4). **Changed 15 Oct (v0.10):** the menu always opens at the top level with nothing chosen, as on the homepage, in every variant.
 5. ~~What do the header shortcuts do?~~ **Resolved:** they go to the L1 landing pages (Section 7).
-6. Search button: should it work, or show a static "not available in this prototype" message?
+6. ~~Search button: should it work?~~ **Resolved 20 Oct (phase 2):** in G and H, search opens in the menu pane and works as a basic text match on page names (Section 14). Hugo is designing it in Figma. A–F unchanged ("not available").
 
 7a. ~~Stand-in sitemap~~ **Resolved:** real IA loaded (v0.3). Agreed rules: skipped levels go under the most recent item one level up (the Strengths L5s sit under Indigenous research UWA); "Specific …" rows are built once each, as written, and "Specific course pages" uses the course template.
-7a-ii. Sitemap content to revisit: the About block is a copy of Partners and Community. Convocation contains Animal care services and other copied items. Giving is not included.
+7a-ii. ~~Sitemap content to revisit~~ **Closed 20 Oct:** these notes were about the first sitemap (8 Oct). In the reviewed IA (v0.6) About us has its own items and Convocation has no children, so there's nothing duplicated now.
 7b. **Built as assumptions, to confirm:**
    - The dynamic pane heading (e.g. "Study areas" with arrow) links to that section's landing page.
    - Clicking the selected item closes its sub-menu, stepping back one level.
    - Closing the menu resets it; reopening starts at the top level.
    - Esc closes the menu.
    - Menu arrows match their label colour (`--item-arrow-colour`, v0.29.3; were Vivid Blue): white on the grey core pane and on selected rows, black on light panes.
-7c. The closed-state frame (1) has a hidden 11th top-level item, **Giving**, that isn't in the open frames. Should it be in or out? (Currently out.)
+7c. ~~Giving as an 11th top-level item?~~ **Resolved 20 Oct:** out of the core (top level). It stays where the reviewed IA has it, under Partners and community.
 7c-ii. ~~Co-branded breadcrumb~~ **Resolved (v0.15.1):** co-branded pages use the short form, UWA › site name; pages in the site's own IA continue from there.
 7c-iii. Course page Enquire/Apply buttons and the in-page tabs bar are static (no action). Should they do anything in testing?
-7d. The Impact and Research header shortcuts don't match any item in the menu, so they have stand-in landing pages. Should Research go to "Our research"?
+7d. ~~Impact and Research shortcuts~~ **Resolved 20 Oct (v0.32, all variants):** Impact goes to News (About us › News); Research goes to the Our research landing page.
 
 7e. Reviewed IA (15 Oct), to confirm: "Campus initiatives or Campus development or Campus management" is built as written; which one? "Applicants (or apply portal…)" and "Agents (or International agents)" are built as Applicants and Agents. Students › Academic support has a child also called Academic support.
 7f. Index page: B is "Static core with dynamic panel" (Hugo, 15 Oct); C's name ("Static core with two panels") and D/E's names are stand-ins. Intro copy: "UWA Navigation Prototyping System" (Hugo, v0.21.1).
-7g. Co-branded sites, open: which Co-brand menu option goes forward (1, 2 or 7, being tested); whether search on co-branded pages covers the site, UWA or both; the co-brand menu's visual design (option 2's tabs, headings and the option 1 bar are wireframe stand-ins); whether option 2 keeps the site's full name under the tabs.
+7g. Co-branded sites: **option 2 (tabs) goes forward** (client, 20 Oct); G and H always use it, keeping the abbreviation and the site's full name under the tabs. Still open: whether search on co-branded pages covers the site, UWA or both (G and H's search covers everything); the tabs' visual design (Hugo, in iterations).
 
 7h. Compact layouts (v0.27), built as assumptions, to confirm:
    - A: the sub-menu's heading row repeats the selected item's name (as desktop's dynamic pane heading does), so the section's page stays reachable.
@@ -327,7 +329,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 
 **Testing and hosting**
 
-7. Which testing tool is primary for the unmoderated round: Maze or Lyssna?
+7. ~~Maze or Lyssna?~~ **Resolved 20 Oct:** Lyssna, once the phase 2 options are settled; tested against the existing website as a control.
 8. ~~Is password protection needed?~~ **Phase 1:** simple password screen on GitHub Pages. Proper protection to be decided before client sharing.
 9. Are utility nav, footer and audience gateways in scope, or only the global header and menu?
 10. ~~Will we test more than one nav concept?~~ **Resolved 15 Oct:** yes, three variants by path (Section 4a).
@@ -355,3 +357,50 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 - Any IA or labelling recommendations from Claude
 - Analytics beyond what the testing tools capture
 - Extra menu content (descriptions, teasers) until a variant needs it
+
+## 14. Phase 2 (from 20 Oct 2026)
+
+### Client decisions (Hugo's meeting, 20 Oct)
+
+1. Both shells go forward: a **header** prototype (as A, B, C, F) and a **sidebar** prototype.
+2. Sidebar: the menu hides the top level until asked for, so **E over D** (Menu button with the hamburger).
+3. Co-branded sites: **tabs** (co-brand menu option 2), no longer an option. Abbreviations and the site's full name in the menu stay as they are; Hugo will tidy the design in iterations.
+4. Shortcuts may be dropped from both: a new option shows or hides them on **every** page.
+5. Menu behaviour: **E's single pane**, one level at a time, with the chosen item as the heading, and Back. New option: Back says "Back" or the previous level's name.
+6. Search in the menu pane rather than as a field in the header or sidebar. Hugo designs it in Figma; meanwhile a basic working search that matches typed text to page names. It may be switched off.
+7. A promotional / secondary area at the bottom of the pane at the top level, possibly personalised (e.g. by UTM campaign). Hugo designs it in Figma. **Not built yet.**
+8. Arrows: an option for all, only items with children, all except headings, or none. Back keeps its arrow. Likely outcome: none.
+
+Phase 1 (A–F, their options and the index screen) stays as it was, for reference. Same URLs.
+
+### Index page
+
+- One screen per phase; opens on the latest (phase 2). A **Phases** control under the intro (← Phase n →) slides the whole screen sideways: going back to phase 1, the screen leaves to the right and phase 1 comes in from the left. The dot background stays put. `--index-phase-*` tokens.
+- The address remembers phase 1 (`#phase-1`); the latest phase has no hash.
+- Each screen lists its own variants and options.
+
+### G and H
+
+| | G: Header with menu pane | H: Sidebar with menu pane |
+|---|---|---|
+| Shell | A–C's header: logo, Menu, Search, shortcuts | E's sidebar: logo, Search (a button that looks like E's field), Menu, shortcuts |
+| Pane (desktop) | Under the header at the left, `--pane-menu-width` (540px, as E), full height to the bottom of the window; slides down from under the header band | Beside the sidebar, full height (E's drill-down pane); slides out from under the sidebar |
+| Phones and tablets | The pane takes over the screen under the header | E's top bar and drawer: the hamburger opens the drawer on the pane at the top level; the bar's search icon opens it on search |
+
+- **Menu** (both): top level (no heading, no Back); choosing an item with children shows it as a heading (a link to its page) above its children, sliding in from the right; Back steps up a level and focuses the item you came from. Items without children are links. Opens at the top level each time.
+- **Back** (option): "Back", or the previous level's name: from Explore courses, "← Study at UWA"; from a top-level item, "Main menu"; on a co-branded site's tab, the site's name.
+- **Arrows** (option): All (every item and the heading), Only items with children, All except headings, None (default).
+- **Search:** the Search button opens the pane on a search field (focused); Menu and Search swap the pane between the two; the one showing closes it. Typing lists the pages whose names contain every word typed (case ignored), names starting with the text first, then in IA order, with a count; each result shows its trail and links to its page; Enter goes to the first. Covers the IA and the co-branded sites' own pages. No arrows on results. Built as a stand-in for Hugo's Figma design.
+- **Co-branded pages:** the top level shows the tabs (UWA left, the site's abbreviation or name right; the site's tab selected), then the site's name as a heading link, then its sections.
+- **Closing:** the button that opened it, Esc, or a click outside; a page link slides the pane away, then navigates.
+- **Options:** Shortcuts, Search, Back button, Arrows, Breadcrumbs on co-branded pages (Section 7d; shared with phase 1). Shift+O on G and H shows these.
+
+### Phase 2 open questions
+
+1. Promo area at the bottom of the pane (top level): waiting on Hugo's Figma design. A placeholder can go in first if useful.
+2. Search design (Figma to come): field, results layout, whether results show the trail, and what happens with no matches.
+3. Back with the previous level's name: from a top-level item it says "Main menu". Right wording?
+4. G's pane: 540px wide and full window height under the header, as E's. Narrower/wider, or as tall as its contents (as A's panes)?
+5. Index names for G and H ("Header with menu pane", "Sidebar with menu pane") are stand-ins.
+6. Reviewed IA label still to confirm: "Campus initiatives or Campus development or Campus management" (About us › Locations and campuses) is one item whose label lists three alternatives; which one should it be? (Section 11, 7e.)
+

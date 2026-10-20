@@ -259,6 +259,20 @@
   --drill-pane-padding-x: 48px;
   --drill-back-gap: 24px;              /* Back link to the heading */
   --motion-drill-offset: 24px;         /* how far the next level slides in from */
+
+  /* Phase 2 (G, H): the menu pane (MenuPane.astro). H's pane uses the drill-down pane values above, as E;
+     G's sits under the header. Search opens in the same pane. */
+  --pane-menu-width: var(--drill-pane-width);  /* G: the pane under the header */
+  --search-button-open-bg: var(--colour-ironbark-80); /* G, H: the Search button while search is showing (as the Menu button) */
+  --search-button-open-text: var(--colour-white);
+  --pane-search-height: 48px;          /* search field in the pane */
+  --pane-search-text-size: var(--type-ui-size);
+  --pane-search-gap: 16px;             /* field to the result count, count to the results */
+  --search-status-colour: var(--colour-ironbark-80); /* result count, "no pages match" */
+  --search-result-size: var(--type-h5-size);   /* a result's page name (18px TT Norms Pro Medium) */
+  --search-result-trail-size: 14px;    /* the trail under it */
+  --search-result-trail-colour: var(--colour-ironbark-80);
+  --search-result-gap: 16px;           /* between results */
 }
 /* No header band in the sidebar variants, so content and co-branded pages start higher */
 [data-shell="sidebar"] {
@@ -298,6 +312,14 @@
   --index-wordmark-width: 98px;        /* VML wordmark, bottom left */
   --index-footer-top: 24px;            /* minimum space above the footer */
   --index-build-size: 14px;            /* version and last updated, bottom right */
+  /* Phases control (under the intro) and the slide between phases */
+  --index-phase-top: 14px;             /* intro to the Phases control */
+  --index-phase-size: var(--index-intro-size);
+  --index-phase-button-size: 36px;     /* the ← and → buttons */
+  --index-phase-arrow-size: 20px;
+  --index-phase-gap: 12px;
+  --index-phase-duration: 700ms;       /* the whole screen sliding to the next phase */
+  --index-phase-easing: cubic-bezier(0.65, 0, 0.35, 1);
   /* Behaviour options: index page section and the hidden panel (Shift+O) */
   --options-top: 48px;                 /* narrow screens: last variant link to the options (stacked) */
   --options-indent: calc(var(--index-item-size) * 1.5); /* past the list letters (letter column 1.15em + gap 0.35em) */
@@ -362,6 +384,13 @@
   --panel-divider: #d6d4d4;            /* line between panel 1 and panel 2 */
   --item-label-max-width: none;
   --c-open-arrow-colour: currentColor; /* the → on the open item in the core pane and panel 1 */
+}
+[data-variant="g"] {
+  /* Phase 2: A's header with one menu pane under it (MenuPane.astro; --pane-menu-width) */
+  --item-label-max-width: none;        /* labels use the pane's full width before wrapping */
+}
+[data-variant="h"] {
+  /* Phase 2: E's sidebar and pane. Uses the sidebar values (SIDEBAR block) */
 }
 [data-variant="f"] {
   /* C's core pane, then a panel per level, each stacked over the last */

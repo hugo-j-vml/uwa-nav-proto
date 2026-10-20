@@ -9,6 +9,7 @@ export const e: Variant = {
   id: 'e',
   letter: 'E',
   name: 'Sidebar menu button',
+  phase: 1,
   status: 'ready',
   shell: 'sidebar',
   menu: 'menu-button',

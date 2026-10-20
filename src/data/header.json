@@ -2,7 +2,7 @@
   "_comment": "Header shortcut buttons (top right). 'path' is the page they link to. If a path is not in the sitemap, a stand-in landing page is generated for it.",
   "shortcuts": [
     { "label": "Study", "path": "study-at-uwa" },
-    { "label": "Impact", "path": "impact" },
+    { "label": "Impact", "path": "about-us/news" },
     { "label": "Research", "path": "our-research" }
   ]
 }

@@ -1,0 +1,37 @@
+---
+/**
+ * Variant G's header (phase 2): A–C's header (logo, Menu, Search, shortcuts),
+ * with phase 2's menu pane (MenuPane.astro) under it in place of A–C's panes.
+ * Menu opens the pane at the top level; Search opens it with a search field.
+ * Behaviour: src/scripts/pane-menu.ts. Shortcuts and Search can be hidden with
+ * the behaviour options (src/options.ts).
+ */
+import Icon from './Icons.astro';
+import MenuPane from './MenuPane.astro';
+import { shortcuts, href, base, type Cobrand } from '../lib/nav';
+
+interface Props { variant: string; currentPath?: string; transparent?: boolean; cobrand?: Cobrand }
+const { variant, currentPath = '', transparent = false, cobrand } = Astro.props;
+---
+<header class:list={['primary-nav-header', { 'is-transparent': transparent, 'is-cobrand': cobrand }]} data-figma="3.1 primary nav header" data-menu-layout="pane">
+  <div class="header-bar">
+    <a class="logo" href={href('', variant)}><img src={`${base}logos/uwa-horizontal.svg`} alt="The University of Western Australia: home" width="216" height="71" /></a>
+    {cobrand && <a class="cobrand-logo" href={cobrand.href} aria-label={`${cobrand.label}: home`}><span aria-hidden="true">Co-brand<br />Logo</span></a>}
+
+    <div class="header-controls">
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="menu-pane" data-menu-toggle>
+        <Icon name="menu" />
+        <span class="menu-button-label">Menu</span>
+      </button>
+      <button class="search-button" type="button" aria-label="Search" aria-expanded="false" aria-controls="menu-pane" data-search-toggle>
+        <Icon name="search" />
+      </button>
+      <!-- The pane sits straight after the buttons so keyboard focus moves into it next -->
+      <MenuPane variant={variant} currentPath={currentPath} cobrand={cobrand} class="header-pane" />
+    </div>
+
+    <nav class="header-shortcuts" aria-label="Shortcuts">
+      {shortcuts.map(s => <a class="shortcut-button" href={href(s.path, variant)}>{s.label}</a>)}
+    </nav>
+  </div>
+</header>

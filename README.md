@@ -2,12 +2,9 @@
 
 A coded, clickable prototype of the proposed UWA main website navigation, for user testing (Maze/Lyssna and 1:1 sessions). Wireframe fidelity. **Not a production build.**
 
-- **Live site:** https://hugo-j-vml.github.io/uwa-nav-proto/ (index of variants)
-- **Variant A:** https://hugo-j-vml.github.io/uwa-nav-proto/a/
-- **Variant B:** https://hugo-j-vml.github.io/uwa-nav-proto/b/
-- **Variant C:** https://hugo-j-vml.github.io/uwa-nav-proto/c/
-- **Variant D:** https://hugo-j-vml.github.io/uwa-nav-proto/d/
-- **Variant E:** https://hugo-j-vml.github.io/uwa-nav-proto/e/
+- **Live site:** https://hugo-j-vml.github.io/uwa-nav-proto/ (index of variants: opens on phase 2; phase 1 is https://hugo-j-vml.github.io/uwa-nav-proto/#phase-1)
+- **Phase 2:** **G** https://hugo-j-vml.github.io/uwa-nav-proto/g/ · **H** https://hugo-j-vml.github.io/uwa-nav-proto/h/
+- **Phase 1 (for reference):** [A](https://hugo-j-vml.github.io/uwa-nav-proto/a/) · [B](https://hugo-j-vml.github.io/uwa-nav-proto/b/) · [C](https://hugo-j-vml.github.io/uwa-nav-proto/c/) · [D](https://hugo-j-vml.github.io/uwa-nav-proto/d/) · [E](https://hugo-j-vml.github.io/uwa-nav-proto/e/) · [F](https://hugo-j-vml.github.io/uwa-nav-proto/f/)
 - **Plan:** `plan.md`
 - **Password:** set in `src/config.ts` (simple screen only; not real security, the site files are public).
 - **Design source:** Figma "THEUVP0058 – IA – Nav Refresh", section *Core menu opens with submenu journey*.
@@ -20,7 +17,7 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Breakpoints (mobile / tablet / desktop widths) and which sizes use the compact menus | `src/breakpoints.ts` (the only place they're set) |
 | Sizes per screen size; compact-layout values (takeover, top bar, drawer, their motion) | `src/styles/tokens.css`: "SCREEN SIZES" blocks (one per band, after the variant blocks) and "COMPACT LAYOUTS" |
 | Index page look (colours, font, sizes, the animated dot background) | `--index-*` tokens in `src/styles/tokens.css` (background: `--index-bg-*`, e.g. dot spacing, facet brightness, wave and pulse speed) |
-| Variant names, and which variants are built | `src/variants/a.ts` … `f.ts` (`status: 'ready'` or `'coming-soon'`; `menuDepth`: how many levels the menu shows, which switches on "In this section" below that, e.g. C: 3) |
+| Variant names, and which variants are built | `src/variants/a.ts` … `h.ts` (`phase`: which index screen lists it, 1 or 2; `status: 'ready'` or `'coming-soon'`; `menuDepth`: how many levels the menu shows, which switches on "In this section" below that, e.g. C: 3; `fixedOptions`: options fixed for that variant, e.g. G and H's co-brand tabs) |
 | The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below) |
 | A co-branded site's own pages (e.g. Oceans Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the core menu tree; how they appear in the menus depends on the Co-brand menu option. |
 | Behaviour options (alternative behaviours switched on the index page, with Shift+O on any variant page, or with `?<option>=<choice>` in a link) | `src/options.ts` (see below) |
@@ -28,7 +25,9 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Password | `src/config.ts` (see below) |
 | Fonts | Put the files in `public/fonts/` (names in `src/styles/fonts.css`). Novel Pro falls back to Crimson Pro (free). Index page and password screen: Snowflake Sans (`--index-font`). |
 | Layout/structure of components and templates | `src/styles/components.css`, `src/components/` and `src/templates/` |
-| Menu behaviour (desktop and compact) | `src/scripts/menu.ts` (A, B, C, F), `src/scripts/sidebar-menu.ts` (D, E), shared state in `src/lib/menu-state.ts`; option 1's co-brand menu bar: `src/components/SiteNav.astro` + `src/scripts/site-nav.ts` |
+| Menu behaviour (desktop and compact) | `src/scripts/menu.ts` (A, B, C, F), `src/scripts/sidebar-menu.ts` (D, E), `src/scripts/pane-menu.ts` (G, H: the menu pane and its search), shared state in `src/lib/menu-state.ts`; option 1's co-brand menu bar: `src/components/SiteNav.astro` + `src/scripts/site-nav.ts` |
+| G and H's shells and pane | `src/components/PaneHeader.astro` (G), `PaneSidebar.astro` (H), `MenuPane.astro` (the pane, shared); sizes in the "Phase 2" tokens in `tokens.css` |
+| Index page phases (the Phases control and the slide between phases) | `src/pages/index.astro`; `--index-phase-*` tokens |
 | Logos | `public/logos/` (horizontal: header; vertical: sidebar). Co-brand logo: a placeholder box (`--cobrand-logo-*` tokens) |
 | Version number on the index page | The latest heading in `CHANGELOG.md` (add an entry for each change). "Last updated" is the build time, in Perth time. |
 
@@ -99,6 +98,13 @@ Full specs per variant are in `plan.md` (sections 7–7d). In short:
 - **E** Sidebar menu button: fixed sidebar with a Menu button and shortcuts; Menu opens the same pane at the top level.
 - **F** Stacking panels: C without the L3 limit. Each level opens a panel that stacks over the last, leaving a strip of each earlier one showing; the topmost is lightest, earlier ones darker (`[data-variant="f"]` tokens).
 
+**Phase 2** (from 20 Oct; `plan.md` Section 14):
+
+- **G** Header with menu pane: A–C's header; Menu opens one pane under it that shows one level at a time, as E's: the chosen item as a heading (a link to its page), its children, and Back. Search opens the same pane with a search field.
+- **H** Sidebar with menu pane: E's sidebar and pane, with search in the pane (the sidebar's search button looks like E's field).
+- Search lists the pages whose names contain every word typed (IA and co-branded sites' pages), with their trail; each links to its page.
+- Co-branded pages always use the tabs (co-brand menu option 2).
+
 ### Mobile and tablet (compact layouts)
 
 Below 1024px wide (bands in `src/breakpoints.ts`: mobile under 640, tablet 640–1023) each variant keeps its desktop behaviour in a compact form (full spec: `plan.md` 7e):
@@ -110,11 +116,13 @@ Below 1024px wide (bands in `src/breakpoints.ts`: mobile under 640, tablet 640�
 
 Alternative behaviours that apply across every variant, without making new variants. Defined in `src/options.ts`; each choice is remembered per browser.
 
-- **Index page:** in a column to the right of the variant links (under them below 1280px wide), a headline per option and its choices; the filled-in choice is the current setting.
-- **Any variant page:** Shift+O shows a hidden panel (bottom right); choosing reloads the page.
+- **Index page:** in a column to the right of the variant links (under them below 1280px wide), a headline per option and its choices; the filled-in choice is the current setting. Each phase's screen lists its own options.
+- **Any variant page:** Shift+O shows a hidden panel (bottom right) with that variant's phase's options; choosing reloads the page.
 - **Links:** `?cobrand-menu=7` (or `?cobrand-menu=7&cobrand-shortcuts=show`) on any URL sets and remembers a choice (for presetting test sessions); it's then dropped from the address.
 
-Current options:
+Each option belongs to a phase (`phases` in `src/options.ts`) and only applies to that phase's variants. Current options:
+
+**Phase 1 (A–F)**
 
 | Option | Choices |
 |---|---|
@@ -122,7 +130,19 @@ Current options:
 | Breadcrumbs on co-branded pages (`cobrand-breadcrumbs`) | **Show** (default) or **Hide** the breadcrumb on a co-branded site's pages, all variants. Hidden, the first thing on the page (hero or title) starts where the breadcrumb was; option 1's menu bar sits straight under the header instead (no gap). |
 | Shortcuts on co-branded pages (`cobrand-shortcuts`) | **Show** or **Hide** (default) the shortcut links (Study, Impact, Research) on a co-branded site's pages: A–C header, E sidebar. D has none. Other pages always show them. |
 
-To add an option: add an entry to `src/options.ts`, then branch on it in CSS (`[data-opt-<id>="<choice>"]` on `<html>`) or in scripts (`getOption('<id>')` from `src/lib/options.ts`).
+**Phase 2 (G, H)**
+
+| Option | Choices |
+|---|---|
+| Shortcuts (`shortcuts`) | **Show** (default) or **Hide** the shortcut links (Study, Impact, Research) on every page: G header, H sidebar. |
+| Search (`search`) | **Show** (default) or **Hide** the search buttons. |
+| Back button in the menu (`menu-back`) | **Back** (default) or **Previous level's name**: the name of the level Back goes to, e.g. "← Study at UWA" above the Explore courses heading ("Main menu" from a top-level item; the site's name on a co-branded site's tab). |
+| Arrows in the menu (`menu-arrows`) | **All** (every item and the heading), **Only items with children**, **All except headings**, **None** (default). Back always keeps its arrow. |
+| Breadcrumbs on co-branded pages (`cobrand-breadcrumbs`) | As phase 1 (shared). |
+
+The co-brand menu is fixed to option 2 (the tabs) in G and H (`fixedOptions` in `src/variants/g.ts`, `h.ts`).
+
+To add an option: add an entry to `src/options.ts` (with its `phases`), then branch on it in CSS (`[data-opt-<id>="<choice>"]` on `<html>`) or in scripts (`getOption('<id>')` from `src/lib/options.ts`).
 
 ## Running locally (optional)
 

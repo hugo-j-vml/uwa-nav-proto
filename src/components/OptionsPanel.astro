@@ -6,13 +6,15 @@
  * unless the shortcut is pressed.
  */
 import OptionsControls from './OptionsControls.astro';
+interface Props { phase: 1 | 2 }
+const { phase } = Astro.props;
 ---
 <aside class="options-panel" aria-label="Prototype options" data-options-panel hidden>
   <div class="options-panel-head">
     <p class="options-panel-title">Prototype options</p>
     <button type="button" class="options-panel-close" data-options-close>Close</button>
   </div>
-  <OptionsControls reload />
+  <OptionsControls reload phase={phase} />
 </aside>
 <script>
   const panel = document.querySelector<HTMLElement>('[data-options-panel]');

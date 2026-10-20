@@ -9,6 +9,7 @@ export const b: Variant = {
   id: 'b',
   letter: 'B',
   name: 'Static core with dynamic panel',
+  phase: 1,
   status: 'ready',
   shell: 'header',
   menu: 'panels',

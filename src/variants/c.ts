@@ -9,6 +9,7 @@ export const c: Variant = {
   id: 'c',
   letter: 'C',
   name: 'Static core with two panels',
+  phase: 1,
   status: 'ready',
   shell: 'header',
   menu: 'columns',

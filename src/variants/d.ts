@@ -9,6 +9,7 @@ export const d: Variant = {
   id: 'd',
   letter: 'D',
   name: 'Sidebar with drill-down',
+  phase: 1,
   status: 'ready',
   shell: 'sidebar',
   menu: 'drilldown',

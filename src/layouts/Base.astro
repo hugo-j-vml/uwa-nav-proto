@@ -6,9 +6,11 @@ import '../styles/tokens.css';
 import '../styles/components.css';
 import PrimaryNavHeader from '../components/PrimaryNavHeader.astro';
 import Sidebar from '../components/Sidebar.astro';
+import PaneHeader from '../components/PaneHeader.astro';
+import PaneSidebar from '../components/PaneSidebar.astro';
 import PasswordGate from '../components/PasswordGate.astro';
 import { PASSWORD_SHA256, PROTOTYPE_NAME } from '../config';
-import { OPTIONS, OPTIONS_KEY } from '../options';
+import { OPTIONS, OPTIONS_KEY, optionsFor } from '../options';
 import { BREAKPOINTS, COMPACT } from '../breakpoints';
 import OptionsPanel from '../components/OptionsPanel.astro';
 import type { Variant } from '../variants';
@@ -20,6 +22,9 @@ import type { Cobrand } from '../lib/nav';
 /** cobrand: on a co-branded site's pages, the site (A, B, C header shows its logo next to UWA's; the menus use its IA for the co-brand menu options) */
 interface Props { title: string; variant?: Variant; currentPath?: string; transparentHeader?: boolean; cobrand?: Cobrand }
 const { title, variant, currentPath = '', transparentHeader = false, cobrand } = Astro.props;
+// Behaviour options for this page: its variant's phase (the index page: all of them), and any the variant fixes
+const pageOptions = (variant ? optionsFor(variant.phase) : OPTIONS).map(o => ({ id: o.id, d: o.default, c: o.choices.map(c => c.id) }));
+const fixed = variant?.fixedOptions ?? {};
 ---
 <!doctype html>
 <html lang="en-AU" data-variant={variant?.id ?? 'index'} data-shell={variant?.shell}>
@@ -36,9 +41,10 @@ const { title, variant, currentPath = '', transparentHeader = false, cobrand } =
         if (!ok) document.documentElement.classList.add('is-locked');
       })();
     </script>
-    <!-- Behaviour options (src/options.ts): apply the chosen ones before the page paints.
+    <!-- Behaviour options (src/options.ts): apply the chosen ones before the page paints (only the
+         options of this variant's phase, plus any the variant fixes, e.g. G and H's co-brand tabs).
          A link like ?cobrand-menu=7 sets and remembers a choice (then drops it from the address). -->
-    <script is:inline define:vars={{ options: OPTIONS.map(o => ({ id: o.id, d: o.default, c: o.choices.map(c => c.id) })), key: OPTIONS_KEY }}>
+    <script is:inline define:vars={{ options: pageOptions, fixed, key: OPTIONS_KEY }}>
       (function () {
         var saved = {};
         try { saved = JSON.parse(localStorage.getItem(key) || '{}') || {}; } catch (e) {}
@@ -50,6 +56,7 @@ const { title, variant, currentPath = '', transparentHeader = false, cobrand } =
           var v = o.c.indexOf(saved[o.id]) !== -1 ? saved[o.id] : o.d;
           document.documentElement.setAttribute('data-opt-' + o.id, v);
         });
+        for (var id in fixed) document.documentElement.setAttribute('data-opt-' + id, fixed[id]);
         if (changed) try { localStorage.setItem(key, JSON.stringify(saved)); } catch (e) {}
         // Drop the option from the address once remembered, so a later change (e.g. in the Shift+O panel) isn't undone on reload
         if (changed) { var q = params.toString(); history.replaceState(history.state, '', location.pathname + (q ? '?' + q : '') + location.hash); }
@@ -88,13 +95,21 @@ const { title, variant, currentPath = '', transparentHeader = false, cobrand } =
     <PasswordGate />
     {variant ? (
       <div class="site">
-        {/* Variant shell: header across the top (A, B, C) or a fixed sidebar (D, E) */}
-        {variant.shell === 'header' && <PrimaryNavHeader variant={variant.id} menu={variant.menu} currentPath={currentPath} transparent={transparentHeader} cobrand={cobrand} />}
-        {variant.shell === 'sidebar' && <Sidebar variant={variant.id} menu={variant.menu} currentPath={currentPath} cobrand={cobrand} />}
+        {/* Variant shell: header across the top (A, B, C, F) or a fixed sidebar (D, E); phase 2's menu pane: G (header), H (sidebar) */}
+        {variant.menu === 'pane' ? (
+          variant.shell === 'header'
+            ? <PaneHeader variant={variant.id} currentPath={currentPath} transparent={transparentHeader} cobrand={cobrand} />
+            : <PaneSidebar variant={variant.id} currentPath={currentPath} cobrand={cobrand} />
+        ) : (
+          <>
+            {variant.shell === 'header' && <PrimaryNavHeader variant={variant.id} menu={variant.menu} currentPath={currentPath} transparent={transparentHeader} cobrand={cobrand} />}
+            {variant.shell === 'sidebar' && <Sidebar variant={variant.id} menu={variant.menu} currentPath={currentPath} cobrand={cobrand} />}
+          </>
+        )}
         <main class="page">
           <slot />
         </main>
-        <OptionsPanel />
+        <OptionsPanel phase={variant.phase} />
       </div>
     ) : (
       <slot />

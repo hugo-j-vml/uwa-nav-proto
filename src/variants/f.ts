@@ -10,6 +10,7 @@ export const f: Variant = {
   id: 'f',
   letter: 'F',
   name: 'Stacking panels',
+  phase: 1,
   status: 'ready',
   shell: 'header',
   menu: 'stack',

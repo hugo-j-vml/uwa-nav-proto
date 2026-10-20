@@ -1,0 +1,43 @@
+---
+/**
+ * Phase 2's menu pane (variants G and H): one pane that handles the whole menu,
+ * one level at a time, and search. Drawn by src/scripts/pane-menu.ts from the
+ * data embedded below. G puts it under the header (header-pane), H beside the
+ * sidebar (drill-pane, as E).
+ *   Menu: Back (from the second level; "Back" or the previous level's name,
+ *     behaviour option "Back button in the menu"), the chosen item as a heading
+ *     linking to its page, then its children.
+ *   Search: a search field, then the pages whose names match what's typed.
+ */
+import Icon from './Icons.astro';
+import { nodes, variantBase, cobrandData, searchIndex, type Cobrand } from '../lib/nav';
+
+interface Props { variant: string; currentPath?: string; cobrand?: Cobrand; class: string }
+const { variant, currentPath = '', cobrand, class: className } = Astro.props;
+
+type Compact = { l: string; p: string; c: Compact[] };
+const compact = (list: typeof nodes): Compact[] => list.map(n => ({ l: n.label, p: n.path, c: compact(n.children) }));
+const data = JSON.stringify({
+  base: variantBase(variant),
+  tree: compact(nodes),
+  cobrand: cobrand?.site.length ? cobrandData(cobrand) : undefined,
+  search: searchIndex(),
+}).replace(/</g, '\\u003c');
+---
+<nav id="menu-pane" class:list={['pane-menu', className]} aria-label="Main menu" data-menu-pane data-current-path={currentPath} hidden>
+  <button class="drill-back" type="button" data-pane-back hidden><Icon name="arrow" /><span data-pane-back-label>Back</span></button>
+  <form class="pane-search" role="search" data-pane-search hidden>
+    <label class="visually-hidden" for="pane-search-input">Search the site’s pages</label>
+    <input id="pane-search-input" type="search" placeholder="Search" autocomplete="off" />
+    <Icon name="search" />
+  </form>
+  <p class="pane-search-status" data-pane-search-status aria-live="polite" hidden></p>
+  <ul class="menu-list" data-pane-list></ul>
+</nav>
+
+<template data-arrow><Icon name="arrow" /></template>
+<script type="application/json" data-nav-data set:html={data}></script>
+
+<script>
+  import '../scripts/pane-menu.ts';
+</script>
