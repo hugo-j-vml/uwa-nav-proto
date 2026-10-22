@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.3.0 (22 Oct 2026)
+
+- **Every prototype now uses the existing site's IA** (A–H and CONTROL-1): Hugo's team will test with the existing IA. `data/sitemap.csv` and `data/cobranded/` are now the IA recorded from www.uwa.edu.au on 22 Oct (322 pages, 11 top-level items: Study, Life at UWA, Our research, Partners and community, About us, News, Events, Library, Current students, Staff, Giving; four levels). Five sites have their own menus: UWA Sport, Library, Oceans Institute, The UWA Institute of Agriculture, UWA Public Policy Institute. Page addresses follow the new labels (e.g. `/g/study/explore-courses/`). How it was made and the decisions: `data/README.md`.
+- The proposed IA is kept, unused, in `data/proposed-ia/` (with how to switch back).
+- Shortcuts: Study → Study, Impact → News (the live site calls News "UWA Impact"), Research → Our research.
+- CONTROL-1: More holds News, Events, Library, Current students, Staff and Giving, exactly as the live site; Events, Staff and Giving (no pages under them) keep the menu bar instead of a section header.
+- The sitemap script accepts `url` and `notes` columns (for reference, not used) without warnings.
+
 ## 1.2.1 (22 Oct 2026)
 
 - **Live IA file added, not in use:** `data/live-ia/` holds the existing www.uwa.edu.au navigation's IA, recorded 22 Oct, in the prototype's sitemap format. That's 322 pages: the homepage mega menus, each section's header row and dropdowns (down to L4), and the More links; plus five site menus (UWA Sport, Library and the three co-branded examples). It's there in case testing compares the new IA with the existing one. `data/live-ia/README.md` covers how it was extracted, the decisions, and how to switch to it. The prototypes (A–H, CONTROL-1) are unchanged and still build from the proposed IA.

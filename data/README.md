@@ -1,6 +1,6 @@
-# Live IA (existing www.uwa.edu.au navigation)
+# The IA: the existing www.uwa.edu.au navigation
 
-An alternative IA for the prototypes: the IA of the **existing** UWA website, as its navigation presents it, in the same format as the proposed IA (`data/sitemap.csv` and `data/cobranded/`). **Not in use.** The prototypes, CONTROL-1, G and H all still build from the proposed IA. This is here in case testing compares the new IA against the existing one (Hugo's team to decide).
+Every prototype (A–H and CONTROL-1) builds from the IA of the **existing** UWA website, as its navigation presents it (from v1.3.0, 22 Oct 2026; Hugo's team chose to test with the existing IA). The proposed IA used until then is kept, unused, in `proposed-ia/`.
 
 Recorded from www.uwa.edu.au on 22 Oct 2026.
 
@@ -8,7 +8,8 @@ Recorded from www.uwa.edu.au on 22 Oct 2026.
 
 | File | Contents |
 |---|---|
-| `sitemap.csv` | The live IA: 323 rows (322 pages once a duplicate is merged), 11 top-level items, four levels deep. Same columns as `data/sitemap.csv`, plus `url` (the live page) and `notes`. The build ignores those two, with a warning. |
+| `sitemap.csv` | The live IA: 323 rows (322 pages once a duplicate is merged), 11 top-level items, four levels deep. The usual columns (README "The sitemap CSV"), plus `url` (the live page) and `notes`, which are for reference and not used. |
+| `proposed-ia/` | The proposed IA (`sitemap.csv`, `cobranded/`) the prototypes used until v1.2.1. Not used. |
 | `cobranded/*.csv` | The menus of the five pages that are sites with their own header on the live site, as two levels (L1, L2), plus `url`. |
 
 Top level, in the live order: **Study** (69 pages), **Life at UWA** (13), **Our research** (29), **Partners and community** (63), **About us** (56), then the live "More" dropdown's links: **News** (20), **Events** (1), **Library** (own site), **Current students** (69), **Staff** (external), **Giving** (external).
@@ -38,22 +39,13 @@ Top level, in the live order: **Study** (69 pages), **Life at UWA** (13), **Our 
 - **One true duplicate:** Partners and community › Convocation › News lists "Food Drive" twice, so the build merges it.
 - **Templates:** landing for the top level, content for everything else, except the five sites. No course pages (the live course pages sit behind the course search, not in the menu).
 
-## To switch the prototypes to it (if the team goes that way)
+## Settings that name pages in this IA
 
-Nothing here is wired up. To build everything on the live IA:
+- **Shortcuts** (`src/data/header.json`): Study → Study, Impact → News (the live site calls News "UWA Impact"), Research → Our research.
+- **CONTROL-1's More list** (`mega.more` in `src/variants/control-1.ts`): News, Events, Library, Current students, Staff and Giving, as the live More dropdown.
+- **CONTROL-1's logo lockups** (`mega.lockups`): Oceans Institute (`our-research/institutes-and-centres/oceans-institute`).
 
-1. Replace `data/sitemap.csv` with `data/live-ia/sitemap.csv`.
-2. Replace `data/cobranded/` with `data/live-ia/cobranded/`.
-
-A test build that did exactly this (in a throwaway copy, 22 Oct) built all variants (4,069 pages) with no errors. G's menu and CONTROL-1's mega menus showed the live IA.
-
-Three settings name pages in the proposed IA and would need live equivalents:
-
-- **Shortcuts** (`src/data/header.json`): Study, Impact and Research point at proposed-IA pages. Without a change, the build makes stand-in pages for them.
-- **CONTROL-1's More list** (`mega.more` in `src/variants/control-1.ts`): with the live IA it should be News, Events, Library, Current students, Staff and Giving. Until then, those show in its main bar.
-- **CONTROL-1's logo lockups** (`mega.lockups`): the Oceans Institute path changes to `our-research/institutes-and-centres/oceans-institute`.
-
-Showing both IAs side by side (e.g. `/live-ia/g/` next to `/g/`) would need the build to read either folder. That's a separate change, not made.
+To go back to the proposed IA: copy `proposed-ia/sitemap.csv` and `proposed-ia/cobranded/` back to `data/`, and set those three back to their v1.2.1 values (Study → `study-at-uwa`, Impact → `about-us/news`; More → `students`, `login`, `about-us/news`; the lockup path in the proposed IA, `our-research/institutes-and-centres/centres-and-other-entities/oceans-institute`).
 
 ## Updating it
 

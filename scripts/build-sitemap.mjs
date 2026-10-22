@@ -18,6 +18,7 @@
  *   intro     course pages: intro line under the title
  *   body      course pages: paragraph under the in-page tabs
  *   abbreviation  co-branded pages: short name for the site's menu tab (e.g. OI), so it doesn't wrap
+ *   url, notes    for reference only (the live page each row came from, and notes on it); not used
  *
  * Co-branded sites: a page with the cobranded template can have its own menu,
  * separate from the main menu. Put it in data/cobranded/<page slug>.csv with
@@ -65,6 +66,7 @@ const [header, ...body] = rows;
 const errors = [], warnings = [];
 const TEMPLATES = ['landing', 'content', 'course', 'cobranded'];
 const META = ['template', 'eyebrow', 'intro', 'body', 'abbreviation'];
+const REFERENCE = ['url', 'notes']; // kept in the CSV for reference, not used
 
 // Work out which columns are levels (L1, L2, ...) and which are extra fields
 const levelCols = [], metaCols = {};
@@ -73,6 +75,7 @@ header.forEach((h, idx) => {
   const m = name.match(/^l(\d+)$/);
   if (m) levelCols.push({ idx, level: Number(m[1]) });
   else if (META.includes(name)) metaCols[name] = idx;
+  else if (REFERENCE.includes(name)) return;
   else if (name) warnings.push(`Column "${h.trim()}" isn't recognised and is ignored`);
 });
 levelCols.sort((a, b) => a.level - b.level);

@@ -1,6 +1,6 @@
 /**
  * Menu state shared by every variant: an "open path", the chain of items whose
- * sub-menus are open, e.g. ["study-at-uwa", "study-at-uwa/explore-courses"].
+ * sub-menus are open, e.g. ["study", "study/explore-courses"].
  * Pure functions only; each variant's menu script renders the state its own way.
  */
 

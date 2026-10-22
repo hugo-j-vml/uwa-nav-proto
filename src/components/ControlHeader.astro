@@ -11,7 +11,8 @@
  *
  * The menu bar is only on the homepage. Every other page has a local header,
  * as on the live site: the section it's in (any page under a top-level item,
- * that item's own page included) or its co-branded site. Its name under UWA's
+ * that item's own page included) or its co-branded site. A top-level item with
+ * no pages under it (Events, Staff, Giving) keeps the menu bar. Its name under UWA's
  * logo (or, for a co-branded site in `mega.lockups`, its logo next to UWA's, as
  * Oceans Institute), "All UWA" (a mega menu of the core IA's top two levels) and
  * Search; then a row with the section's L2 pages (a co-branded site's sections):
@@ -45,7 +46,7 @@ type Item = { label: string; path: string; children: { label: string; path: stri
 const section = nodes.find(n => currentPath === n.path || currentPath.startsWith(n.path + '/'));
 const local: { label: string; href: string; path: string; items: Item[]; kind: 'cobrand' | 'section' } | undefined = cobrand
   ? { label: cobrand.label, href: cobrand.href, path: cobrand.path, items: cobrand.site, kind: 'cobrand' }
-  : section ? { label: section.label, href: href(section.path, variant), path: section.path, items: section.children, kind: 'section' } : undefined;
+  : section?.children.length ? { label: section.label, href: href(section.path, variant), path: section.path, items: section.children, kind: 'section' } : undefined;
 // A section's dropdown with this many pages or more uses two columns (live: Leadership and governance, 5)
 const WIDE_FROM = 5;
 const link = (path: string) => href(path, variant);

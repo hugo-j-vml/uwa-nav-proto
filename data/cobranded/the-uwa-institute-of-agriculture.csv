@@ -1,10 +1,10 @@
-L1,L2
-About,
-Events,
-News,
-Publications,
-Research,
-,Research Themes
-,Plant Growth Facility
-,Shenton Park Research Facility
-UWA Farm Ridgefield,
+L1,L2,url
+About,,https://www.uwa.edu.au/institutes/institute-of-agriculture/about-the-institute-of-agriculture
+Events,,https://www.uwa.edu.au/institutes/institute-of-agriculture/events
+News,,https://www.uwa.edu.au/institutes/institute-of-agriculture/news
+Publications,,https://www.uwa.edu.au/institutes/institute-of-agriculture/publications
+Research,,https://www.uwa.edu.au/institutes/institute-of-agriculture/research
+,Research Themes,https://www.uwa.edu.au/institutes/institute-of-agriculture/research/research-themes
+,Plant Growth Facility,https://www.uwa.edu.au/institutes/institute-of-agriculture/research/plant-growth-facilities
+,Shenton Park Research Facility,https://www.uwa.edu.au/institutes/institute-of-agriculture/research/shenton-park-research-facility
+UWA Farm Ridgefield,,https://www.uwa.edu.au/institutes/institute-of-agriculture/uwa-farm-ridgefield

@@ -18,9 +18,8 @@ A coded, clickable prototype of the proposed UWA main website navigation, for us
 | Sizes per screen size; compact-layout values (takeover, top bar, drawer, their motion) | `src/styles/tokens.css`: "SCREEN SIZES" blocks (one per band, after the variant blocks) and "COMPACT LAYOUTS" |
 | Index page look (colours, font, sizes, the animated dot background) | `--index-*` tokens in `src/styles/tokens.css` (background: `--index-bg-*`, e.g. dot spacing, facet brightness, wave and pulse speed) |
 | Variant names, and which variants are built | `src/variants/a.ts` … `h.ts`, `control-1.ts` (`phase`: which index screen lists it, 1 or 2; `status: 'ready'` or `'coming-soon'`; `menuDepth`: how many levels the menu shows, which switches on "In this section" below that, e.g. C: 3; `fixedOptions`: options fixed for that variant, e.g. G and H's co-brand tabs; `noOptions`: none at all, CONTROL-1; `mega`: CONTROL-1's "More" pages and which co-branded sites show a logo lockup) |
-| The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below) |
-| The existing site's IA (not in use; in case testing compares it with the proposed IA) | `data/live-ia/` (same format, recorded from www.uwa.edu.au; how to switch: `data/live-ia/README.md`) |
-| A co-branded site's own pages (Oceans Institute, The UWA Institute of Agriculture, UWA Public Policy Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the core menu tree; how they appear in the menus depends on the Co-brand menu option. |
+| The IA / menu structure and labels | `data/sitemap.csv` (one column per level; see below). From v1.3.0 this is the **existing site's IA** (recorded from www.uwa.edu.au, 22 Oct 2026; how it was made and the decisions: `data/README.md`). The proposed IA used before is kept, unused, in `data/proposed-ia/`. |
+| A co-branded site's own pages (UWA Sport, Library, Oceans Institute, The UWA Institute of Agriculture, UWA Public Policy Institute) | `data/cobranded/<page slug>.csv`, columns L1 and L2 (two levels). Kept out of the core menu tree; how they appear in the menus depends on the Co-brand menu option. |
 | Behaviour options (alternative behaviours switched on the index page, with Shift+O on any variant page, or with `?<option>=<choice>` in a link) | `src/options.ts` (see below) |
 | Header shortcut buttons (Study / Impact / Research) | `src/data/header.json` |
 | Password | `src/config.ts` (see below) |
@@ -52,7 +51,7 @@ Life at UWA,,
 
 If a row skips a level (e.g. an L5 with no L4 on that row), the item goes under the most recent L4 above it, and the build log shows a warning.
 
-Page URLs come from the labels, under each variant (e.g. `a/study-at-uwa/explore-courses/find-a-course/`). Items with children open a sub-menu; items without children link to their page. The build stops with a clear message if the CSV has problems (e.g. a row with two level columns filled, a level skipped, or an unknown template).
+Page URLs come from the labels, under each variant (e.g. `a/study/explore-courses/find-a-course/`). Items with children open a sub-menu; items without children link to their page. The build stops with a clear message if the CSV has problems (e.g. a row with two level columns filled, a level skipped, or an unknown template).
 
 Optional columns, in any order:
 
@@ -63,6 +62,7 @@ Optional columns, in any order:
 | `intro` | text | Course pages: line under the title |
 | `body` | text | Course pages: paragraph under the in-page tabs |
 | `abbreviation` | text | Co-branded pages: short name for the site's tab in the menu (Co-brand menu option 2), for a long name, so it doesn't wrap. Blank = the full name |
+| `url`, `notes` | text | For reference only, not used (the existing IA: the live page each row came from, and notes such as redirects) |
 
 Blank course fields fall back to the Landscape Architecture Studies copy from Figma.
 
@@ -107,11 +107,11 @@ Full specs per variant are in `plan.md` (sections 7–7d). In short:
 - A promo placeholder sits at the bottom of the pane, at its top level only, and on co-branded pages only under the UWA tab (design to come; `--pane-promo-*` tokens).
 - Search lists the pages whose names contain every word typed (IA and co-branded sites' pages), with their trail; each links to its page.
 - Co-branded pages always use the tabs (co-brand menu option 2).
-- **CONTROL-1** Current site navigation: the control for testing. The live www.uwa.edu.au navigation (recorded 20 Oct 2026) at wireframe fidelity, with our IA, so G and H can be benchmarked against it on the same pages and tasks (`plan.md` 14.6):
-  - **Homepage only: menu bar** (768px and wider): Study at UWA, Life at UWA, Partners and community, Our research, About us, each opening a **mega menu** under the header (the section's name linking to it, then its L2 pages as headings with their L3 pages, in three columns), and **More**, a small dropdown with Students, Login and News (the live More holds Current students, Staff, News and similar). The menu reaches L3, as live; deeper pages via "In this section". Hover opens a menu after 250ms; once the pointer has been in it, leaving closes it after 2s; click toggles; Esc, × or a click outside closes. Buttons that don't fit hide behind », which shows them all.
+- **CONTROL-1** Current site navigation: the control for testing. The live www.uwa.edu.au navigation (recorded 20 Oct 2026) at wireframe fidelity, on the same IA and pages as G and H, so they can be benchmarked against it on the same tasks (`plan.md` 14.6):
+  - **Homepage only: menu bar** (768px and wider): Study, Life at UWA, Our research, Partners and community, About us, each opening a **mega menu** under the header (the section's name linking to it, then its L2 pages as headings with their L3 pages, in three columns), and **More**, a small dropdown with News, Events, Library, Current students, Staff and Giving, as live. The menu reaches L3, as live; deeper pages via "In this section". Hover opens a menu after 250ms; once the pointer has been in it, leaving closes it after 2s; click toggles; Esc, × or a click outside closes. Buttons that don't fit hide behind », which shows them all.
   - **Mobile menu** (below 768px, the live site's switch): Menu opens the top level under the header; a section slides in its panel, with L3 pages behind accordions (one open at a time); the Menu button becomes Back (‹), then Close (×).
   - **Search**: the live panel ("How can we help you?", field, Search, Popular searches); typing lists matching pages under "Did you mean..." (the same matching as G and H); Search or Enter goes to the first.
-  - **Every other page: the section's header**, as live: the section's name under UWA's logo, **All UWA** (a mega menu of the IA's top two levels and the More pages), Search, and a row of the section's L2 pages (a dropdown with its L3 pages for one with pages, two columns from 5 pages; a link for one without; what doesn't fit hides behind »). Mobile: the section's name in a strip under the header; the menu lists the section's L2 pages, then All UWA.
+  - **Every other page: the section's header**, as live: the section's name under UWA's logo, **All UWA** (a mega menu of the IA's top two levels and the More pages), Search, and a row of the section's L2 pages (a dropdown with its L3 pages for one with pages, two columns from 5 pages; a link for one without; what doesn't fit hides behind »). Top-level items with no pages under them (Events, Staff, Giving) keep the menu bar. Mobile: the section's name in a strip under the header; the menu lists the section's L2 pages, then All UWA.
   - **Co-branded pages**: the live co-brand header, no UWA menu bar: the site's logo next to UWA's (Oceans Institute) or its name under UWA's logo (the two institutes), **All UWA** (a mega menu of the IA's top two levels and the More pages), Search, and a row of the site's sections (a dropdown for a section with pages, a link for one without). Mobile: the site's name in a strip under the header; the menu lists the site's sections, then All UWA.
   - No behaviour options, and no Shift+O panel.
 
@@ -146,7 +146,7 @@ Each option belongs to a phase (`phases` in `src/options.ts`) and only applies t
 |---|---|
 | Shortcuts (`shortcuts`) | **Show** (default) or **Hide** the shortcut links (Study, Impact, Research) on every page: G header, H sidebar. |
 | Search (`search`) | **Show** (default) or **Hide** the search buttons. |
-| Back button in the menu (`menu-back`) | **Back** (default) or **Previous level's name**: the name of the level Back goes to, e.g. "← Study at UWA" above the Explore courses heading ("All UWA" from a top-level item; the site's name on a co-branded site's tab). |
+| Back button in the menu (`menu-back`) | **Back** (default) or **Previous level's name**: the name of the level Back goes to, e.g. "← Study" above the Explore courses heading ("All UWA" from a top-level item; the site's name on a co-branded site's tab). |
 | Arrows in the menu (`menu-arrows`) | **All** (every item and the heading), **Only items with children**, **All except headings**, **None** (default). Back always keeps its arrow. |
 | Breadcrumbs on co-branded pages (`cobrand-breadcrumbs`) | As phase 1 (shared). |
 

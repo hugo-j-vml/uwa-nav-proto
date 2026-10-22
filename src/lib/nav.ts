@@ -38,7 +38,7 @@ export const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BAS
 /** Root URL of a variant, e.g. "/uwa-nav-proto/a/". */
 export const variantBase = (variant: string) => `${base}${variant}/`;
 
-/** URL for a page path such as "study-at-uwa/explore-courses" in a variant ('' = the variant's homepage). */
+/** URL for a page path such as "study/explore-courses" in a variant ('' = the variant's homepage). */
 export const href = (path: string, variant: string) => (path ? `${variantBase(variant)}${path}/` : variantBase(variant));
 
 /** Every node in the tree, depth first. */
