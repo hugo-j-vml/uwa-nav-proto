@@ -941,6 +941,24 @@ html[data-layout="compact"].menu-open { overflow: hidden; }
   margin-top: var(--header-controls-offset-top);
 }
 .control-site { grid-area: site; margin-top: var(--control-row-gap); }
+/* Menu bar, section and co-branded headers: taller, with the menu row along the bottom of the band. With the
+   name under UWA's logo, the name sits on the same line as the menu row (its last line, when it wraps); a
+   lockup keeps the logos spanning both rows */
+[data-control-bar='bar'] .control-header.is-local { min-height: var(--control-local-header-height); }
+[data-control-bar='bar'] .control-header.is-local .control-bar {
+  min-height: calc(var(--control-local-header-height) - var(--header-padding-top) - var(--control-local-padding-bottom));
+  grid-template-rows: auto 1fr; row-gap: var(--control-local-name-gap);
+}
+[data-control-bar='bar'] .control-header.is-local .control-site { margin-top: 0; align-self: end; }
+[data-control-bar='bar'] .control-header.is-local:not(.has-lockup) .control-bar { grid-template-areas: "logo top" "name site"; }
+[data-control-bar='bar'] .control-header.is-local:not(.has-lockup) .control-brand { display: contents; }
+[data-control-bar='bar'] .control-header.is-local:not(.has-lockup) .control-brand .logo { grid-area: logo; }
+[data-control-bar='bar'] .control-header.is-local:not(.has-lockup) .control-site-name {
+  grid-area: name; align-self: end; margin-top: 0; white-space: nowrap;
+  padding-bottom: calc((var(--button-height) - 1.2em) / 2); /* level with the menu row's text */
+}
+/* ...so the page starts below it */
+[data-control-bar='bar'] .site:has(> .control-header.is-local) { padding-top: calc(var(--control-local-header-height) - var(--header-height)); }
 .control-nav { flex: 1; min-width: 0; display: flex; align-items: flex-start; justify-content: flex-end; gap: var(--header-button-gap); }
 .control-items { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: flex-end; column-gap: var(--control-item-gap); }
 .control-nav .control-items { min-width: 0; }

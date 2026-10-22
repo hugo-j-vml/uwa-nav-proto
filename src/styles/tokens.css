@@ -404,8 +404,13 @@
   --control-item-gap: 24px;            /* between the menu bar's buttons (live: 24) */
   --control-chevron-gap: 8px;          /* label to its chevron */
   --control-site-name-size: 20px;      /* co-branded site's name under UWA's logo (no lockup) */
-  --control-site-name-gap: 2px;        /* logo to the name */
+  --control-site-name-gap: 2px;        /* logo to the name (mobile strip: not used) */
   --control-row-gap: 12px;             /* co-branded header: top row (All UWA, Search) to the site's sections */
+  /* Section and co-branded headers in the menu bar (768px and wider): taller than the homepage's, with
+     the section's name and its menu row on one line under the logo (Hugo, v1.3.2) */
+  --control-local-header-height: 160px; /* the homepage keeps --header-height (128px); pages move down by the difference */
+  --control-local-name-gap: 12px;      /* logo (and All UWA / Search) to the name and menu row, at least */
+  --control-local-padding-bottom: 12px; /* the menu row to the bottom of the band */
   --control-panel-bg: var(--colour-white);
   --control-panel-inset: 24px;         /* mega menus stop short of the window's edges (live: 24) */
   --control-panel-padding: 32px 96px 40px; /* live: content in a 1200px column on a 1392px panel */

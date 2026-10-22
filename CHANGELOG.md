@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.2 (22 Oct 2026)
+
+- CONTROL-1, section and co-branded headers (768px and wider): more room. The band is 160px tall (was 128px; `--control-local-header-height`), and pages start lower by the difference. The section's or site's name now sits on the same line as its menu row, along the bottom of the band (`--control-local-padding-bottom`), with at least 12px between that line and the logo (`--control-local-name-gap`). Oceans Institute (logo lockup) has its menu row along the bottom too. The homepage header and the mobile menu are unchanged. Other variants unchanged (these rules only apply on CONTROL-1).
+
 ## 1.3.1 (22 Oct 2026)
 
 - IA, all variants: Study › Explore courses › Study areas now has the 11 study areas under it (as listed on the live Study areas page: Architecture and Design to Psychology), and each has a **Course page** under it, using the course page template. The only change from the existing IA (Hugo). 344 pages, five levels. CONTROL-1 and C reach them through "In this section" (their menus stop at L3, as live). The CSV gains an L5 column.
