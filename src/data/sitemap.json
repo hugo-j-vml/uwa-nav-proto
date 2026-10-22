@@ -1,11 +1,12 @@
 {
-  "generated": "2026-10-22T06:13:11.180Z",
+  "generated": "2026-10-22T06:21:27.919Z",
   "source": "data/sitemap.csv",
   "columns": [
     "L1",
     "L2",
     "L3",
     "L4",
+    "L5",
     "template",
     "eyebrow",
     "intro",
@@ -47,7 +48,217 @@
               "path": "study/explore-courses/study-areas",
               "level": 3,
               "template": "content",
-              "children": []
+              "children": [
+                {
+                  "id": "study/explore-courses/study-areas/architecture-and-design",
+                  "label": "Architecture and Design",
+                  "slug": "architecture-and-design",
+                  "path": "study/explore-courses/study-areas/architecture-and-design",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/architecture-and-design/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/architecture-and-design/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study/explore-courses/study-areas/business-and-commerce",
+                  "label": "Business and Commerce",
+                  "slug": "business-and-commerce",
+                  "path": "study/explore-courses/study-areas/business-and-commerce",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/business-and-commerce/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/business-and-commerce/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study/explore-courses/study-areas/data-and-computer-science",
+                  "label": "Data and Computer Science",
+                  "slug": "data-and-computer-science",
+                  "path": "study/explore-courses/study-areas/data-and-computer-science",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/data-and-computer-science/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/data-and-computer-science/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study/explore-courses/study-areas/education",
+                  "label": "Education",
+                  "slug": "education",
+                  "path": "study/explore-courses/study-areas/education",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/education/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/education/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study/explore-courses/study-areas/engineering",
+                  "label": "Engineering",
+                  "slug": "engineering",
+                  "path": "study/explore-courses/study-areas/engineering",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/engineering/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/engineering/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study/explore-courses/study-areas/health-and-biomedical-sciences",
+                  "label": "Health and Biomedical Sciences",
+                  "slug": "health-and-biomedical-sciences",
+                  "path": "study/explore-courses/study-areas/health-and-biomedical-sciences",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/health-and-biomedical-sciences/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/health-and-biomedical-sciences/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study/explore-courses/study-areas/humanities-and-social-sciences",
+                  "label": "Humanities and Social Sciences",
+                  "slug": "humanities-and-social-sciences",
+                  "path": "study/explore-courses/study-areas/humanities-and-social-sciences",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/humanities-and-social-sciences/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/humanities-and-social-sciences/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study/explore-courses/study-areas/law",
+                  "label": "Law",
+                  "slug": "law",
+                  "path": "study/explore-courses/study-areas/law",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/law/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/law/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study/explore-courses/study-areas/music-and-fine-arts",
+                  "label": "Music and Fine Arts",
+                  "slug": "music-and-fine-arts",
+                  "path": "study/explore-courses/study-areas/music-and-fine-arts",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/music-and-fine-arts/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/music-and-fine-arts/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study/explore-courses/study-areas/natural-and-physical-sciences",
+                  "label": "Natural and Physical Sciences",
+                  "slug": "natural-and-physical-sciences",
+                  "path": "study/explore-courses/study-areas/natural-and-physical-sciences",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/natural-and-physical-sciences/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/natural-and-physical-sciences/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "id": "study/explore-courses/study-areas/psychology",
+                  "label": "Psychology",
+                  "slug": "psychology",
+                  "path": "study/explore-courses/study-areas/psychology",
+                  "level": 4,
+                  "template": "content",
+                  "children": [
+                    {
+                      "id": "study/explore-courses/study-areas/psychology/course-page",
+                      "label": "Course page",
+                      "slug": "course-page",
+                      "path": "study/explore-courses/study-areas/psychology/course-page",
+                      "level": 5,
+                      "template": "course",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
             },
             {
               "id": "study/explore-courses/undergraduate-courses",

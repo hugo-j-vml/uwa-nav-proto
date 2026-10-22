@@ -8,7 +8,7 @@ Recorded from www.uwa.edu.au on 22 Oct 2026.
 
 | File | Contents |
 |---|---|
-| `sitemap.csv` | The live IA: 323 rows (322 pages once a duplicate is merged), 11 top-level items, four levels deep. The usual columns (README "The sitemap CSV"), plus `url` (the live page) and `notes`, which are for reference and not used. |
+| `sitemap.csv` | The live IA: 345 rows (344 pages once a duplicate is merged), 11 top-level items, five levels deep (four in the live menu, plus the course pages below). The usual columns (README "The sitemap CSV"), plus `url` (the live page) and `notes`, which are for reference and not used. |
 | `proposed-ia/` | The proposed IA (`sitemap.csv`, `cobranded/`) the prototypes used until v1.2.1. Not used. |
 | `cobranded/*.csv` | The menus of the five pages that are sites with their own header on the live site, as two levels (L1, L2), plus `url`. |
 
@@ -22,6 +22,8 @@ Top level, in the live order: **Study** (69 pages), **Life at UWA** (13), **Our 
 - A row only counts for an item when most of its links sit under that item's address. For example, Events lives at /study/events and shows Study's row, so it gets none.
 
 ## Decisions to know about
+
+- **The one change from the live IA (Hugo, 22 Oct, v1.3.1):** Study › Explore courses › Study areas has the 11 study areas under it (the live Study areas page lists them, but the live menu doesn't), and each area has a **Course page** under it, using the course page template (a stand-in for that area's courses). Marked in `notes`.
 
 - **Sites with their own header** use the co-branded template, with their menus in `cobranded/`:
   - **Sport and fitness**: Life at UWA › Sport and fitness goes to the UWA Sport site.

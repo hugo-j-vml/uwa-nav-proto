@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.1 (22 Oct 2026)
+
+- IA, all variants: Study › Explore courses › Study areas now has the 11 study areas under it (as listed on the live Study areas page: Architecture and Design to Psychology), and each has a **Course page** under it, using the course page template. The only change from the existing IA (Hugo). 344 pages, five levels. CONTROL-1 and C reach them through "In this section" (their menus stop at L3, as live). The CSV gains an L5 column.
+
 ## 1.3.0 (22 Oct 2026)
 
 - **Every prototype now uses the existing site's IA** (A–H and CONTROL-1): Hugo's team will test with the existing IA. `data/sitemap.csv` and `data/cobranded/` are now the IA recorded from www.uwa.edu.au on 22 Oct (322 pages, 11 top-level items: Study, Life at UWA, Our research, Partners and community, About us, News, Events, Library, Current students, Staff, Giving; four levels). Five sites have their own menus: UWA Sport, Library, Oceans Institute, The UWA Institute of Agriculture, UWA Public Policy Institute. Page addresses follow the new labels (e.g. `/g/study/explore-courses/`). How it was made and the decisions: `data/README.md`.

@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.3.0** (22 Oct: every prototype now uses the **existing site's IA**, `data/README.md`) (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.3.1** (22 Oct: every prototype now uses the **existing site's IA**, `data/README.md`, with one change: study areas and a course page under each) (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
