@@ -919,9 +919,6 @@ html[data-layout="compact"].menu-open { overflow: hidden; }
   padding: var(--header-padding-top) var(--header-padding-x) 0;
 }
 .control-header::before { content: ''; position: absolute; inset: 0; background: var(--header-bg); z-index: 1; }
-.control-header.is-transparent::before { background: var(--header-bg-transparent); }
-/* While a menu is open the band stays solid, so the panel reads as part of the header */
-.control-header.is-transparent.is-open::before { background: var(--header-bg); }
 .control-bar {
   position: relative; z-index: 2;
   display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "brand top" "brand site";

@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.3.3** (22 Oct: every prototype now uses the **existing site's IA**, `data/README.md`, with one change: study areas and a course page under each) (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.3.4** (22 Oct: every prototype now uses the **existing site's IA**, `data/README.md`, with one change: study areas and a course page under each) (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -425,6 +425,7 @@ Recorded behaviour, copied:
 
 | | Live site (20 Oct 2026) | CONTROL-1 |
 |---|---|---|
+| Header band | Always solid, landing pages included | Same (v1.3.4); other variants keep the transparent header on landing pages |
 | Where | The menu bar is on the homepage only; every other page has its section's header (below) | Same (v1.2.0; Hugo, from /about/campus-services and /life-at-uwa/accommodation) |
 | Menu bar (768px and wider) | Logo; section buttons with a chevron; More; search button | Same, with our sections |
 | Opening | Hover opens a menu after ~250ms (moving on to another button within that time opens that one); click toggles; a click just after hover opened it keeps it open; Enter opens it with focus on its title link | Same (`--control-hover-open-delay`, `--control-click-guard`) |

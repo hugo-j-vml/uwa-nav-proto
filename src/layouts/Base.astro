@@ -98,7 +98,7 @@ const fixed = variant?.fixedOptions ?? {};
       <div class="site">
         {/* Variant shell: header across the top (A, B, C, F) or a fixed sidebar (D, E); phase 2's menu pane: G (header), H (sidebar); the live site's header: CONTROL-1 */}
         {variant.menu === 'mega' ? (
-          <ControlHeader variant={variant.id} currentPath={currentPath} transparent={transparentHeader} cobrand={cobrand} more={variant.mega?.more ?? []} lockups={variant.mega?.lockups ?? []} />
+          <ControlHeader variant={variant.id} currentPath={currentPath} cobrand={cobrand} more={variant.mega?.more ?? []} lockups={variant.mega?.lockups ?? []} />
         ) : variant.menu === 'pane' ? (
           variant.shell === 'header'
             ? <PaneHeader variant={variant.id} currentPath={currentPath} transparent={transparentHeader} cobrand={cobrand} />

@@ -34,8 +34,9 @@ import Icon from './Icons.astro';
 import { nodes, flatten, href, base, variantBase, searchIndex, type Cobrand, type NavNode } from '../lib/nav';
 import { CONTROL_BAR_FROM } from '../breakpoints';
 
-interface Props { variant: string; currentPath?: string; transparent?: boolean; cobrand?: Cobrand; more: string[]; lockups: string[] }
-const { variant, currentPath = '', transparent = false, cobrand, more, lockups } = Astro.props;
+// No transparent header, even on landing pages: the live site always has a solid band (Hugo, v1.3.4)
+interface Props { variant: string; currentPath?: string; cobrand?: Cobrand; more: string[]; lockups: string[] }
+const { variant, currentPath = '', cobrand, more, lockups } = Astro.props;
 
 const byPath = new Map(flatten().map(n => [n.path, n]));
 const sections = nodes.filter(n => !more.includes(n.path));
@@ -69,7 +70,7 @@ const popular = ['Courses', 'Admissions', 'Research'];
     mq.addEventListener('change', set);
   })();
 </script>
-<header class:list={['control-header', { 'is-transparent': transparent && !local, 'is-local': local, 'has-lockup': lockup }]} data-control-header>
+<header class:list={['control-header', { 'is-local': local, 'has-lockup': lockup }]} data-control-header>
   <div class="control-bar">
     <div class="control-brand">
       <a class="logo" href={link('')}><img src={`${base}logos/uwa-horizontal.svg`} alt="The University of Western Australia: home" width="216" height="71" /></a>

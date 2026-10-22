@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.4 (22 Oct 2026)
+
+- CONTROL-1: no transparent header. The homepage and other landing pages (e.g. Events) now have the solid header band too, as the live site always does. The landing pages' hero placeholder still starts at the top of the page, so the band covers its top part. Other variants unchanged (their landing pages keep the transparent header).
+
 ## 1.3.3 (22 Oct 2026)
 
 - CONTROL-1, section and co-branded pages (768px and wider): **All UWA** now opens higher, just under the top row and the logos, covering the section's menu row, as on the live site. Moving the pointer down from All UWA no longer opens the section's dropdowns on the way (`--control-all-gap`, 8px). Other menus, the mobile menu and other variants unchanged.
