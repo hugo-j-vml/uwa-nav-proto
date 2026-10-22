@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.1 (22 Oct 2026)
+
+- **Live IA file added, not in use:** `data/live-ia/` holds the existing www.uwa.edu.au navigation's IA, recorded 22 Oct, in the prototype's sitemap format. That's 322 pages: the homepage mega menus, each section's header row and dropdowns (down to L4), and the More links; plus five site menus (UWA Sport, Library and the three co-branded examples). It's there in case testing compares the new IA with the existing one. `data/live-ia/README.md` covers how it was extracted, the decisions, and how to switch to it. The prototypes (A–H, CONTROL-1) are unchanged and still build from the proposed IA.
+
 ## 1.2.0 (20 Oct 2026)
 
 - CONTROL-1: **section headers**, as on the live site. The menu bar with the mega menus is now on the homepage only. Every other page shows the header of the section it's in (the top-level item's own page included), the way co-branded pages already worked: the section's name under UWA's logo, All UWA (the mega menu of the core's top two levels) and Search, then a row with the section's L2 pages. An L2 page with pages of its own opens a dropdown (its name linking to it, then its L3 pages; two columns from 5 pages, as live); one without is a plain link. Buttons that don't fit hide behind » (About us has 11 L2 pages, so some do even at 1440px). Mobile: the section's name in a strip under the header; the menu lists the section's L2 pages, then All UWA.

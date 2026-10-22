@@ -408,6 +408,7 @@ Phase 1 (A–F, their options and the index screen) stays as it was, for referen
 7. CONTROL-1 leaves out the live mega menus' call-to-action buttons (Study: "Search for a course", "Apply now"; About us: "Visit UWA"): they're content, not navigation, and our IA has no direct equivalent. Add them (or placeholders) for parity with G and H's promo area?
 8. The two new institutes' full names don't fit G and H's site tab at 320px wide (the tab is cut off). They need an abbreviation (`abbreviation` column in `data/sitemap.csv`), e.g. "Agriculture" and "Public Policy"; Hugo to choose.
 9. The live site has no menu at exactly 768px wide (neither the bar nor the Menu button shows; a live bug). CONTROL-1 shows the bar from 768px rather than copy that.
+10. Test the proposed IA against the existing one (Hugo's team to decide, 22 Oct)? If so: which variants, and as separate addresses (e.g. `/live-ia/g/`) or by switching the whole build. The existing IA is ready in `data/live-ia/` (v1.2.1; not in use).
 
 ### 14.6 CONTROL-1: the control (from v1.1.0)
 
@@ -438,4 +439,3 @@ Recorded behaviour, copied:
 | Section header (every page in a section, the section's own page included) | The co-branded header's layout: the section's name under UWA's logo; All UWA and Search; the section's L2 pages in a row: a dropdown (its name with an arrow, then its L3 pages; two columns when there are 5 or more) or a plain link. Study and Life at UWA also show Login and English (language) links | Same, without Login and English. About us has 11 L2 pages (live: 7), so the row hides some behind » even at 1440px |
 | All UWA | Mega menu: "The University of Western Australia", the core's top two levels in columns, then the utility links | Same, with our sections and More pages |
 | Co-branded mobile | The site's name in a strip under the header; the menu lists the site's sections, a divider, then All UWA (the core's top level with accordions) | Same |
-
