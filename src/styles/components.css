@@ -996,6 +996,8 @@ html[data-layout="compact"].menu-open { overflow: hidden; }
 
 /* ---------- Panels ---------- */
 .control-panels { position: absolute; z-index: 0; top: 100%; left: 0; right: 0; }
+/* All UWA opens over the section's menu row (control-menu.ts places it), so its panels sit above the bar */
+[data-control-bar='bar'] .control-header[data-open='cm-all'] .control-panels { z-index: 3; }
 .control-panel {
   position: absolute; top: 0; z-index: 3;
   background: var(--control-panel-bg); color: var(--colour-black); font-family: var(--font-ui);

@@ -14,8 +14,9 @@
  *     first link.
  *   - Closes on: its button, the panel's ×, Esc (focus back on the button), or
  *     a click outside the header.
- *   - Dropdowns (More, a co-branded site's sections) sit under their button;
- *     mega menus (sections, All UWA, Search) span the header.
+ *   - Dropdowns (More, a section's or co-branded site's pages) sit under their
+ *     button; mega menus (sections, All UWA, Search) span the header. All UWA
+ *     opens just under the top row, over the section's menu row (as live).
  *   - Buttons that don't fit on one row are hidden; » shows them all (the
  *     bar wraps), and hides them again.
  *   - The panel's title slides in as it opens.
@@ -74,10 +75,22 @@ function init(header: HTMLElement) {
     menuButton.setAttribute('aria-expanded', String(menuOpen));
     menuButton.setAttribute('aria-label', state === 'menu' ? 'Open the menu' : state === 'close' ? 'Close the menu' : 'Back to the top of the menu');
     header.classList.toggle('is-open', openId !== '');
+    header.dataset.open = openId;
   }
 
-  /** Dropdowns sit under their button, kept inside the header's width. */
+  /**
+   * Dropdowns sit under their button, kept inside the header's width. All UWA (menu bar) opens higher,
+   * just under the top row, covering the section's menu row, as on the live site, so the pointer can't
+   * open a section dropdown on its way down to it.
+   */
   function place(panel: HTMLElement, trigger: HTMLElement | null) {
+    panel.style.top = '';
+    if (isBar() && panel.id === 'cm-all') {
+      // Under the top row and the logos, whichever is lower
+      const above = [...header.querySelectorAll<HTMLElement>('.control-top, .control-brand .logo, .control-brand .cobrand-logo')].filter(e => e.offsetParent);
+      const below = Math.max(...above.map(e => e.getBoundingClientRect().bottom)) - header.getBoundingClientRect().bottom;
+      panel.style.top = `${below + parseFloat(token('--control-all-gap') || '0')}px`;
+    }
     if (!isBar() || !trigger || !panel.classList.contains('control-dropdown')) { panel.style.left = ''; return; }
     const h = header.getBoundingClientRect(), t = trigger.getBoundingClientRect();
     panel.style.left = '0px';

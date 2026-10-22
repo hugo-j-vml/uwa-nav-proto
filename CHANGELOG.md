@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.3 (22 Oct 2026)
+
+- CONTROL-1, section and co-branded pages (768px and wider): **All UWA** now opens higher, just under the top row and the logos, covering the section's menu row, as on the live site. Moving the pointer down from All UWA no longer opens the section's dropdowns on the way (`--control-all-gap`, 8px). Other menus, the mobile menu and other variants unchanged.
+
 ## 1.3.2 (22 Oct 2026)
 
 - CONTROL-1, section and co-branded headers (768px and wider): more room. The band is 160px tall (was 128px; `--control-local-header-height`), and pages start lower by the difference. The section's or site's name now sits on the same line as its menu row, along the bottom of the band (`--control-local-padding-bottom`), with at least 12px between that line and the logo (`--control-local-name-gap`). Oceans Institute (logo lockup) has its menu row along the bottom too. The homepage header and the mobile menu are unchanged. Other variants unchanged (these rules only apply on CONTROL-1).

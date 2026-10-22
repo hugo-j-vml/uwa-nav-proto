@@ -411,6 +411,7 @@
   --control-local-header-height: 160px; /* the homepage keeps --header-height (128px); pages move down by the difference */
   --control-local-name-gap: 12px;      /* logo (and All UWA / Search) to the name and menu row, at least */
   --control-local-padding-bottom: 12px; /* the menu row to the bottom of the band */
+  --control-all-gap: 8px;              /* All UWA (menu bar): opens this far under the top row and logos, over the section's menu row (live) */
   --control-panel-bg: var(--colour-white);
   --control-panel-inset: 24px;         /* mega menus stop short of the window's edges (live: 24) */
   --control-panel-padding: 32px 96px 40px; /* live: content in a 1200px column on a 1392px panel */
