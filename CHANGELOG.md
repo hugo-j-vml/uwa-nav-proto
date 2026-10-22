@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.3.5 (22 Oct 2026)
+
+- Index page: CONTROL-1 is now "CONTROL-1. Current site" (was "Current site navigation").
+
 ## 1.3.4 (22 Oct 2026)
 
 - CONTROL-1: no transparent header. The homepage and other landing pages (e.g. Events) now have the solid header band too, as the live site always does. The landing pages' hero placeholder still starts at the top of the page, so the band covers its top part. Other variants unchanged (their landing pages keep the transparent header).

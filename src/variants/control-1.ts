@@ -14,7 +14,7 @@ import type { Variant } from './types';
 export const control1: Variant = {
   id: 'control-1',
   letter: 'CONTROL-1',
-  name: 'Current site navigation',
+  name: 'Current site',
   phase: 2,
   status: 'ready',
   shell: 'header',

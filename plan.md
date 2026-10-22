@@ -403,7 +403,7 @@ Phase 1 (A–F, their options and the index screen) stays as it was, for referen
 2. Search design (Figma to come): field, results layout, whether results show the trail, and what happens with no matches.
 3. ~~Back from a top-level item: wording?~~ **Resolved (v1.0.2):** "All UWA".
 4. G's pane: 540px wide and full window height under the header, as E's. Narrower/wider, or as tall as its contents (as A's panes)?
-5. Index names for G and H ("Header with menu pane", "Sidebar with menu pane") are stand-ins. CONTROL-1's is "Current site navigation".
+5. Index names for G and H ("Header with menu pane", "Sidebar with menu pane") are stand-ins. CONTROL-1's is "Current site" (was "Current site navigation" until v1.3.5).
 6. Reviewed IA label still to confirm: "Campus initiatives or Campus development or Campus management" (About us › Locations and campuses) is one item whose label lists three alternatives; which one should it be? (Section 11, 7e.)
 7. CONTROL-1 leaves out the live mega menus' call-to-action buttons (Study: "Search for a course", "Apply now"; About us: "Visit UWA"): they're content, not navigation, and our IA has no direct equivalent. Add them (or placeholders) for parity with G and H's promo area?
 8. The two new institutes' full names don't fit G and H's site tab at 320px wide (the tab is cut off). They need an abbreviation (`abbreviation` column in `data/sitemap.csv`), e.g. "Agriculture" and "Public Policy"; Hugo to choose.
