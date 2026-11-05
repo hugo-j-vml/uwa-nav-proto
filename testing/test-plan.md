@@ -145,8 +145,8 @@ Target **under 20 minutes**. Keep it shorter if possible for younger participant
 | Give-up / failure rate | % giving up, ending elsewhere or timing out | All |
 | First-click accuracy | % whose first click was on a correct path | SC1, SC3 |
 | Backtracks / path length | Back-steps and pages visited vs the optimal path | SC2, SC4 |
-| Route used | E.g. logo vs menu vs breadcrumb (T8); "All UWA" equivalent vs other (T7); search attempts (T1) | F#1, #6, #7 |
-| PQ1 / PQ2 | % answering correctly | F#2, #7, #9, #11 |
+| Route used | E.g. logo vs menu vs breadcrumb (T8); "All UWA" equivalent vs other (T7); search attempts (T1) | SC1, SC4 |
+| PQ1 / PQ2 | % answering correctly | SC3, SC4 |
 | UMUX-Lite | Perceived usability, 0–100 | Overall |
 | Open comments | Coded themes | Secondary objective |
 
@@ -162,7 +162,7 @@ All metrics reported **per variant**, and **per variant × device**.
 - **Multiple comparisons:** 8 tasks × 3 comparisons × 2 devices is a lot of tests. Treat per-task significance cautiously (e.g. Holm correction) and lead with the overall pattern.
 - **Segments:** directional only (Section 5).
 - **Paths:** path diagrams for every task with < 80% success, to show where users go wrong.
-- **Qualitative:** affinity-map open comments by variant and device; map themes to Askable findings.
+- **Qualitative:** affinity-map open comments by variant and device.
 
 ## 10. Pre-launch QA and pilot
 
@@ -208,9 +208,8 @@ All metrics reported **per variant**, and **per variant × device**.
 2. Method and participants
 3. Results against success criteria SC1–SC5
 4. Task-by-task results with paths
-5. Askable 2024 findings: improved / not improved, by variant
-6. Desktop vs mobile
-7. Audience segments (directional)
-8. Qualitative themes
-9. Recommendations and next steps
-10. Appendix: data tables, tasks, screener, consent
+5. Desktop vs mobile
+6. Audience segments (directional)
+7. Qualitative themes
+8. Recommendations and next steps
+9. Appendix: data tables, tasks, screener, consent
