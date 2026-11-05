@@ -95,11 +95,12 @@ This new system is a full-site solution for a navigation system including core s
 
 ## 8. Tasks
 
-### Guidelines
+### Notes on tasks
 
-- Same task set for **all** segments so results can be pooled and compared. Scenarios are written so a high school student, prospective PG or current student can all relate to them.
-- One correct destination (or an agreed list of acceptable URLs) per task, set in **every** variant.
-- Task order randomised after the warmup, **except** T6 → T7 → T8, which run as a fixed microsite sequence (randomise its position among the other tasks).
+- There are 2 approaches for this - randomised tasks, or linear ones: 
+   - Task order randomised after the warmup, **except** T6 → T7 → T8, which run as a fixed microsite sequence (randomise its position among the other tasks).
+   - Task order linear with all participants experiencing the same order. This is counter to best practice but may be necessary to test the co-brand site nav interplay with the main nav.
+
 
 ### Task set (draft)
 
