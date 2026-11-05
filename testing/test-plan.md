@@ -167,19 +167,9 @@ All metrics reported **per variant**, and **per variant × device**.
 - **Paths:** path diagrams for every task with < 80% success, to show where users go wrong.
 - **Qualitative:** affinity-map open comments by variant and device; map themes to Askable findings.
 
-### Decision criteria (agree before fieldwork)
-
-| Outcome | Recommendation |
-|---|---|
-| One variant meets > 80% overall on desktop **and** mobile, and beats or matches Control | Progress that variant |
-| Both variants meet the threshold | Choose on directness, UMUX-Lite, perception questions, Askable finding improvements and qualitative feedback |
-| A variant meets 80% on desktop but not mobile (or vice versa) | Progress with targeted fixes for the weaker device; re-test that device |
-| Neither variant meets 80% | Use failing tasks and paths to revise; re-test before build |
-| Specific tasks fail across all variants | Likely an IA or labelling issue rather than the navigation pattern; flag for IA review |
-
 ## 10. Pre-launch QA and pilot
 
-**Device matrix** (Finding #3): every variant checked on
+**Device matrix**: every variant checked on
 
 - [ ] Desktop Chrome, Safari, Edge at 1440px and a common laptop width (1280/1366px)
 - [ ] iPhone (Safari), current and one older model
@@ -188,12 +178,9 @@ All metrics reported **per variant**, and **per variant × device**.
 
 **Setup checks**
 
-- [ ] All three variants live at stable, neutral URLs; builds frozen
-- [ ] Every start and target URL set in every variant
-- [ ] Microsite present in all variants; logo links home in all variants
+- [ ] All three variants live at Github Pages URLs; builds frozen
 - [ ] Prototype access works inside the tool (password screen, `noindex`, embedding)
 - [ ] Task wording, order rules and questions identical across variants
-- [ ] Consent flow includes parent/guardian consent for under-18s
 
 **Pilot**
 
@@ -205,19 +192,18 @@ All metrics reported **per variant**, and **per variant × device**.
 
 | Role | Name | Responsibilities |
 |---|---|---|
-| Study owner | [Hugo Jenkins?] | Plan, decisions, sign-off |
-| Researcher | [ ] | Platform setup, pilot, monitoring, analysis, report |
-| Prototype build | [ ] | Variants, mobile layouts, microsite, freezes |
-| UWA lead | [ ] | Approvals, recruitment channels, ethics/safeguarding, privacy sign-off |
-| Recruiter | [ ] | Under-18 and international recruitment, consent |
+| Study owner | Rebecca Lawrance | Decisions, sign-off |
+| Researcher | Hugo Jenkins | Platform setup, pilot, monitoring, analysis, report |
+| Prototype build | Hugo Jenkins | Variants, mobile layouts, microsite, freezes |
+| UWA lead | Jack Kellett | Approvals, recruitment channels, ethics/safeguarding |
 
 ## 12. Open decisions
 
-| # | Decision | Why it matters |
-|---|---|---|
-| D1 | **Search:** enabled or disabled in all variants? | Finding #1: search is a top way users find courses. Disabled search can depress T1 results |
-| D2 | **Microsite:** which one, and does it exist in all three variants? | Needed for T6–T8 (SC4) |
-| D3 | **Current students:** UWA students or students from other universities? | UWA students know the existing nav (favours Control) |
+| # | Decision | 
+|---|---|
+| D1 | **Search:** enabled or disabled in all variants? | 
+| D2 | **Microsite:** which one, and does it exist in all three variants? | 
+| D3 | **Current students:** UWA students or students from other universities? | 
 
 ## 13. Report outline
 
