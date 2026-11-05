@@ -1,7 +1,7 @@
 # UWA Navigation Usability Test Plan: Remote Unmoderated
 
-**Client:** The University of Western Australia (UWA) · **Agency:** VML · **Study owner:** [Name] · **Version:** 0.2 · **Date:** [DD Month YYYY]
-**Status:** Draft. Anything in `[square brackets]` is a placeholder or a decision to confirm. Open decisions are collected in Section 19.
+**Client:** The University of Western Australia (UWA) · **Agency:** VML · **Study owner:** Rebecca Lawrance · **Version:** 0.2 · **Date:** 5 November 2026
+**Status:** Draft
 
 ---
 
@@ -9,24 +9,21 @@
 
 | Item | Detail |
 |---|---|
-| Method | Remote, unmoderated, task-based usability test |
+| Method | Remote, unmoderated, task-based usability test of new navigation system |
 | Variants | **Control** (existing navigation) · **Variant 1** (top bar) · **Variant 2** (side bar) |
-| Design | Between-subjects: each participant sees **one** variant only |
-| Participants | **240 total, 80 per variant**, across five audience segments (Section 7) |
-| Devices | Desktop and mobile, [50/50] split within each variant (Section 7) |
-| Session length | ~15–20 minutes: warm-up + 8 tasks + short questions |
-| Platform | Shortlist: Lyssna, UXtweak, Maze (comparison in Section 12) |
-| Budget | **$7,200** ($30 per participant × 240). [Confirm AUD, and what the $30 covers: Section 13] |
-| Success threshold | **> 80% task success** (definition in Section 3) |
-| Fieldwork dates | [Start] – [End] |
+| Participants | **240 total, 80 per variant**, across five audience segments (Section 7) · Each participant only sees one version|
+| Devices | Desktop and mobile, [50/50] split within each variant |
+| Session length | ~15–20 minutes: screener, tasks + short qualitative feedback at close |
+| Platform | Shortlist: Lyssna, UXtweak, Maze |
+| Budget | **$7,200** ($30 per participant × 240 |
+| Success threshold | **> 80% task success** |
+| Running dates | 12 Nov – 13 Nov |
 
 ## 2. Background
 
-UWA is redesigning its main website navigation. Two new concepts (a top bar and a side bar) are being tested against the existing navigation to decide which to progress.
+UWA is redesigning its main website navigation. Two new concepts, a top bar version and a side bar version are being tested against the existing navigation to decide which to progress.
 
-Askable navigation testing in 2024 found issues that the new concepts aim to address (Section 5). This study checks whether they do, and whether either concept meets the 80% task success threshold on desktop and mobile.
-
-[Add any other context: analytics, support tickets, stakeholder goals.]
+This new system is a full-site solution for a navigation system including core site navigation, co-branded site navigation, and breadcrumbs. Previous testing in 2024 found navigational issues that the new concepts aim to address. This study checks whether they do, and whether either concept meets the 80% task success threshold on desktop and mobile. 
 
 ## 3. Objective and success criteria
 
@@ -34,11 +31,9 @@ Askable navigation testing in 2024 found issues that the new concepts aim to add
 
 **More than 80% task success** with the navigation.
 
-How the threshold is applied (to confirm, see Section 19):
-
 - **Per task, per variant:** each task's success rate is reported against 80%.
-- **Overall, per variant:** mean success across the 8 analysed tasks (T1–T8) must exceed 80%.
-- **Per device:** the threshold must hold on desktop **and** mobile separately (Consistency).
+- **Overall, per variant:** mean success across the analysed tasks must exceed 80%.
+- **Per device:** the threshold must hold on desktop and mobile separately.
 - **Against Control:** a new variant should also meet or beat the Control, not only pass 80%.
 
 > **Note on certainty.** With 80 participants per variant, a measured success rate has a margin of error of roughly ±8–9 percentage points (±12 per device with 40). A variant measuring 82% might really be anywhere from ~73% to ~89%. To be confident the *true* rate is above 80%, the measured rate needs to be around **90%**. Report both: "met the target" (measured > 80%) and "confidently met" (lower bound of the 95% confidence interval > 80%).
@@ -52,14 +47,6 @@ How the threshold is applied (to confirm, see Section 19):
 | SC3 | Users understand how to access parent pages for sections (e.g. Study, Research) | Orientation | T4, T5 | Success, first click, heading perception question |
 | SC4 | Users understand when they are on a microsite menu, how to move back and forth, and how to switch between microsite and main site navigation | Stability, Orientation | T6, T7, T8 | Success, path, microsite awareness question |
 | SC5 | Competency of the above across desktop and mobile | Consistency | All | All metrics compared by device |
-
-### Secondary objective
-
-User feedback shows improvement on the key issues from the 2024 Askable research (Section 5).
-
-### Success / UWA benefits
-
-[None yet. Suggested framing to agree with UWA, e.g. fewer users lost or giving up when looking for courses; less reliance on search and homepage shortcuts; a consistent experience across devices; easier movement between microsites and the main site; evidence-based choice of navigation concept before build.]
 
 ## 4. Research questions
 
