@@ -15,7 +15,6 @@
 | Devices | Desktop and mobile, [50/50] split within each variant |
 | Session length | ~15–20 minutes: screener, tasks + short qualitative feedback at close |
 | Platform | Shortlist: Lyssna, UXtweak, Maze |
-| Budget | **$7,200** ($30 per participant × 240) |
 | Success threshold | **> 80% task success** |
 | Running dates | 12 Nov – 13 Nov |
 
@@ -42,7 +41,7 @@ This new system is a full-site solution for a navigation system including core s
 
 | # | Success criterion | Principle | Tasks | Main measures |
 |---|---|---|---|---|
-| SC1 | Users understand where the navigation menu options are and how to access them | Stability, Consistency | T0, T1, T2 | First click, success |
+| SC1 | Users understand where the navigation menu options are and how to access them | Stability, Consistency | T1, T2 | First click, success |
 | SC2 | Users understand how to move back and forth through the IA levels in the menu | Orientation | T2, T3 | Success, directness, backtracks, path |
 | SC3 | Users understand how to access parent pages for sections (e.g. Study, Research) | Orientation | T4, T5 | Success, first click, heading perception question |
 | SC4 | Users understand when they are on a microsite menu, how to move back and forth, and how to switch between microsite and main site navigation | Stability, Orientation | T6, T7, T8 | Success, path, microsite awareness question |
@@ -104,15 +103,14 @@ This new system is a full-site solution for a navigation system including core s
 
 | ID | Criterion / finding | Scenario (as shown to participant) | Start page | Target (all variants) | Success = |
 |---|---|---|---|---|---|
-| T0 | Warm-up · SC1 | "Take a quick look at this university website. When you're ready, find the page that tells you where the university's campus is." | Home | [Campus / Contact page] | Not analysed (except first click) |
 | T1 | SC1 · F#1 | "You're interested in studying [subject area, e.g. engineering]. Find the page for a course in that area." | Home | [Specific course page(s)] | Reaches any accepted course URL |
 | T2 | SC1, SC2 | "You'd like to know what scholarships might help pay for your studies. Find information about scholarships for [your situation / international students]." | Home | [Scholarships page, L3–L4] | Reaches target URL |
 | T3 | SC2 | "You're reading about a course and now want to find out about places to live while you study. Find information about student accommodation." | [Deep page under Study, e.g. course page] | [Accommodation page, in another branch] | Reaches target; path shows movement up/across levels |
 | T4 | SC3 · F#2, #9 | "Find the main page that gives an overview of everything about research at the university." | [Any content page] | [Research L1 landing page] | Reaches L1 landing page |
 | T5 | SC3 · F#2, #9 | "You're looking at one study area but want to see the full list of study areas the university offers. Find that page." | [A specific study area page, L3] | [Study areas L2 parent page] | Reaches L2 parent page |
-| T6 | SC4 | "You've arrived on the website for [microsite, e.g. a research institute]. Find out who leads it / how to contact them." | [Microsite home] | [Page within microsite] | Reaches target within microsite |
-| T7 | SC4 · F#7, #11 | "You're on the website for [microsite, e.g. a research institute]. You also want to find out how to apply to study at the university. Find that information." | [Microsite page] | [Main site How to apply page] | Leaves microsite nav and reaches main site target |
-| T8 | SC4 · F#6 | "Go back to the university's main homepage." | [Deep microsite page] | [Main site home URL] | Reaches main home; report method (logo / menu / breadcrumb) |
+| T6 | SC4 | "You've arrived on the website for the Oceans Institute. Find out who leads it / how to contact them." | Oceans Institute home | [Page within Oceans Institute, e.g. Contact us] | Reaches target within the Oceans Institute |
+| T7 | SC4 · F#7, #11 | "You're on the website for the Oceans Institute. You also want to find out how to apply to study at the university. Find that information." | [Oceans Institute page] | [Main site How to apply page] | Leaves microsite nav and reaches main site target |
+| T8 | SC4 · F#6 | "Go back to the university's main homepage." | [Deep Library page] | [Main site home URL] | Reaches main home; report method (logo / menu / breadcrumb) |
 
 [Confirm subject areas, scholarship type, microsite and all target URLs against the IA used in the variants.]
 
@@ -132,12 +130,11 @@ PQ1 needs a variant-specific screenshot. If a variant has no menu heading, adapt
 | 1. Welcome and consent | Plain-language purpose, what's recorded, right to stop; **parent/guardian consent confirmed for under-18s** | 1–2 min |
 | 2. Screener confirmation | Segment and device check | 1 min |
 | 3. Instructions | How tasks work, "Done" and "Give up", that some content is placeholder, search status (Section 12) | 1 min |
-| 4. Warm-up (T0) | | 1–2 min |
-| 5. Tasks T1–T8 | PQ1 after T4, PQ2 after T7 | 10–13 min |
-| 6. Post-test | UMUX-Lite (2 items) + 2 open questions | 2 min |
-| 7. Thank you | Incentive details | <1 min |
+| 4. Tasks T1–T8 | PQ1 after T4, PQ2 after T7 | 10–13 min |
+| 5. Post-test | UMUX-Lite (2 items) + 2 open questions | 2 min |
+| 6. Thank you | Incentive details | <1 min |
 
-Target **under 20 minutes**. Keep it shorter if possible for younger participants and mobile users; drop T0 analysis or T5 if piloting runs long.
+Target **under 20 minutes**. Keep it shorter if possible for younger participants and mobile users; drop T5 if piloting runs long.
 
 ## 8. Metrics
 
@@ -208,7 +205,7 @@ All metrics reported **per variant**, and **per variant × device**.
 ## 13. Report outline
 
 1. Executive summary: 80% threshold result per variant and device; recommendation
-2. Method and participants (incl. exclusions)
+2. Method and participants
 3. Results against success criteria SC1–SC5
 4. Task-by-task results with paths
 5. Askable 2024 findings: improved / not improved, by variant
