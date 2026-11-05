@@ -48,9 +48,9 @@ This new system is a full-site solution for a navigation system including core s
 | SC4 | Users understand when they are on a microsite menu, how to move back and forth, and how to switch between microsite and main site navigation | Stability, Orientation | T6, T7, T8 | Success, path, microsite awareness question |
 | SC5 | Competency of the above across desktop and mobile | Consistency | All | All metrics compared by device |
 
-## 4. Research questions
+## 4. Questions this research will address
 
-| # | Research question |
+| # | Question |
 |---|---|
 | RQ1 | Does each variant achieve > 80% task success, overall and on each task? |
 | RQ2 | Does Variant 1 or Variant 2 outperform the Control on success, directness and ease? |
