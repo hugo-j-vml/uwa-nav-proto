@@ -74,7 +74,7 @@ This new system is a full-site solution for a navigation system including core s
 - **Control source (decision):** [ ] rebuild the existing navigation in the prototype at the same fidelity and on the same content, **or** [ ] test the live uwa.edu.au site. Rebuilding is strongly preferred: the live site differs in fidelity, content, page speed and search, and can change during fieldwork.
 - **IA (decision):** [ ] all variants use the same IA (isolates the navigation pattern), **or** [ ] Control uses the current IA and V1/V2 the proposed IA (measures IA + nav together; effects can't be separated).
 - **Same pages and microsite** in every variant, with identical titles, breadcrumbs and body content. Every task target must exist in all three.
-- **Logo links home** in all variants (Finding #6).
+- **Logo links home** in all variants.
 - **Search treated the same** in all variants (Section 18).
 - **Neutral URLs and names.** Never "new", "old" or "control" anywhere participants can see.
 - **Same start pages** per task in every variant.
@@ -145,14 +145,14 @@ Expect to exclude 10–20% of sessions (Section 14). The current budget covers e
 | ID | Criterion / finding | Scenario (as shown to participant) | Start page | Target (all variants) | Success = |
 |---|---|---|---|---|---|
 | T0 | Warm-up · SC1 | "Take a quick look at this university website. When you're ready, find the page that tells you where the university's campus is." | Home | [Campus / Contact page] | Not analysed (except first click / time to open nav) |
-| T1 | SC1 · F#1 | "You're interested in studying [subject area, e.g. engineering]. Find the page for a course in that area." | Home | [Specific course page(s)] | Reaches any accepted course URL |
+| T1 | SC1 | "You're interested in studying [subject area, e.g. engineering]. Find the page for a course in that area." | Home | [Specific course page(s)] | Reaches any accepted course URL |
 | T2 | SC1, SC2 | "You'd like to know what scholarships might help pay for your studies. Find information about scholarships for [your situation / international students]." | Home | [Scholarships page, L3–L4] | Reaches target URL |
 | T3 | SC2 | "You're reading about a course and now want to find out about places to live while you study. Find information about student accommodation." | [Deep page under Study, e.g. course page] | [Accommodation page, in another branch] | Reaches target; path shows movement up/across levels |
-| T4 | SC3 · F#2, #9 | "Find the main page that gives an overview of everything about research at the university." | [Any content page] | [Research L1 landing page] | Reaches L1 landing page |
-| T5 | SC3 · F#2, #9 | "You're looking at one study area but want to see the full list of study areas the university offers. Find that page." | [A specific study area page, L3] | [Study areas L2 parent page] | Reaches L2 parent page |
+| T4 | SC3 | "Find the main page that gives an overview of everything about research at the university." | [Any content page] | [Research L1 landing page] | Reaches L1 landing page |
+| T5 | SC3 | "You're looking at one study area but want to see the full list of study areas the university offers. Find that page." | [A specific study area page, L3] | [Study areas L2 parent page] | Reaches L2 parent page |
 | T6 | SC4 | "You've arrived on the website for [microsite, e.g. a research institute]. Find out who leads it / how to contact them." | [Microsite home] | [Page within microsite] | Reaches target within microsite |
-| T7 | SC4 · F#7, #11 | "While you're here, you also want to find out how to apply to study at the university. Find that information." | [Microsite page from T6] | [Main site How to apply page] | Leaves microsite nav and reaches main site target |
-| T8 | SC4 · F#6 | "Go back to the university's main homepage." | [Deep microsite page] | [Main site home URL] | Reaches main home; report method (logo / menu / breadcrumb) |
+| T7 | SC4 | "While you're here, you also want to find out how to apply to study at the university. Find that information." | [Microsite page from T6] | [Main site How to apply page] | Leaves microsite nav and reaches main site target |
+| T8 | SC4 | "Go back to the university's main homepage." | [Deep microsite page] | [Main site home URL] | Reaches main home; report method (logo / menu / breadcrumb) |
 
 [Confirm subject areas, scholarship type, microsite and all target URLs against the IA used in the variants.]
 
@@ -160,8 +160,8 @@ Expect to exclude 10–20% of sessions (Section 14). The current budget covers e
 
 | ID | After | Question | Purpose |
 |---|---|---|---|
-| PQ1 | T4 | Show a screenshot of an open menu panel with its heading highlighted: "Do you think you could click this heading?" (Yes, it's a link / No, it's just a title / Not sure) | Finding #2, #9 (heading as link) |
-| PQ2 | T7 | "During the last two tasks, were you on the main university website or a separate section of it?" (Main site / Separate section, e.g. an institute site / Not sure) | Finding #7, #11 (microsite awareness) |
+| PQ1 | T4 | Show a screenshot of an open menu panel with its heading highlighted: "Do you think you could click this heading?" (Yes, it's a link / No, it's just a title / Not sure) | Heading as link (SC3) |
+| PQ2 | T7 | "During the last two tasks, were you on the main university website or a separate section of it?" (Main site / Separate section, e.g. an institute site / Not sure) | Microsite awareness (SC4) |
 
 PQ1 needs a variant-specific screenshot. If a variant has no menu heading, adapt the question to that variant's equivalent parent-page link.
 
@@ -190,9 +190,9 @@ Target **under 20 minutes**. Keep it shorter if possible for younger participant
 | Time to first nav interaction | Seconds until the first click on the navigation | SC1 |
 | Time on task | Seconds to "Done", successful attempts only | All |
 | Backtracks / path length | Back-steps and pages visited vs the optimal path | SC2, SC4 |
-| Route used | E.g. logo vs menu vs breadcrumb (T8); "All UWA" equivalent vs other (T7); search attempts (T1) | F#1, #6, #7 |
+| Route used | E.g. logo vs menu vs breadcrumb (T8); "All UWA" equivalent vs other (T7); search attempts (T1) | SC1, SC4 |
 | SEQ | Mean per-task ease (1–7) | All |
-| PQ1 / PQ2 | % answering correctly | F#2, #7, #9, #11 |
+| PQ1 / PQ2 | % answering correctly | SC3, SC4 |
 | UMUX-Lite | Perceived usability, 0–100 | Overall |
 | Open comments | Coded themes | Secondary objective |
 
@@ -209,14 +209,14 @@ All metrics reported **per variant**, and **per variant × device**.
 - **Multiple comparisons:** 8 tasks × 3 comparisons × 2 devices is a lot of tests. Treat per-task significance cautiously (e.g. Holm correction) and lead with the overall pattern.
 - **Segments:** directional only (Section 6).
 - **Paths:** path diagrams for every task with < 80% success, to show where users go wrong.
-- **Qualitative:** affinity-map open comments by variant and device; map themes to Askable findings.
+- **Qualitative:** affinity-map open comments by variant and device.
 
 ### Decision criteria (agree before fieldwork)
 
 | Outcome | Recommendation |
 |---|---|
 | One variant meets > 80% overall on desktop **and** mobile, and beats or matches Control | Progress that variant |
-| Both variants meet the threshold | Choose on directness, SEQ, perception questions, Askable finding improvements and qualitative feedback |
+| Both variants meet the threshold | Choose on directness, SEQ, perception questions and qualitative feedback |
 | A variant meets 80% on desktop but not mobile (or vice versa) | Progress with targeted fixes for the weaker device; re-test that device |
 | Neither variant meets 80% | Use failing tasks and paths to revise; re-test before build |
 | Specific tasks fail across all variants | Likely an IA or labelling issue rather than the navigation pattern; flag for IA review |
@@ -263,7 +263,7 @@ Prices are in **USD** as published (no AUD pricing found) and were checked on 5 
 
 ## 13. Pre-launch QA and pilot
 
-**Device matrix** (Finding #3): every variant checked on
+**Device matrix**: every variant checked on
 
 - [ ] Desktop Chrome, Safari, Edge at 1440px and a common laptop width (1280/1366px)
 - [ ] iPhone (Safari), current and one older model
@@ -335,13 +335,12 @@ Report exclusions per variant, device and segment.
 | D3 | **Control:** rebuilt prototype or the live site? | Fidelity, content and search differences would bias the comparison |
 | D4 | **IA:** same IA in all variants, or current IA in Control? | Determines whether results are about the nav pattern or IA + nav |
 | D5 | **80% threshold:** per task, overall, per device; "met" vs "confidently met"; must a variant also beat Control? | Sets the pass/fail rule |
-| D6 | **Search:** enabled or disabled in all variants? | Finding #1: search is a top way users find courses. Disabled search can depress T1 results |
+| D6 | **Search:** enabled or disabled in all variants? | Search is a common way users find courses. Disabled search can depress T1 results |
 | D7 | **Mobile readiness:** are V1 and V2 mobile layouts built? Device split 50/50? | SC5 can't be tested without them |
 | D8 | **Microsite:** which one, and does it exist in all three variants? | Needed for T6–T8 (SC4) |
 | D9 | **Current students:** UWA students or students from other universities? | UWA students know the existing nav (favours Control) |
 | D10 | **International HS markets** and English level | Targeting, recruitment channel, incentives, time zones |
 | D11 | **Platform choice** after trial | Section 11 |
-| D12 | **UWA benefits** statement | Currently blank (Section 3) |
 
 ## 19. Report outline
 
@@ -349,9 +348,8 @@ Report exclusions per variant, device and segment.
 2. Method and participants (incl. exclusions)
 3. Results against success criteria SC1–SC5
 4. Task-by-task results with paths
-5. Askable 2024 findings: improved / not improved, by variant
-6. Desktop vs mobile
-7. Audience segments (directional)
-8. Qualitative themes
-9. Recommendations and next steps
-10. Appendix: data tables, tasks, screener, consent
+5. Desktop vs mobile
+6. Audience segments (directional)
+7. Qualitative themes
+8. Recommendations and next steps
+9. Appendix: data tables, tasks, screener, consent
