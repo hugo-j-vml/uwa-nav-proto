@@ -87,18 +87,18 @@ This new system is a full-site solution for a navigation system including core s
 
 | Segment | Targeting |
 |---|---|
-| **HS domestic** | Australian residents in Years 9–12 [mix of years, e.g. at least half in Years 11–12]; [WA weighting, e.g. 60% WA / 40% other states]; considering university |
-| **HS international** | Years 9–12 (or equivalent) outside Australia; considering studying at an Australian university; [target markets, e.g. Singapore, Malaysia, China, India, Indonesia, Vietnam]; able to complete the study in English |
-| **Prospective PG** | Holds or is completing a bachelor's degree; considering postgraduate coursework or research study in the next [2] years; [domestic/international split] |
-| **Current UG** | Currently enrolled in an undergraduate degree [at UWA / at any Australian university] |
-| **Current PG** | Currently enrolled in postgraduate coursework or research [at UWA / at any Australian university] |
+| **HS domestic** | Australian residents in Years 9–12; considering university |
+| **HS international** | Years 9–12 (or equivalent) outside Australia; considering studying at an Australian university; able to complete the study in English |
+| **Prospective PG** | Holds or is completing a bachelor's degree; considering postgraduate coursework or research study in the next 2 years |
+| **Current UG** | Currently enrolled in an undergraduate degree at UWA / any Australian university |
+| **Current PG** | Currently enrolled in postgraduate coursework or research at UWA / at any Australian university |
 
 ## 6. Tasks
 
 ### Notes on tasks
 
 - Every task is **standalone** so the order can be randomised. Each has its own start page and a self-contained scenario, and none depends on the previous task.
-- Task order is randomised after the warm-up (T0).
+- Task order is randomised.
 
 ### Task set (draft)
 
