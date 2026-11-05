@@ -11,7 +11,7 @@
 |---|---|
 | Method | Remote, unmoderated, task-based usability test of new navigation system |
 | Variants | **Control** (existing navigation) · **Variant 1** (top bar) · **Variant 2** (side bar) |
-| Participants | **240 total, 80 per variant**, across five audience segments (Section 7) · Each participant only sees one version|
+| Participants | **240 total, 80 per variant**, across five audience segments (Section 6) · Each participant only sees one version|
 | Devices | Desktop and mobile, [50/50] split within each variant |
 | Session length | ~15–20 minutes: screener, tasks + short qualitative feedback at close |
 | Platform | Shortlist: Lyssna, UXtweak, Maze |
@@ -59,23 +59,9 @@ This new system is a full-site solution for a navigation system including core s
 | RQ5 | Do users recognise and use section headings as links to parent pages? (SC3) |
 | RQ6 | Do users recognise when they're in a microsite, and can they get back to the main site? (SC4) |
 | RQ7 | Is performance consistent between desktop and mobile? (SC5) |
-| RQ8 | Do results differ by audience segment (directional only, Section 10)? |
+| RQ8 | Do results differ by audience segment (directional only, Section 9)? |
 
-## 5. Previous findings (Askable, 2024) and how this study addresses them
-
-| Finding | Summary | How this study checks it |
-|---|---|---|
-| **#1** | To find a course, users went to **Study** in the nav, then the **Search** icon, then the homepage **Find a course** button | T1 measures first click on course-finding. Search decision needed (Section 19): if search is disabled, clicks on it are still recorded and reported |
-| **#2** | Split views on whether the **heading in each menu** is a link or a heading | T4/T5 target parent pages reached via the heading; perception question PQ1 after T4 |
-| **#3** | Navigation UI **displayed differently across devices** (tablet, iPhone, Android, some laptops) | Device quota; QA every variant on the device matrix before launch (Section 14); results compared by device |
-| **#6** | Users **clicked the UWA logo** to return home or move to another part of the site | T8 (return home from a microsite). Logo must link home in all variants; logo clicks reported from paths |
-| **#7** | The **"All UWA"** option was hard to notice; the high-contrast search icon drew attention away; same on mobile | T7 (switch from microsite to main site) measures discovery of the route back; PQ2 microsite awareness question |
-| **#9** | The **heading/links with arrows** weren't obviously links; the arrow was read in different ways | T4/T5 and PQ1 (as #2) |
-| **#11** | **"All UWA"** needs to stand out more; it competes with contrast and Search | T7 and PQ2 (as #7) |
-
-Report a **Finding → Result** table in the final report showing, for each finding, whether each variant improved on it.
-
-## 6. Variants
+## 5. Variants
 
 | Variant | Description | Neutral label (URL / tool) | Desktop ready | Mobile ready | Microsite included |
 |---|---|---|---|---|---|
@@ -89,14 +75,14 @@ Report a **Finding → Result** table in the final report showing, for each find
 - **IA (decision):** [ ] all variants use the same IA (isolates the navigation pattern), **or** [ ] Control uses the current IA and V1/V2 the proposed IA (measures IA + nav together; effects can't be separated).
 - **Same pages and microsite** in every variant, with identical titles, breadcrumbs and body content. Every task target must exist in all three.
 - **Logo links home** in all variants (Finding #6).
-- **Search treated the same** in all variants (Section 19).
+- **Search treated the same** in all variants (Section 18).
 - **Neutral URLs and names.** Never "new", "old" or "control" anywhere participants can see.
 - **Same start pages** per task in every variant.
 - **Clean state** between tasks and participants (no saved menu state).
 - **Comparable load times** on desktop and mobile.
 - **Frozen builds** for the whole fieldwork period.
 
-## 7. Participants
+## 6. Participants
 
 ### Quotas
 
@@ -119,7 +105,7 @@ Report a **Finding → Result** table in the final report showing, for each find
 
 ### Over-recruitment
 
-Expect to exclude 10–20% of sessions (Section 15). The current budget covers exactly 240. Recommend recruiting **[265–290]** to finish with 240 valid sessions, or agree that the final valid n may be lower (Section 13).
+Expect to exclude 10–20% of sessions (Section 14). The current budget covers exactly 240. Recommend recruiting **[265–290]** to finish with 240 valid sessions, or agree that the final valid n may be lower (Section 12).
 
 ### Segment definitions and targeting
 
@@ -131,7 +117,7 @@ Expect to exclude 10–20% of sessions (Section 15). The current budget covers e
 | **Current UG** | Currently enrolled in an undergraduate degree [at UWA / at any Australian university] |
 | **Current PG** | Currently enrolled in postgraduate coursework or research [at UWA / at any Australian university] |
 
-> **Familiarity bias.** Current UWA students (and UWA graduates in the prospective PG group) know the existing navigation, which advantages the Control. Either recruit current students from other universities, or recruit UWA students and report their results separately. [Decision: Section 19]
+> **Familiarity bias.** Current UWA students (and UWA graduates in the prospective PG group) know the existing navigation, which advantages the Control. Either recruit current students from other universities, or recruit UWA students and report their results separately. [Decision: Section 18]
 
 ### Recruiting under-18s (needs attention)
 
@@ -144,7 +130,7 @@ Expect to exclude 10–20% of sessions (Section 15). The current budget covers e
 - **Incentives:** check incentive types and amounts suitable for minors (e.g. gift cards paid via parents).
 - **Data:** collect no more personal data than needed; avoid video/webcam recording of minors unless consented to and essential.
 
-## 8. Tasks
+## 7. Tasks
 
 ### Guidelines
 
@@ -179,13 +165,13 @@ Expect to exclude 10–20% of sessions (Section 15). The current budget covers e
 
 PQ1 needs a variant-specific screenshot. If a variant has no menu heading, adapt the question to that variant's equivalent parent-page link.
 
-## 9. Session flow
+## 8. Session flow
 
 | Step | Content | Time |
 |---|---|---|
 | 1. Welcome and consent | Plain-language purpose, what's recorded, right to stop; **parent/guardian consent confirmed for under-18s** | 1–2 min |
 | 2. Screener confirmation | Segment and device check | 1 min |
-| 3. Instructions | How tasks work, "Done" and "Give up", that some content is placeholder, search status (Section 19) | 1 min |
+| 3. Instructions | How tasks work, "Done" and "Give up", that some content is placeholder, search status (Section 18) | 1 min |
 | 4. Warm-up (T0) | | 1–2 min |
 | 5. Tasks T1–T8 | After each: **SEQ** "Overall, how easy or difficult was this task?" (1 = very difficult, 7 = very easy). PQ1 after T4, PQ2 after T7 | 10–13 min |
 | 6. Post-test | UMUX-Lite (2 items) + 2 open questions | 2 min |
@@ -193,7 +179,7 @@ PQ1 needs a variant-specific screenshot. If a variant has no menu heading, adapt
 
 Target **under 20 minutes**. Keep it shorter if possible for younger participants and mobile users; drop T0 analysis or T5 if piloting runs long.
 
-## 10. Metrics
+## 9. Metrics
 
 | Metric | Definition | Linked criteria |
 |---|---|---|
@@ -212,7 +198,7 @@ Target **under 20 minutes**. Keep it shorter if possible for younger participant
 
 All metrics reported **per variant**, and **per variant × device**.
 
-## 11. Analysis plan and decision criteria
+## 10. Analysis plan and decision criteria
 
 ### Analysis
 
@@ -221,7 +207,7 @@ All metrics reported **per variant**, and **per variant × device**.
 - **Time on task:** geometric means; compare log-transformed times.
 - **SEQ and UMUX-Lite:** means with confidence intervals.
 - **Multiple comparisons:** 8 tasks × 3 comparisons × 2 devices is a lot of tests. Treat per-task significance cautiously (e.g. Holm correction) and lead with the overall pattern.
-- **Segments:** directional only (Section 7).
+- **Segments:** directional only (Section 6).
 - **Paths:** path diagrams for every task with < 80% success, to show where users go wrong.
 - **Qualitative:** affinity-map open comments by variant and device; map themes to Askable findings.
 
@@ -235,7 +221,7 @@ All metrics reported **per variant**, and **per variant × device**.
 | Neither variant meets 80% | Use failing tasks and paths to revise; re-test before build |
 | Specific tasks fail across all variants | Likely an IA or labelling issue rather than the navigation pattern; flag for IA review |
 
-## 12. Platform comparison: Lyssna, UXtweak, Maze
+## 11. Platform comparison: Lyssna, UXtweak, Maze
 
 Prices are in **USD** as published (no AUD pricing found) and were checked on 5 November 2026. Some details didn't load from the vendors' pages. Confirm everything with each vendor before choosing.
 
@@ -263,7 +249,7 @@ Prices are in **USD** as published (no AUD pricing found) and were checked on 5 
 
 **Recommendation:** run a free trial of Lyssna and UXtweak, and get a Maze quote. Pilot one task on the live site and the prototype, on desktop and mobile, in each tool. Pick on (a) path/first-click quality, (b) mobile behaviour and (c) handling of own participants. [Add quality notes after the trial.]
 
-## 13. Budget
+## 12. Budget
 
 | Item | Estimate | Notes |
 |---|---|---|
@@ -273,9 +259,9 @@ Prices are in **USD** as published (no AUD pricing found) and were checked on 5 
 | Specialist recruitment (under-18s, international) | [Quote] | Likely higher than $30 per head for minors and international students |
 | Incentives for own-recruited participants | Within $30 pp? | [Confirm amount suitable for a ~20-min session, e.g. A$20–30 gift card] |
 
-**Check:** $30 per participant has to cover recruitment *and* incentive if it's a panel price. Approximate panel costs per response for a 20-minute test: Lyssna ≈ US$24, Maze ≈ US$15–25. Depending on the exchange rate, Lyssna and Maze's extended network may exceed A$30. Panels are also unlikely to supply the under-18 segments at all (Section 7).
+**Check:** $30 per participant has to cover recruitment *and* incentive if it's a panel price. Approximate panel costs per response for a 20-minute test: Lyssna ≈ US$24, Maze ≈ US$15–25. Depending on the exchange rate, Lyssna and Maze's extended network may exceed A$30. Panels are also unlikely to supply the under-18 segments at all (Section 6).
 
-## 14. Pre-launch QA and pilot
+## 13. Pre-launch QA and pilot
 
 **Device matrix** (Finding #3): every variant checked on
 
@@ -299,7 +285,7 @@ Prices are in **USD** as published (no AUD pricing found) and were checked on 5 
 - [ ] Soft launch: [5] participants per variant (mix of segments and devices); review data before releasing the rest
 - [ ] Log any changes; exclude pilot data if tasks or setup changed materially
 
-## 15. Data quality and exclusions
+## 14. Data quality and exclusions
 
 Agree before fieldwork; apply the same rules to every variant:
 
@@ -311,26 +297,26 @@ Agree before fieldwork; apply the same rules to every variant:
 
 Report exclusions per variant, device and segment.
 
-## 16. Ethics, privacy and accessibility
+## 15. Ethics, privacy and accessibility
 
-- Informed consent for all; **parent/guardian consent plus participant assent for under-18s** (Section 7).
+- Informed consent for all; **parent/guardian consent plus participant assent for under-18s** (Section 6).
 - Confirm with UWA whether ethics or child-safety review is required, and follow WPP/VML policy for research with minors.
 - Collect only the personal data needed; no names in reports. Confirm where the platform stores data and for how long (Australian data residency requirements, if any).
 - International participants: confirm privacy requirements in each target market.
 - Check variants work with keyboard and at common zoom levels. Unmoderated panel testing won't represent assistive technology users well; plan separate sessions if accessibility is in scope.
 
-## 17. Timeline
+## 16. Timeline
 
 | Week | Activity |
 |---|---|
-| [W1] | Confirm decisions (Section 19); agree success definition and decision criteria; platform trial |
+| [W1] | Confirm decisions (Section 18); agree success definition and decision criteria; platform trial |
 | [W1–2] | Finalise tasks and target URLs; freeze variants; consent flow; recruitment brief and approvals for minors |
 | [W2–3] | Device QA, internal dry run, soft launch |
 | [W3–4] | Full fieldwork (allow longer for under-18 and international recruitment) |
 | [W5] | Analysis |
 | [W6] | Report and playback to UWA |
 
-## 18. Roles
+## 17. Roles
 
 | Role | Name | Responsibilities |
 |---|---|---|
@@ -340,7 +326,7 @@ Report exclusions per variant, device and segment.
 | UWA lead | [ ] | Approvals, recruitment channels, ethics/safeguarding, privacy sign-off |
 | Recruiter | [ ] | Under-18 and international recruitment, consent |
 
-## 19. Open decisions
+## 18. Open decisions
 
 | # | Decision | Why it matters |
 |---|---|---|
@@ -354,10 +340,10 @@ Report exclusions per variant, device and segment.
 | D8 | **Microsite:** which one, and does it exist in all three variants? | Needed for T6–T8 (SC4) |
 | D9 | **Current students:** UWA students or students from other universities? | UWA students know the existing nav (favours Control) |
 | D10 | **International HS markets** and English level | Targeting, recruitment channel, incentives, time zones |
-| D11 | **Platform choice** after trial | Section 12 |
+| D11 | **Platform choice** after trial | Section 11 |
 | D12 | **UWA benefits** statement | Currently blank (Section 3) |
 
-## 20. Report outline
+## 19. Report outline
 
 1. Executive summary: 80% threshold result per variant and device; recommendation
 2. Method and participants (incl. exclusions)
