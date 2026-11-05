@@ -215,16 +215,9 @@ All metrics reported **per variant**, and **per variant × device**.
 
 | # | Decision | Why it matters |
 |---|---|---|
-| D1 | **How to recruit and consent 150 under-18s** | Platform panels likely can't supply them; changes recruiter, budget, timeline and ethics needs |
-| D2 | **Budget scope:** AUD? Does $30 pp cover panel/recruitment fees, incentive, or both? Are platform fees and over-recruitment extra? | $7,200 covers exactly 240 with no buffer |
-| D3 | **80% threshold:** per task, overall, per device; "met" vs "confidently met"; must a variant also beat Control? | Sets the pass/fail rule |
-| D4 | **Search:** enabled or disabled in all variants? | Finding #1: search is a top way users find courses. Disabled search can depress T1 results |
-| D5 | **Mobile readiness:** are V1 and V2 mobile layouts built? Device split 50/50? | SC5 can't be tested without them |
-| D6 | **Microsite:** which one, and does it exist in all three variants? | Needed for T6–T8 (SC4) |
-| D7 | **Current students:** UWA students or students from other universities? | UWA students know the existing nav (favours Control) |
-| D8 | **International HS markets** and English level | Targeting, recruitment channel, incentives, time zones |
-| D9 | **Platform choice** | Must support live-site or prototype URLs, mobile web, own participants and path tracking |
-| D10 | **UWA benefits** statement | Not yet drafted |
+| D1 | **Search:** enabled or disabled in all variants? | Finding #1: search is a top way users find courses. Disabled search can depress T1 results |
+| D2 | **Microsite:** which one, and does it exist in all three variants? | Needed for T6–T8 (SC4) |
+| D3 | **Current students:** UWA students or students from other universities? | UWA students know the existing nav (favours Control) |
 
 ## 13. Report outline
 
