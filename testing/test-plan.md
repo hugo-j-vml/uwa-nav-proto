@@ -188,7 +188,7 @@ PQ1 needs a variant-specific screenshot. If a variant has no menu heading, adapt
 | 3. Instructions | How tasks work, "Done" and "Give up", that some content is placeholder, search status (Section 19) | 1 min |
 | 4. Warm-up (T0) | | 1–2 min |
 | 5. Tasks T1–T8 | After each: **SEQ** "Overall, how easy or difficult was this task?" (1 = very difficult, 7 = very easy). PQ1 after T4, PQ2 after T7 | 10–13 min |
-| 6. Post-test | UMUX-Lite (2 items) + 2 open questions (Appendix C) | 2 min |
+| 6. Post-test | UMUX-Lite (2 items) + 2 open questions | 2 min |
 | 7. Thank you | Incentive details | <1 min |
 
 Target **under 20 minutes**. Keep it shorter if possible for younger participants and mobile users; drop T0 analysis or T5 if piloting runs long.
@@ -369,52 +369,3 @@ Report exclusions per variant, device and segment.
 8. Qualitative themes
 9. Recommendations and next steps
 10. Appendix: data tables, tasks, screener, consent
-
----
-
-## Appendix A: Screener (draft)
-
-1. Which of these best describes you right now? *(single choice → segment)*
-   - I'm in high school (Year 9, 10, 11 or 12, or the equivalent in my country)
-   - I've finished (or am finishing) a bachelor's degree and I'm thinking about postgraduate study
-   - I'm currently studying an undergraduate degree at university
-   - I'm currently studying a postgraduate degree (master's, PhD or graduate certificate/diploma)
-   - None of these *(screen out)*
-2. *(High school)* Which year are you in? *(Year 9 / 10 / 11 / 12 / equivalent)*
-3. *(High school)* How likely are you to go to university after school? *(screen out "very unlikely")*
-4. Which country do you live in? *(Australia → domestic; target markets → international; others screen out)*
-5. *(Australia)* Which state or territory? *(for WA weighting)*
-6. *(International HS)* Are you considering studying at a university in Australia? *(No → screen out)*
-7. *(Prospective PG)* When are you thinking of starting postgraduate study? *(within [2] years)*
-8. *(Current students)* Which university do you study at? *(UWA → route per D9)*
-9. How old are you? *(under 18 → parent/guardian consent flow)*
-10. Do you, or does anyone in your household, work at UWA, or in web design, UX research or marketing? *(Yes → screen out)*
-11. Have you taken part in research about the UWA website in the last 12 months? *(Yes → screen out; covers Askable 2024 participants)*
-12. What device will you use for this study? *(must match device quota)*
-
-## Appendix B: Intro script and instructions
-
-> Thanks for helping us. We're testing early designs for a university website to see how easy it is to find things. We're testing the website, not you. There are no right or wrong answers.
->
-> You'll get a few short scenarios. For each one, use the website to find the page where you'd expect the answer. When you think you've found it, click **[Done]**. If you'd stop looking in real life, click **[Give up]**. That helps us too.
->
-> This is an early version, so many pages have placeholder text[, and **search isn't available**: please use the menus and links]. It should take about 15–20 minutes.
-
-## Appendix C: Post-test questions
-
-**UMUX-Lite** (1 = strongly disagree, 7 = strongly agree)
-
-1. This website's menus have the features I need to find things.
-2. This website's menus are easy to use.
-
-**Open questions**
-
-3. What, if anything, was confusing about getting around this website?
-4. What, if anything, did you like about how the menus worked?
-
-## Appendix D: Change log
-
-| Date | Version | Change | By |
-|---|---|---|---|
-| [ ] | 0.1 | Boilerplate created | Claude |
-| [ ] | 0.2 | Added UWA quotas, success criteria, Askable 2024 findings, tasks mapped to criteria, under-18 recruitment, platform comparison, budget | Claude |
