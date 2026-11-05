@@ -101,16 +101,16 @@ This new system is a full-site solution for a navigation system including core s
 
 ### Task set (draft)
 
-| ID | Criterion / finding | Scenario (as shown to participant) | Start page | Target (all variants) | Success = |
+| ID | Criterion | Scenario (as shown to participant) | Start page | Target (all variants) | Success = |
 |---|---|---|---|---|---|
-| T1 | SC1 · F#1 | "You're interested in studying [subject area, e.g. engineering]. Find the page for a course in that area." | Home | [Specific course page(s)] | Reaches any accepted course URL |
+| T1 | SC1 | "You're interested in studying [subject area, e.g. engineering]. Find the page for a course in that area." | Home | [Specific course page(s)] | Reaches any accepted course URL |
 | T2 | SC1, SC2 | "You'd like to know what scholarships might help pay for your studies. Find information about scholarships for [your situation / international students]." | Home | [Scholarships page, L3–L4] | Reaches target URL |
 | T3 | SC2 | "You're reading about a course and now want to find out about places to live while you study. Find information about student accommodation." | [Deep page under Study, e.g. course page] | [Accommodation page, in another branch] | Reaches target; path shows movement up/across levels |
-| T4 | SC3 · F#2, #9 | "Find the main page that gives an overview of everything about research at the university." | [Any content page] | [Research L1 landing page] | Reaches L1 landing page |
-| T5 | SC3 · F#2, #9 | "You're looking at one study area but want to see the full list of study areas the university offers. Find that page." | [A specific study area page, L3] | [Study areas L2 parent page] | Reaches L2 parent page |
+| T4 | SC3 | "Find the main page that gives an overview of everything about research at the university." | [Any content page] | [Research L1 landing page] | Reaches L1 landing page |
+| T5 | SC3 | "You're looking at one study area but want to see the full list of study areas the university offers. Find that page." | [A specific study area page, L3] | [Study areas L2 parent page] | Reaches L2 parent page |
 | T6 | SC4 | "You've arrived on the website for the Oceans Institute. Find out who leads it / how to contact them." | Oceans Institute home | [Page within Oceans Institute, e.g. Contact us] | Reaches target within the Oceans Institute |
-| T7 | SC4 · F#7, #11 | "You're on the website for the Oceans Institute. You also want to find out how to apply to study at the university. Find that information." | [Oceans Institute page] | [Main site How to apply page] | Leaves microsite nav and reaches main site target |
-| T8 | SC4 · F#6 | "Go back to the university's main homepage." | [Deep Library page] | [Main site home URL] | Reaches main home; report method (logo / menu / breadcrumb) |
+| T7 | SC4 | "You're on the website for the Oceans Institute. You also want to find out how to apply to study at the university. Find that information." | [Oceans Institute page] | [Main site How to apply page] | Leaves microsite nav and reaches main site target |
+| T8 | SC4 | "Go back to the university's main homepage." | [Deep Library page] | [Main site home URL] | Reaches main home; report method (logo / menu / breadcrumb) |
 
 [Confirm subject areas, scholarship type, microsite and all target URLs against the IA used in the variants.]
 
@@ -118,8 +118,8 @@ This new system is a full-site solution for a navigation system including core s
 
 | ID | After | Question | Purpose |
 |---|---|---|---|
-| PQ1 | T4 | Show a screenshot of an open menu panel with its heading highlighted: "Do you think you could click this heading?" (Yes, it's a link / No, it's just a title / Not sure) | Finding #2, #9 (heading as link) |
-| PQ2 | T7 | "Thinking about the page you started on for that task, was it part of the main university website or a separate section of it?" (Main site / Separate section, e.g. an institute site / Not sure) | Finding #7, #11 (microsite awareness) |
+| PQ1 | T4 | Show a screenshot of an open menu panel with its heading highlighted: "Do you think you could click this heading?" (Yes, it's a link / No, it's just a title / Not sure) | Heading as link |
+| PQ2 | T7 | "Thinking about the page you started on for that task, was it part of the main university website or a separate section of it?" (Main site / Separate section, e.g. an institute site / Not sure) | Microsite awareness |
 
 PQ1 needs a variant-specific screenshot. If a variant has no menu heading, adapt the question to that variant's equivalent parent-page link.
 
