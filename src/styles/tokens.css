@@ -144,6 +144,10 @@
 
   /* Course template */
   --course-hero-height: 808px;
+  --course-hero-offset: 0px;           /* the placeholder starts this far down (G: the header's height, so it starts under the header band) */
+  --course-panel-bg: var(--colour-white); /* light panel behind the hero text, for readability over the placeholder's lines */
+  --course-panel-padding-y: 32px;
+  --course-panel-padding-x: 40px;
   --course-eyebrow-top: 221px;
   --course-title-width: 1113px;
   --course-intro-width: 708px;
@@ -394,6 +398,7 @@
 [data-variant="g"] {
   /* Phase 2: A's header with one menu pane under it (MenuPane.astro; --pane-menu-width) */
   --item-label-max-width: none;        /* labels use the pane's full width before wrapping */
+  --course-hero-offset: var(--header-height); /* course page: the placeholder starts under the header band (H's sidebar doesn't cover it) */
 }
 [data-variant="h"] {
   /* Phase 2: E's sidebar and pane. Uses the sidebar values (SIDEBAR block) */

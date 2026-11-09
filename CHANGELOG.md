@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.5.0 (9 Nov 2026)
+
+- Course page template, all variants: the hero text (eyebrow, title, intro, Enquire and Apply) now sits on a white panel, so the placeholder's crossed lines don't run through it (`--course-panel-bg`, `--course-panel-padding-y/x`). On narrow screens, where the text is taller than the placeholder, the placeholder now grows to fit it (before, the buttons hung over its bottom edge).
+- Variant G: the course page's placeholder starts at the bottom of the header band instead of the top of the page (`--course-hero-offset`, set to the header's height in G's block). The text stays where it was. H and the other variants are unchanged (H's sidebar doesn't cover the placeholder).
+- Variant H: the sidebar's Search button now looks like the Menu button: search icon on the left, then "Search" in the normal label style, no field outline. It still opens search in the pane.
+
 ## 1.4.1 (9 Nov 2026)
 
 - Course page template, all variants: the Landscape Architecture Studies copy is gone. The title now names the study area (the course page's parent), e.g. "Humanities and Social Sciences Course page", and the intro and body are generic copy about studying that area at UWA (learning, skills, research and work experience, careers). Pages with their own `eyebrow`, `intro` or `body` in the CSV keep them (`{area}` in them is replaced by the study area). The page's name in menus, breadcrumbs and search is still "Course page".

@@ -2,7 +2,7 @@
 /**
  * Variant H's sidebar (phase 2): E's sidebar (logo, Search, Menu button,
  * shortcuts) with phase 2's menu pane (MenuPane.astro) beside it. Search is a
- * button (it still looks like E's field) that opens the pane with a search
+ * button (it looks like the Menu button: icon, then label) that opens the pane with a search
  * field; Menu opens the pane at the top level.
  * Compact layouts (mobile and tablet): E's top bar and drawer. The hamburger
  * opens the drawer with the pane on it at the top level; the bar's search icon
@@ -33,7 +33,8 @@ const { variant, currentPath = '', cobrand } = Astro.props;
   {cobrand && <a class="cobrand-logo sidebar-cobrand-logo" href={cobrand.href} aria-label={`${cobrand.label}: home`}><span aria-hidden="true">Co-brand<br />Logo</span></a>}
 
   <button class="sidebar-search-button" type="button" aria-expanded="false" aria-controls="menu-pane" data-search-toggle>
-    <span>Search</span><Icon name="search" />
+    <Icon name="search" />
+    <span>Search</span>
   </button>
   <button class="sidebar-menu-button" type="button" aria-expanded="false" aria-controls="menu-pane" data-menu-toggle>
     <Icon name="menu" />

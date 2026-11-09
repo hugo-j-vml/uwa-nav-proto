@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.4.1** (22 Oct: every prototype now uses the **existing site's IA**, `data/README.md`, with one change: study areas and a course page under each) (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.5.0** (22 Oct: every prototype now uses the **existing site's IA**, `data/README.md`, with one change: study areas and a course page under each) (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -384,7 +384,7 @@ Phase 1 (A–F, their options and the index screen) stays as it was, for referen
 
 | | G: Header with menu pane | H: Sidebar with menu pane |
 |---|---|---|
-| Shell | A–C's header: logo, Menu, Search, shortcuts | E's sidebar: logo, Search (a button that looks like E's field), Menu, shortcuts |
+| Shell | A–C's header: logo, Menu, Search, shortcuts | E's sidebar: logo, Search (a button that looks like the Menu button: icon, then label; v1.5.0), Menu, shortcuts |
 | Pane (desktop) | Under the header at the left, `--pane-menu-width` (540px, as E), full height to the bottom of the window; slides down from under the header band | Beside the sidebar, full height (E's drill-down pane); slides out from under the sidebar |
 | Phones and tablets | The pane takes over the screen under the header | E's top bar and drawer: the hamburger opens the drawer on the pane at the top level; the bar's search icon opens it on search |
 

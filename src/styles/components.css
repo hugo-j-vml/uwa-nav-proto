@@ -350,12 +350,20 @@ html:not([data-opt-cobrand-menu="1"])[data-opt-cobrand-breadcrumbs="hide"] .cobr
 .tpl-content .in-this-section + .placeholder-stack { margin-top: var(--section-to-image); }
 
 /* Course template */
-.course-hero { position: relative; }
-.course-hero .placeholder { height: var(--course-hero-height); }
+.course-hero { position: relative; display: flow-root; box-sizing: border-box; min-height: var(--course-hero-height); padding-top: var(--course-hero-offset); }
+/* The placeholder fills the hero (from under the header in G); the text sits over it in the flow, so on narrow screens a taller text block makes the hero taller */
+.course-hero .placeholder { position: absolute; top: var(--course-hero-offset); left: var(--placeholder-inset); width: calc(100% - 2 * var(--placeholder-inset)); height: calc(100% - var(--course-hero-offset)); }
 .course-hero-content {
-  position: absolute; inset: var(--course-eyebrow-top) 0 auto 0;
+  margin: calc(var(--course-eyebrow-top) - var(--course-hero-offset)) calc(-1 * var(--placeholder-inset)) 0; position: relative;
   display: flex; flex-direction: column; align-items: center; text-align: center;
   padding: 0 var(--page-gutter);
+}
+/* Light panel behind the hero text, so the placeholder's crossed lines don't run through it */
+.course-hero-panel {
+  box-sizing: border-box; max-width: 100%;
+  display: flex; flex-direction: column; align-items: center;
+  padding: var(--course-panel-padding-y) var(--course-panel-padding-x);
+  background: var(--course-panel-bg);
 }
 .course-eyebrow {
   margin: 0; font-family: var(--font-body); text-transform: uppercase;
@@ -861,14 +869,14 @@ html[data-layout="compact"].menu-open { overflow: hidden; }
 /* Search buttons (G header, H sidebar and top bar): open state while the pane shows search, as the Menu button's */
 :is(.search-button, .sidebar-search-button, .mobile-bar-search)[aria-expanded='true'] { background: var(--search-button-open-bg); color: var(--search-button-open-text); }
 :is(.search-button, .sidebar-search-button, .mobile-bar-search)[aria-expanded='true'] svg path { fill: currentColor; }
-/* H: the sidebar's search button looks like E's search field; it opens search in the pane */
+/* H: the sidebar's search button looks like the Menu button (icon on the left, plain label); it opens search in the pane */
 .sidebar-search-button {
-  display: flex; align-items: center; justify-content: space-between;
-  width: 100%; height: var(--sidebar-search-height); margin-top: var(--sidebar-logo-to-search); padding: 0 2px 0 12px;
-  border: 1px solid var(--colour-ironbark-80); background: var(--colour-white); color: var(--search-status-colour);
-  font-family: var(--font-ui); font-size: var(--type-ui-size);
+  box-sizing: border-box; display: flex; align-items: center; justify-content: flex-start; gap: 10px;
+  width: 100%; height: var(--sidebar-button-height); margin-top: var(--sidebar-logo-to-search); padding-left: 3px;
+  background: var(--colour-white); color: var(--colour-black);
+  font-family: var(--font-ui); font-size: var(--type-ui-size); font-weight: var(--type-ui-weight);
 }
-.sidebar-search-button svg { width: 36px; height: 36px; flex: none; }
+.sidebar-search-button svg { width: 36px; height: 36px; flex: none; margin-right: -2px; } /* the search glyph is small inside its box: 36px matches the Menu icon's visual size */
 
 /* Behaviour options (phase 2): Shortcuts and Search can be hidden */
 [data-opt-shortcuts="hide"] :is(.header-shortcuts, .sidebar-shortcuts) { display: none; }
