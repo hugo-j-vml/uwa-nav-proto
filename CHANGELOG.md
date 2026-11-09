@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.3 (9 Nov 2026)
+
+- Fix: CONTROL-1's course page on tablets (640–1023px). 1.5.2's tablet layout (text panel 16px below the placeholder's top, buttons under it) assumed the header doesn't cover the placeholder, which is true of G and H but not of CONTROL-1 (or A–F), so the panel started under the header band. It now applies to **G and H only**; CONTROL-1 and A–F are back to the earlier position (panel at its Figma position, buttons inside it). Checked at 768, 1024 and 1440px.
+
 ## 1.5.2 (9 Nov 2026)
 
 - Course page, tablet (640–1023px, G and H and the other variants): the white panel now holds the eyebrow, title and intro only, and starts 16px below the top of the placeholder (`--course-panel-top-gap`). Enquire and Apply sit under it, on the placeholder, instead of inside the panel. Phones and desktop unchanged.
