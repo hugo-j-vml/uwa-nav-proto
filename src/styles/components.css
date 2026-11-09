@@ -876,7 +876,7 @@ html[data-layout="compact"].menu-open { overflow: hidden; }
   background: var(--colour-white); color: var(--colour-black);
   font-family: var(--font-ui); font-size: var(--type-ui-size); font-weight: var(--type-ui-weight);
 }
-.sidebar-search-button svg { width: 36px; height: 36px; flex: none; margin-right: -2px; } /* the search glyph is small inside its box: 36px matches the Menu icon's visual size */
+.sidebar-search-button svg { width: 36px; height: 36px; flex: none; margin-right: -6px; } /* the search glyph is small inside its box: 36px matches the Menu icon's visual size */
 
 /* Behaviour options (phase 2): Shortcuts and Search can be hidden */
 [data-opt-shortcuts="hide"] :is(.header-shortcuts, .sidebar-shortcuts) { display: none; }

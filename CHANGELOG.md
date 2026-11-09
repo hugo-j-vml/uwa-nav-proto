@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.5.1 (9 Nov 2026)
+
+- Variant H: the sidebar's "Search" label now lines up with the "Menu" label (same left edge). Only the Search button changed.
+
 ## 1.5.0 (9 Nov 2026)
 
 - Course page template, all variants: the hero text (eyebrow, title, intro, Enquire and Apply) now sits on a white panel, so the placeholder's crossed lines don't run through it (`--course-panel-bg`, `--course-panel-padding-y/x`). On narrow screens, where the text is taller than the placeholder, the placeholder now grows to fit it (before, the buttons hung over its bottom edge).
