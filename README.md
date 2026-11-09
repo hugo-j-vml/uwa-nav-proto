@@ -64,12 +64,12 @@ Optional columns, in any order:
 | `abbreviation` | text | Co-branded pages: short name for the site's tab in the menu (Co-brand menu option 2), for a long name, so it doesn't wrap. Blank = the full name |
 | `url`, `notes` | text | For reference only, not used (the existing IA: the live page each row came from, and notes such as redirects) |
 
-Blank course fields fall back to the Landscape Architecture Studies copy from Figma.
+Blank course fields fall back to generic copy that names the study area (the course page's parent page): the title becomes "<Study area> Course page", and the intro and body talk about studying that area at UWA. Text you put in these columns is used as written, and `{area}` in it is replaced by the study area.
 
 ```
-L1,L2,L3,L4,template,eyebrow,intro,body
-Oceans Institute,,,,cobranded,,,
-,,,Landscape Architecture Studies,course,Undergraduate,"Grow your creative...","In the Landscape..."
+L1,L2,L3,L4,L5,template,eyebrow,intro,body
+Study,Explore courses,Study areas,Architecture and Design,,,,,
+,,,,Course page,course,Undergraduate,"Explore {area} at UWA...","When you study {area}..."
 ```
 
 ### Page templates (Figma section *Page templates*)

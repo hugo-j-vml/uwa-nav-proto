@@ -52,7 +52,7 @@ const section = node && variant.menuDepth && node.level >= variant.menuDepth
 <Base title={title} variant={variant} currentPath={node?.path ?? sitePage?.page.path ?? ''} transparentHeader={template === 'landing'} cobrand={cobrand}>
   {template === 'landing' && <Landing title={title} note={note} />}
   {template === 'content' && <Content title={title} home={home} crumbs={crumbs} section={section} />}
-  {template === 'course' && <Course title={title} eyebrow={node?.eyebrow} intro={node?.intro} body={node?.body} />}
+  {template === 'course' && <Course title={title} area={crumbs[crumbs.length - 1]?.label} eyebrow={node?.eyebrow} intro={node?.intro} body={node?.body} />}
   {template === 'cobranded' && <CoBranded title={title} home={home} root={node!} variant={variant.id} />}
   {sitePage && <CoBrandedPage title={title} home={home} variant={variant.id} {...sitePage} />}
 </Base>

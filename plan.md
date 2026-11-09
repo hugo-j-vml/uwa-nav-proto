@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.4.0** (22 Oct: every prototype now uses the **existing site's IA**, `data/README.md`, with one change: study areas and a course page under each) (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.4.1** (22 Oct: every prototype now uses the **existing site's IA**, `data/README.md`, with one change: study areas and a course page under each) (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -395,7 +395,7 @@ Phase 1 (A–F, their options and the index screen) stays as it was, for referen
 - **Co-branded pages:** the top level shows the tabs (UWA left, the site's abbreviation or name right; the site's tab selected), then the site's name as a heading link, then its sections.
 - **Closing:** the button that opened it, Esc, or a click outside; a page link slides the pane away, then navigates.
 - **Promo** (placeholder, v1.0.0): a wireframe box labelled "Promo area" at the bottom of the pane, at the top level only, not in search. On co-branded pages it shows under the UWA tab only, not the site's tab (Hugo, v1.0.5). Height `--pane-promo-height` (220px). It sits at the bottom of the pane, or under the list when the list is longer.
-- **Where the menu opens** (option `menu-start`, v1.4.0, Hugo 9 Nov): "Top level" (default) or "Current section". With the latter, on a level 2+ page of the core IA the menu opens on the page's L1 section (heading, its children, Back to the top level). Home, L1 pages and co-branded pages open as usual. Open question: should L1 pages open on their own section too, and should co-branded pages open inside the site's section for the current page?
+- **Where the menu opens** (option `menu-start`, v1.4.0, Hugo 9 Nov): "Top level" (default) or "Current section". With the latter, on a level 2+ page of the core IA the menu opens on the page's L1 section (heading, its children, Back to the top level). Home, L1 pages and co-branded pages open as usual. **Closed (Hugo, 9 Nov):** L1 pages keep the top-level menu, and co-branded pages open on the top level only (their tabs), as built.
 - **Options:** Shortcuts, Search, Back button, Where the menu opens, Arrows, Breadcrumbs on co-branded pages (Section 7d; shared with phase 1). Shift+O on G and H shows these.
 
 ### Phase 2 open questions

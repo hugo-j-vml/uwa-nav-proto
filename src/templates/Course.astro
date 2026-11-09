@@ -1,25 +1,27 @@
 ---
 /**
  * Course page template (Figma "Course page template").
- * Eyebrow, intro and body come from the sitemap CSV columns; if blank, the
- * Figma example copy is used.
+ * Generic copy for user testing: the study area (the course page's parent
+ * page) fills the title and both text blocks. Eyebrow, intro and body can be
+ * overridden per page from the sitemap CSV columns (a literal {area} in them
+ * is replaced by the study area).
  */
 import Placeholder from '../components/Placeholder.astro';
-interface Props { title: string; eyebrow?: string; intro?: string; body?: string }
-const FALLBACK = {
-  eyebrow: 'Undergraduate',
-  intro: 'Grow your creative, ecological, and design skills together in the Landscape Architecture Studies major while tailoring your studies in other areas that matter to you.',
-  body: "In the Landscape Architecture Studies major, explore new ways of thinking about the landscape around you and have the flexibility to shape your degree by combining this with another area of interest. You'll develop creative, critical and ecologically-focused design skills and tailor your study path across disciplines that matter to you.",
-};
-const { title, eyebrow = FALLBACK.eyebrow, intro = FALLBACK.intro, body = FALLBACK.body } = Astro.props;
+interface Props { title: string; area?: string; eyebrow?: string; intro?: string; body?: string }
+const { title, area, eyebrow = 'Undergraduate', intro, body } = Astro.props;
+const subject = area ?? 'your chosen area';
+const fill = (t: string) => t.replace(/\{area\}/g, subject);
+const heading = area ? `${area} ${title}` : title;
+const introText = fill(intro ?? 'Explore {area} at UWA: build your knowledge, develop practical skills and discover where your studies can take you.');
+const bodyText = fill(body ?? "When you study {area} at UWA, you'll learn from leading teachers and researchers, build skills that apply to many careers, and have the flexibility to shape your degree around what interests you. Explore the units on offer, find out about research and work experience opportunities, and see the career paths open to graduates.");
 ---
 <div class="tpl-course">
   <div class="course-hero">
     <Placeholder />
     <div class="course-hero-content">
       <p class="course-eyebrow">{eyebrow}</p>
-      <h1 class="page-title">{title}</h1>
-      <p class="course-intro">{intro}</p>
+      <h1 class="page-title">{heading}</h1>
+      <p class="course-intro">{introText}</p>
       <div class="course-actions">
         <button type="button" class="course-button enquire">Enquire</button>
         <button type="button" class="course-button apply">Apply</button>
@@ -28,7 +30,7 @@ const { title, eyebrow = FALLBACK.eyebrow, intro = FALLBACK.intro, body = FALLBA
   </div>
   <div class="course-main">
     <div class="course-tabs">In page nav tabs</div>
-    <p class="course-body">{body}</p>
+    <p class="course-body">{bodyText}</p>
     <div class="course-cards">
       <div class="col"><Placeholder /><Placeholder /></div>
       <div class="col"><Placeholder short /><Placeholder /></div>

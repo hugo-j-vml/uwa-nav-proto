@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.1 (9 Nov 2026)
+
+- Course page template, all variants: the Landscape Architecture Studies copy is gone. The title now names the study area (the course page's parent), e.g. "Humanities and Social Sciences Course page", and the intro and body are generic copy about studying that area at UWA (learning, skills, research and work experience, careers). Pages with their own `eyebrow`, `intro` or `body` in the CSV keep them (`{area}` in them is replaced by the study area). The page's name in menus, breadcrumbs and search is still "Course page".
+- "Where the menu opens" (1.4.0): Hugo confirmed level 1 pages and co-branded pages keep opening at the top level. Recorded as closed in `plan.md`.
+
 ## 1.4.0 (9 Nov 2026)
 
 - G and H: new option **Where the menu opens** (`menu-start`; Shift+O, the index page, or `?menu-start=section`). **Top level** (default) is as before. **Current section**: on a level 2 or deeper page, the menu opens inside the page's top-level section (e.g. on Study › Explore courses it opens on Study, with its children, and Back goes to the top level). The homepage, top-level pages and co-branded pages (tabs) still open at the top level. Applies to G, H and their compact layouts. Nothing changes unless the option is switched on.
