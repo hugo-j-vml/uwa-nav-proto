@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.5.2 (9 Nov 2026)
+
+- Course page, tablet (640–1023px, G and H and the other variants): the white panel now holds the eyebrow, title and intro only, and starts 16px below the top of the placeholder (`--course-panel-top-gap`). Enquire and Apply sit under it, on the placeholder, instead of inside the panel. Phones and desktop unchanged.
+- Course page, H at desktop sizes (1024px and up): the white panel is narrower, 960px at most (`--course-panel-width`, set in H's desktop block), so the title wraps over two lines. G unchanged.
+
 ## 1.5.1 (9 Nov 2026)
 
 - Variant H: the sidebar's "Search" label now lines up with the "Menu" label (same left edge). Only the Search button changed.

@@ -364,7 +364,12 @@ html:not([data-opt-cobrand-menu="1"])[data-opt-cobrand-breadcrumbs="hide"] .cobr
   display: flex; flex-direction: column; align-items: center;
   padding: var(--course-panel-padding-y) var(--course-panel-padding-x);
   background: var(--course-panel-bg);
+  width: var(--course-panel-width); /* auto = as wide as the text needs, up to the placeholder's width */
 }
+.course-hero-text { display: flex; flex-direction: column; align-items: center; max-width: 100%; }
+/* Tablet: the white panel holds the eyebrow, title and intro only; Enquire and Apply sit under it, on the placeholder */
+[data-bp="tablet"] .course-hero-panel { background: none; padding: 0; width: 100%; }
+[data-bp="tablet"] .course-hero-text { box-sizing: border-box; width: 100%; padding: var(--course-panel-padding-y) var(--course-panel-padding-x); background: var(--course-panel-bg); }
 .course-eyebrow {
   margin: 0; font-family: var(--font-body); text-transform: uppercase;
   font-size: var(--type-eyebrow-size); line-height: var(--type-eyebrow-line); font-weight: var(--type-eyebrow-weight);

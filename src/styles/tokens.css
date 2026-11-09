@@ -148,6 +148,7 @@
   --course-panel-bg: var(--colour-white); /* light panel behind the hero text, for readability over the placeholder's lines */
   --course-panel-padding-y: 32px;
   --course-panel-padding-x: 40px;
+  --course-panel-width: auto;          /* the hero text panel's width (auto: as the text needs, up to the placeholder's width) */
   --course-eyebrow-top: 221px;
   --course-title-width: 1113px;
   --course-intro-width: 708px;
@@ -521,11 +522,17 @@
   --bar-height: 72px;
   --drawer-width: 400px;
   --course-hero-height: 640px;
+  --course-panel-top-gap: 16px;        /* white text panel starts this far below the placeholder's top */
+  --course-eyebrow-top: calc(var(--course-hero-offset) + var(--course-panel-top-gap));
+  --course-intro-to-buttons: 24px;     /* the buttons sit under the panel, not in it */
   --cobranded-hero-height: 400px;
   --cobranded-tile-height: 400px;
   --section-columns: 3;
   --section-box-text-size: 20px;
 }
+
+/* H at desktop sizes: the hero's white text panel is narrower than the placeholder (G's is fine as is) */
+[data-bp="desktop"][data-variant="h"] { --course-panel-width: 960px; }
 
 /* Mobile (below 640px; must work down to 320px) */
 [data-bp="mobile"] {

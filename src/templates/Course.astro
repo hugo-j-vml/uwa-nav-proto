@@ -19,9 +19,11 @@ const bodyText = fill(body ?? "When you study {area} at UWA, you'll learn from l
   <div class="course-hero">
     <Placeholder />
     <div class="course-hero-content"><div class="course-hero-panel">
-      <p class="course-eyebrow">{eyebrow}</p>
-      <h1 class="page-title">{heading}</h1>
-      <p class="course-intro">{introText}</p>
+      <div class="course-hero-text">
+        <p class="course-eyebrow">{eyebrow}</p>
+        <h1 class="page-title">{heading}</h1>
+        <p class="course-intro">{introText}</p>
+      </div>
       <div class="course-actions">
         <button type="button" class="course-button enquire">Enquire</button>
         <button type="button" class="course-button apply">Apply</button>
