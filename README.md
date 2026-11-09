@@ -92,7 +92,7 @@ Generate the SHA-256 hash of the new password and paste it into `PASSWORD_SHA256
 Full specs per variant are in `plan.md` (sections 7–7d). In short:
 
 - Click only, no hover (except CONTROL-1, which copies the live site); the whole row is the click target. **Esc**, the trigger again, or a click outside closes the menu. Page links slide the menu away, then navigate.
-- The menu **always opens at the top level**, as on the homepage, wherever you are (except on co-branded pages with Co-brand menu options 2 and 7).
+- The menu **always opens at the top level**, as on the homepage, wherever you are (except on co-branded pages with Co-brand menu options 2 and 7; and in G and H when the "Where the menu opens" option is set to Current section).
 - **A** Core with expanding parent nodes: chosen parents nest in the core pane; their children show in the dynamic pane, with a heading linking to the section. Black block on the selected item and the current page.
 - **B** Static core with dynamic panel: static core pane; the white pane shows the chosen section as an accordion.
 - **C** Static core with two panels: core pane, panel 1 (L2), panel 2 (L3), each panel with a heading linking to the chosen item's page; stops at L3.
@@ -147,6 +147,7 @@ Each option belongs to a phase (`phases` in `src/options.ts`) and only applies t
 | Shortcuts (`shortcuts`) | **Show** (default) or **Hide** the shortcut links (Study, Impact, Research) on every page: G header, H sidebar. |
 | Search (`search`) | **Show** (default) or **Hide** the search buttons. |
 | Back button in the menu (`menu-back`) | **Back** (default) or **Previous level's name**: the name of the level Back goes to, e.g. "← Study" above the Explore courses heading ("All UWA" from a top-level item; the site's name on a co-branded site's tab). |
+| Where the menu opens (`menu-start`) | **Top level** (default), or **Current section**: on a level 2+ page the menu opens inside the page's top-level section (e.g. Study on Explore courses); Back goes to the top level. Not on the homepage, top-level pages or co-branded pages. |
 | Arrows in the menu (`menu-arrows`) | **All** (every item and the heading), **Only items with children**, **All except headings**, **None** (default). Back always keeps its arrow. |
 | Breadcrumbs on co-branded pages (`cobrand-breadcrumbs`) | As phase 1 (shared). |
 

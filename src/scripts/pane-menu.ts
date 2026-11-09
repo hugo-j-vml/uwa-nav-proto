@@ -30,7 +30,7 @@
  * Co-branded site pages always use the tabs (co-brand menu option 2): the pane
  * opens on the site's sections, under the UWA and site tabs and the site's name.
  *
- * The menu always opens at the top, as on the homepage. Closes on: the button
+ * The menu opens at the top, as on the homepage (option "Where the menu opens": on a level 2+ page, its top-level section). Closes on: the button
  * that opened it, Esc, or a click outside the pane and the buttons. Clicking a
  * page link slides the pane away first, then navigates. Crossing between the
  * compact and desktop layouts closes it. Motion timings come from tokens.css.
@@ -226,6 +226,11 @@ function init(pane: HTMLElement) {
     mode = next;
     path = [];
     tab = startTab;
+    // Option "Where the menu opens" = current section: on a level 2+ page, start inside its top-level section
+    if (next === 'menu' && !cobrand && getOption('menu-start') === 'section') {
+      const parts = currentPath.split('/').filter(Boolean);
+      if (parts.length >= 2 && tree.some(n => n.p === parts[0])) path = [parts[0]];
+    }
     input.value = '';
   }
 

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.4.0 (9 Nov 2026)
+
+- G and H: new option **Where the menu opens** (`menu-start`; Shift+O, the index page, or `?menu-start=section`). **Top level** (default) is as before. **Current section**: on a level 2 or deeper page, the menu opens inside the page's top-level section (e.g. on Study › Explore courses it opens on Study, with its children, and Back goes to the top level). The homepage, top-level pages and co-branded pages (tabs) still open at the top level. Applies to G, H and their compact layouts. Nothing changes unless the option is switched on.
+
 ## 1.3.5 (22 Oct 2026)
 
 - Index page: CONTROL-1 is now "CONTROL-1. Current site" (was "Current site navigation").

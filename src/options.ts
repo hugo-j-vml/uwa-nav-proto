@@ -98,6 +98,18 @@ export const OPTIONS: OptionDef[] = [
     phases: [2],
   },
   {
+    id: 'menu-start',
+    label: 'Where the menu opens',
+    description: 'Which level the menu pane opens at. Top level: always the top level. Current section: on a level 2 or deeper page, the menu opens on its top-level section (e.g. Study on Explore courses), with Back going to the top level; the homepage and top-level pages still open at the top level.',
+    choices: [
+      { id: 'top', label: 'Top level' },
+      { id: 'section', label: 'Current section' },
+    ],
+    default: 'top',
+    phases: [2],
+    short: true,
+  },
+  {
     id: 'menu-arrows',
     label: 'Arrows in the menu',
     description: 'Which items in the menu pane show a → (Back keeps its arrow).',
