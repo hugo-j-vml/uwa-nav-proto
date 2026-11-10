@@ -9,7 +9,7 @@ import type { Variant } from './types';
  * (drill-down with accordions). Co-branded sites get the live co-brand header
  * (their own sections, plus an "All UWA" mega menu). The menu reaches L3, as on
  * the live site; deeper pages are reached from their parent's "In this section".
- * No behaviour options. Header: ControlHeader.astro; behaviour: control-menu.ts.
+ * No behaviour options, except Search (on / off: off shows a "not available" dialog). Header: ControlHeader.astro; behaviour: control-menu.ts.
  */
 export const control1: Variant = {
   id: 'control-1',
@@ -21,6 +21,7 @@ export const control1: Variant = {
   menu: 'mega',
   menuDepth: 3,
   noOptions: true,
+  appliedOptions: ['search'],
   // The live "More" dropdown's links (top-level items in the existing IA)
   mega: { more: ['news', 'events', 'library', 'current-students', 'staff', 'giving'], lockups: ['our-research/institutes-and-centres/oceans-institute'] },
   motion: 'a',

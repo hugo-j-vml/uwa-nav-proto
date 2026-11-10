@@ -497,7 +497,13 @@
   --drawer-padding-x: 24px;
   --drawer-item-size: 18px;            /* D: top-level items in the drawer */
   --drawer-item-gap: 20px;
-  --scrim: rgb(0 0 0 / 0.4);           /* over the page while the drawer is open */
+  --scrim: rgb(0 0 0 / 0.4);           /* over the page while the drawer is open (and behind the search-off dialog) */
+  /* "Search is not available" dialog (option Search: Off) */
+  --search-dialog-width: 360px;
+  --search-dialog-margin: 16px;        /* minimum gap to the screen edge on narrow screens */
+  --search-dialog-padding: 24px;
+  --search-dialog-gap: 24px;           /* text to Close button */
+  --search-dialog-button-padding-x: 20px;
   /* Motion: the drawer slides in from the left; C's panels and D/E's levels slide in from the right */
   --motion-drawer-duration: 300ms;
   --motion-drawer-easing: ease-out;

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.0 (10 Nov 2026)
+
+- Option **Search** is now **On** (default) or **Off**, replacing Show / Hide. Off: clicking any search button shows a small dialog, "Search is not available in this prototype.", with a Close button (Esc or a click outside also close it), instead of searching. It covers G's header, H's sidebar and compact top bar, and **CONTROL-1's search button** (its search panel doesn't open). The buttons now always show. A saved "Show" or "Hide" falls back to On.
+- CONTROL-1 still has no Shift+O panel and no other options; it only takes the Search setting (from the index page's phase 2 options or `?search=off`). `appliedOptions` in `src/variants/types.ts` lists the options a `noOptions` variant still applies.
+- Dialog: `src/components/SearchOffDialog.astro`; look set by the `--search-dialog-*` tokens. A–F keep their own "not available" alert.
+
 ## 1.5.3 (9 Nov 2026)
 
 - Fix: CONTROL-1's course page on tablets (640–1023px). 1.5.2's tablet layout (text panel 16px below the placeholder's top, buttons under it) assumed the header doesn't cover the placeholder, which is true of G and H but not of CONTROL-1 (or A–F), so the panel started under the header band. It now applies to **G and H only**; CONTROL-1 and A–F are back to the earlier position (panel at its Figma position, buttons inside it). Checked at 768, 1024 and 1440px.

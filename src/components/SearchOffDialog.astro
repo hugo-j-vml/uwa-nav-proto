@@ -1,0 +1,27 @@
+---
+/**
+ * Behaviour option "Search" set to Off (phase 2: G, H and CONTROL-1): clicking any
+ * search button shows this dialog instead of searching. One capture-phase listener
+ * on the document catches the click before the menus' own handlers see it, so the
+ * variants' scripts need no changes. Styles: .search-off-dialog (components.css,
+ * --search-dialog-* tokens).
+ */
+---
+<dialog class="search-off-dialog" aria-labelledby="search-off-text" data-search-off-dialog>
+  <p id="search-off-text">Search is not available in this prototype.</p>
+  <form method="dialog"><button type="submit" class="search-off-close">Close</button></form>
+</dialog>
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-search-off-dialog]');
+  // Every search button: G's header and H's sidebar (data-search-toggle), H's compact top bar (data-bar-search), CONTROL-1's header
+  const SEARCH_BUTTONS = '[data-search-toggle], [data-bar-search], .control-search-button';
+  document.addEventListener('click', (e) => {
+    if (!dialog || document.documentElement.getAttribute('data-opt-search') !== 'off') return;
+    if (!(e.target as Element).closest(SEARCH_BUTTONS)) return;
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    if (!dialog.open) dialog.showModal();
+  }, true);
+  // A click on the backdrop (the dialog element itself, outside its content box) closes it
+  dialog?.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+</script>

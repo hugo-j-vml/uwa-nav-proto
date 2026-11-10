@@ -1,6 +1,6 @@
 # UWA Main Navigation Prototype: Build Plan
 
-**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.5.3** (22 Oct: every prototype now uses the **existing site's IA**, `data/README.md`, with one change: study areas and a course page under each) (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
+**Owner:** Hugo Jenkins (design) · **Build:** Claude · **Fidelity:** Wireframe · **Status:** prototype **v1.6.0** (22 Oct: every prototype now uses the **existing site's IA**, `data/README.md`, with one change: study areas and a course page under each) (20 Oct 2026; the client validated the phase 2 approach in v1.0.0): **phase 2** (Section 14): variants G (header) and H (sidebar) with one menu pane, search in the pane and phase 2 options, and **CONTROL-1**, the live site's navigation with our IA, as the testing control (14.6); the index page has a screen per phase. Phase 1's six variants (A–F, Sections 7–7f) stay as they were, for reference. Latest changes: top of `CHANGELOG.md`.
 
 ---
 
@@ -368,7 +368,7 @@ All variants start on preset A. Per-variant tweaks come as Figma notes.
 3. Co-branded sites: **tabs** (co-brand menu option 2), no longer an option. Abbreviations and the site's full name in the menu stay as they are; Hugo will tidy the design in iterations.
 4. Shortcuts may be dropped from both: a new option shows or hides them on **every** page.
 5. Menu behaviour: **E's single pane**, one level at a time, with the chosen item as the heading, and Back. New option: Back says "Back" or the previous level's name.
-6. Search in the menu pane rather than as a field in the header or sidebar. Hugo designs it in Figma; meanwhile a basic working search that matches typed text to page names. It may be switched off.
+6. Search in the menu pane rather than as a field in the header or sidebar. Hugo designs it in Figma; meanwhile a basic working search that matches typed text to page names. It can be switched off (v1.6.0): the Search option is On / Off, and Off shows a "Search is not available in this prototype." dialog when a search button is clicked, in G, H and CONTROL-1.
 7. A promotional / secondary area at the bottom of the pane at the top level, possibly personalised (e.g. by UTM campaign). Hugo designs it in Figma. **Placeholder built (v1.0.0).**
 8. Arrows: an option for all, only items with children, all except headings, or none. Back keeps its arrow. Likely outcome: none.
 

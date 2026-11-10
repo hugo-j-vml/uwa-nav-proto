@@ -65,12 +65,12 @@ export const OPTIONS: OptionDef[] = [
   {
     id: 'search',
     label: 'Search',
-    description: 'Whether the Search button shows (it opens a search field in the menu pane).',
+    description: 'On: search works (G and H: a field in the menu pane; CONTROL-1: its search panel). Off: clicking search shows a “not available in this prototype” message instead.',
     choices: [
-      { id: 'show', label: 'Show' },
-      { id: 'hide', label: 'Hide' },
+      { id: 'on', label: 'On' },
+      { id: 'off', label: 'Off' },
     ],
-    default: 'show',
+    default: 'on',
     phases: [2],
     short: true,
   },

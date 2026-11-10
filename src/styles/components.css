@@ -883,9 +883,26 @@ html[data-layout="compact"].menu-open { overflow: hidden; }
 }
 .sidebar-search-button svg { width: 36px; height: 36px; flex: none; margin-right: -6px; } /* the search glyph is small inside its box: 36px matches the Menu icon's visual size */
 
-/* Behaviour options (phase 2): Shortcuts and Search can be hidden */
+/* Behaviour option (phase 2): Shortcuts can be hidden */
 [data-opt-shortcuts="hide"] :is(.header-shortcuts, .sidebar-shortcuts) { display: none; }
-[data-opt-search="hide"] :is([data-search-toggle], [data-bar-search]) { display: none; }
+
+/* Behaviour option "Search" off: the dialog shown when a search button is clicked (SearchOffDialog.astro) */
+.search-off-dialog {
+  box-sizing: border-box; width: min(var(--search-dialog-width), calc(100vw - 2 * var(--search-dialog-margin)));
+  padding: var(--search-dialog-padding); border: 1px solid var(--colour-black); border-radius: 0;
+  background: var(--colour-white); color: var(--colour-black);
+  font-family: var(--font-ui); font-size: var(--type-ui-size); font-weight: var(--type-ui-weight);
+}
+.search-off-dialog::backdrop { background: var(--scrim); }
+.search-off-dialog p { margin: 0 0 var(--search-dialog-gap); }
+.search-off-dialog form { margin: 0; display: flex; justify-content: flex-end; }
+.search-off-close {
+  height: var(--button-height); padding: 0 var(--search-dialog-button-padding-x);
+  border: 1px solid var(--colour-black); border-radius: 0; background: var(--colour-white); color: var(--colour-black);
+  font: inherit; cursor: pointer;
+}
+.search-off-close:hover { background: var(--colour-black); color: var(--colour-white); }
+.search-off-close:focus-visible { outline: 2px solid var(--colour-vivid-blue); outline-offset: 2px; }
 
 /* Behaviour option "Arrows in the menu" (Back keeps its arrow: it's outside the list) */
 [data-opt-menu-arrows="children"] .pane-menu .menu-list a .menu-item-arrow,

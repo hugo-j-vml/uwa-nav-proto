@@ -27,6 +27,8 @@ export interface Variant {
   menuDepth?: number;
   /** No behaviour options at all (CONTROL-1: it copies the live site, so nothing is switchable; no Shift+O panel) */
   noOptions?: true;
+  /** With noOptions: the options that still apply (set from the index page or a link), though there's no Shift+O panel (CONTROL-1: 'search') */
+  appliedOptions?: string[];
   /**
    * Mega menu (CONTROL-1) only. more: sitemap paths listed in the live site's small
    * "More" dropdown instead of getting a mega menu of their own. lockups: co-branded

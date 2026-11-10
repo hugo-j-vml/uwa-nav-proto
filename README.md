@@ -130,7 +130,7 @@ Alternative behaviours that apply across every variant, without making new varia
 - **Any variant page:** Shift+O shows a hidden panel (bottom right) with that variant's phase's options; choosing reloads the page.
 - **Links:** `?cobrand-menu=7` (or `?cobrand-menu=7&cobrand-shortcuts=show`) on any URL sets and remembers a choice (for presetting test sessions); it's then dropped from the address.
 
-Each option belongs to a phase (`phases` in `src/options.ts`) and only applies to that phase's variants (none apply to CONTROL-1). Current options:
+Each option belongs to a phase (`phases` in `src/options.ts`) and only applies to that phase's variants (CONTROL-1 takes only Search, on / off, and has no Shift+O panel). Current options:
 
 **Phase 1 (A–F)**
 
@@ -145,7 +145,7 @@ Each option belongs to a phase (`phases` in `src/options.ts`) and only applies t
 | Option | Choices |
 |---|---|
 | Shortcuts (`shortcuts`) | **Show** (default) or **Hide** the shortcut links (Study, Impact, Research) on every page: G header, H sidebar. |
-| Search (`search`) | **Show** (default) or **Hide** the search buttons. |
+| Search (`search`) | **On** (default): search works as before. **Off**: clicking a search button shows a dialog, "Search is not available in this prototype." (G, H and CONTROL-1; the dialog is `src/components/SearchOffDialog.astro`). |
 | Back button in the menu (`menu-back`) | **Back** (default) or **Previous level's name**: the name of the level Back goes to, e.g. "← Study" above the Explore courses heading ("All UWA" from a top-level item; the site's name on a co-branded site's tab). |
 | Where the menu opens (`menu-start`) | **Top level** (default), or **Current section**: on a level 2+ page the menu opens inside the page's top-level section (e.g. Study on Explore courses); Back goes to the top level. Not on the homepage, top-level pages or co-branded pages. |
 | Arrows in the menu (`menu-arrows`) | **All** (every item and the heading), **Only items with children**, **All except headings**, **None** (default). Back always keeps its arrow. |
